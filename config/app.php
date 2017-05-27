@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Малый Бизнес'),
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,7 +167,8 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-
+        Orchid\Providers\FoundationServiceProvider::class,
+        Orchid\Socket\Providers\SocketServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -225,7 +226,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Dashboard' =>  Orchid\Facades\Dashboard::class,
+        'Alert' =>  Orchid\Alert\Facades\Alert::class,
+        'Setting' =>  Orchid\Setting\Facades\Setting::class,
+        'Active' => Watson\Active\Facades\Active::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

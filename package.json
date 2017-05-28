@@ -20,5 +20,9 @@
     "cross-env": "^3.2.3",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4"
+  },
+  "dependencies": {
+    "bootstrap-maxlength": "^1.6.0",
+    "jasny-bootstrap": "^3.1.3"
   }
 }

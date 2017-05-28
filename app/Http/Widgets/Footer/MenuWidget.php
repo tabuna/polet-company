@@ -34,7 +34,7 @@ class MenuWidget extends Widget
     public function run()
     {
         return view('partials.footer.menu', [
-            'menu'  => $this->menu,
+            'menu' => $this->menu,
         ]);
     }
 

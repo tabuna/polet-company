@@ -51,6 +51,18 @@
                     <div id="google-maps">
                         <img src="/img/google.png" class="img-responsive">
                     </div>
+
+
+                    {{-- По нажатию на карту, должно отправлять как добраться, первые данные пользователя, вторые компании --}}
+                    <div class="get-directions">
+                        <form action="http://maps.google.com/maps" method="get" target="_blank">
+                            <input type="text" name="saddr" placeholder="Введите свой адрес" />
+                            <input type="hidden" name="daddr" value="Октябрьская ул., 61, Липецк, Липецкая область" />
+                            <input type="submit" value="Как добраться" class="direction-btn" />
+                        </form>
+                    </div>
+
+
                 </div>
             </div>
 

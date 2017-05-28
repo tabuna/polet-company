@@ -6,10 +6,11 @@
 
             <div class="col-md-3 col-md-offset-2">
 
+                <div class="aside-affix">
                 <nav class="navi clearfix  wrapper-sm">
                     <ul class="nav">
-                        <li>
-                            <a href="#ru/profile/liked">
+                        <li class="{{active('home')}}">
+                            <a href="{{route('home')}}">
                                 <i class="icon-home"></i>
                                 <span>Профиль</span>
                             </a>
@@ -49,15 +50,15 @@
                                 <span>Статистика</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li class="{{active('profile')}}">
+                            <a href="{{route('profile')}}">
                                 <i class="icon-settings"></i>
                                 <span>Настройки</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
-
+                </div>
 
             </div>
 

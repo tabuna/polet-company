@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Website;
 
-use Orchid\Core\Models\Post;
 use App\Http\Controllers\Controller;
+use Orchid\Core\Models\Post;
 
 class PageController extends Controller
 {
@@ -16,7 +16,7 @@ class PageController extends Controller
     public function show(Post $page)
     {
         return view('pages.default', [
-            'page' => $page
+            'page' => $page,
         ]);
     }
 }

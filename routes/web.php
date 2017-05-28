@@ -11,15 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::post('/contacts','ContactsController@send')->name('contacts.submit');
-Route::get('/contacts','ContactsController@index')->name('contacts');
-Route::get('/p/{item}','PageController@show')->name('page');
+
+Route::group(['namespace' => 'Website'], function ($router) {
+    $router->get('/','WelcomeController@index')->name('index');
+    $router->get('/p/{item}','PageController@show')->name('page');
+
+    $router->get('/contacts','ContactsController@index')->name('contacts');
+    $router->post('/contacts','ContactsController@send')->name('contacts.submit');
+});

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Website;
 
 use Orchid\Core\Models\Post;
-use Orchid\Facades\Dashboard;
+use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {

@@ -12,6 +12,7 @@
     <link rel="dns-prefetch" href="https://maps.googleapis.com">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css" type="text/css"/>
 
     <meta property="og:title" content="@yield('title',setting('site_title','')) - Лучшая база поставщиков услуг">
@@ -40,7 +41,7 @@
             <button class="btn btn-link visible-xs pull-right m-r" type="button" data-toggle="collapse" data-target=".navbar-collapse">
                 <i class="fa fa-bars"></i>
             </button>
-            <a href="{{ url('/') }}" class="navbar-brand m-r-lg"><span class="h2"><span class="text-info">Малый</span> тендер</span></a>
+            <a href="{{ url('/') }}" class="navbar-brand m-r-lg"><span class="h2"><span class="basic-text-blue">Малый</span> тендер</span></a>
         </div>
         <div class="collapse navbar-collapse">
 
@@ -48,7 +49,7 @@
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <div class="m-t-sm">
-                        <a href="{{ route('login') }}" class="btn btn-sm btn-info btn-rounded">Вход</a>
+                        <a href="{{ route('login') }}" class="btn  btn-rounded btn-basic-blue">Вход</a>
                     </div>
                 @else
                     <li class="dropdown">
@@ -104,7 +105,7 @@
         <div class="container">
             <div class="row m-t-xxl m-b-xxl">
                 <div class="col-sm-3">
-                    <p>[<span class="text-info">Малый </span> тендер] © {{ date('Y')  }}</p>
+                    <p>[<span class="basic-text-blue">Малый </span> тендер] © {{ date('Y')  }}</p>
                 </div>
                 <div class="col-sm-3 col-sm-offset-1">
                     @widget('footerMenu')

@@ -24,7 +24,7 @@
                         и предприятий, находящихся в поиске способов реализаций своих товаров и услуг через надёждных посредников. Используйте систему бесплатно до 1.09.2017 в рамках полнофункционального пробного периода
                     </p>
                     <p class="text-center">
-                        <a href="{{ route('login') }}" class="btn btn-lg btn-default btn-rounded">Пробный период</a>
+                        <a href="{{ route('login') }}" class="btn btn-lg btn-default btn-rounded btn-basic-blue">Пробный период</a>
                     </p>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     </p>
 
 
-                    <ul class="list-group no-bg no-borders pull-in m-t-lg">
+                    <ul class="list-group no-bg no-borders pull-in m-t-lg basic-list-blue">
                         <li class="list-group-item">«Умные» теги</li>
                         <li class="list-group-item">Простая сортировка стоимости товаров и услуг</li>
                         <li class="list-group-item">Обнаружение ближайших контрагентов, соответсвующих вашим запросам</li>
@@ -138,10 +138,10 @@
 
             <div class="row m-t-xl m-b-xl">
                 <div class="col-sm-6 text-right">
-                    <a href="{{ route('contacts') }}" class="btn btn-lg btn-default btn-rounded">Задать вопрос</a>
+                    <a href="{{ route('contacts') }}" class="btn btn-lg btn-default btn-rounded btn-basic-blue">Задать вопрос</a>
                 </div>
                 <div class="col-sm-6 text-left">
-                    <a href="{{ route('login') }}" class="btn btn-lg btn-default btn-rounded">Пробный период</a>
+                    <a href="{{ route('login') }}" class="btn btn-lg btn-default btn-rounded btn-basic-blue">Пробный период</a>
                 </div>
             </div>
         </div>

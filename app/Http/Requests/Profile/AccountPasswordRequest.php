@@ -2,13 +2,15 @@
 
 namespace App\Http\Requests\Profile;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Foundation\Http\FormRequest;
 
 class AccountPasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @param Guard $guard
      *
      * @return bool
      */

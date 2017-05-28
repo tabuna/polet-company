@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Profile;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\AccountPasswordRequest;
 use App\Http\Requests\Profile\AccountRequest;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Orchid\Alert\Facades\Alert;
-use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
@@ -57,7 +57,7 @@ class ProfileController extends Controller
         if ($account->hasFile('avatar')) {
             $img = Image::make($account->file('avatar'));
             $img->fit(200);
-            $user->avatar = (string)$img->encode('data-url');
+            $user->avatar = (string) $img->encode('data-url');
         }
 
         $user->fill($account->except('avatar'));

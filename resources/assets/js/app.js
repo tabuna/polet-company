@@ -7,6 +7,11 @@
 
 require('./bootstrap');
 
+require('../../../node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min');
+require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
+
+require('./modules/affix');
+
 window.Vue = require('vue');
 
 /**

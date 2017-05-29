@@ -64,6 +64,20 @@
                            placeholder="Ваше полное имя" maxlength="120">
                 </div>
             </div>
+            <div class="form-group{{ $errors->has('inn') ? ' has-error' : '' }}">
+                <label class="col-sm-3 control-label">ИНН:</label>
+                <div class="col-sm-9">
+                    <input type="text" name="inn" class="form-control form-control-grey" value="{{$user->inn}}"
+                           placeholder="ИНН" maxlength="120">
+                </div>
+            </div>
+            <div class="form-group{{ $errors->has('ogrn') ? ' has-error' : '' }}">
+                <label class="col-sm-3 control-label">ОГРН:</label>
+                <div class="col-sm-9">
+                    <input type="text" name="ogrn" class="form-control form-control-grey" value="{{$user->ogrn}}"
+                           placeholder="ОГРН" maxlength="120">
+                </div>
+            </div>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <label class="col-sm-3 control-label">Электронная почта</label>
                 <div class="col-sm-9">

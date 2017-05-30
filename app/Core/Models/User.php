@@ -24,6 +24,15 @@ class User extends UserOrchid
         'website'
     ];
 
+    public function getAvatar()
+    {
+        if (empty($this->avatar) || is_null($this->avatar)) {
+            return '/img/no_avatar.png';
+        }
+
+        return $this->avatar;
+    }
+
 
 
 }

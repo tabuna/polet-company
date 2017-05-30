@@ -36,10 +36,10 @@ class AccountRequest extends FormRequest
             'notification' => 'sometimes|boolean',
             'sex'          => 'sometimes|boolean',
             'phone'        => 'sometimes|max:255',
-            //'address'      =>'required|max:255',
-            //'inn'          =>'required|max:12',
+            'address'      =>'required|max:255',
+            'inn'          =>'required|max:12',
             //'type_of_activity'=>'required|max:255',
-            //'ogrn'         =>'required|15',
+            'ogrn'         =>'required|max:15',
         ];
     }
 }

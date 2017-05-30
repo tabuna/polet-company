@@ -68,14 +68,22 @@
                 <label class="col-sm-3 control-label">ИНН:</label>
                 <div class="col-sm-9">
                     <input type="text" name="inn" class="form-control form-control-grey" value="{{$user->inn}}"
-                           placeholder="ИНН" maxlength="120">
+                           placeholder="ИНН" maxlength="12">
                 </div>
             </div>
             <div class="form-group{{ $errors->has('ogrn') ? ' has-error' : '' }}">
                 <label class="col-sm-3 control-label">ОГРН:</label>
                 <div class="col-sm-9">
                     <input type="text" name="ogrn" class="form-control form-control-grey" value="{{$user->ogrn}}"
-                           placeholder="ОГРН" maxlength="120">
+                           placeholder="ОГРН" maxlength="15">
+                </div>
+            </div>
+            <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                <label class="col-sm-3 control-label">Телефон</label>
+                <div class="col-sm-9">
+                    <input type="tel" name="phone" class="form-control form-control-grey" data-mask="+ 9-999-999-99-99"
+                           value="{{$user->phone}}"
+                           placeholder="Номер телефона">
                 </div>
             </div>
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -91,30 +99,31 @@
                 <label class="col-sm-3 control-label">Веб-сайт</label>
                 <div class="col-sm-9">
                     <input type="url" name="website" class="form-control form-control-grey" value="{{$user->website}}"
-                           placeholder="Личный веб-сайт"  maxlength="255">
+                           placeholder="Личный веб-сайт"  maxlength="120">
                 </div>
             </div>
 
 
-            <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                <label class="col-sm-3 control-label">Телефон</label>
-                <div class="col-sm-9">
-                    <input type="tel" name="phone" class="form-control form-control-grey" data-mask="+ 9-999-999-99-99"
-                           value="{{$user->phone}}"
-                           placeholder="Номер телефона">
-                </div>
-            </div>
+
 
 
             <div class="form-group{{ $errors->has('about') ? ' has-error' : '' }}">
-                <label class="col-sm-3 control-label">О себе</label>
+                <label class="col-sm-3 control-label">О Компании</label>
                 <div class="col-sm-9">
                     <textarea class="form-control form-control-grey no-resize" rows="6" name="about"
                               placeholder="Небольшой рассказ о себе">{{$user->about}}</textarea>
                 </div>
             </div>
+            <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                <label class="col-sm-3 control-label">Адрес</label>
+                <div class="col-sm-9">
+                    <input class="form-control form-control-grey no-resize" rows="6" name="address"
+                              placeholder="Адрес" value="{{$user->address}}"/>
+                </div>
+            </div>
 
 
+            <!--
             <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
                 <div class="col-sm-offset-3 col-sm-9">
                     <label class="i-checks i-checks-sm">
@@ -131,6 +140,7 @@
 
                 </div>
             </div>
+            -->
 
 
             <div class="form-group{{ $errors->has('notification') ? ' has-error' : '' }}">

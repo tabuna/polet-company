@@ -28,18 +28,16 @@ class AccountRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'         => 'sometimes|required|max:255',
-            'email'        => 'sometimes|email|required|unique:users,email,' . Auth::user()->id,
+            'name'         => 'required|max:255',
+            'email'        => 'email|required|unique:users,email,' . Auth::user()->id,
             'avatar'       => 'mimes:jpeg,bmp,png|sometimes',
-            'website'         => 'sometimes|active_url|max:255',
+            'website'      => 'sometimes|max:255',
             'about'        => 'sometimes|max:65000',
             'notification' => 'sometimes|boolean',
-            'sex'          => 'sometimes|boolean',
             'phone'        => 'sometimes|max:255',
-            'address'      =>'required|max:255',
-            'inn'          =>'required|max:12',
-            //'type_of_activity'=>'required|max:255',
-            'ogrn'         =>'required|max:15',
+            'address'      => 'sometimes|required|max:255',
+            'inn'          => 'sometimes|required|max:12',
+            'ogrn'         => 'sometimes|required|max:15',
         ];
     }
 }

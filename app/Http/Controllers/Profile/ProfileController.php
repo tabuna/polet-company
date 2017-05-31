@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Profile;
 
+use App\Core\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\AccountPasswordRequest;
 use App\Http\Requests\Profile\AccountRequest;
@@ -12,6 +13,9 @@ use Orchid\Alert\Facades\Alert;
 class ProfileController extends Controller
 {
 
+    /**
+     * @var
+     */
     protected $user;
 
     /**
@@ -34,13 +38,30 @@ class ProfileController extends Controller
     }
 
     /**
+     * @param User|null $user
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(User $user)
+    {
+
+        if (!$user->exists) {
+            $user = Auth::user();
+        }
+
+
+        return view('profile.show', [
+            'user' => $user,
+        ]);
+    }
+
+
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function password()
     {
-        return view('profile.password', [
-            'user' => $this->user,
-        ]);
+        return view('profile.password');
     }
 
     /**

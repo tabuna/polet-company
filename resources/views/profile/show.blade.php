@@ -2,21 +2,22 @@
 
 @section('main')
 
+
     <div class="bg-white b box-shadow">
         <div class="wrapper-md">
 
             <div class="row m-b-md padder-b b-b">
                 <div class="col-md-4">
-                    <img src="/img/avatar.png" class="img-responsive">
+                    <img src="{{$user->getAvatar()}}" class="img-responsive">
                 </div>
                 <div class="col-md-5 no-padder">
-                    <h3 class="text-info m-t-xs">ООО «Завод»</h3>
-                    <p>ИНН: 500100732259</p>
-                    <p>ОГРН: 1117746358608 </p>
+                    <h3 class="text-info m-t-xs">{{$user->name}}</h3>
+                    <p>ИНН: {{$user->inn}}</p>
+                    <p>ОГРН: {{$user->ogrn}} </p>
                     <p class="text-muted small">
-                        <i class="icon-phone text-info m-r-xs"></i>| +7 (654)-454-34-45 <br>
-                        <i class="icon-envelope text-info m-r-xs"></i>| contact@ooozavod.ru <br>
-                        <i class="icon-globe text-info m-r-xs"></i>|www.ooozavod.ru <br>
+                        <i class="icon-phone text-info m-r-xs"></i>| {{$user->phone or 'Не указан'}} <br>
+                        <i class="icon-envelope text-info m-r-xs"></i>| {{$user->email or 'Не указан'}} <br>
+                        <i class="icon-globe text-info m-r-xs"></i>| {{$user->website or 'Не указан'}} <br>
                     </p>
                 </div>
                 <div class="col-md-3 no-padder text-center">
@@ -31,17 +32,9 @@
 
             <div class="row m-t-md m-b-md padder-v b-b">
                 <div class="col-md-12">
-                    <p>Идейные соображения высшего порядка, а также укрепление и развитие структуры влечет за собой
-                        процесс внедрения и модернизации модели развития.
+                    <p class="text-justify">
+                        {!! nl2br( htmlspecialchars($user->about)) !!}
                     </p>
-                    <p>Задача организации, в особенности же сложившаяся структура организации требуют от нас анализа
-                        существенных финансовых и административных условий.
-                        Повседневная практика показывает, что укрепление и развитие структуры позволяет выполнять важные
-                        задания по разработке соответствующий условий активизации. Не следует, однако забывать, что
-                        дальнейшее развитие различных форм деятельности в значительной степени обуславливает создание
-                        новых предложений.
-                    </p>
-
                 </div>
             </div>
 

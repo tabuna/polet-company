@@ -14,9 +14,7 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
+Route::get('/home', 'Profile\ProfileController@show')->name('home');
 /*
 |--------------------------------------------------------------------------
 | Website display for all users and guest
@@ -40,7 +38,8 @@ Route::group(['namespace' => 'Website'], function ($router) {
 |
 */
 Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Profile'], function ($router) {
-    $router->get('/', 'ProfileController@index')->name('profile');
+    $router->get('/{id?}', 'ProfileController@show')->name('profile');
+    $router->get('/', 'ProfileController@index')->name('profile.edit');
     $router->put('/', 'ProfileController@update')->name('profile.update');
     $router->get('/password', 'ProfileController@password')->name('profile.password');
     $router->put('/password', 'ProfileController@changePassword')->name('profile.password.update');

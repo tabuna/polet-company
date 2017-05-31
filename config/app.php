@@ -169,6 +169,9 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Orchid\Providers\FoundationServiceProvider::class,
         Orchid\Socket\Providers\SocketServiceProvider::class,
+        Conner\Likeable\LikeableServiceProvider::class,
+        willvincent\Rateable\RateableServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

@@ -10,7 +10,9 @@
         "laravel/tinker": "~1.0",
         "orchid/platform": "dev-master",
         "orchid/socket": "^1.5",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "rtconner/laravel-likeable": "~1.2",
+        "willvincent/laravel-rateable": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

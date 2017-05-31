@@ -61,7 +61,7 @@
                            title="Мой профиль">
                             {{ Auth::user()->name }}
                             <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-<img src="{{$user->getAvatar()}}" alt="{{ Auth::user()->name }}">
+<img src="{{Auth::user()->getAvatar()}}" alt="{{ Auth::user()->name }}">
 <i class="on md b-white bottom"></i>
 </span>
                             <span class="caret"></span>

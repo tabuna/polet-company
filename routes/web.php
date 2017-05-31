@@ -38,9 +38,14 @@ Route::group(['namespace' => 'Website'], function ($router) {
 |
 */
 Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Profile'], function ($router) {
-    $router->get('/{id?}', 'ProfileController@show')->name('profile');
-    $router->get('/', 'ProfileController@index')->name('profile.edit');
-    $router->put('/', 'ProfileController@update')->name('profile.update');
+
+    $router->get('/{user?}', 'ProfileController@show')->where('user', '[0-9]+')->name('profile');
+
+    $router->get('/fave', 'FavoriteController@index')->name('profile.fave');
+    $router->put('/fave/{user}', 'FavoriteController@update')->name('profile.fave.add');
+
+    $router->get('/edit', 'ProfileController@index')->name('profile.edit');
+    $router->put('/edit', 'ProfileController@update')->name('profile.update');
     $router->get('/password', 'ProfileController@password')->name('profile.password');
     $router->put('/password', 'ProfileController@changePassword')->name('profile.password.update');
 });

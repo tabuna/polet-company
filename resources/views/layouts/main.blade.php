@@ -33,8 +33,8 @@
                                     <span class="badge pull-right bg-info">4</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#ru/profile/comments">
+                            <li class="{{active('profile.fave')}}">
+                                <a href="{{route('profile.fave')}}">
                                     <i class="icon-star"></i>
                                     <span>Избранное</span>
                                 </a>

@@ -151,7 +151,7 @@
                         <a href="{{route('profile.password')}}" class="btn btn-link">Изменить пароль?</a>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <button type="submit" class="btn btn-info btn-rounded">Сохранить</button>
+                        <button type="submit" class="btn btn-lg btn-default btn-rounded btn-basic-blue">Сохранить</button>
                     </div>
                 </div>
             </form>

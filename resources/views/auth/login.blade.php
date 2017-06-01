@@ -67,8 +67,8 @@
 
 
                         <div class="form-group">
-                            <div class="col-md-8">
-                                <button class="btn btn-info  m-t-md" type="submit">{{trans('dashboard::auth/account.login')}}</button>
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-lg btn-default btn-rounded btn-basic-blue" type="submit">{{trans('dashboard::auth/account.login')}}</button>
                             </div>
                         </div>
                     </form>

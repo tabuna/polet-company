@@ -36,27 +36,47 @@
 <body>
 
 <header id="header" class="navbar bg-white padder-v b-b">
-    <div class="container">
+    <div class="padder">
         <div class="navbar-header">
             <button class="btn btn-link visible-xs pull-right m-r" type="button" data-toggle="collapse"
                     data-target=".navbar-collapse">
                 <i class="fa fa-bars"></i>
             </button>
-            <a href="{{ url('/') }}" class="navbar-brand m-r-lg"><span class="h2"><span
-                            class="basic-text-blue">Малый</span> тендер</span></a>
+            <a href="{{ url('/') }}" class="navbar-brand m-r-lg">
+                <img src="/img/logo.png" class="img-responsive m-r-xs">
+                <span class="h4">
+                    Малый тендер
+                </span></a>
         </div>
         <div class="collapse navbar-collapse">
+
+
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#what" data-ride="scroll">Предоставляю услуги</a>
+                </li>
+                <li>
+                    <a href="#why" data-ride="scroll">Ищу заказы</a>
+                </li>
+                <li>
+                    <a href="#features" data-ride="scroll">Помощь</a>
+                </li>
+                <li>
+                    <a href="#">Компании</a>
+                </li>
+            </ul>
+
 
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <div class="m-t-sm">
-                        <a href="{{ route('login') }}" class="btn  btn-rounded btn-basic-blue">Вход</a>
+                        <a href="{{ route('login') }}" class="btn btn-link btn-sm">Вход </a> или
+                        <a href="{{route('register')}}" class="btn btn-sm btn-info btn-rounded m-l"><strong>Зарегистрироваться</strong></a>
                     </div>
+
                 @else
                     <li class="dropdown">
-
-
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                            title="Мой профиль">
                             {{ Auth::user()->name }}

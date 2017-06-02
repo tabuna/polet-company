@@ -155,6 +155,136 @@
 <!-- / footer -->
 
 
+
+
+<footer id="footer">
+    <div class="bg-info">
+        <div class="container">
+            <div class="row m-t-xl m-b-xl">
+                <div class="col-sm-6 text-white text-center">
+                    <h4 class="m-b">Are you ready to enjoy?</h4>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <a href="#" class="btn btn-lg btn-default btn-rounded">Get Angulr Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white">
+        <div class="container">
+            <div class="row m-t-xl m-b-xl">
+                <div class="col-sm-3">
+                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Version</span> options</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="fa fa-angle-right m-r-sm"></i>Angular App</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right m-r-sm"></i>Html Template</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right m-r-sm"></i>Music single page application</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right m-r-sm"></i>App landing page</a></li>
+                    </ul>
+                    <p class="m-b-xl">More coming...</p>
+                </div>
+                <div class="col-sm-3">
+                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Find</span> Us</h4>
+                    <p class="text-sm">23 soe Midlokls <br>
+                        120002 Loki — UNITED KINGDOM <br>
+                        +333 432 321 322
+                    </p>
+                    <p>Sale: <a href="mailto:hey@example.com">info@example.com</a></p>
+                    <p class="m-b-xl">Job: <a href="mailto:hey@example.com">job@example.com</a></p>
+                </div>
+                <div class="col-sm-3">
+                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">News</span> Letter</h4>
+
+                    <div>
+                        <div>
+                            <a class="pull-left thumb-sm thumb-wrapper m-r">
+                                <img src="http://flatfull.com/themes/angulr/html/img/b0.jpg">
+                            </a>
+                            <div class="clear">
+                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
+                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                        <div>
+                            <a class="pull-left thumb-sm thumb-wrapper m-r">
+                                <img src="http://flatfull.com/themes/angulr/html/img/b1.jpg">
+                            </a>
+                            <div class="clear">
+                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
+                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                        <div>
+                            <a class="pull-left thumb-sm thumb-wrapper m-r">
+                                <img src="http://flatfull.com/themes/angulr/html/img/b2.jpg">
+                            </a>
+                            <div class="clear">
+                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
+                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="col-sm-3">
+                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">News</span> Letter</h4>
+
+                    <div>
+                        <div>
+                            <a class="pull-left thumb-sm thumb-wrapper m-r">
+                                <img src="http://flatfull.com/themes/angulr/html/img/b0.jpg">
+                            </a>
+                            <div class="clear">
+                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
+                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                        <div>
+                            <a class="pull-left thumb-sm thumb-wrapper m-r">
+                                <img src="http://flatfull.com/themes/angulr/html/img/b1.jpg">
+                            </a>
+                            <div class="clear">
+                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
+                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                        <div>
+                            <a class="pull-left thumb-sm thumb-wrapper m-r">
+                                <img src="http://flatfull.com/themes/angulr/html/img/b2.jpg">
+                            </a>
+                            <div class="clear">
+                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
+                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light dk">
+        <div class="container">
+            <div class="row padder-v m-t">
+                <div class="col-xs-8">
+                    <ul class="list-inline">
+                        <li><a href="#">Sales</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Job</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-4 text-right">
+                    [<span class="basic-text-blue">Малый </span> тендер] © {{ date('Y')  }}
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
 <script src="/js/app.js"></script>
 </body>
 </html>

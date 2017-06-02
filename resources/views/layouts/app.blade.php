@@ -44,7 +44,7 @@
             </button>
             <a href="{{ url('/') }}" class="navbar-brand m-r-lg">
                 <img src="/img/logo.png" class="img-responsive m-r-xs">
-                <span class="h4">
+                <span class="h4 text-black">
                     Малый тендер
                 </span></a>
         </div>
@@ -60,6 +60,9 @@
                 </li>
                 <li>
                     <a href="#features" data-ride="scroll">Помощь</a>
+                </li>
+                <li>
+                    <a href="#features" data-ride="scroll">Цены</a>
                 </li>
                 <li>
                     <a href="#">Компании</a>
@@ -135,22 +138,7 @@
 <!-- footer -->
 <footer id="footer">
     @yield('footer')
-    <div class="bg-white b-t">
-        <div class="container">
-            <div class="row m-t-xxl m-b-xxl">
-                <div class="col-sm-3">
-                    <p>[<span class="basic-text-blue">Малый </span> тендер] © {{ date('Y')  }}</p>
-                </div>
-                <div class="col-sm-3 col-sm-offset-1">
-                    @widget('footerMenu')
-                </div>
-                <div class="col-sm-3  col-sm-offset-2 text-right">
-                    {{setting('site_phone','')}}<br>
-                    {{setting('site_email','')}}
-                </div>
-            </div>
-        </div>
-    </div>
+
 </footer>
 <!-- / footer -->
 
@@ -158,21 +146,34 @@
 
 
 <footer id="footer">
-    <div class="bg-info">
+    <div class="bg-black"
+         style="background: url(https://www.cssigniter.com/themeforest/specialty/images/hero-2.jpg); background-size: cover">
+        <div class="bg-black-opacity">
         <div class="container">
-            <div class="row m-t-xl m-b-xl">
-                <div class="col-sm-6 text-white text-center">
-                    <h4 class="m-b">Are you ready to enjoy?</h4>
-                </div>
-                <div class="col-sm-6 text-center">
-                    <a href="#" class="btn btn-lg btn-default btn-rounded">Get Angulr Now</a>
+            <div class="row  m-t-xxl m-b-xxl">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="col-xs-height col-middle">
+                        <div class="text-center">
+                            <h1 class="text-white col-sm-12 font-thin">Изготовленный с деталями для
+                                большого старта! Это большое начало для всех.
+                            </h1>
+                            <button type="button" class="btn btn-lg btn-info btn-rounded m-t-md">
+                                Попробывать бесплатно
+                            </button>
+                            <p class="text-muted m-t-md">
+                                Бесплатный доступ исключительные на площадке,<br>
+                                для ознакомления, не предоставляет общие услуги
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        </div>
     </div>
-    <div class="bg-white">
+    <div class="bg-white hidden">
         <div class="container">
-            <div class="row m-t-xl m-b-xl">
+            <div class="row m-t-xxl m-b-xxl">
                 <div class="col-sm-3">
                     <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Version</span> options</h4>
                     <ul class="list-unstyled">
@@ -185,15 +186,20 @@
                 </div>
                 <div class="col-sm-3">
                     <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Find</span> Us</h4>
-                    <p class="text-sm">23 soe Midlokls <br>
-                        120002 Loki — UNITED KINGDOM <br>
-                        +333 432 321 322
+                    @widget('footerMenu')
+                    <p class="text-sm">
+
+
+                        <br>
+
+                        {{setting('site_phone','')}}<br>
+                        {{setting('site_email','')}}
                     </p>
                     <p>Sale: <a href="mailto:hey@example.com">info@example.com</a></p>
                     <p class="m-b-xl">Job: <a href="mailto:hey@example.com">job@example.com</a></p>
                 </div>
                 <div class="col-sm-3">
-                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">News</span> Letter</h4>
+                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Новости</span> Проекта</h4>
 
                     <div>
                         <div>
@@ -227,7 +233,7 @@
                         </div>
                     </div>
                 </div><div class="col-sm-3">
-                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">News</span> Letter</h4>
+                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Бизнес</span> Проекты</h4>
 
                     <div>
                         <div>
@@ -264,25 +270,33 @@
             </div>
         </div>
     </div>
-    <div class="bg-light dk">
-        <div class="container">
-            <div class="row padder-v m-t">
-                <div class="col-xs-8">
+
+</footer>
+
+
+<section class="bg-white b-t">
+    <div class="container">
+        <div class="row m-t-xl m-b-xl">
+            <div class="col-sm-6">
+                <span class="h4 text-black">[<span class="text-info">Малый </span> тендер]</span>
+                <div class="m-t text-xs">
                     <ul class="list-inline">
-                        <li><a href="#">Sales</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">API</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Job</a></li>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Работа</a></li>
+                        <li><a href="#">Договор оферты</a></li>
                     </ul>
                 </div>
-                <div class="col-xs-4 text-right">
-                    [<span class="basic-text-blue">Малый </span> тендер] © {{ date('Y')  }}
-                </div>
+            </div>
+            <div class="col-sm-6 text-right">
+                <p class="text-xs">
+                    Не следует, однако забывать, что начало повседневной работы по формированию позиции
+                </p>
+                <p class="text-xs text-muted">Copyright © {{date('Y')}} ООО "Русский паллет". Все права защищены.</p>
             </div>
         </div>
     </div>
-</footer>
+</section>
 
 
 <script src="/js/app.js"></script>

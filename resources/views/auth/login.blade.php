@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row m-t-xxl m-b-xxl">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1 display-flex">
 
             <div class="col-md-6 no-padder bg-info box-shadow-lg">
                 <div class="wrapper-lg m-t-md m-b-md">
@@ -20,7 +20,7 @@
 
 
                         <div class="form-group form-group-default {{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label>Email</label>
+                            <label class="control-label text-left padder-v-5">Email</label>
                             <div class="controls">
                                 <input type="email" name="email" placeholder="{{trans('dashboard::auth/account.enter_email')}}"
                                        class="form-control" required
@@ -36,7 +36,7 @@
 
 
                         <div class="form-group form-group-default {{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label>{{trans('dashboard::auth/account.password')}}</label>
+                            <label class="control-label text-left padder-v-5">{{trans('dashboard::auth/account.password')}}</label>
                             <div class="controls">
                                 <input type="password" class="form-control" name="password"
                                        placeholder="{{trans('dashboard::auth/account.enter_password')}}" required>
@@ -68,7 +68,7 @@
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <button class="btn btn-lg btn-default btn-rounded btn-basic-blue" type="submit">{{trans('dashboard::auth/account.login')}}</button>
+                                <button class="btn btn-lg btn-info btn-rounded m-t-md " type="submit">{{trans('dashboard::auth/account.login')}}</button>
                             </div>
                         </div>
                     </form>

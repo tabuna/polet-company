@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row m-t-xxl m-b-xxl">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1 display-flex">
 
                 <div class="col-md-6 no-padder bg-info box-shadow-lg">
                     <div class="wrapper-lg m-t-md m-b-md">
@@ -34,12 +34,13 @@
                                 </div>
                             </div>
 
-                            <div class="row setup-content" id="step-1">
+                            <div class="setup-content" id="step-1">
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label for="name" class="col-md-4 control-label">Имя</label>
 
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-12">
+                                        <label for="name" class="control-label text-left padder-v-5">Название компании</label>
                                         <input id="name" type="text" class="form-control" name="name"
                                                value="{{ old('name') }}" required autofocus>
 
@@ -52,9 +53,8 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-4 control-label">E-Mail адрес</label>
-
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <label for="email" class="control-label text-left padder-v-5">E-Mail адрес</label>
                                         <input id="email" type="email" class="form-control" name="email"
                                                value="{{ old('email') }}" required>
 
@@ -66,10 +66,29 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <label for="password" class="col-md-4 control-label">Пароль</label>
+                                <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
 
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-12">
+                                        <label for="phone" class="control-label text-left padder-v-5">Телефон</label>
+                                        <input id="phone" type="text" class="form-control" name="phone"
+                                               value="{{ old('phone') }}" required  maxlength="255"
+                                               data-mask="+ 9-999-999-99-99" hidden>
+
+                                        @if ($errors->has('phone'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('phone') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+
+                                    <div class="col-md-12">
+                                        <label for="password" class="control-label text-left padder-v-5">Пароль</label>
                                         <input id="password" type="password" class="form-control" name="password"
                                                required>
 
@@ -82,16 +101,17 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="password-confirm" class="col-md-4 control-label">Повторите пароль</label>
+
 
                                     <div class="col-md-6">
+                                        <label for="password-confirm" class="control-label text-left padder-v-5">Повторите пароль</label>
                                         <input id="password-confirm" type="password" class="form-control"
                                                name="password_confirmation" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
-                                        <button class="btn btn-lg btn-info btn-rounded m-t-md nextBtn"
+                                        <button class="btn btn-sm btn-info btn-rounded m-t-md nextBtn"
                                                 type="button">
                                             Далее
                                         </button>
@@ -101,29 +121,31 @@
 
                             </div>
 
-                            <div class="row setup-content" id="step-2">
+                            <div class=" setup-content" id="step-2">
 
                                 <div class="form-group{{ $errors->has('type_of_activity') ? ' has-error' : '' }}">
-                                    <label for="type_of_activity" class="col-md-4 control-label">Тип деятельности</label>
 
-                                    <div class="col-md-6">
-                                        <input id="type_of_activity" type="text" class="form-control" name="type_of_activity"
-                                               value="{{ old('type_of_activity') }}" required>
+
+                                    <div class="col-md-12">
+                                        <label for="agent_name" class="control-label text-left padder-v-5">Имя представителя</label>
+                                        <input id="agent_name" type="text" class="form-control" name="agent_name"
+                                               value="{{ old('agent_name') }}" required>
 
                                         @if ($errors->has('type_of_activity'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('type_of_activity') }}</strong>
+                                                <strong>{{ $errors->first('agent_name') }}</strong>
                                             </span>
                                         @endif
                                     </div>
                                 </div>
 
                                 <div class="form-group{{ $errors->has('inn') ? ' has-error' : '' }}">
-                                    <label for="inn" class="col-md-4 control-label">ИНН</label>
 
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-12">
+                                        <label for="inn" class="control-label text-left padder-v-5">ИНН</label>
                                         <input id="inn" type="text" class="form-control" name="inn"
-                                               value="{{ old('inn') }}" required placeholder="ИНН" maxlength="12">
+                                               value="{{ old('inn') }}" required  maxlength="12">
 
                                         @if ($errors->has('inn'))
                                             <span class="help-block">
@@ -134,11 +156,12 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('ogrn') ? ' has-error' : '' }}">
-                                    <label for="ogrn" class="col-md-4 control-label">ОГРН</label>
 
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-12">
+                                        <label for="ogrn" class="control-label text-left padder-v-5">ОГРН</label>
                                         <input id="ogrn" type="text" class="form-control" name="ogrn"
-                                               value="{{ old('ogrn') }}" required placeholder="ИНН" maxlength="15">
+                                               value="{{ old('ogrn') }}" required  maxlength="15">
 
                                         @if ($errors->has('ogrn'))
                                             <span class="help-block">
@@ -149,11 +172,12 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-                                    <label for="address" class="col-md-4 control-label">Адрес</label>
 
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-12">
+                                        <label for="address" class="control-label text-left padder-v-5">Адрес</label>
                                         <input id="address" type="text" class="form-control" name="address"
-                                               value="{{ old('address') }}" required placeholder="Адрес" maxlength="255">
+                                               value="{{ old('address') }}" required  maxlength="255">
 
                                         @if ($errors->has('address'))
                                             <span class="help-block">
@@ -163,28 +187,15 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                    <label for="phone" class="col-md-4 control-label">Телефон</label>
 
-                                    <div class="col-md-6">
-                                        <input id="phone" type="text" class="form-control" name="phone"
-                                               value="{{ old('phone') }}" required placeholder="Телефон" maxlength="255"
-                                               data-mask="+ 9-999-999-99-99" hidden>
-
-                                        @if ($errors->has('phone'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('phone') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
 
                                 <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
-                                    <label for="website" class="col-md-4 control-label">Сайт</label>
 
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-12">
+                                        <label for="website" class="control-label text-left padder-v-5">Сайт</label>
                                         <input id="website" type="url" class="form-control" name="website"
-                                               value="{{ old('website') }}" required placeholder="Сайт" maxlength="255">
+                                               value="{{ old('website') }}" required  maxlength="255">
 
                                         @if ($errors->has('website'))
                                             <span class="help-block">
@@ -196,11 +207,10 @@
 
 
 
-
                                 <div class="form-group">
 
                                         <div class="col-md-4 ">
-                                            <button class="btn btn-lg btn-info btn-rounded m-t-md prevBtn pull-right"
+                                            <button class="btn btn-sm btn-info btn-rounded m-t-md prevBtn pull-right"
                                                     type="button">
                                                 Назад
                                             </button>
@@ -208,7 +218,7 @@
 
 
                                     <div class="col-md-6 ">
-                                        <button type="submit" class="btn btn-lg btn-info btn-rounded m-t-md ">
+                                        <button type="submit" class="btn btn-sm btn-info btn-rounded m-t-md ">
                                             Зарегистрироваться
                                         </button>
                                     </div>

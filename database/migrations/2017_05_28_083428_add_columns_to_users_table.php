@@ -18,7 +18,7 @@ class AddColumnsToUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->integer('inn')->unsigned()->nullable();
-            $table->string('type_of_activity')->nullable();
+            $table->string('agent_name')->nullable();
             $table->string('ogrn')->nullable();
             $table->string('website')->nullable();
             $table->text('about')->nullable();
@@ -35,7 +35,7 @@ class AddColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['phone', 'address', 'inn','type_of_activity','ogrn','site','about','avatar']);
+            $table->dropColumn(['phone', 'address', 'inn','agent_name','ogrn','site','about','avatar']);
         });
     }
 }

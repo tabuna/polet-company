@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'inn'          => $data['inn'],
             'ogrn'         => $data['ogrn'],
             'website'      => $data['website'],
-            'type_of_activity' => $data['type_of_activity'],
+            'agent_name' => $data['agent_name'],
 
         ]);
     }

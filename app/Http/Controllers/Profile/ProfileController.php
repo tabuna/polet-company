@@ -32,9 +32,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.edit', [
-            'user' => Auth::user(),
-        ]);
+        return response()->json(Auth::user());
     }
 
     /**
@@ -44,24 +42,11 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-
         if (!$user->exists) {
             $user = Auth::user();
         }
 
-
-        return view('profile.show', [
-            'user' => $user,
-        ]);
-    }
-
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function password()
-    {
-        return view('profile.password');
+        return response()->json($user);
     }
 
     /**

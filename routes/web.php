@@ -14,7 +14,6 @@
 
 Auth::routes();
 
-Route::get('/home', 'Profile\ProfileController@show')->name('home');
 /*
 |--------------------------------------------------------------------------
 | Website display for all users and guest
@@ -22,7 +21,7 @@ Route::get('/home', 'Profile\ProfileController@show')->name('home');
 |
 */
 
-Route::group(['namespace' => 'Website'], function ($router) {
+Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($router) {
     $router->get('/', 'WelcomeController@index')->name('index');
     $router->get('/p/{item}', 'PageController@show')->name('page');
 
@@ -39,16 +38,19 @@ Route::group(['namespace' => 'Website'], function ($router) {
 */
 Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Profile'], function ($router) {
 
-    $router->get('/{user?}', 'ProfileController@show')->where('user', '[0-9]+')->name('profile');
+    $router->post('/{user?}', 'ProfileController@show')->where('user', '[0-9]+')->name('profile');
 
-    $router->get('/fave', 'FavoriteController@index')->name('profile.fave');
+    $router->post('/fave', 'FavoriteController@index')->name('profile.fave');
     $router->put('/fave/{user}', 'FavoriteController@update')->name('profile.fave.add');
 
-    $router->get('/edit', 'ProfileController@index')->name('profile.edit');
+    $router->post('/edit', 'ProfileController@index')->name('profile.edit');
     $router->put('/edit', 'ProfileController@update')->name('profile.update');
-    $router->get('/password', 'ProfileController@password')->name('profile.password');
+    $router->post('/password', 'ProfileController@password')->name('profile.password');
     $router->put('/password', 'ProfileController@changePassword')->name('profile.password.update');
 });
 
 
-
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/{vue_capture?}', function () {
+    return view('home');
+})->where('vue_capture', '[\/\w\.-]*');

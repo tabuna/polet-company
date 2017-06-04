@@ -22,7 +22,9 @@
     <meta property="og:url" content="{{url()->current()}}">
 
     <!-- CSRF Token -->
-    <meta name="csrf_token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="auth" content="{{ Auth::user()->id }}">
+
     <link rel="shortcut icon" type="image/png" href="/img/logo.png">
 
     <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
@@ -139,164 +141,32 @@
 <footer id="footer">
     @yield('footer')
 
+    <section class="bg-white b-t">
+        <div class="container">
+            <div class="row m-t-xl m-b-xl">
+                <div class="col-sm-6">
+                    <span class="h4 text-black">[<span class="text-info">Малый </span> тендер]</span>
+                    <div class="m-t text-xs">
+                        <ul class="list-inline">
+                            <li><a href="#">О нас</a></li>
+                            <li><a href="#">Контакты</a></li>
+                            <li><a href="#">Работа</a></li>
+                            <li><a href="#">Договор оферты</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <p class="text-xs">
+                        Не следует, однако забывать, что начало повседневной работы по формированию позиции
+                    </p>
+                    <p class="text-xs text-muted">Copyright © {{date('Y')}} ООО "Русский паллет". Все права
+                        защищены.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </footer>
 <!-- / footer -->
-
-
-
-
-<footer id="footer">
-    <div class="bg-black"
-         style="background: url(https://www.cssigniter.com/themeforest/specialty/images/hero-2.jpg); background-size: cover">
-        <div class="bg-black-opacity">
-        <div class="container">
-            <div class="row  m-t-xxl m-b-xxl">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="col-xs-height col-middle">
-                        <div class="text-center">
-                            <h1 class="text-white col-sm-12 font-thin">Изготовленный с деталями для
-                                большого старта! Это большое начало для всех.
-                            </h1>
-                            <button type="button" class="btn btn-lg btn-info btn-rounded m-t-md">
-                                Попробывать бесплатно
-                            </button>
-                            <p class="text-muted m-t-md">
-                                Бесплатный доступ исключительные на площадке,<br>
-                                для ознакомления, не предоставляет общие услуги
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="bg-white hidden">
-        <div class="container">
-            <div class="row m-t-xxl m-b-xxl">
-                <div class="col-sm-3">
-                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Version</span> options</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#"><i class="fa fa-angle-right m-r-sm"></i>Angular App</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right m-r-sm"></i>Html Template</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right m-r-sm"></i>Music single page application</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right m-r-sm"></i>App landing page</a></li>
-                    </ul>
-                    <p class="m-b-xl">More coming...</p>
-                </div>
-                <div class="col-sm-3">
-                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Find</span> Us</h4>
-                    @widget('footerMenu')
-                    <p class="text-sm">
-
-
-                        <br>
-
-                        {{setting('site_phone','')}}<br>
-                        {{setting('site_email','')}}
-                    </p>
-                    <p>Sale: <a href="mailto:hey@example.com">info@example.com</a></p>
-                    <p class="m-b-xl">Job: <a href="mailto:hey@example.com">job@example.com</a></p>
-                </div>
-                <div class="col-sm-3">
-                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Новости</span> Проекта</h4>
-
-                    <div>
-                        <div>
-                            <a class="pull-left thumb-sm thumb-wrapper m-r">
-                                <img src="http://flatfull.com/themes/angulr/html/img/b0.jpg">
-                            </a>
-                            <div class="clear">
-                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
-                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                        <div>
-                            <a class="pull-left thumb-sm thumb-wrapper m-r">
-                                <img src="http://flatfull.com/themes/angulr/html/img/b1.jpg">
-                            </a>
-                            <div class="clear">
-                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
-                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                        <div>
-                            <a class="pull-left thumb-sm thumb-wrapper m-r">
-                                <img src="http://flatfull.com/themes/angulr/html/img/b2.jpg">
-                            </a>
-                            <div class="clear">
-                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
-                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="col-sm-3">
-                    <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Бизнес</span> Проекты</h4>
-
-                    <div>
-                        <div>
-                            <a class="pull-left thumb-sm thumb-wrapper m-r">
-                                <img src="http://flatfull.com/themes/angulr/html/img/b0.jpg">
-                            </a>
-                            <div class="clear">
-                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
-                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                        <div>
-                            <a class="pull-left thumb-sm thumb-wrapper m-r">
-                                <img src="http://flatfull.com/themes/angulr/html/img/b1.jpg">
-                            </a>
-                            <div class="clear">
-                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
-                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                        <div>
-                            <a class="pull-left thumb-sm thumb-wrapper m-r">
-                                <img src="http://flatfull.com/themes/angulr/html/img/b2.jpg">
-                            </a>
-                            <div class="clear">
-                                <a href="" class="font-semibold">Спрос на рабочий персонал вырос на 64% за год</a>
-                                <div class="text-xs block m-t-xs"> 2 минуты назад</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</footer>
-
-
-<section class="bg-white b-t">
-    <div class="container">
-        <div class="row m-t-xl m-b-xl">
-            <div class="col-sm-6">
-                <span class="h4 text-black">[<span class="text-info">Малый </span> тендер]</span>
-                <div class="m-t text-xs">
-                    <ul class="list-inline">
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">Контакты</a></li>
-                        <li><a href="#">Работа</a></li>
-                        <li><a href="#">Договор оферты</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6 text-right">
-                <p class="text-xs">
-                    Не следует, однако забывать, что начало повседневной работы по формированию позиции
-                </p>
-                <p class="text-xs text-muted">Copyright © {{date('Y')}} ООО "Русский паллет". Все права защищены.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 <script src="/js/app.js"></script>

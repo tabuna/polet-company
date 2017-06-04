@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" id="app">
         <div class="row m-t-md m-b-xxl">
 
             <div class="col-md-3">
@@ -13,11 +13,11 @@
                                 <span class="">Функции</span>
                             </li>
 
-                            <li class="{{active('home')}}">
-                                <a href="{{route('profile',Auth::user()->id)}}">
+                            <li>
+                                <router-link :to="{ name: 'profile', params: { id: user.id }}">
                                     <i class="icon-home"></i>
                                     <span>Профиль</span>
-                                </a>
+                                </router-link>
                             </li>
                             <li>
                                 <a href="#">
@@ -33,7 +33,7 @@
                                     <span class="badge pull-right bg-info">4</span>
                                 </a>
                             </li>
-                            <li class="{{active('profile.fave')}}">
+                            <li>
                                 <a href="{{route('profile.fave')}}">
                                     <i class="icon-star"></i>
                                     <span>Избранное</span>
@@ -54,11 +54,11 @@
                                     <span>Статистика</span>
                                 </a>
                             </li>
-                            <li class="{{active('profile.edit')}}">
-                                <a href="{{route('profile.edit')}}">
+                            <li>
+                                <router-link :to="{ name: 'edit' }">
                                     <i class="icon-settings"></i>
                                     <span>Настройки</span>
-                                </a>
+                                </router-link>
                             </li>
                         </ul>
 
@@ -110,61 +110,10 @@
 
             </div>
 
-            <div class="col-md-6">
-                @yield('main')
-            </div>
 
-            <div class="col-md-3">
-                <div class="panel panel-default b box-shadow">
-                    <div class="panel-heading">
-                        <div class="clearfix">
-                            <div class="clear">
-                                <div class="h4 m-t-xs m-b-xs">
-                                    Черняев Александр
-                                    <i class="fa fa-circle text-success pull-right text-xs m-t-sm"></i>
-                                </div>
-                                <small class="text-muted">Представитель компании</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group no-radius alt">
-                        <a class="list-group-item" href="#">
-                            <i class="fa fa-comment fa-fw text-muted"></i>
-                            Адрес компании
-                        </a>
-                        <a class="list-group-item" href="#">
-                            <i class="fa fa-envelope fa-fw text-muted"></i>
-                            Спрос
-                        </a>
-                        <a class="list-group-item" href="#">
-                            <i class="fa fa-eye fa-fw text-muted"></i>
-                            Проедложения
-                        </a>
-                        <a class="list-group-item" href="#">
-                            <i class="fa fa-comment fa-fw text-muted"></i>
-                            Адрес компании
-                        </a>
-                        <a class="list-group-item" href="#">
-                            <i class="fa fa-envelope fa-fw text-muted"></i>
-                            Спрос
-                        </a>
-                        <a class="list-group-item" href="#">
-                            <i class="fa fa-eye fa-fw text-muted"></i>
-                            Проедложения
-                        </a>
-                    </div>
-                </div>
+            @yield('main')
 
 
-                <div class="panel wrapper-md padder-lg b box-shadow-lg text-center">
-                    <p class="h3 font-thin m-b-sm">Тендер</p>
-                    <p class="font-bold text-sm">Нужно выполнить работу? Объяви об этом всем</p>
-                    <p class="small text-muted text-xs">Актуально до 60 дней</p>
-                    <a href="#" class="btn btn-info btn-rounded">Разместить</a>
-                </div>
-
-
-            </div>
 
         </div>
     </div>

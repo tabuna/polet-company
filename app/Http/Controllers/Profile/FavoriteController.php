@@ -13,9 +13,7 @@ class FavoriteController
      */
     public function index()
     {
-        return view('profile.fave', [
-            'users' => User::whereLikedBy(Auth::user()->id)->with('likeCounter')->paginate(),
-        ]);
+        return response(User::whereLikedBy(Auth::user()->id)->with('likeCounter')->paginate());
     }
 
     /**

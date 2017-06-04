@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "bootstrap-maxlength": "^1.6.0",
-    "jasny-bootstrap": "^3.1.3"
+    "jasny-bootstrap": "^3.1.3",
+    "vue-router": "^2.5.3"
   }
 }

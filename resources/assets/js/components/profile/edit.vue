@@ -1,16 +1,12 @@
-@extends('layouts.main')
+<template>
 
-@section('title','Мой профиль')
-
-@section('main')
-
+    <div class="user-edit">
+        <div class="col-md-6">
     <div class="bg-white b box-shadow">
         <div class="wrapper-md">
 
 
-            @include('dashboard::partials.alert')
-
-            <form class="form-horizontal" action="{{route('profile.update')}}" method="POST"
+            <form class="form-horizontal" method="POST"
                   enctype="multipart/form-data">
 
                 <div class="row">
@@ -20,7 +16,7 @@
 
                                 <div class="btn-file">
                                     <div class="user-avatar fileinput-preview  thumb-lg pull-left m-r-md">
-                                        <img src="{{$user->avatar or '/img/avatar.png' }}"
+                                        <img v-bind:src="user.avatar"
                                              alt="Нажмите, что бы изменить изображение"
                                              class="">
                                     </div>
@@ -33,7 +29,7 @@
 
                             <div class="clear m-b">
                                 <div class="m-b m-t-sm">
-                                    <span class="h3 text-black">{{$user->name}}</span>
+                                    <span class="h3 text-black">{{user.name}}</span>
                                 </div>
                             </div>
                         </div>
@@ -41,101 +37,86 @@
                 </div>
 
 
-                @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{Session::get('success')}}
-                    </div>
-                @endif
-
-
-                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Полное имя</label>
                     <div class="col-sm-9">
                         <input type="text" name="name" class="form-control form-control-grey"
-                               value="{{$user->name or old('name')}}"
+                               v-model="user.name"
                                placeholder="Ваше полное имя" maxlength="120">
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('inn') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="col-sm-3 control-label">ИНН:</label>
                     <div class="col-sm-9">
                         <input type="text" name="inn" class="form-control form-control-grey"
-                               value="{{$user->inn or old('inn')}}"
+                               v-model="user.inn"
                                placeholder="ИНН" maxlength="12">
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('ogrn') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="col-sm-3 control-label">ОГРН:</label>
                     <div class="col-sm-9">
                         <input type="text" name="ogrn" class="form-control form-control-grey"
-                               value="{{ $user->ogrn or old('ogrn')}}"
+                               v-model="user.ogrn"
                                placeholder="ОГРН" maxlength="15">
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Телефон</label>
                     <div class="col-sm-9">
                         <input type="tel" name="phone" class="form-control form-control-grey"
                                data-mask="+ 9-999-999-99-99"
-                               value="{{$user->phone or old('phone')}}"
+                               v-model="user.phone"
                                placeholder="Номер телефона">
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Электронная почта</label>
                     <div class="col-sm-9">
                         <input type="email" name="email" class="form-control form-control-grey"
-                               value="{{ $user->email or old('email')}}"
+                               v-model="user.email"
                                placeholder="Электронная почта" maxlength="120">
                     </div>
                 </div>
 
 
-                <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Веб-сайт</label>
                     <div class="col-sm-9">
                         <input type="url" name="website" class="form-control form-control-grey"
-                               value="{{ $user->website or old('website')}}"
+                               v-model="user.website"
                                placeholder="Личный веб-сайт" maxlength="120">
                     </div>
                 </div>
 
 
-                <div class="form-group{{ $errors->has('about') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="col-sm-3 control-label">О Компании</label>
                     <div class="col-sm-9">
                     <textarea class="form-control form-control-grey no-resize" rows="8" name="about"
-                              placeholder="Небольшой рассказ о себе">{{$user->about or old('about')}}</textarea>
+                              v-model="user.about"
+                              placeholder="Небольшой рассказ о себе"></textarea>
                     </div>
                 </div>
-                <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <label class="col-sm-3 control-label">Адрес</label>
                     <div class="col-sm-9">
                         <input class="form-control form-control-grey no-resize" name="address"
-                               placeholder="Адрес" value="{{$user->address or old('address')}}"/>
+                               v-model="user.address"
+                               placeholder="Адрес">
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('notification') ? ' has-error' : '' }}">
+                <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9">
                         <label class="i-checks i-checks-sm">
-                            <input type="radio" name="notification" value="1" @if($user->notification) checked @endif>
+                            <input type="radio" name="notification" value="1" v-model="user.notification">
                             <i></i>
                             Подписаться на уведомления
                         </label>
 
                         <label class="i-checks i-checks-sm">
-                            <input type="radio" name="notification" value="0" @if(!$user->notification) checked @endif>
+                            <input type="radio" name="notification" value="0" v-model="user.notification">
                             <i></i>
                             Не присылать уведомления
                         </label>
@@ -143,12 +124,9 @@
                     </div>
                 </div>
 
-
-                {!! csrf_field() !!}
-                {!! method_field('PUT') !!}
                 <div class="form-group">
                     <div class="col-sm-3 col-sm-offset-3">
-                        <a href="{{route('profile.password')}}" class="btn btn-link">Изменить пароль?</a>
+                        <a href="#profile.password" class="btn btn-link">Изменить пароль?</a>
                     </div>
                     <div class="col-sm-6 text-right">
                         <button type="submit" class="btn btn-lg btn-default btn-rounded btn-basic-blue">Сохранить</button>
@@ -159,11 +137,89 @@
 
         </div>
     </div>
+        </div>
 
 
+        <div class="col-md-3">
+            <div class="panel panel-default b box-shadow">
+                <div class="panel-heading">
+                    <div class="clearfix">
+                        <div class="clear">
+                            <div class="h4 m-t-xs m-b-xs">
+                                Черняев Александр
+                                <i class="fa fa-circle text-success pull-right text-xs m-t-sm"></i>
+                            </div>
+                            <small class="text-muted">Представитель компании</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group no-radius alt">
+                    <a class="list-group-item" href="">
+                        <i class="fa fa-comment fa-fw text-muted"></i>
+                        Адрес компании
+                    </a>
+                    <a class="list-group-item" href="">
+                        <i class="fa fa-envelope fa-fw text-muted"></i>
+                        Спрос
+                    </a>
+                    <a class="list-group-item" href="">
+                        <i class="fa fa-eye fa-fw text-muted"></i>
+                        Проедложения
+                    </a>
+                    <a class="list-group-item" href="">
+                        <i class="fa fa-comment fa-fw text-muted"></i>
+                        Адрес компании
+                    </a>
+                    <a class="list-group-item" href="">
+                        <i class="fa fa-envelope fa-fw text-muted"></i>
+                        Спрос
+                    </a>
+                    <a class="list-group-item" href="">
+                        <i class="fa fa-eye fa-fw text-muted"></i>
+                        Проедложения
+                    </a>
+                </div>
+            </div>
 
 
+            <div class="panel wrapper-md padder-lg b box-shadow-lg text-center">
+                <p class="h3 font-thin m-b-sm">Тендер</p>
+                <p class="font-bold text-sm">Нужно выполнить работу? Объяви об этом всем</p>
+                <p class="small text-muted text-xs">Актуально до 60 дней</p>
+                <a href="" class="btn btn-info btn-rounded">Разместить</a>
+            </div>
 
 
+        </div>
+    </div>
+</template>
 
-@endsection
+
+<script>
+    export default {
+        data: function () {
+            return {
+                user: {
+                    name: '',
+                    email: '',
+                    phone: '',
+                    address: '',
+                    inn: '',
+                    ogrn: '',
+                    website: '',
+                    about: '',
+                    avatar: '',
+                }
+            }
+        },
+        beforeMount() {
+            axios.post(`/profile/edit`)
+                .then(response => {
+                    this.user = response.data
+                })
+                .catch(e => {
+                    this.errors.push(e)
+                });
+        },
+    }
+</script>

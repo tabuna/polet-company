@@ -50,6 +50,7 @@ return [
 
     'types' => [
         App\Core\Behaviors\Many\Pages::class,
+        \App\Core\Behaviors\Many\Tender::class,
     ],
 
     /*

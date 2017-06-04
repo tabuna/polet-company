@@ -1,29 +1,78 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 require('../../../node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min');
 require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
 
 require('./modules/affix');
-require('./custom');
+require('./modules/wizard');
 
 window.Vue = require('vue');
+import VueRouter from "vue-router";
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+Vue.use(VueRouter);
 
 
-Vue.component('example', require('./components/Example.vue'));
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            path: '/profile/:id',
+            name: 'profile',
+            component: require('./components/profile/show.vue')
+        },
+        {
+            path: '/profile/edit',
+            name: 'edit',
+            component: require('./components/profile/edit.vue')
+        },
+        {
+            path: '/profile/password',
+            name: 'password',
+            component: require('./components/Example.vue')
+        },
+        {
+            path: '/profile/fave',
+            name: 'fave',
+            component: require('./components/Example.vue')
+        },
+        {
+            path: '/stats',
+            name: 'stats',
+            component: require('./components/Example.vue')
+        },
+        {
+            path: '/payments',
+            name: 'payments',
+            component: require('./components/Example.vue')
+        },
+        {
+            path: '/tender',
+            name: 'tender',
+            component: require('./components/Example.vue')
+        },
+        {
+            path: '/tender/create',
+            component: require('./components/Example.vue')
+        },
+        {
+            path: '/tender/:id',
+            component: require('./components/Example.vue')
+        },
+        {
+            path: '/search',
+            component: require('./components/Example.vue')
+        },
+    ]
+});
+
+
+
 
 const app = new Vue({
-    el: '#app'
-});
+    router,
+    data: {
+        user: {
+            id: meta_user.content
+        }
+    }
+}).$mount('#app');

@@ -3,6 +3,7 @@ $(document).ready(function () {
     var navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');
+        allPrevBtn = $('.prevBtn');
 
     allWells.hide();
 
@@ -38,6 +39,15 @@ $(document).ready(function () {
         if (isValid)
            nextStepWizard.removeAttr('disabled').trigger('click');
     });
+
+
+    allPrevBtn.click(function(){
+        var curStep = $(this).closest(".setup-content"),
+            curStepBtn = curStep.attr("id"),
+            prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
+            prevStepWizard.removeAttr('disabled').trigger('click');
+    });
+
 
     $('div.setup-panel div a.btn-primary').trigger('click');
 });

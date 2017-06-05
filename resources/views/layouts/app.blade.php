@@ -23,7 +23,8 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="auth" content="{{ Auth::user()->id }}">
+    <meta name="auth" content="{{ Auth::id() }}">
+
 
     <link rel="shortcut icon" type="image/png" href="/img/logo.png">
 
@@ -53,6 +54,7 @@
         <div class="collapse navbar-collapse">
 
 
+            @if (Auth::guest())
             <ul class="nav navbar-nav">
                 <li>
                     <a href="#what" data-ride="scroll">Предоставляю услуги</a>
@@ -70,6 +72,23 @@
                     <a href="#">Компании</a>
                 </li>
             </ul>
+            @else
+
+                <form class="navbar-form navbar-form-sm navbar-left shift" data-target=".navbar-collapse" role="search">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm bg-light no-border rounded padder"
+                                   placeholder="Поиск ...">
+                            <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
+              </span>
+                        </div>
+                    </div>
+                </form>
+            @endif
+
+
+
 
 
             <ul class="nav navbar-nav navbar-right">

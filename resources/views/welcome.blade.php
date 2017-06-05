@@ -8,7 +8,7 @@
 
         <section class="container-fluid">
             <div class="row">
-                <div style="background:url(https://www.cssigniter.com/themeforest/specialty/images/hero-1.jpg) center center; background-size:cover">
+                <div style="background:url(/img/header.jpg) center center; background-size:cover">
                     <div class="wrapper-xl bg-black-opacity bg-dark min-h-h pos-rlt  text-ellipsis">
                         <div class="row  m-t-xxl m-b-xxl">
                             <div class="container m-t-md top-desc-block">
@@ -151,7 +151,7 @@
                 </div>
 
                 <div class="row m-b-xxl m-t-xxl v-center">
-                    <div class="col-md-6 ">
+                    <div class="col-md-6">
                         <p class="h1 font-thin text-black">
                             <span class="text-info">03</span>
                             <br>
@@ -178,7 +178,7 @@
 
                     </div>
                     <div class="col-md-6  text-center">
-                        <img src="/img/image-03.png" class="img-responsive center">
+                        <img src="/img/image-04.png" class="img-responsive center">
                     </div>
                 </div>
 
@@ -192,7 +192,7 @@
 
 @section('footer')
     <div class="bg-black"
-         style="background: url(https://www.cssigniter.com/themeforest/specialty/images/hero-2.jpg); background-size: cover">
+         style="background: url(/img/footer.jpg); background-size: cover">
         <div class="bg-black-opacity">
             <div class="container">
                 <div class="row  m-t-xxl m-b-xxl">

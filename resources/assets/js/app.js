@@ -48,15 +48,16 @@ const router = new VueRouter({
         {
             path: '/tender',
             name: 'tender',
-            component: require('./components/Example.vue')
+            component: require('./components/tender/list.vue')
         },
         {
             path: '/tender/create',
-            component: require('./components/Example.vue')
+            name: 'tender.create',
+            component: require('./components/tender/create.vue')
         },
         {
             path: '/tender/:id',
-            component: require('./components/Example.vue')
+            component: require('./components/tender/show.vue')
         },
         {
             path: '/search',

@@ -20,11 +20,10 @@
                                 </router-link>
                             </li>
                             <li>
-                                <a href="#">
+                                <router-link :to="{ name: 'tender'}">
                                     <i class="icon-briefcase"></i>
                                     <span>Тендеры</span>
-                                    <span class="badge pull-right bg-info">4</span>
-                                </a>
+                                </router-link>
                             </li>
                             <li>
                                 <a href="#">

@@ -21,13 +21,21 @@
                             </p>
                         </div>
                         <div class="col-md-3 no-padder text-center">
-                            <p>
-                                <a href="#" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"><i
-                                        class="icon-star text-info"></i></a>
-                                <a href="#" class="btn btn-icon btn-rounded b b-info b-2x"><i
-                                        class="icon-speech text-info"></i></a>
-                            </p>
-                            <p class="small text-info text-xs">Рейтинг компании</p>
+
+                            <div v-if="status.self">
+                                <p>
+                                    <a v-on:click="fave()" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"
+                                       v-bind:class="{ 'btn-info': user.fave }">
+                                        <i class="icon-star text-info" v-bind:class="{ 'text-white': user.fave }"></i>
+                                    </a>
+
+
+                                    <a href="#" class="btn btn-icon btn-rounded b b-info b-2x"><i
+                                            class="icon-speech text-info"></i></a>
+                                </p>
+                                <p class="small text-info text-xs">Рейтинг компании</p>
+                            </div>
+
                         </div>
                     </div>
 
@@ -79,27 +87,15 @@
                     </div>
                 </div>
                 <div class="list-group no-radius alt">
-                    <a class="list-group-item" href="">
+                    <a class="list-group-item" href="#">
                         <i class="fa fa-comment fa-fw text-muted"></i>
                         Адрес компании
                     </a>
-                    <a class="list-group-item" href="">
+                    <a class="list-group-item" href="#">
                         <i class="fa fa-envelope fa-fw text-muted"></i>
                         Спрос
                     </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-eye fa-fw text-muted"></i>
-                        Проедложения
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-comment fa-fw text-muted"></i>
-                        Адрес компании
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-envelope fa-fw text-muted"></i>
-                        Спрос
-                    </a>
-                    <a class="list-group-item" href="">
+                    <a class="list-group-item" href="#">
                         <i class="fa fa-eye fa-fw text-muted"></i>
                         Проедложения
                     </a>
@@ -111,7 +107,7 @@
                 <p class="h3 font-thin m-b-sm">Тендер</p>
                 <p class="font-bold text-sm">Нужно выполнить работу? Объяви об этом всем</p>
                 <p class="small text-muted text-xs">Актуально до 60 дней</p>
-                <a href="" class="btn btn-info btn-rounded">Разместить</a>
+                <router-link class="btn btn-info btn-rounded" :to="{ name: 'tender.create'}">Разместить</router-link>
             </div>
 
 
@@ -136,7 +132,12 @@
                     website: '',
                     about: '',
                     avatar: '',
-                }
+                    fave: false,
+                },
+                status:{
+                    submit: false,
+                    self: false,
+                },
             }
         },
         beforeMount() {
@@ -147,6 +148,21 @@
                 .catch(e => {
                     this.errors.push(e)
                 });
+
+            if(this.$route.params.id !== window.meta_user){
+                this.status.self = true;
+            }
+
         },
+        methods: {
+            fave: function () {
+                if (!this.status.submit) {
+                    this.status.submit = true;
+                    axios.put(`/profile/fave/` + this.$route.params.id);
+                    this.user.fave = !this.user.fave;
+                    this.status.submit = false;
+                }
+            }
+        }
     }
 </script>

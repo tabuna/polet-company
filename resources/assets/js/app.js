@@ -73,7 +73,7 @@ const app = new Vue({
     router,
     data: {
         user: {
-            id: meta_user.content
+            id: meta_user
         }
     }
 }).$mount('#app');

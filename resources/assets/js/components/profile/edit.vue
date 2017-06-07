@@ -186,7 +186,7 @@
                 <p class="h3 font-thin m-b-sm">Тендер</p>
                 <p class="font-bold text-sm">Нужно выполнить работу? Объяви об этом всем</p>
                 <p class="small text-muted text-xs">Актуально до 60 дней</p>
-                <a href="" class="btn btn-info btn-rounded">Разместить</a>
+                <router-link class="btn btn-info btn-rounded" :to="{ name: 'tender.create'}">Разместить</router-link>
             </div>
 
 

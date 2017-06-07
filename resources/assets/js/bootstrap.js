@@ -38,7 +38,7 @@ if (token) {
 }
 
 
-window.meta_user = document.head.querySelector('meta[name="auth"]');
+window.meta_user = document.head.querySelector('meta[name="auth"]').content;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

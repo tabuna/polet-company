@@ -46,6 +46,8 @@ class ProfileController extends Controller
             $user = Auth::user();
         }
 
+        $user->fave = $user->liked();
+
         return response()->json($user);
     }
 

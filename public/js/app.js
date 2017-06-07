@@ -922,7 +922,7 @@ var app = new Vue({
     router: router,
     data: {
         user: {
-            id: meta_user.content
+            id: meta_user
         }
     }
 }).$mount('#app');
@@ -2155,10 +2155,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
@@ -2173,7 +2169,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 ogrn: '',
                 website: '',
                 about: '',
-                avatar: ''
+                avatar: '',
+                fave: false
+            },
+            status: {
+                submit: false,
+                self: false
             }
         };
     },
@@ -2185,6 +2186,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (e) {
             _this.errors.push(e);
         });
+
+        if (this.$route.params.id !== meta_user) {
+            this.status.self = true;
+        }
+    },
+
+    methods: {
+        fave: function fave() {
+            if (!this.status.submit) {
+                this.status.submit = true;
+                axios.put('/profile/fave/' + this.$route.params.id);
+                this.user.fave = !this.user.fave;
+                this.status.submit = false;
+            }
+        }
     }
 });
 
@@ -2967,7 +2983,7 @@ if (token) {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-window.meta_user = document.head.querySelector('meta[name="auth"]');
+window.meta_user = document.head.querySelector('meta[name="auth"]').content;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -33275,33 +33291,58 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "icon-envelope text-info m-r-xs"
   }), _vm._v("| " + _vm._s(_vm.user.email) + " "), _c('br'), _vm._v(" "), _c('i', {
     staticClass: "icon-globe text-info m-r-xs"
-  }), _vm._v("| " + _vm._s(_vm.user.website) + " "), _c('br')])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
+  }), _vm._v("| " + _vm._s(_vm.user.website) + " "), _c('br')])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3 no-padder text-center"
+  }, [(_vm.status.self) ? _c('div', [_c('p', [_c('a', {
+    staticClass: "btn btn-icon btn-rounded b b-info b-2x m-r-sm",
+    class: {
+      'btn-info': _vm.user.fave
+    },
+    on: {
+      "click": function($event) {
+        _vm.fave()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "icon-star text-info",
+    class: {
+      'text-white': _vm.user.fave
+    }
+  })]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('p', {
+    staticClass: "small text-info text-xs"
+  }, [_vm._v("Рейтинг компании")])]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "row m-t-md m-b-md padder-v b-b"
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('p', {
     staticClass: "text-justify"
-  }, [_vm._v("\n                            " + _vm._s(_vm.user.about) + "\n                        ")])])]), _vm._v(" "), _vm._m(1)])])]), _vm._v(" "), _vm._m(2)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-3 no-padder text-center"
-  }, [_c('p', [_c('a', {
-    staticClass: "btn btn-icon btn-rounded b b-info b-2x m-r-sm",
+  }, [_vm._v("\n                            " + _vm._s(_vm.user.about) + "\n                        ")])])]), _vm._v(" "), _vm._m(1)])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "panel wrapper-md padder-lg b box-shadow-lg text-center"
+  }, [_c('p', {
+    staticClass: "h3 font-thin m-b-sm"
+  }, [_vm._v("Тендер")]), _vm._v(" "), _c('p', {
+    staticClass: "font-bold text-sm"
+  }, [_vm._v("Нужно выполнить работу? Объяви об этом всем")]), _vm._v(" "), _c('p', {
+    staticClass: "small text-muted text-xs"
+  }, [_vm._v("Актуально до 60 дней")]), _vm._v(" "), _c('router-link', {
+    staticClass: "btn btn-info btn-rounded",
     attrs: {
-      "href": "#"
+      "to": {
+        name: 'tender.create'
+      }
     }
-  }, [_c('i', {
-    staticClass: "icon-star text-info"
-  })]), _vm._v(" "), _c('a', {
+  }, [_vm._v("Разместить")])], 1)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
     staticClass: "btn btn-icon btn-rounded b b-info b-2x",
     attrs: {
       "href": "#"
     }
   }, [_c('i', {
     staticClass: "icon-speech text-info"
-  })])]), _vm._v(" "), _c('p', {
-    staticClass: "small text-info text-xs"
-  }, [_vm._v("Рейтинг компании")])])
+  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row m-t-md m-b-md padder-v"
@@ -33345,8 +33386,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "col-md-3"
-  }, [_c('div', {
     staticClass: "panel panel-default b box-shadow"
   }, [_c('div', {
     staticClass: "panel-heading"
@@ -33365,59 +33404,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('a', {
     staticClass: "list-group-item",
     attrs: {
-      "href": ""
+      "href": "#"
     }
   }, [_c('i', {
     staticClass: "fa fa-comment fa-fw text-muted"
   }), _vm._v("\n                    Адрес компании\n                ")]), _vm._v(" "), _c('a', {
     staticClass: "list-group-item",
     attrs: {
-      "href": ""
+      "href": "#"
     }
   }, [_c('i', {
     staticClass: "fa fa-envelope fa-fw text-muted"
   }), _vm._v("\n                    Спрос\n                ")]), _vm._v(" "), _c('a', {
     staticClass: "list-group-item",
     attrs: {
-      "href": ""
+      "href": "#"
     }
   }, [_c('i', {
     staticClass: "fa fa-eye fa-fw text-muted"
-  }), _vm._v("\n                    Проедложения\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": ""
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-comment fa-fw text-muted"
-  }), _vm._v("\n                    Адрес компании\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": ""
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-envelope fa-fw text-muted"
-  }), _vm._v("\n                    Спрос\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": ""
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-eye fa-fw text-muted"
-  }), _vm._v("\n                    Проедложения\n                ")])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel wrapper-md padder-lg b box-shadow-lg text-center"
-  }, [_c('p', {
-    staticClass: "h3 font-thin m-b-sm"
-  }, [_vm._v("Тендер")]), _vm._v(" "), _c('p', {
-    staticClass: "font-bold text-sm"
-  }, [_vm._v("Нужно выполнить работу? Объяви об этом всем")]), _vm._v(" "), _c('p', {
-    staticClass: "small text-muted text-xs"
-  }, [_vm._v("Актуально до 60 дней")]), _vm._v(" "), _c('a', {
-    staticClass: "btn btn-info btn-rounded",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Разместить")])])])
+  }), _vm._v("\n                    Проедложения\n                ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -33721,7 +33726,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "input-group"
   }, [_c('span', {
-    staticClass: "input-group-addon"
+    staticClass: "input-group-addon b"
   }, [_c('i', {
     staticClass: "fa fa-rub"
   })]), _vm._v(" "), _c('input', {
@@ -34210,7 +34215,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.notification = "0"
       }
     }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                        Не присылать уведомления\n                    ")])])]), _vm._v(" "), _vm._m(0)])])])]), _vm._v(" "), _vm._m(1)])
+  }), _vm._v(" "), _c('i'), _vm._v("\n                        Не присылать уведомления\n                    ")])])]), _vm._v(" "), _vm._m(0)])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "panel wrapper-md padder-lg b box-shadow-lg text-center"
+  }, [_c('p', {
+    staticClass: "h3 font-thin m-b-sm"
+  }, [_vm._v("Тендер")]), _vm._v(" "), _c('p', {
+    staticClass: "font-bold text-sm"
+  }, [_vm._v("Нужно выполнить работу? Объяви об этом всем")]), _vm._v(" "), _c('p', {
+    staticClass: "small text-muted text-xs"
+  }, [_vm._v("Актуально до 60 дней")]), _vm._v(" "), _c('router-link', {
+    staticClass: "btn btn-info btn-rounded",
+    attrs: {
+      "to": {
+        name: 'tender.create'
+      }
+    }
+  }, [_vm._v("Разместить")])], 1)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "form-group"
@@ -34231,8 +34253,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Сохранить")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "col-md-3"
-  }, [_c('div', {
     staticClass: "panel panel-default b box-shadow"
   }, [_c('div', {
     staticClass: "panel-heading"
@@ -34290,20 +34310,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-eye fa-fw text-muted"
-  }), _vm._v("\n                    Проедложения\n                ")])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel wrapper-md padder-lg b box-shadow-lg text-center"
-  }, [_c('p', {
-    staticClass: "h3 font-thin m-b-sm"
-  }, [_vm._v("Тендер")]), _vm._v(" "), _c('p', {
-    staticClass: "font-bold text-sm"
-  }, [_vm._v("Нужно выполнить работу? Объяви об этом всем")]), _vm._v(" "), _c('p', {
-    staticClass: "small text-muted text-xs"
-  }, [_vm._v("Актуально до 60 дней")]), _vm._v(" "), _c('a', {
-    staticClass: "btn btn-info btn-rounded",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Разместить")])])])
+  }), _vm._v("\n                    Проедложения\n                ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

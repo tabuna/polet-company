@@ -40,7 +40,7 @@
                                 <label class="col-md-3 control-label" for="price">Цена</label>
 
                                 <div class="col-md-8">
-                                    <div class="input-group"><span class="input-group-addon"><i
+                                    <div class="input-group"><span class="input-group-addon b"><i
                                             class="fa fa-rub"></i></span>
                                         <input id="price" name="price" class="form-control"
                                                placeholder="Цена" required="" type="number" min="0">

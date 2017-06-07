@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Pro
 
     $router->post('/{user?}', 'ProfileController@show')->where('user', '[0-9]+')->name('profile');
 
+
     $router->post('/fave', 'FavoriteController@index')->name('profile.fave');
     $router->put('/fave/{user}', 'FavoriteController@update')->name('profile.fave.add');
 

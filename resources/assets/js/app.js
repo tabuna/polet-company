@@ -5,6 +5,7 @@ require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
 
 require('./modules/affix');
 require('./modules/wizard');
+require('./modules/cache');
 
 window.Vue = require('vue');
 import VueRouter from "vue-router";

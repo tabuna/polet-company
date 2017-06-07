@@ -40,6 +40,7 @@ if (token) {
 
 window.meta_user = document.head.querySelector('meta[name="auth"]').content;
 
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

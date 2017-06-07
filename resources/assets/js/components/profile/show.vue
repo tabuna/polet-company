@@ -1,7 +1,6 @@
 <template>
 
-
-    <div class="user-show">
+    <div class="user-show" v-show="status.load">
         <div class="col-md-6">
             <div class="bg-white b box-shadow">
                 <div class="wrapper-md">
@@ -66,7 +65,6 @@
 
                         </div>
                     </div>
-
 
                 </div>
             </div>
@@ -134,25 +132,42 @@
                     avatar: '',
                     fave: false,
                 },
-                status:{
+                status: {
+                    load: false,
                     submit: false,
                     self: false,
                 },
             }
         },
         beforeMount() {
-            axios.post(`/profile/` + this.$route.params.id)
-                .then(response => {
-                    this.user = response.data
-                })
-                .catch(e => {
-                    this.errors.push(e)
-                });
 
-            if(this.$route.params.id !== window.meta_user){
-                this.status.self = true;
+
+            let user = localStorage.getItem('profile.' + this.$route.params.id);
+
+            if (user === null || (user.timeLoad + 90000) < new Date().getTime()) {
+
+                axios.post(`/profile/` + this.$route.params.id)
+                    .then(response => {
+                        this.user = response.data;
+                        this.status.load = true;
+
+                        this.user.timeLoad = new Date().getTime();
+                        localStorage.setItem('profile.' + this.$route.params.id, JSON.stringify(this.user))
+                    })
+                    .catch(e => {
+                        this.errors.push(e)
+                    });
+
+
+            } else {
+                this.user = JSON.parse(user);
+                this.status.load = true;
             }
 
+
+            if (this.$route.params.id !== window.meta_user) {
+                this.status.self = true;
+            }
         },
         methods: {
             fave: function () {

@@ -16,7 +16,7 @@
                                 <div class="col-xs-12">
                                     <div class="page-hero-content">
                                         <h1 class="text-white">
-                                            <span class="text-info">Бизнес сеть.</span> Найди партнёра <br>
+                                            <span class="text-info">Бизнес сеть.</span> Найди <span class="main-typed-element"></span> <br>
                                             о котором всегда хотел.
                                         </h1>
                                         <p class="text-white">
@@ -40,7 +40,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
-                        <div class="padder-v m-t-md">
+                        <div class="padder-v m-t-md ">
                             <h4 class="m-b-n">Запустите свой бизнес по новому</h4>
                             <h1 class="font-thin m-t-n l-h-1x padder-v text-black">
                                 Наши преимущества станут вашими
@@ -54,7 +54,7 @@
 
 
                 <div class="row">
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-12 text-center animated fadeInDown">
                         <i class="m-t-md m-b-xl icon-arrow-down-circle fa-2x text-muted"></i>
                     </div>
                 </div>
@@ -92,12 +92,6 @@
                     </div>
                 </div>
 
-
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <i class="icon-arrow-down-circle fa-2x text-muted"></i>
-                    </div>
-                </div>
 
                 <div class="row m-b-xl m-t-xxl v-center">
                     <div class="col-md-6  text-center">
@@ -143,12 +137,6 @@
                     </div>
                 </div>
 
-
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <i class="m-t-md m-b-xl icon-arrow-down-circle fa-2x text-muted"></i>
-                    </div>
-                </div>
 
                 <div class="row m-b-xxl m-t-xxl v-center">
                     <div class="col-md-6">
@@ -199,7 +187,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-xs-height col-middle">
                             <div class="text-center">
-                                <h1 class="text-white col-sm-12 font-thin">Изготовленный с деталями для
+                                <h1 class="text-white col-sm-12 font-thin ">Изготовленный с деталями для
                                     большого старта! Это большое начало для всех.
                                 </h1>
                                 <button type="button" class="btn btn-lg btn-info btn-rounded m-t-md">

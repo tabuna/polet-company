@@ -26,8 +26,37 @@
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
+  transition: opacity 300ms
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0
+}
+
+
+
+.typed-cursor{
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+}
+@keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+.typed-fade-out{
+  opacity: 0;
+  animation: 0;
+  transition: opacity .25s;
 }

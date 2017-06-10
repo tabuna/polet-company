@@ -1947,70 +1947,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -2045,50 +1981,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2362,60 +2254,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
@@ -2443,6 +2281,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -33336,14 +33220,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.status.load),
       expression: "status.load"
-    }],
-    staticClass: "user-show"
-  }, [_c('div', {
-    staticClass: "col-md-6"
-  }, [_c('div', {
-    staticClass: "bg-white b box-shadow"
-  }, [_c('div', {
-    staticClass: "wrapper-md"
+    }]
   }, [_c('div', {
     staticClass: "row m-b-md padder-b b-b"
   }, [_c('div', {
@@ -33390,24 +33267,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('p', {
     staticClass: "text-justify"
-  }, [_vm._v("\n                            " + _vm._s(_vm.user.about) + "\n                        ")])])]), _vm._v(" "), _vm._m(1)])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-3"
-  }, [_vm._m(2), _vm._v(" "), _c('div', {
-    staticClass: "panel wrapper-md padder-lg b box-shadow-lg text-center"
-  }, [_c('p', {
-    staticClass: "h3 font-thin m-b-sm"
-  }, [_vm._v("Тендер")]), _vm._v(" "), _c('p', {
-    staticClass: "font-bold text-sm"
-  }, [_vm._v("Нужно выполнить работу? Объяви об этом всем")]), _vm._v(" "), _c('p', {
-    staticClass: "small text-muted text-xs"
-  }, [_vm._v("Актуально до 60 дней")]), _vm._v(" "), _c('router-link', {
-    staticClass: "btn btn-info btn-rounded",
-    attrs: {
-      "to": {
-        name: 'tender.create'
-      }
-    }
-  }, [_vm._v("Разместить")])], 1)])])
+  }, [_vm._v("\n                " + _vm._s(_vm.user.about) + "\n            ")])])]), _vm._v(" "), _vm._m(1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     staticClass: "btn btn-icon btn-rounded b b-info b-2x",
@@ -33426,13 +33286,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "icon-globe"
   }), _vm._v(" | Россия, Москва, ул. Пушкина, д. 127/43, офис 203, 123499")]), _vm._v(" "), _c('div', {
     staticClass: "google-maps"
-  }, [_c('img', {
-    staticClass: "img-responsive",
+  }, [_c('a', {
     attrs: {
-      "src": "/img/google.png"
+      "href": "#"
     }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "get-directions"
+  }, [_c('img', {
+    staticClass: "img-responsive center",
+    attrs: {
+      "src": "https://maps.googleapis.com/maps/api/staticmap?center=%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA&zoom=13&size=1000x300&maptype=roadmap%20&markers=size:mid%7Ccolor:red%7C%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "get-directions hidden"
   }, [_c('form', {
     attrs: {
       "action": "http://maps.google.com/maps",
@@ -33458,45 +33322,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": "Как добраться"
     }
   })])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel panel-default b box-shadow"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_c('div', {
-    staticClass: "clearfix"
-  }, [_c('div', {
-    staticClass: "clear"
-  }, [_c('div', {
-    staticClass: "h4 m-t-xs m-b-xs"
-  }, [_vm._v("\n                            Черняев Александр\n                            "), _c('i', {
-    staticClass: "fa fa-circle text-success pull-right text-xs m-t-sm"
-  })]), _vm._v(" "), _c('small', {
-    staticClass: "text-muted"
-  }, [_vm._v("Представитель компании")])])])]), _vm._v(" "), _c('div', {
-    staticClass: "list-group no-radius alt"
-  }, [_c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-comment fa-fw text-muted"
-  }), _vm._v("\n                    Адрес компании\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-envelope fa-fw text-muted"
-  }), _vm._v("\n                    Спрос\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-eye fa-fw text-muted"
-  }), _vm._v("\n                    Проедложения\n                ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -33729,14 +33554,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "user-show"
-  }, [_c('div', {
-    staticClass: "col-md-6"
-  }, [_c('div', {
-    staticClass: "bg-white b box-shadow"
-  }, [_c('div', {
-    staticClass: "wrapper-md"
-  }, [_c('div', {
     staticClass: "row m-b-md"
   }, [_c('div', {
     staticClass: "col-xs-12"
@@ -33920,39 +33737,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "submit"
     }
-  }, [_vm._v("Отправить")])])])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-3"
-  }, [_c('div', {
-    staticClass: "panel panel-default b box-shadow"
-  }, [_c('div', {
-    staticClass: "panel-heading uppercase"
-  }, [_c('small', [_c('strong', [_vm._v("КАК БЫСТРО ПРОДАТЬ?")])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel-content"
-  }, [_c('div', {
-    staticClass: "panel-body text-left"
-  }, [_c('ul', {
-    staticClass: "list-unstyled m-t-md"
-  }, [_c('li', [_c('i', {
-    staticClass: "icon-check pull-left text-lg m-r m-t-sm text-success"
-  }), _vm._v(" "), _c('p', {
-    staticClass: "clear m-b-md"
-  }, [_vm._v("Используйте краткое название и описание товара или услуги ")])]), _vm._v(" "), _c('li', [_c('i', {
-    staticClass: "icon-check pull-left text-lg m-r m-t-sm text-success"
-  }), _vm._v(" "), _c('p', {
-    staticClass: "clear m-b-md"
-  }, [_vm._v("Убедитесь, что вы размещаете в правильной категории")])]), _vm._v(" "), _c('li', [_c('i', {
-    staticClass: "icon-check pull-left text-lg m-r m-t-sm text-success"
-  }), _vm._v(" "), _c('p', {
-    staticClass: "clear m-b-md"
-  }, [_vm._v("Добавте подготовленные документы, чтобы ваше объявление было полным")])]), _vm._v(" "), _c('li', [_c('i', {
-    staticClass: "icon-check pull-left text-lg m-r m-t-sm text-success"
-  }), _vm._v(" "), _c('p', {
-    staticClass: "clear m-b-md"
-  }, [_vm._v("Предложите разумную цену и сроки когда проект должен быть выполнен")])]), _vm._v(" "), _c('li', [_c('i', {
-    staticClass: "icon-check pull-left text-lg m-r m-t-sm text-success"
-  }), _vm._v(" "), _c('p', {
-    staticClass: "clear m-b-md"
-  }, [_vm._v("Проверте тендер перед публикацией")])])])])])])])])
+  }, [_vm._v("Отправить")])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -33967,15 +33752,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "user-edit"
-  }, [_c('div', {
-    staticClass: "col-md-6"
-  }, [_c('div', {
-    staticClass: "bg-white b box-shadow"
-  }, [_c('div', {
-    staticClass: "wrapper-md"
-  }, [_c('form', {
+  return _c('form', {
     staticClass: "form-horizontal",
     attrs: {
       "method": "POST",
@@ -34267,7 +34044,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.notification = "1"
       }
     }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                        Подписаться на уведомления\n                    ")]), _vm._v(" "), _c('label', {
+  }), _vm._v(" "), _c('i'), _vm._v("\n                Подписаться на уведомления\n            ")]), _vm._v(" "), _c('label', {
     staticClass: "i-checks i-checks-sm"
   }, [_c('input', {
     directives: [{
@@ -34289,24 +34066,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.notification = "0"
       }
     }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                        Не присылать уведомления\n                    ")])])]), _vm._v(" "), _vm._m(0)])])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-3"
-  }, [_vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "panel wrapper-md padder-lg b box-shadow-lg text-center"
-  }, [_c('p', {
-    staticClass: "h3 font-thin m-b-sm"
-  }, [_vm._v("Тендер")]), _vm._v(" "), _c('p', {
-    staticClass: "font-bold text-sm"
-  }, [_vm._v("Нужно выполнить работу? Объяви об этом всем")]), _vm._v(" "), _c('p', {
-    staticClass: "small text-muted text-xs"
-  }, [_vm._v("Актуально до 60 дней")]), _vm._v(" "), _c('router-link', {
-    staticClass: "btn btn-info btn-rounded",
-    attrs: {
-      "to": {
-        name: 'tender.create'
-      }
-    }
-  }, [_vm._v("Разместить")])], 1)])])
+  }), _vm._v(" "), _c('i'), _vm._v("\n                Не присылать уведомления\n            ")])])]), _vm._v(" "), _vm._m(0)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "form-group"
@@ -34325,66 +34085,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "submit"
     }
   }, [_vm._v("Сохранить")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel panel-default b box-shadow"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_c('div', {
-    staticClass: "clearfix"
-  }, [_c('div', {
-    staticClass: "clear"
-  }, [_c('div', {
-    staticClass: "h4 m-t-xs m-b-xs"
-  }, [_vm._v("\n                            Черняев Александр\n                            "), _c('i', {
-    staticClass: "fa fa-circle text-success pull-right text-xs m-t-sm"
-  })]), _vm._v(" "), _c('small', {
-    staticClass: "text-muted"
-  }, [_vm._v("Представитель компании")])])])]), _vm._v(" "), _c('div', {
-    staticClass: "list-group no-radius alt"
-  }, [_c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": ""
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-comment fa-fw text-muted"
-  }), _vm._v("\n                    Адрес компании\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": ""
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-envelope fa-fw text-muted"
-  }), _vm._v("\n                    Спрос\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": ""
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-eye fa-fw text-muted"
-  }), _vm._v("\n                    Проедложения\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": ""
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-comment fa-fw text-muted"
-  }), _vm._v("\n                    Адрес компании\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": ""
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-envelope fa-fw text-muted"
-  }), _vm._v("\n                    Спрос\n                ")]), _vm._v(" "), _c('a', {
-    staticClass: "list-group-item",
-    attrs: {
-      "href": ""
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-eye fa-fw text-muted"
-  }), _vm._v("\n                    Проедложения\n                ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -34399,412 +34099,610 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "user-show"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "col-md-3"
-  }, [_vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "panel panel-default b box-shadow"
-  }, [_vm._m(2), _vm._v(" "), _c('div', {
-    staticClass: "list-group no-radius alt"
-  }, [_c('router-link', {
-    staticClass: "list-group-item",
-    attrs: {
-      "to": {
-        name: 'tender.create'
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-comment fa-fw text-muted"
-  }), _vm._v("\n                    Создать тендер\n                ")]), _vm._v(" "), _vm._m(3)], 1)])])])
+  return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-6"
-  }, [_c('div', {
-    staticClass: "bg-white b box-shadow m-b-md"
-  }, [_c('div', {
-    staticClass: "wrapper-md"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('h3', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
-    staticClass: "b-t padder-v text-xs"
-  }, [_c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-clock"
-  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-tag"
-  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-map"
-  }), _vm._v(" Липецк\n                            ")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "bg-white b box-shadow m-b-md"
-  }, [_c('div', {
-    staticClass: "wrapper-md"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('h3', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
-    staticClass: "b-t padder-v text-xs"
-  }, [_c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-clock"
-  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-tag"
-  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-map"
-  }), _vm._v(" Липецк\n                            ")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "bg-white b box-shadow m-b-md"
-  }, [_c('div', {
-    staticClass: "wrapper-md"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('h3', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
-    staticClass: "b-t padder-v text-xs"
-  }, [_c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-clock"
-  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-tag"
-  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-map"
-  }), _vm._v(" Липецк\n                            ")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "bg-white b box-shadow m-b-md"
-  }, [_c('div', {
-    staticClass: "wrapper-md"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('h3', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
-    staticClass: "b-t padder-v text-xs"
-  }, [_c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-clock"
-  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-tag"
-  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
-    staticClass: "m-r-md"
-  }, [_c('i', {
-    staticClass: "icon-map"
-  }), _vm._v(" Липецк\n                            ")])])])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel b box-shadow-lg wrapper-md",
+  return _c('div', {}, [_c('div', {
+    staticClass: "b-b m-b-xl",
     attrs: {
       "id": "filters"
     }
-  }, [_c('form', [_c('label', {
-    staticClass: "font-bold"
-  }, [_vm._v("Выберите район:")]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
+  }, [_c('div', {
+    staticClass: "row m-b-xs"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('strong', [_vm._v("Найдено 666 предложений")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default pull-right",
     attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "lipetsk"
+      "type": "submit",
+      "id": "button-filter"
     }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                        Липецк\n                    ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
+  }, [_c('i', {
+    staticClass: "fa fa-filter"
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', {
+    staticClass: "form-group"
   }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
+    staticClass: "control-label"
+  }, [_vm._v("Поиск по содержанию")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
     attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "zadonsk"
+      "type": "text",
+      "name": "search",
+      "value": "",
+      "placeholder": "Поиск записей..",
+      "maxlength": "200",
+      "autocomplete": "off"
     }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                        Задонск\n                    ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', {
+    staticClass: "form-group"
   }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
+    staticClass: "control-label"
+  }, [_vm._v("Статус")]), _vm._v(" "), _c('select', {
+    staticClass: "form-control",
     attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "eletskii"
+      "name": "status"
     }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                        Елец\n                    ")])]), _vm._v(" "), _c('p', {
-    staticClass: "text-right  m-n"
+  }, [_c('option'), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "publish"
+    }
+  }, [_vm._v("Опубликовано")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "draft"
+    }
+  }, [_vm._v("Черновик")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "titz"
+    }
+  }, [_vm._v("Тиц")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    staticClass: "control-label"
+  }, [_vm._v("Статус")]), _vm._v(" "), _c('select', {
+    staticClass: "form-control",
+    attrs: {
+      "name": "status"
+    }
+  }, [_c('option'), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "publish"
+    }
+  }, [_vm._v("Опубликовано")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "draft"
+    }
+  }, [_vm._v("Черновик")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "titz"
+    }
+  }, [_vm._v("Тиц")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    staticClass: "control-label"
+  }, [_vm._v("Поиск по содержанию")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "search",
+      "value": "",
+      "placeholder": "Поиск записей..",
+      "maxlength": "200",
+      "autocomplete": "off"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    staticClass: "control-label"
+  }, [_vm._v("Статус")]), _vm._v(" "), _c('select', {
+    staticClass: "form-control",
+    attrs: {
+      "name": "status"
+    }
+  }, [_c('option'), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "publish"
+    }
+  }, [_vm._v("Опубликовано")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "draft"
+    }
+  }, [_vm._v("Черновик")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "titz"
+    }
+  }, [_vm._v("Тиц")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    staticClass: "control-label"
+  }, [_vm._v("Статус")]), _vm._v(" "), _c('select', {
+    staticClass: "form-control",
+    attrs: {
+      "name": "status"
+    }
+  }, [_c('option'), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "publish"
+    }
+  }, [_vm._v("Опубликовано")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "draft"
+    }
+  }, [_vm._v("Черновик")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "titz"
+    }
+  }, [_vm._v("Тиц")])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "m-b-lg"
+  }, [_c('div', {
+    staticClass: "row m-b"
+  }, [_c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "thumb-lg"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/avatar.png",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8 no-padder"
+  }, [_c('h3', {
+    staticClass: "m-t-xs"
   }, [_c('a', {
-    staticClass: "btn btn-link font-thin text-sm collapsed",
     attrs: {
-      "role": "button",
-      "data-toggle": "collapse",
-      "href": "#collapseRegion",
-      "aria-expanded": "false",
-      "aria-controls": "collapseRegion"
+      "href": "#"
     }
-  }, [_vm._v("\n                        Показать ещё\n                    ")])]), _vm._v(" "), _c('div', {
-    staticClass: "padder-sm collapse",
-    staticStyle: {
-      "height": "0px"
-    },
-    attrs: {
-      "id": "collapseRegion",
-      "aria-expanded": "false"
-    }
-  }, [_c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "volovskiy"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Воловский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "levTolstoy"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Лев-Толстовский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "chaplyginsky"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Чаплыгинский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "khlevensky"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Хлевенский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "usman"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Усманский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "terbunsky"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Тербунский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "stanovlyansky"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Становлянский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "krasninskoe"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Краснинский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "lebedyansky"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Лебедянский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "gryazi"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Грязинский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "izmalkovsky"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Измалковский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "bolgorukovsky"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Долгоруковский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "bobrovskij"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Добровский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "bobrinskii"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Добринский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "dankovsky"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Данковский район\n                        ")])]), _vm._v(" "), _c('div', {
-    staticClass: "radio m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "radio",
-      "name": "region",
-      "value": "tambov"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                            Тамбовский район\n                        ")])])]), _vm._v(" "), _c('div', {
-    staticClass: "line line-dashed b-b line-lg"
-  }), _vm._v(" "), _c('label', {
-    staticClass: "font-bold"
-  }, [_vm._v("Выберите категорию:")]), _vm._v(" "), _c('div', {
-    staticClass: "checkbox padder-sm m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "checkbox",
-      "name": "category[]",
-      "value": "bases-of-rest"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                        Базы отдыха\n                    ")])]), _vm._v(" "), _c('div', {
-    staticClass: "checkbox padder-sm m-b-md"
-  }, [_c('label', {
-    staticClass: "i-checks"
-  }, [_c('input', {
-    attrs: {
-      "type": "checkbox",
-      "name": "category[]",
-      "value": "guest-houses"
-    }
-  }), _vm._v(" "), _c('i'), _vm._v("\n                        Гостевые дома\n                    ")])]), _vm._v(" "), _c('div', {
-    staticClass: "line line-dashed b-b line-lg"
-  }), _vm._v(" "), _c('p', {
-    staticClass: "text-center m-t-sm"
-  }, [_c('button', {
-    staticClass: "btn btn-link text-xs m-r-sm reset-form",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Сбросить\n                    ")]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-info btn-rounded",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Подобрать")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('div', {
-    staticClass: "clearfix"
-  }, [_c('div', {
-    staticClass: "clear"
-  }, [_c('div', {
-    staticClass: "h4 m-t-xs m-b-xs"
-  }, [_vm._v("\n                            Черняев Александр\n                            "), _c('i', {
-    staticClass: "fa fa-circle text-success pull-right text-xs m-t-sm"
-  })]), _vm._v(" "), _c('small', {
-    staticClass: "text-muted"
-  }, [_vm._v("Представитель компании")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    staticClass: "list-group-item",
+  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('div', {
+    staticClass: "tags"
+  }, [_c('a', {
+    staticClass: "label",
     attrs: {
       "href": ""
     }
+  }, [_vm._v("Разработка")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интернет")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-студия")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интеграция")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('p', {
+    staticClass: "text-right"
+  }, [_vm._v("09 июня 2017")])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
+    staticClass: "b-b padder-v text-xs"
+  }, [_c('span', {
+    staticClass: "m-r-md"
   }, [_c('i', {
-    staticClass: "fa fa-envelope fa-fw text-muted"
-  }), _vm._v("\n                    Спрос\n                ")])
+    staticClass: "icon-clock"
+  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-tag"
+  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-map"
+  }), _vm._v(" Липецк\n                            ")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "m-b-lg"
+  }, [_c('div', {
+    staticClass: "row m-b"
+  }, [_c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "thumb-lg"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/avatar.png",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8 no-padder"
+  }, [_c('h3', {
+    staticClass: "m-t-xs"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('div', {
+    staticClass: "tags"
+  }, [_c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Разработка")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интернет")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-студия")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интеграция")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('p', {
+    staticClass: "text-right"
+  }, [_vm._v("09 июня 2017")])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
+    staticClass: "b-b padder-v text-xs"
+  }, [_c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-clock"
+  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-tag"
+  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-map"
+  }), _vm._v(" Липецк\n                            ")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "m-b-lg"
+  }, [_c('div', {
+    staticClass: "row m-b"
+  }, [_c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "thumb-lg"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/avatar.png",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8 no-padder"
+  }, [_c('h3', {
+    staticClass: "m-t-xs"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('div', {
+    staticClass: "tags"
+  }, [_c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Разработка")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интернет")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-студия")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интеграция")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('p', {
+    staticClass: "text-right"
+  }, [_vm._v("09 июня 2017")])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
+    staticClass: "b-b padder-v text-xs"
+  }, [_c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-clock"
+  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-tag"
+  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-map"
+  }), _vm._v(" Липецк\n                            ")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "m-b-lg"
+  }, [_c('div', {
+    staticClass: "row m-b"
+  }, [_c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "thumb-lg"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/avatar.png",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8 no-padder"
+  }, [_c('h3', {
+    staticClass: "m-t-xs"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('div', {
+    staticClass: "tags"
+  }, [_c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Разработка")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интернет")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-студия")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интеграция")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('p', {
+    staticClass: "text-right"
+  }, [_vm._v("09 июня 2017")])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
+    staticClass: "b-b padder-v text-xs"
+  }, [_c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-clock"
+  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-tag"
+  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-map"
+  }), _vm._v(" Липецк\n                            ")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "m-b-lg"
+  }, [_c('div', {
+    staticClass: "row m-b"
+  }, [_c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "thumb-lg"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/avatar.png",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8 no-padder"
+  }, [_c('h3', {
+    staticClass: "m-t-xs"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('div', {
+    staticClass: "tags"
+  }, [_c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Разработка")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интернет")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-студия")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интеграция")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('p', {
+    staticClass: "text-right"
+  }, [_vm._v("09 июня 2017")])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
+    staticClass: "b-b padder-v text-xs"
+  }, [_c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-clock"
+  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-tag"
+  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-map"
+  }), _vm._v(" Липецк\n                            ")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "m-b-lg"
+  }, [_c('div', {
+    staticClass: "row m-b"
+  }, [_c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "thumb-lg"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/avatar.png",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8 no-padder"
+  }, [_c('h3', {
+    staticClass: "m-t-xs"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Разработка веб-сайта Нижний парк ")])]), _vm._v(" "), _c('div', {
+    staticClass: "tags"
+  }, [_c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Разработка")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интернет")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Сайт")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Веб-студия")]), _vm._v(" "), _c('a', {
+    staticClass: "label",
+    attrs: {
+      "href": ""
+    }
+  }, [_vm._v("Интеграция")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('p', {
+    staticClass: "text-right"
+  }, [_vm._v("09 июня 2017")])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('p', [_vm._v("\n                            Товарищи! реализация намеченных плановых заданий требуют определения и уточнения существенных финансовых и административных условий.\n                        ")]), _vm._v(" "), _c('div', {
+    staticClass: "b-b padder-v text-xs"
+  }, [_c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-clock"
+  }), _vm._v(" 5 минут назад\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-tag"
+  }), _vm._v(" Аавто\n                            ")]), _vm._v(" "), _c('span', {
+    staticClass: "m-r-md"
+  }, [_c('i', {
+    staticClass: "icon-map"
+  }), _vm._v(" Липецк\n                            ")])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

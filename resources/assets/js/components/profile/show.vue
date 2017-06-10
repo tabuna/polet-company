@@ -1,116 +1,72 @@
 <template>
 
-    <div class="user-show" v-show="status.load">
-        <div class="col-md-6">
-            <div class="bg-white b box-shadow">
-                <div class="wrapper-md">
 
-                    <div class="row m-b-md padder-b b-b">
-                        <div class="col-md-4">
-                            <img v-bind:src="user.avatar" class="img-responsive">
-                        </div>
-                        <div class="col-md-5 no-padder">
-                            <h3 class="text-info m-t-xs">{{user.name}}</h3>
-                            <p>ИНН: {{user.inn}}</p>
-                            <p>ОГРН: {{user.ogrn}} </p>
-                            <p class="text-muted small">
-                                <i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br>
-                                <i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br>
-                                <i class="icon-globe text-info m-r-xs"></i>| {{user.website}} <br>
-                            </p>
-                        </div>
-                        <div class="col-md-3 no-padder text-center">
+    <div v-show="status.load">
+        <div class="row m-b-md padder-b b-b">
+            <div class="col-md-4">
+                <img v-bind:src="user.avatar" class="img-responsive">
+            </div>
+            <div class="col-md-5 no-padder">
+                <h3 class="text-info m-t-xs">{{user.name}}</h3>
+                <p>ИНН: {{user.inn}}</p>
+                <p>ОГРН: {{user.ogrn}} </p>
+                <p class="text-muted small">
+                    <i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br>
+                    <i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br>
+                    <i class="icon-globe text-info m-r-xs"></i>| {{user.website}} <br>
+                </p>
+            </div>
+            <div class="col-md-3 no-padder text-center">
 
-                            <div v-if="status.self">
-                                <p>
-                                    <a v-on:click="fave()" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"
-                                       v-bind:class="{ 'btn-info': user.fave }">
-                                        <i class="icon-star text-info" v-bind:class="{ 'text-white': user.fave }"></i>
-                                    </a>
+                <div v-if="status.self">
+                    <p>
+                        <a v-on:click="fave()" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"
+                           v-bind:class="{ 'btn-info': user.fave }">
+                            <i class="icon-star text-info" v-bind:class="{ 'text-white': user.fave }"></i>
+                        </a>
 
 
-                                    <a href="#" class="btn btn-icon btn-rounded b b-info b-2x"><i
-                                            class="icon-speech text-info"></i></a>
-                                </p>
-                                <p class="small text-info text-xs">Рейтинг компании</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row m-t-md m-b-md padder-v b-b">
-                        <div class="col-md-12">
-                            <p class="text-justify">
-                                {{user.about}}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row m-t-md m-b-md padder-v">
-                        <div class="col-md-12">
-                            <p><i class="icon-globe"></i> | Россия, Москва, ул. Пушкина, д. 127/43, офис 203, 123499</p>
-                            <div class="google-maps">
-                                <img src="/img/google.png" class="img-responsive">
-                            </div>
-
-                            <div class="get-directions">
-                                <form action="http://maps.google.com/maps" method="get" target="_blank">
-                                    <input type="text" name="saddr" placeholder="Введите свой адрес"/>
-                                    <input type="hidden" name="daddr"
-                                           value="Октябрьская ул., 61, Липецк, Липецкая область"/>
-                                    <input type="submit" value="Как добраться" class="direction-btn"/>
-                                </form>
-                            </div>
-
-
-                        </div>
-                    </div>
-
+                        <a href="#" class="btn btn-icon btn-rounded b b-info b-2x"><i
+                                class="icon-speech text-info"></i></a>
+                    </p>
+                    <p class="small text-info text-xs">Рейтинг компании</p>
                 </div>
+
             </div>
         </div>
 
+        <div class="row m-t-md m-b-md padder-v b-b">
+            <div class="col-md-12">
+                <p class="text-justify">
+                    {{user.about}}
+                </p>
+            </div>
+        </div>
 
-        <div class="col-md-3">
-            <div class="panel panel-default b box-shadow">
-                <div class="panel-heading">
-                    <div class="clearfix">
-                        <div class="clear">
-                            <div class="h4 m-t-xs m-b-xs">
-                                Черняев Александр
-                                <i class="fa fa-circle text-success pull-right text-xs m-t-sm"></i>
-                            </div>
-                            <small class="text-muted">Представитель компании</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-group no-radius alt">
-                    <a class="list-group-item" href="#">
-                        <i class="fa fa-comment fa-fw text-muted"></i>
-                        Адрес компании
-                    </a>
-                    <a class="list-group-item" href="#">
-                        <i class="fa fa-envelope fa-fw text-muted"></i>
-                        Спрос
-                    </a>
-                    <a class="list-group-item" href="#">
-                        <i class="fa fa-eye fa-fw text-muted"></i>
-                        Проедложения
+        <div class="row m-t-md m-b-md padder-v">
+            <div class="col-md-12">
+                <p><i class="icon-globe"></i> | Россия, Москва, ул. Пушкина, д. 127/43, офис 203, 123499</p>
+                <div class="google-maps">
+                    <a href="#">
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA&zoom=13&size=1000x300&maptype=roadmap%20&markers=size:mid%7Ccolor:red%7C%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E"
+                             class="img-responsive center">
                     </a>
                 </div>
+
+                <div class="get-directions hidden">
+                    <form action="http://maps.google.com/maps" method="get" target="_blank">
+                        <input type="text" name="saddr" placeholder="Введите свой адрес"/>
+                        <input type="hidden" name="daddr"
+                               value="Октябрьская ул., 61, Липецк, Липецкая область"/>
+                        <input type="submit" value="Как добраться" class="direction-btn"/>
+                    </form>
+                </div>
+
+
             </div>
-
-
-            <div class="panel wrapper-md padder-lg b box-shadow-lg text-center">
-                <p class="h3 font-thin m-b-sm">Тендер</p>
-                <p class="font-bold text-sm">Нужно выполнить работу? Объяви об этом всем</p>
-                <p class="small text-muted text-xs">Актуально до 60 дней</p>
-                <router-link class="btn btn-info btn-rounded" :to="{ name: 'tender.create'}">Разместить</router-link>
-            </div>
-
-
         </div>
     </div>
+
 
 </template>
 
@@ -174,7 +130,7 @@
 
                 if (id !== window.meta_user) {
                     this.status.self = true;
-                }else{
+                } else {
                     this.status.self = false;
                 }
             },

@@ -39,7 +39,7 @@
 <body>
 
 <header id="header" class="navbar bg-white padder-v b-b">
-    <div class="padder">
+    <div class="container">
         <div class="navbar-header">
             <button class="btn btn-link visible-xs pull-right m-r" type="button" data-toggle="collapse"
                     data-target=".navbar-collapse">

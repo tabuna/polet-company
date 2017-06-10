@@ -1,11 +1,5 @@
 <template>
 
-    <div class="user-edit">
-        <div class="col-md-6">
-    <div class="bg-white b box-shadow">
-        <div class="wrapper-md">
-
-
             <form class="form-horizontal" method="POST"
                   enctype="multipart/form-data">
 
@@ -134,64 +128,6 @@
                 </div>
             </form>
 
-
-        </div>
-    </div>
-        </div>
-
-
-        <div class="col-md-3">
-            <div class="panel panel-default b box-shadow">
-                <div class="panel-heading">
-                    <div class="clearfix">
-                        <div class="clear">
-                            <div class="h4 m-t-xs m-b-xs">
-                                Черняев Александр
-                                <i class="fa fa-circle text-success pull-right text-xs m-t-sm"></i>
-                            </div>
-                            <small class="text-muted">Представитель компании</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-group no-radius alt">
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-comment fa-fw text-muted"></i>
-                        Адрес компании
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-envelope fa-fw text-muted"></i>
-                        Спрос
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-eye fa-fw text-muted"></i>
-                        Проедложения
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-comment fa-fw text-muted"></i>
-                        Адрес компании
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-envelope fa-fw text-muted"></i>
-                        Спрос
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-eye fa-fw text-muted"></i>
-                        Проедложения
-                    </a>
-                </div>
-            </div>
-
-
-            <div class="panel wrapper-md padder-lg b box-shadow-lg text-center">
-                <p class="h3 font-thin m-b-sm">Тендер</p>
-                <p class="font-bold text-sm">Нужно выполнить работу? Объяви об этом всем</p>
-                <p class="small text-muted text-xs">Актуально до 60 дней</p>
-                <router-link class="btn btn-info btn-rounded" :to="{ name: 'tender.create'}">Разместить</router-link>
-            </div>
-
-
-        </div>
-    </div>
 </template>
 
 

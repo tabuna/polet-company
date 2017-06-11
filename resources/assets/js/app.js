@@ -21,15 +21,6 @@ if (document.getElementById('app') !== null) {
         mode: 'history',
         routes: [
             {
-                path: '/profile',
-                redirect: '/profile/'+ meta_user,
-            },
-            {
-                path: '/profile/:id',
-                name: 'profile',
-                component: require('./components/profile/show.vue')
-            },
-            {
                 path: '/profile/edit',
                 name: 'edit',
                 component: require('./components/profile/edit.vue')
@@ -42,7 +33,7 @@ if (document.getElementById('app') !== null) {
             {
                 path: '/profile/fave',
                 name: 'fave',
-                component: require('./components/Example.vue')
+                component: require('./components/profile/fave.vue')
             },
             {
                 path: '/stats',
@@ -71,6 +62,15 @@ if (document.getElementById('app') !== null) {
             {
                 path: '/search',
                 component: require('./components/Example.vue')
+            },
+            {
+                path: '/profile',
+                redirect: '/profile/'+ meta_user,
+            },
+            {
+                path: '/profile/:id',
+                name: 'profile',
+                component: require('./components/profile/show.vue')
             },
         ]
     });

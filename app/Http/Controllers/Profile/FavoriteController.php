@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Core\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class FavoriteController
+class FavoriteController extends Controller
 {
 
     /**
@@ -13,7 +14,7 @@ class FavoriteController
      */
     public function index()
     {
-        return response(User::whereLikedBy(Auth::user()->id)->with('likeCounter')->paginate());
+        return response(User::whereLikedBy(Auth::user()->id)->paginate());
     }
 
     /**

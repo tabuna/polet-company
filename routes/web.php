@@ -62,4 +62,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tend
 
 Route::get('/{vue_capture?}', function () {
     return view('home');
-})->where('vue_capture', '[\/\w\.-]*');
+})->where('vue_capture', '[\/\w\.-]*')
+  ->where('vue_capture','^(?!dashboard).*$');

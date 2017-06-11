@@ -2051,8 +2051,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -2226,23 +2224,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         load: function load(id) {
             var _this = this;
 
-            var user = localStorage.getItem('profile.' + id);
-
-            if (user === null || user.timeLoad + 90000 < new Date().getTime()) {
-
-                axios.post('/profile/' + id).then(function (response) {
-                    _this.user = response.data;
-                    _this.status.load = true;
-
-                    _this.user.timeLoad = new Date().getTime();
-                    localStorage.setItem('profile.' + id, JSON.stringify(_this.user));
-                }).catch(function (e) {
-                    _this.errors.push(e);
-                });
-            } else {
-                this.user = JSON.parse(user);
-                this.status.load = true;
-            }
+            axios.post('/profile/' + id).then(function (response) {
+                _this.user = response.data;
+                _this.status.load = true;
+            }).catch(function (e) {
+                _this.errors.push(e);
+            });
 
             if (id !== window.meta_user) {
                 this.status.self = true;

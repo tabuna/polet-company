@@ -105,28 +105,15 @@
         },
         methods: {
             load: function (id) {
-                let user = localStorage.getItem('profile.' + id);
 
-                if (user === null || (user.timeLoad + 90000) < new Date().getTime()) {
-
-                    axios.post(`/profile/` + id)
-                        .then(response => {
-                            this.user = response.data;
-                            this.status.load = true;
-
-                            this.user.timeLoad = new Date().getTime();
-                            localStorage.setItem('profile.' + id, JSON.stringify(this.user))
-                        })
-                        .catch(e => {
-                            this.errors.push(e)
-                        });
-
-
-                } else {
-                    this.user = JSON.parse(user);
+            axios.post(`/profile/` + id)
+                .then(response => {
+                    this.user = response.data;
                     this.status.load = true;
-                }
-
+                })
+                .catch(e => {
+                    this.errors.push(e)
+                });
 
                 if (id !== window.meta_user) {
                     this.status.self = true;

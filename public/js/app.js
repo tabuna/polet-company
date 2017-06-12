@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 80);
+/******/ 	return __webpack_require__(__webpack_require__.s = 81);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -437,7 +437,7 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(31),
   /* template */
-  __webpack_require__(71),
+  __webpack_require__(72),
   /* scopeId */
   null,
   /* cssModules */
@@ -861,7 +861,9 @@ module.exports = g;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_infinite_scroll__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_infinite_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_infinite_scroll__);
 __webpack_require__(38);
 
 __webpack_require__(39);
@@ -869,9 +871,11 @@ __webpack_require__(42);
 __webpack_require__(40);
 __webpack_require__(41);
 
-window.Vue = __webpack_require__(77);
+window.Vue = __webpack_require__(78);
 
 
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_infinite_scroll___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
 if (document.getElementById('app') !== null) {
@@ -881,7 +885,7 @@ if (document.getElementById('app') !== null) {
         routes: [{
             path: '/profile/edit',
             name: 'edit',
-            component: __webpack_require__(63)
+            component: __webpack_require__(64)
         }, {
             path: '/profile/password',
             name: 'password',
@@ -889,7 +893,7 @@ if (document.getElementById('app') !== null) {
         }, {
             path: '/profile/fave',
             name: 'fave',
-            component: __webpack_require__(64)
+            component: __webpack_require__(65)
         }, {
             path: '/stats',
             name: 'stats',
@@ -901,14 +905,14 @@ if (document.getElementById('app') !== null) {
         }, {
             path: '/tender',
             name: 'tender',
-            component: __webpack_require__(67)
+            component: __webpack_require__(68)
         }, {
             path: '/tender/create',
             name: 'tender.create',
-            component: __webpack_require__(66)
+            component: __webpack_require__(67)
         }, {
             path: '/tender/:id',
-            component: __webpack_require__(68)
+            component: __webpack_require__(69)
         }, {
             path: '/search',
             component: __webpack_require__(2)
@@ -918,7 +922,7 @@ if (document.getElementById('app') !== null) {
         }, {
             path: '/profile/:id',
             name: 'profile',
-            component: __webpack_require__(65)
+            component: __webpack_require__(66)
         }]
     });
 
@@ -2103,6 +2107,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -2149,12 +2160,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.status.self = false;
             }
         },
-        fave: function fave() {
-            if (!this.status.submit) {
+        loadNextPage: function loadNextPage() {
+            var _this2 = this;
+
+            if (this.favorites.next_page_url !== null) {
                 this.status.submit = true;
-                axios.put("/profile/fave/" + this.$route.params.id);
-                this.user.fave = !this.user.fave;
-                this.status.submit = false;
+
+                axios.post(this.favorites.next_page_url).then(function (response) {
+
+                    var oldData = _this2.favorites.data;
+                    oldData = oldData.concat(response.data.data);
+
+                    _this2.favorites = response.data;
+                    _this2.favorites.data = oldData;
+
+                    _this2.status.submit = false;
+                }).catch(function (e) {
+                    _this2.errors.push(e);
+                });
             }
         }
     }
@@ -32983,7 +33006,7 @@ return jQuery;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(78)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(79)(module)))
 
 /***/ }),
 /* 61 */
@@ -33185,11 +33208,238 @@ process.umask = function() { return 0; };
 /* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
+(function (global, factory) {
+	 true ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.infiniteScroll = factory());
+}(this, (function () { 'use strict';
+
+var ctx = '@@InfiniteScroll';
+
+var throttle = function throttle(fn, delay) {
+  var now, lastExec, timer, context, args; //eslint-disable-line
+
+  var execute = function execute() {
+    fn.apply(context, args);
+    lastExec = now;
+  };
+
+  return function () {
+    context = this;
+    args = arguments;
+
+    now = Date.now();
+
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+
+    if (lastExec) {
+      var diff = delay - (now - lastExec);
+      if (diff < 0) {
+        execute();
+      } else {
+        timer = setTimeout(function () {
+          execute();
+        }, diff);
+      }
+    } else {
+      execute();
+    }
+  };
+};
+
+var getScrollTop = function getScrollTop(element) {
+  if (element === window) {
+    return Math.max(window.pageYOffset || 0, document.documentElement.scrollTop);
+  }
+
+  return element.scrollTop;
+};
+
+var getComputedStyle = document.defaultView.getComputedStyle;
+
+var getScrollEventTarget = function getScrollEventTarget(element) {
+  var currentNode = element;
+  // bugfix, see http://w3help.org/zh-cn/causes/SD9013 and http://stackoverflow.com/questions/17016740/onscroll-function-is-not-working-for-chrome
+  while (currentNode && currentNode.tagName !== 'HTML' && currentNode.tagName !== 'BODY' && currentNode.nodeType === 1) {
+    var overflowY = getComputedStyle(currentNode).overflowY;
+    if (overflowY === 'scroll' || overflowY === 'auto') {
+      return currentNode;
+    }
+    currentNode = currentNode.parentNode;
+  }
+  return window;
+};
+
+var getVisibleHeight = function getVisibleHeight(element) {
+  if (element === window) {
+    return document.documentElement.clientHeight;
+  }
+
+  return element.clientHeight;
+};
+
+var getElementTop = function getElementTop(element) {
+  if (element === window) {
+    return getScrollTop(window);
+  }
+  return element.getBoundingClientRect().top + getScrollTop(window);
+};
+
+var isAttached = function isAttached(element) {
+  var currentNode = element.parentNode;
+  while (currentNode) {
+    if (currentNode.tagName === 'HTML') {
+      return true;
+    }
+    if (currentNode.nodeType === 11) {
+      return false;
+    }
+    currentNode = currentNode.parentNode;
+  }
+  return false;
+};
+
+var doBind = function doBind() {
+  if (this.binded) return; // eslint-disable-line
+  this.binded = true;
+
+  var directive = this;
+  var element = directive.el;
+
+  directive.scrollEventTarget = getScrollEventTarget(element);
+  directive.scrollListener = throttle(doCheck.bind(directive), 200);
+  directive.scrollEventTarget.addEventListener('scroll', directive.scrollListener);
+
+  var disabledExpr = element.getAttribute('infinite-scroll-disabled');
+  var disabled = false;
+
+  if (disabledExpr) {
+    this.vm.$watch(disabledExpr, function (value) {
+      directive.disabled = value;
+      if (!value && directive.immediateCheck) {
+        doCheck.call(directive);
+      }
+    });
+    disabled = Boolean(directive.vm[disabledExpr]);
+  }
+  directive.disabled = disabled;
+
+  var distanceExpr = element.getAttribute('infinite-scroll-distance');
+  var distance = 0;
+  if (distanceExpr) {
+    distance = Number(directive.vm[distanceExpr] || distanceExpr);
+    if (isNaN(distance)) {
+      distance = 0;
+    }
+  }
+  directive.distance = distance;
+
+  var immediateCheckExpr = element.getAttribute('infinite-scroll-immediate-check');
+  var immediateCheck = true;
+  if (immediateCheckExpr) {
+    immediateCheck = Boolean(directive.vm[immediateCheckExpr]);
+  }
+  directive.immediateCheck = immediateCheck;
+
+  if (immediateCheck) {
+    doCheck.call(directive);
+  }
+
+  var eventName = element.getAttribute('infinite-scroll-listen-for-event');
+  if (eventName) {
+    directive.vm.$on(eventName, function () {
+      doCheck.call(directive);
+    });
+  }
+};
+
+var doCheck = function doCheck(force) {
+  var scrollEventTarget = this.scrollEventTarget;
+  var element = this.el;
+  var distance = this.distance;
+
+  if (force !== true && this.disabled) return; //eslint-disable-line
+  var viewportScrollTop = getScrollTop(scrollEventTarget);
+  var viewportBottom = viewportScrollTop + getVisibleHeight(scrollEventTarget);
+
+  var shouldTrigger = false;
+
+  if (scrollEventTarget === element) {
+    shouldTrigger = scrollEventTarget.scrollHeight - viewportBottom <= distance;
+  } else {
+    var elementBottom = getElementTop(element) - getElementTop(scrollEventTarget) + element.offsetHeight + viewportScrollTop;
+
+    shouldTrigger = viewportBottom + distance >= elementBottom;
+  }
+
+  if (shouldTrigger && this.expression) {
+    this.expression();
+  }
+};
+
+var InfiniteScroll$1 = {
+  bind: function bind(el, binding, vnode) {
+    el[ctx] = {
+      el: el,
+      vm: vnode.context,
+      expression: binding.value
+    };
+    var args = arguments;
+    el[ctx].vm.$on('hook:mounted', function () {
+      el[ctx].vm.$nextTick(function () {
+        if (isAttached(el)) {
+          doBind.call(el[ctx], args);
+        }
+
+        el[ctx].bindTryCount = 0;
+
+        var tryBind = function tryBind() {
+          if (el[ctx].bindTryCount > 10) return; //eslint-disable-line
+          el[ctx].bindTryCount++;
+          if (isAttached(el)) {
+            doBind.call(el[ctx], args);
+          } else {
+            setTimeout(tryBind, 50);
+          }
+        };
+
+        tryBind();
+      });
+    });
+  },
+  unbind: function unbind(el) {
+    if (el && el[ctx] && el[ctx].scrollEventTarget) el[ctx].scrollEventTarget.removeEventListener('scroll', el[ctx].scrollListener);
+  }
+};
+
+var install = function install(Vue) {
+  Vue.directive('InfiniteScroll', InfiniteScroll$1);
+};
+
+if (window.Vue) {
+  window.infiniteScroll = InfiniteScroll$1;
+  Vue.use(install); // eslint-disable-line
+}
+
+InfiniteScroll$1.install = install;
+
+return InfiniteScroll$1;
+
+})));
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(32),
   /* template */
-  __webpack_require__(73),
+  __webpack_require__(74),
   /* scopeId */
   null,
   /* cssModules */
@@ -33216,14 +33466,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(33),
   /* template */
-  __webpack_require__(75),
+  __webpack_require__(76),
   /* scopeId */
   null,
   /* cssModules */
@@ -33250,14 +33500,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(34),
   /* template */
-  __webpack_require__(69),
+  __webpack_require__(70),
   /* scopeId */
   null,
   /* cssModules */
@@ -33284,14 +33534,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(35),
   /* template */
-  __webpack_require__(72),
+  __webpack_require__(73),
   /* scopeId */
   null,
   /* cssModules */
@@ -33318,14 +33568,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(36),
   /* template */
-  __webpack_require__(74),
+  __webpack_require__(75),
   /* scopeId */
   null,
   /* cssModules */
@@ -33352,14 +33602,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(37),
   /* template */
-  __webpack_require__(70),
+  __webpack_require__(71),
   /* scopeId */
   null,
   /* cssModules */
@@ -33386,7 +33636,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -33524,7 +33774,7 @@ if (false) {
 }
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -33710,7 +33960,7 @@ if (false) {
 }
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -33739,7 +33989,7 @@ if (false) {
 }
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -33940,7 +34190,7 @@ if (false) {
 }
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -34384,7 +34634,7 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -34926,7 +35176,7 @@ if (false) {
 }
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -34975,9 +35225,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("\n                        " + _vm._s(fave.name) + "\n                    ")])], 1), _vm._v(" "), _vm._m(0, true)])])])
-  }), _vm._v(" "), (_vm.favorites.data.length === 0) ? _c('div', {
+  }), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "infinite-scroll",
+      rawName: "v-infinite-scroll",
+      value: (_vm.loadNextPage),
+      expression: "loadNextPage"
+    }],
+    attrs: {
+      "infinite-scroll-disabled": "status.submit",
+      "infinite-scroll-distance": "10"
+    }
+  }, [(_vm.status.submit) ? _c('div', {
+    staticClass: "m-b-lg"
+  }, [_vm._m(1)]) : _vm._e()]), _vm._v(" "), (_vm.favorites.data.length === 0) ? _c('div', {
     staticClass: "jumbotron text-center bg-white not-found"
-  }, [_vm._m(1)]) : _vm._e()], 2)
+  }, [_vm._m(2)]) : _vm._e()], 2)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "tags"
@@ -35013,6 +35276,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Интеграция")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row m-b"
+  }, [_c('div', {
+    staticClass: "col-xs-12 text-center"
+  }, [_c('i', {
+    staticClass: "fa fa-2x fa-spinner fa-spin"
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('h3', {
     staticClass: "font-thin"
   }, [_vm._v("Добавьте компанию в избранное и она будет отображаться тут")])])
@@ -35026,7 +35297,7 @@ if (false) {
 }
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37497,7 +37768,7 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47196,7 +47467,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -47224,8 +47495,8 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 79 */,
-/* 80 */
+/* 80 */,
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(10);

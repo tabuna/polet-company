@@ -2,13 +2,12 @@
 
     <div v-show="status.load">
 
-
         <div class="m-b-lg" v-for="fave in favorites.data">
             <div class="row m-b">
                 <div class="col-md-2">
                     <div class="thumb-lg">
                         <router-link :to="{ name: 'profile', params: { id: fave.id }}">
-                        <img v-bind:src="fave.avatar" v-bind:alt="fave.name" class="img-responsive">
+                            <img v-bind:src="fave.avatar" v-bind:alt="fave.name" class="img-responsive">
                         </router-link>
                     </div>
                 </div>
@@ -29,7 +28,16 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
 
+        <div v-infinite-scroll="loadNextPage" infinite-scroll-disabled="status.submit" infinite-scroll-distance="10">
+            <div class="m-b-lg" v-if="status.submit">
+                <div class="row m-b">
+                    <div class="col-xs-12 text-center">
+                        <i class='fa fa-2x fa-spinner fa-spin'></i>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -38,7 +46,6 @@
                 <h3 class="font-thin">Добавьте компанию в избранное и она будет отображаться тут</h3>
             </div>
         </div>
-
 
 
     </div>
@@ -91,14 +98,27 @@
                     this.status.self = false;
                 }
             },
-            fave: function () {
-                if (!this.status.submit) {
+            loadNextPage: function () {
+
+                if (this.favorites.next_page_url !== null) {
                     this.status.submit = true;
-                    axios.put(`/profile/fave/` + this.$route.params.id);
-                    this.user.fave = !this.user.fave;
-                    this.status.submit = false;
+
+                    axios.post(this.favorites.next_page_url)
+                        .then(response => {
+
+                            let oldData = this.favorites.data;
+                            oldData = oldData.concat(response.data.data);
+
+                            this.favorites = response.data;
+                            this.favorites.data = oldData;
+
+                            this.status.submit = false;
+                        })
+                        .catch(e => {
+                            this.errors.push(e)
+                        });
                 }
-            }
+            },
         }
     }
 </script>

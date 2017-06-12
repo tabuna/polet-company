@@ -18174,6 +18174,7 @@ a.text-black:hover {
   margin: 2px;
   border: 2px solid;
   border-radius: 100%;
+  border-color: #fff;
 }
 .avatar i.right {
   left: auto;

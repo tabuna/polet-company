@@ -8,7 +8,9 @@ require('./modules/typed');
 
 window.Vue = require('vue');
 import VueRouter from "vue-router";
+import infiniteScroll from 'vue-infinite-scroll'
 
+Vue.use(infiniteScroll);
 Vue.use(VueRouter);
 
 

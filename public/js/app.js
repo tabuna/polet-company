@@ -1944,6 +1944,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -1958,7 +1998,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 website: '',
                 about: '',
                 avatar: '',
-                notification: '',
                 agent_name: ''
             },
             status: {
@@ -2007,9 +2046,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 axios.put('/profile/edit', this.user).then(function (response) {
                     _this2.user = response.data;
                     _this2.status.submit = false;
-                }).catch(function (e) {
-                    console.log(e);
-                    _this2.errors = e;
+                }).catch(function (error) {
+                    _this2.errors = error.response.data;
                     _this2.status.submit = false;
                 });
             }
@@ -2207,6 +2245,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
@@ -2264,6 +2304,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.user.fave = !this.user.fave;
                 this.status.submit = false;
             }
+        },
+        getDirections: function getDirections() {
+            var saddr = '?saddr=' + 'Сумская ул., 45А, Курск, Курская обл., 305007';
+            var daddar = '&daddr=' + this.user.address;
+            window.open('http://maps.google.com/maps' + saddr + daddar, '_blank');
         }
     }
 });
@@ -33377,9 +33422,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "icon-phone text-info m-r-xs"
   }), _vm._v("| " + _vm._s(_vm.user.phone) + " "), _c('br'), _vm._v(" "), _c('i', {
     staticClass: "icon-envelope text-info m-r-xs"
-  }), _vm._v("| " + _vm._s(_vm.user.email) + " "), _c('br'), _vm._v(" "), _c('i', {
+  }), _vm._v("| " + _vm._s(_vm.user.email) + " "), _c('br'), _vm._v(" "), (_vm.user.website) ? _c('a', {
+    staticClass: "text-ellipsis",
+    attrs: {
+      "href": _vm.user.website
+    }
+  }, [_c('i', {
     staticClass: "icon-globe text-info m-r-xs"
-  }), _vm._v("| " + _vm._s(_vm.user.website) + " "), _c('br')])]), _vm._v(" "), _c('div', {
+  }), _vm._v("| " + _vm._s(_vm.user.website))]) : _vm._e(), _vm._v(" "), _c('br')])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-3 no-padder text-center"
   }, [(_vm.status.self) ? _c('div', [_c('p', [_c('a', {
     staticClass: "btn btn-icon btn-rounded b b-info b-2x m-r-sm",
@@ -33404,33 +33454,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('p', {
     staticClass: "text-justify"
-  }, [_vm._v("\n                " + _vm._s(_vm.user.about) + "\n            ")])])]), _vm._v(" "), _vm._m(1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    staticClass: "btn btn-icon btn-rounded b b-info b-2x",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "icon-speech text-info"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_vm._v("\n                " + _vm._s(_vm.user.about) + "\n            ")])])]), _vm._v(" "), _c('div', {
     staticClass: "row m-t-md m-b-md padder-v"
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('p', [_c('i', {
     staticClass: "icon-globe"
-  }), _vm._v(" | Россия, Москва, ул. Пушкина, д. 127/43, офис 203, 123499")]), _vm._v(" "), _c('div', {
+  }), _vm._v(" | " + _vm._s(_vm.user.address))]), _vm._v(" "), _c('div', {
     staticClass: "google-maps"
   }, [_c('a', {
-    attrs: {
-      "href": "#"
+    on: {
+      "click": _vm.getDirections
     }
   }, [_c('img', {
     staticClass: "img-responsive center",
     attrs: {
-      "src": "https://maps.googleapis.com/maps/api/staticmap?center=%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA&zoom=13&size=1000x300&maptype=roadmap%20&markers=size:mid%7Ccolor:red%7C%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E"
+      "src": 'https://maps.googleapis.com/maps/api/staticmap?center=' +
+        _vm.user.address +
+        '&zoom=14&size=1000x300&maptype=roadmap%20' +
+        '&markers=size:mid%7Ccolor:red%7C%' +
+        _vm.user.address +
+        '&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E'
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "get-directions hidden"
@@ -33447,18 +33491,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Введите свой адрес"
     }
   }), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user.address),
+      expression: "user.address"
+    }],
     attrs: {
       "type": "hidden",
-      "name": "daddr",
-      "value": "Октябрьская ул., 61, Липецк, Липецкая область"
+      "name": "daddr"
+    },
+    domProps: {
+      "value": (_vm.user.address)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.user.address = $event.target.value
+      }
     }
-  }), _vm._v(" "), _c('input', {
-    staticClass: "direction-btn",
+  })])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    staticClass: "btn btn-icon btn-rounded b b-info b-2x",
     attrs: {
-      "type": "submit",
-      "value": "Как добраться"
+      "href": "#"
     }
-  })])])])])
+  }, [_c('i', {
+    staticClass: "icon-speech text-info"
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -33935,7 +33996,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "m-b m-t-sm"
   }, [_c('span', {
-    staticClass: "h3 text-black"
+    staticClass: "h3 text-info m-t-xs"
   }, [_vm._v(_vm._s(_vm.user.name))])])])])])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
@@ -33971,6 +34032,44 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), (_vm.errors.name) ? _c('p', {
     staticClass: "help-block"
   }, [_vm._v("\n                " + _vm._s(_vm.errors.name) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.agent_name
+    }
+  }, [_c('label', {
+    staticClass: "col-sm-3 control-label"
+  }, [_vm._v("Полное имя")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-9"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user.agent_name),
+      expression: "user.agent_name"
+    }],
+    staticClass: "form-control form-control-grey",
+    attrs: {
+      "type": "text",
+      "name": "name",
+      "placeholder": "Ваше полное имя",
+      "maxlength": "80"
+    },
+    domProps: {
+      "value": (_vm.user.agent_name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.user.agent_name = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errors.agent_name) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                " + _vm._s(_vm.errors.agent_name) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
@@ -34002,7 +34101,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.$forceUpdate()
       }
     }
-  })])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.inn) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                " + _vm._s(_vm.errors.inn) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    staticClass: "col-sm-3 control-label"
+  }, [_vm._v("ОГРН:")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-9"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user.ogrn),
+      expression: "user.ogrn"
+    }],
+    staticClass: "form-control form-control-grey",
+    attrs: {
+      "type": "number",
+      "name": "ogrn",
+      "placeholder": "ОГРН",
+      "maxlength": "15"
+    },
+    domProps: {
+      "value": (_vm.user.ogrn)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.user.ogrn = $event.target.value
+      },
+      "blur": function($event) {
+        _vm.$forceUpdate()
+      }
+    }
+  }), _vm._v(" "), (_vm.errors.orgn) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                " + _vm._s(_vm.errors.orgn) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
@@ -34031,7 +34170,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.phone = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.phone) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                " + _vm._s(_vm.errors.phone) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
@@ -34061,7 +34204,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.email = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.email) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                " + _vm._s(_vm.errors.email) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
@@ -34090,7 +34237,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.website = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.website) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                " + _vm._s(_vm.errors.website) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
@@ -34118,7 +34269,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.about = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.about) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                " + _vm._s(_vm.errors.about) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
@@ -34145,7 +34300,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.address = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.address) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                " + _vm._s(_vm.errors.address) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
@@ -34174,8 +34333,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
     staticClass: "form-group m-t-md"
-  }, [_vm._m(1), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "col-sm-6 text-right"
   }, [_c('button', {
     staticClass: "btn btn-info btn-rounded",
@@ -34186,22 +34347,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "fa fa-spinner fa-spin"
   })]) : _c('span', [_vm._v("Сохранить")])])])])]) : _vm._e()
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    staticClass: "col-sm-3 control-label"
-  }, [_vm._v("ОГРН:")]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-9"
-  }, [_c('input', {
-    staticClass: "form-control form-control-grey",
-    attrs: {
-      "type": "number",
-      "name": "ogrn",
-      "placeholder": "ОГРН",
-      "maxlength": "15"
-    }
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-sm-3 col-sm-offset-3"
   }, [_c('a', {

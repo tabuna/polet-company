@@ -1,6 +1,5 @@
 <template>
 
-
     <div v-show="status.load">
         <div class="row m-b-md padder-b b-b">
             <div class="col-md-4">
@@ -13,7 +12,7 @@
                 <p class="text-muted small">
                     <i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br>
                     <i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br>
-                    <i class="icon-globe text-info m-r-xs"></i>| {{user.website}} <br>
+                    <a v-bind:href="user.website" class="text-ellipsis" v-if="user.website"><i class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a>    <br>
                 </p>
             </div>
             <div class="col-md-3 no-padder text-center">
@@ -45,10 +44,16 @@
 
         <div class="row m-t-md m-b-md padder-v">
             <div class="col-md-12">
-                <p><i class="icon-globe"></i> | Россия, Москва, ул. Пушкина, д. 127/43, офис 203, 123499</p>
+                <p><i class="icon-globe"></i> | {{user.address}}</p>
                 <div class="google-maps">
-                    <a href="#">
-                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA&zoom=13&size=1000x300&maptype=roadmap%20&markers=size:mid%7Ccolor:red%7C%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E"
+                    <a v-on:click="getDirections">
+                        <img v-bind:src="
+                        'https://maps.googleapis.com/maps/api/staticmap?center='+
+                        user.address +
+                        '&zoom=14&size=1000x300&maptype=roadmap%20' +
+                         '&markers=size:mid%7Ccolor:red%7C%' +
+                         user.address +
+                         '&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E'"
                              class="img-responsive center">
                     </a>
                 </div>
@@ -56,9 +61,7 @@
                 <div class="get-directions hidden">
                     <form action="http://maps.google.com/maps" method="get" target="_blank">
                         <input type="text" name="saddr" placeholder="Введите свой адрес"/>
-                        <input type="hidden" name="daddr"
-                               value="Октябрьская ул., 61, Липецк, Липецкая область"/>
-                        <input type="submit" value="Как добраться" class="direction-btn"/>
+                        <input type="hidden" name="daddr" v-model="user.address">
                     </form>
                 </div>
 
@@ -66,7 +69,6 @@
             </div>
         </div>
     </div>
-
 
 </template>
 
@@ -128,6 +130,11 @@
                     this.user.fave = !this.user.fave;
                     this.status.submit = false;
                 }
+            },
+            getDirections: function () {
+                let saddr = '?saddr=' + 'Сумская ул., 45А, Курск, Курская обл., 305007';
+                let daddar = '&daddr=' + this.user.address;
+                window.open('http://maps.google.com/maps'+ saddr + daddar, '_blank');
             }
         }
     }

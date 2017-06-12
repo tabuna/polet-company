@@ -29,8 +29,8 @@ class AccountRequest extends FormRequest
     {
         return [
             'name'         => 'required|max:255',
-            'email'        => 'email|required|unique:users,email,' . Auth::user()->id,
-            'avatar'       => 'mimes:jpeg,bmp,png|sometimes',
+            //'email'        => 'email|required|unique:users,email,' . Auth::user()->id,
+            //'avatar'       => 'mimes:jpeg,bmp,png|sometimes',
             'website'      => 'sometimes|max:255',
             'about'        => 'sometimes|max:65000',
             'notification' => 'sometimes|boolean',

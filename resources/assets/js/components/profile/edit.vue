@@ -15,7 +15,7 @@
                                      class="">
                             </div>
 
-                            <input type="file" accept="image/jpeg,image/png,image/gif" name="avatar"
+                            <input type="file" size="2MB" accept="image/jpeg,image/png,image/gif" name="avatar"
                                    @change="onAvatarChange">
                         </div>
 
@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{ 'has-error' : errors.inn }">
             <label class="col-sm-3 control-label">ИНН:</label>
             <div class="col-sm-9">
                 <input type="number" name="inn" class="form-control form-control-grey"
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{ 'has-error' : errors.orgn }">
             <label class="col-sm-3 control-label">ОГРН:</label>
             <div class="col-sm-9">
                 <input type="number" name="ogrn" class="form-control form-control-grey"
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{ 'has-error' : errors.phone }">
             <label class="col-sm-3 control-label">Телефон</label>
             <div class="col-sm-9">
                 <input type="tel" name="phone" class="form-control form-control-grey"
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{ 'has-error' : errors.email }">
             <label class="col-sm-3 control-label">Электронная почта</label>
             <div class="col-sm-9">
                 <input type="email" readonly name="email" class="form-control form-control-grey"
@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{ 'has-error' : errors.website }">
             <label class="col-sm-3 control-label">Веб-сайт</label>
             <div class="col-sm-9">
                 <input type="url" name="website" class="form-control form-control-grey"
@@ -116,7 +116,7 @@
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{ 'has-error' : errors.about }">
             <label class="col-sm-3 control-label">О Компании</label>
             <div class="col-sm-9">
                     <textarea class="form-control form-control-grey no-resize" rows="14" name="about"
@@ -128,7 +128,7 @@
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{ 'has-error' : errors.address }">
             <label class="col-sm-3 control-label">Адрес</label>
             <div class="col-sm-9">
                 <input class="form-control form-control-grey no-resize" name="address"
@@ -140,7 +140,7 @@
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
-        <div class="form-group">
+        <div class="form-group" v-bind:class="{ 'has-error' : errors.address }">
             <label class="col-sm-3 control-label">Теги компании</label>
             <div class="col-sm-9">
                 <input class="form-control form-control-grey no-resize" name="tags" data-role="tagsinput"
@@ -225,7 +225,7 @@
 
                     axios.put(`/profile/edit`, this.user)
                         .then(response => {
-                            this.user = response.data;
+                            //this.user = response.data;
                             this.status.submit = false;
                         })
                         .catch(error => {

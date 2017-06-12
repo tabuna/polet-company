@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\AccountPasswordRequest;
 use App\Http\Requests\Profile\AccountRequest;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 use Orchid\Alert\Facades\Alert;
+use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -60,20 +60,25 @@ class ProfileController extends Controller
      */
     public function update(AccountRequest $account)
     {
-        $user = Auth::user();
+        $img = Image::make($account->get('avatar'));
+        $img->resize(300, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $account->replace([
+           'avatar' => (string) $img->encode('data-url',75),
+        ]);
 
+        Auth::user()->fill($account->all())->save();
+
+        /*
         if ($account->hasFile('avatar')) {
             $img = Image::make($account->file('avatar'));
             $img->fit(200);
             $user->avatar = (string) $img->encode('data-url');
         }
+        */
 
-        $user->fill($account->except('avatar'));
-        $user->save();
-
-        Alert::success('Вы успешно изменили профиль');
-
-        return back();
+        return response(200);
     }
 
     /**

@@ -1977,13 +1977,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -2042,9 +2035,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.status.submit === false) {
                 this.status.submit = true;
+                this.errors = {};
 
                 axios.put('/profile/edit', this.user).then(function (response) {
-                    _this2.user = response.data;
+                    //this.user = response.data;
                     _this2.status.submit = false;
                 }).catch(function (error) {
                     _this2.errors = error.response.data;
@@ -33985,6 +33979,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })]), _vm._v(" "), _c('input', {
     attrs: {
       "type": "file",
+      "size": "2MB",
       "accept": "image/jpeg,image/png,image/gif",
       "name": "avatar"
     },
@@ -34070,7 +34065,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                " + _vm._s(_vm.errors.agent_name) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.inn
+    }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
   }, [_vm._v("ИНН:")]), _vm._v(" "), _c('div', {
@@ -34106,7 +34104,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                " + _vm._s(_vm.errors.inn) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.orgn
+    }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
   }, [_vm._v("ОГРН:")]), _vm._v(" "), _c('div', {
@@ -34142,7 +34143,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                " + _vm._s(_vm.errors.orgn) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.phone
+    }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
   }, [_vm._v("Телефон")]), _vm._v(" "), _c('div', {
@@ -34175,7 +34179,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                " + _vm._s(_vm.errors.phone) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.email
+    }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
   }, [_vm._v("Электронная почта")]), _vm._v(" "), _c('div', {
@@ -34209,7 +34216,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                " + _vm._s(_vm.errors.email) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.website
+    }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
   }, [_vm._v("Веб-сайт")]), _vm._v(" "), _c('div', {
@@ -34242,7 +34252,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                " + _vm._s(_vm.errors.website) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.about
+    }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
   }, [_vm._v("О Компании")]), _vm._v(" "), _c('div', {
@@ -34274,7 +34287,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                " + _vm._s(_vm.errors.about) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.address
+    }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
   }, [_vm._v("Адрес")]), _vm._v(" "), _c('div', {
@@ -34305,7 +34321,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                " + _vm._s(_vm.errors.address) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.address
+    }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
   }, [_vm._v("Теги компании")]), _vm._v(" "), _c('div', {

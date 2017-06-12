@@ -32,6 +32,7 @@ class User extends UserOrchid
         'type_of_activity',
         'ogrn',
         'website',
+        'avatar'
     ];
 
     /**

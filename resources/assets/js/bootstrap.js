@@ -41,6 +41,12 @@ if (token) {
 window.meta_user = document.head.querySelector('meta[name="auth"]').content;
 
 
+
+require('../../../node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min');
+require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
+require('../../../node_modules/typed.js/dist/typed.min.js');
+require('../../../node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min');
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -55,3 +61,8 @@ window.meta_user = document.head.querySelector('meta[name="auth"]').content;
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+
+window.moduleLoad = function () {
+    $('input[maxlength]').maxlength();
+};

@@ -7,7 +7,9 @@
             <div class="row m-b">
                 <div class="col-md-2">
                     <div class="thumb-lg">
+                        <router-link :to="{ name: 'profile', params: { id: fave.id }}">
                         <img v-bind:src="fave.avatar" v-bind:alt="fave.name" class="img-responsive">
+                        </router-link>
                     </div>
                 </div>
                 <div class="col-md-10">
@@ -24,30 +26,6 @@
                         <a href="" class="label">Сайт</a>
                         <a href="" class="label">Веб-студия</a>
                         <a href="" class="label">Интеграция</a>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-
-                    <p>
-                        {{fave.about}}
-                    </p>
-
-                    <div class="b-b padder-v text-xs">
-                            <span class="m-r-md">
-                                <i class="icon-clock"></i> 5 минут назад
-                            </span>
-
-                        <span class="m-r-md">
-                            <i class="icon-tag"></i> Аавто
-                            </span>
-
-                        <span class="m-r-md">
-                                <i class="icon-map"></i> Липецк
-                            </span>
                     </div>
 
                 </div>

@@ -1,8 +1,5 @@
 require('./bootstrap');
 
-require('../../../node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min');
-require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
-require('../../../node_modules/typed.js/dist/typed.min.js');
 
 require('./modules/affix');
 require('./modules/wizard');
@@ -65,7 +62,7 @@ if (document.getElementById('app') !== null) {
             },
             {
                 path: '/profile',
-                redirect: '/profile/'+ meta_user,
+                redirect: '/profile/' + meta_user,
             },
             {
                 path: '/profile/:id',
@@ -74,7 +71,6 @@ if (document.getElementById('app') !== null) {
             },
         ]
     });
-
 
     const app = new Vue({
         router,

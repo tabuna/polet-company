@@ -544,7 +544,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/tabuna/GitHub/polet-company/resources/assets/js/components/Example.vue"
+Component.options.__file = "/home/selena/git/polet-company/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -2273,6 +2273,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -2288,7 +2289,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 self: false,
                 success: ""
             },
-            response: "",
 
             errors: {}
         };
@@ -2303,14 +2303,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(this.errors);
                 this.status.success = null;
                 axios.put('/profile/password', this.user).then(function (response) {
-                    if (response.data == "200") {
-                        _this.status.success = "Пароль успешно изменён.";
-                    }
+                    //this.user = response.data;
                     _this.status.submit = false;
+                    swal({
+                        title: 'Успешно!',
+                        type: 'success',
+                        text: 'Данные были обновлены',
+                        timer: 2500,
+                        showConfirmButton: false
+                    }).catch(swal.noop);
                 }).catch(function (error) {
-                    //console.log(error);
                     _this.errors = error.response.data;
                     _this.status.submit = false;
+                    swal({
+                        title: 'Ошибка!',
+                        type: 'error',
+                        text: 'Проверьте вводимые данные',
+                        timer: 2500,
+                        showConfirmButton: false
+                    }).catch(swal.noop);
                 });
             }
         }
@@ -35230,7 +35241,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/tabuna/GitHub/polet-company/resources/assets/js/components/profile/edit.vue"
+Component.options.__file = "/home/selena/git/polet-company/resources/assets/js/components/profile/edit.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] edit.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -35264,7 +35275,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/tabuna/GitHub/polet-company/resources/assets/js/components/profile/fave.vue"
+Component.options.__file = "/home/selena/git/polet-company/resources/assets/js/components/profile/fave.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] fave.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -35298,7 +35309,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/tabuna/GitHub/polet-company/resources/assets/js/components/profile/password.vue"
+Component.options.__file = "/home/selena/git/polet-company/resources/assets/js/components/profile/password.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] password.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -35332,7 +35343,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/tabuna/GitHub/polet-company/resources/assets/js/components/profile/show.vue"
+Component.options.__file = "/home/selena/git/polet-company/resources/assets/js/components/profile/show.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] show.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -35366,7 +35377,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/tabuna/GitHub/polet-company/resources/assets/js/components/tender/create.vue"
+Component.options.__file = "/home/selena/git/polet-company/resources/assets/js/components/tender/create.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] create.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -35400,7 +35411,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/tabuna/GitHub/polet-company/resources/assets/js/components/tender/list.vue"
+Component.options.__file = "/home/selena/git/polet-company/resources/assets/js/components/tender/list.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] list.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -35434,7 +35445,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/tabuna/GitHub/polet-company/resources/assets/js/components/tender/show.vue"
+Component.options.__file = "/home/selena/git/polet-company/resources/assets/js/components/tender/show.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] show.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -37012,9 +37023,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.submitProfile($event)
       }
     }
-  }, [(_vm.status.success) ? _c('div', {
-    staticClass: "alert alert-success"
-  }, [_vm._v("\n        " + _vm._s(_vm.status.success) + "\n    ")]) : _vm._e(), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "form-group ",
     class: {
       'has-error': _vm.errors.password

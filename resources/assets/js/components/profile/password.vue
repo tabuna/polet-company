@@ -22,16 +22,17 @@
             {{Session::get('success')}}
         </div>
         @endif
-        -->
+
         <div class="alert alert-success" v-if="status.success">
             {{status.success}}
         </div>
+        -->
 
         <div class="page-header">
             <h4>Пароль можно изменить в целях безопасности или сбросить, если вы его забыли. </h4>
         </div>
 
-        <div class="form-group " v-bind:class="{ 'has-error' : errors.name }">
+        <div class="form-group " v-bind:class="{ 'has-error' : errors.password }">
             <label class="col-sm-3 control-label">Новый пароль</label>
             <div class="col-sm-9">
                 <input type="password" name="password" class="form-control form-control-grey" placeholder="******"
@@ -97,11 +98,24 @@
                         .then(response => {
                             //this.user = response.data;
                             this.status.submit = false;
+                            swal({
+                                title: 'Успешно!',
+                                type: 'success',
+                                text: 'Данные были обновлены',
+                                timer: 2500,
+                                showConfirmButton : false,
+                            }).catch(swal.noop)
                         })
                         .catch(error => {
-                            console.log(error);
                             this.errors = error.response.data;
                             this.status.submit = false;
+                            swal({
+                                title: 'Ошибка!',
+                                type: 'error',
+                                text: 'Проверьте вводимые данные',
+                                timer: 2500,
+                                showConfirmButton : false,
+                            }).catch(swal.noop)
                         });
 
 

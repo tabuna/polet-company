@@ -31,7 +31,7 @@
             <h4>Пароль можно изменить в целях безопасности или сбросить, если вы его забыли. </h4>
         </div>
 
-        <div class="form-group " v-bind:class="{ 'has-error' : errors.name }">
+        <div class="form-group " v-bind:class="{ 'has-error' : errors.password }">
             <label class="col-sm-3 control-label">Новый пароль</label>
             <div class="col-sm-9">
                 <input type="password" name="password" class="form-control form-control-grey" placeholder="******"
@@ -86,6 +86,7 @@
                     self: false,
                     success: "",
                 },
+                response: "",
 
                 errors: {},
             }
@@ -102,16 +103,20 @@
                     this.errors = {};
                     console.log(this.errors);
                     this.status.success = null;
-                        axios.put(`/profile/password`, this.user)
-                            .then(response => {
-                                //this.user = response.data;
-                                this.status.submit = false;
-                            })
-                            .catch(error => {
-                                console.log(error);
-                                this.errors = error.response.data;
-                                this.status.submit = false;
-                            });
+                    axios.put(`/profile/password`, this.user)
+                        .then(response => {
+                            if(response.data == "200"){
+                                this.status.success = "Пароль успешно изменён.";
+                            }
+                            this.status.submit = false;
+                        })
+                        .catch(error => {
+                            //console.log(error);
+                            this.errors = error.response.data;
+                            this.status.submit = false;
+                        });
+
+
 
 
                 }

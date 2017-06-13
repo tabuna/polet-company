@@ -95,8 +95,8 @@ class ProfileController extends Controller
         $user->save();
 
         Alert::success('Ваш пароль успешно изменён');
-
-        return back();
+        //return back();
+        return response(200);
     }
 
 }

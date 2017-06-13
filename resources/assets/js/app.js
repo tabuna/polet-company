@@ -27,7 +27,7 @@ if (document.getElementById('app') !== null) {
             {
                 path: '/profile/password',
                 name: 'password',
-                component: require('./components/Example.vue')
+                component: require('./components/profile/password.vue')
             },
             {
                 path: '/profile/fave',

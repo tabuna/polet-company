@@ -18172,9 +18172,8 @@ a.text-black:hover {
   width: 10px;
   height: 10px;
   margin: 2px;
-  border: 2px solid;
+  border: 2px solid #fff;
   border-radius: 100%;
-  border-color: #fff;
 }
 .avatar i.right {
   left: auto;

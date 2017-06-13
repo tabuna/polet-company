@@ -40,12 +40,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
-                        <div class="padder-v m-t-md ">
-                            <h4 class="m-b-n">Запустите свой бизнес по новому</h4>
+                        <div class="padder-v m-t-md">
+                            <h4 class="m-b-n ">Запустите свой бизнес по новому</h4>
                             <h1 class="font-thin m-t-n l-h-1x padder-v text-black">
                                 Наши преимущества станут вашими
                             </h1>
-                            <p class="text-muted">Наша давняя мечта была обойти обычную приборную панель администратора
+                            <p class="text-muted wow fadeInDown" data-wow-offset="200" data-wow-delay="600">Наша давняя мечта была обойти обычную приборную панель администратора
                                 <br> структуру, и двигаться вперед с простой рамкой
                             </p>
                         </div>
@@ -54,8 +54,10 @@
 
 
                 <div class="row">
-                    <div class="col-md-12 text-center animated fadeInDown">
+                    <div class="col-md-12 text-center">
+                        <a href="#registation" data-ride="scroll">
                         <i class="m-t-md m-b-xl icon-arrow-down-circle fa-2x text-muted"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -71,15 +73,15 @@
 
 
                         <ul class="list-group no-bg no-borders pull-in m-t-lg basic-list-blue">
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 «Умные» теги
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 Простая сортировка стоимости товаров и услуг
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow"  data-wow-offset="200"  data-wow-delay="1100">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 Обнаружение ближайших контрагентов, соответсвующих вашим запросам
                             </li>
@@ -107,19 +109,19 @@
 
 
                         <ul class="list-group no-bg no-borders pull-in m-t-lg">
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 Подробная информация о контрагентах
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 Проверенные, честные отзывы
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="1100">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 Точные цены на товары и услуги
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="1300">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 Система мгновенных сообщений с расширенным
                                 функционалом
@@ -127,7 +129,7 @@
                         </ul>
 
 
-                        <p class="text-center m-t-md">
+                        <p class="text-center m-t-md fadeInUp wow" data-wow-offset="200" data-wow-delay="1500">
                             <a href="#" class="btn btn-info btn-rounded">
                                 Посмотерть тендеры
                             </a>
@@ -149,15 +151,15 @@
 
 
                         <ul class="list-group no-bg no-borders pull-in m-t-lg">
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 Мониторинг произведённых транзакций
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 Возможность оплаты через сервис «Яндекс. Касса»
                             </li>
-                            <li class="list-group-item">
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="1100">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 1000 руб/месяц
                             </li>
@@ -179,7 +181,7 @@
 @endsection
 
 @section('footer')
-    <div class="bg-black"
+    <div id="registation" class="bg-black"
          style="background: url(/img/footer.jpg); background-size: cover">
         <div class="bg-black-opacity">
             <div class="container">
@@ -187,13 +189,13 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-xs-height col-middle">
                             <div class="text-center">
-                                <h1 class="text-white col-sm-12 font-thin ">Изготовленный с деталями для
+                                <h2 class="text-white col-sm-12 font-thin ">Изготовленный с деталями для
                                     большого старта! Это большое начало для всех.
-                                </h1>
-                                <button type="button" class="btn btn-lg btn-info btn-rounded m-t-md">
+                                </h2>
+                                <button type="button" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="600">
                                     Попробывать бесплатно
                                 </button>
-                                <p class="text-muted m-t-md">
+                                <p class="text-muted m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="900">
                                     Бесплатный доступ исключительные на площадке,<br>
                                     для ознакомления, не предоставляет общие услуги
                                 </p>

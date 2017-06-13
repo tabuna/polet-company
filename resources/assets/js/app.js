@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-
+require('./modules/scroll');
 require('./modules/affix');
 require('./modules/wizard');
 require('./modules/cache');

@@ -30,6 +30,7 @@
     "sweetalert2": "^6.6.5",
     "typed.js": "^1.1.1",
     "vue-infinite-scroll": "^2.0.1",
-    "vue-router": "^2.5.3"
+    "vue-router": "^2.5.3",
+    "wow.js": "^1.2.2"
   }
 }

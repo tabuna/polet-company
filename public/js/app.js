@@ -2288,6 +2288,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 self: false,
                 success: ""
             },
+            response: "",
 
             errors: {}
         };
@@ -2302,10 +2303,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(this.errors);
                 this.status.success = null;
                 axios.put('/profile/password', this.user).then(function (response) {
-                    //this.user = response.data;
+                    if (response.data == "200") {
+                        _this.status.success = "Пароль успешно изменён.";
+                    }
                     _this.status.submit = false;
                 }).catch(function (error) {
-                    console.log(error);
+                    //console.log(error);
                     _this.errors = error.response.data;
                     _this.status.submit = false;
                 });
@@ -37014,7 +37017,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n        " + _vm._s(_vm.status.success) + "\n    ")]) : _vm._e(), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "form-group ",
     class: {
-      'has-error': _vm.errors.name
+      'has-error': _vm.errors.password
     }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"

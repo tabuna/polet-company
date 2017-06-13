@@ -35,4 +35,12 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'yandex' => [
+        'kassa' => [
+            'shopId' => '50061',
+            'scid' => '34140',
+            'ShopPassword' => 'FalconEditing1',
+        ],
+    ],
+
 ];

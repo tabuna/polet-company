@@ -227,10 +227,28 @@
                         .then(response => {
                             //this.user = response.data;
                             this.status.submit = false;
+
+                            swal({
+                                title: 'Успешно!',
+                                type: 'success',
+                                text: 'Данные были обновлены',
+                                timer: 2500,
+                                showConfirmButton : false,
+                            }).catch(swal.noop)
+
                         })
                         .catch(error => {
                             this.errors = error.response.data;
                             this.status.submit = false;
+
+                            swal({
+                                title: 'Ошибка!',
+                                type: 'error',
+                                text: 'Проверьте вводимые данные',
+                                timer: 2500,
+                                showConfirmButton : false,
+                            }).catch(swal.noop)
+
                         });
                 }
             }

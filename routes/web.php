@@ -14,13 +14,24 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+
+/*
+|--------------------------------------------------------------------------
+| Yandex Kassa Payments
+|--------------------------------------------------------------------------
+|
+*/
+Route::group(['namespace' => 'Payments', 'prefix' => 'payments'], function ($router) {
+    $router->resource('order', 'AvisoController');
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Website display for all users and guest
 |--------------------------------------------------------------------------
 |
 */
-
 Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($router) {
     $router->get('/', 'WelcomeController@index')->name('index');
     $router->get('/p/{item}', 'PageController@show')->name('page');
@@ -51,7 +62,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Pro
 });
 
 
-
+/*
+|--------------------------------------------------------------------------
+| Tender
+|--------------------------------------------------------------------------
+|
+*/
 Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tender'], function ($router) {
 
     $router->post('/', 'TenderController@index')->name('tender.list');
@@ -59,8 +75,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tend
 });
 
 
-
+/*
+|--------------------------------------------------------------------------
+| Vue App
+|--------------------------------------------------------------------------
+|
+*/
 Route::get('/{vue_capture?}', function () {
     return view('home');
 })->where('vue_capture', '[\/\w\.-]*')
-  ->where('vue_capture','^(?!dashboard).*$');
+    ->where('vue_capture', '^(?!dashboard).*$');

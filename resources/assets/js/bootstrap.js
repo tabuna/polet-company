@@ -47,6 +47,8 @@ require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
 require('../../../node_modules/typed.js/dist/typed.min.js');
 require('../../../node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min');
 
+window.swal = require('sweetalert2');
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

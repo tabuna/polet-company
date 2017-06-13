@@ -52,11 +52,6 @@
             </div>
         </div>
 
-
-        <!--
-        {!! csrf_field() !!}
-        {!! method_field('PUT') !!}
-        -->
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9 text-right">
                 <button type="submit" class="btn btn-info btn-rounded">
@@ -89,10 +84,6 @@
 
                 errors: {},
             }
-        },
-        mounted() {
-            //moduleLoad();
-
         }, methods: {
 
             submitProfile: function () {
@@ -102,16 +93,16 @@
                     this.errors = {};
                     console.log(this.errors);
                     this.status.success = null;
-                        axios.put(`/profile/password`, this.user)
-                            .then(response => {
-                                //this.user = response.data;
-                                this.status.submit = false;
-                            })
-                            .catch(error => {
-                                console.log(error);
-                                this.errors = error.response.data;
-                                this.status.submit = false;
-                            });
+                    axios.put(`/profile/password`, this.user)
+                        .then(response => {
+                            //this.user = response.data;
+                            this.status.submit = false;
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            this.errors = error.response.data;
+                            this.status.submit = false;
+                        });
 
 
                 }

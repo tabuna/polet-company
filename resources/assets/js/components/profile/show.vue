@@ -44,7 +44,7 @@
 
         <div class="row m-t-md m-b-md padder-v">
             <div class="col-md-12">
-                <p><i class="icon-globe"></i> | {{user.address}}</p>
+                <p class="padder text-muted small"><i class="icon-direction text-info m-r-xs"></i> | {{user.address}}</p>
                 <div class="google-maps">
                     <a v-on:click="getDirections">
                         <img v-bind:src="

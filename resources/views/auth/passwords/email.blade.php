@@ -12,7 +12,7 @@
                             <p class="h3 padder-v text-center m-b-md text-uppercase">Малый <span class="text-black">тендер</span>
                             </p>
                             <img src="/img/image-02.png" class="img-responsive center">
-                            <p class="w-md text-center center padder-v">Пройдите простую <a href="/register/">регистрацию</a>,
+                            <p class="w-md text-center center padder-v">Пройдите простую <a class="b-b" href="/register/">регистрацию</a>,
                                 что бы начать пользоваться системой</p>
                         </div>
                     </div>

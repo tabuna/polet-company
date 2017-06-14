@@ -50,7 +50,7 @@ Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($rou
 Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Profile'], function ($router) {
 
     $router->post('/{user?}', 'ProfileController@show')->where('user', '[0-9]+')->name('profile');
-
+    $router->get('/tags/{tag?}', 'TagController@show')->name('profile.tags');
 
     $router->post('/fave', 'FavoriteController@index')->name('profile.fave');
     $router->put('/fave/{user}', 'FavoriteController@update')->name('profile.fave.add');
@@ -97,5 +97,6 @@ Route::group(['middleware' => 'auth'], function ($router) {
     $router->get('/{vue_capture?}', function () {
         return view('home');
     })->where('vue_capture', '[\/\w\.-]*')
-        ->where('vue_capture', '^(?!dashboard).*$');
+        ->where('vue_capture', '^(?!dashboard).*$')
+        ->where('vue_capture', '^(?!api).*$');
 });

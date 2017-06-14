@@ -5,6 +5,7 @@ namespace App\Core\Models;
 use Cartalyst\Tags\TaggableTrait;
 use Conner\Likeable\LikeableTrait;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\ResetPasswordNotification;
 use Orchid\Core\Models\User as UserOrchid;
 use willvincent\Rateable\Rateable;
 
@@ -34,6 +35,19 @@ class User extends UserOrchid
         'website',
         'avatar'
     ];
+
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string $token
+     *
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
+    }
 
     /**
      * @return mixed|string

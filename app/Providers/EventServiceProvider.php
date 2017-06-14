@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Core\Models\User;
+use App\Core\Observers\UserObserver;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -27,5 +29,7 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         //
+
+        User::observe(UserObserver::class);
     }
 }

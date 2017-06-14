@@ -37155,7 +37155,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }]
   }, [_vm._l((_vm.favorites.data), function(fave) {
     return _c('div', {
-      staticClass: "m-b-lg"
+      staticClass: "m-b-lg wow fadeInUp",
+      attrs: {
+        "data-wow-offset": "100",
+        "data-wow-delay": "150"
+      }
     }, [_c('div', {
       staticClass: "row m-b"
     }, [_c('div', {

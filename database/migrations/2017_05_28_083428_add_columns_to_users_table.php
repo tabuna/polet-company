@@ -17,7 +17,7 @@ class AddColumnsToUsersTable extends Migration
             //
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->integer('inn')->unsigned()->nullable();
+            $table->string('inn')->nullable();
             $table->string('agent_name')->nullable();
             $table->string('ogrn')->nullable();
             $table->string('website')->nullable();

@@ -11,8 +11,7 @@
                         <p class="h3 padder-v text-center m-b-md text-uppercase">Малый <span
                                     class="text-black">тендер</span></p>
                         <img src="/img/image-02.png" class="img-responsive center">
-                        <p class="w-md text-center center padder-v">Пройдите простую регистрацию, что бы начать
-                            пользоваться системой</p>
+                        <p class="w-md text-center center padder-v">Уже зарегистрированы? <a href="/login/">Авторизуйтесь</a>, чтобы использовать систему</p>
                     </div>
                 </div>
                 <div class="col-md-6 no-padder bg-white">

@@ -11,7 +11,7 @@
                             <p class="h3 padder-v text-center m-b-md text-uppercase">Малый <span class="text-black">тендер</span>
                             </p>
                             <img src="/img/image-02.png" class="img-responsive center">
-                            <p class="w-md text-center center padder-v">Пройдите простую <a href="#">регистрацию</a>,
+                            <p class="w-md text-center center padder-v">Пройдите простую <a href="/register/">регистрацию</a>,
                                 что бы начать пользоваться системой</p>
                         </div>
                     </div>
@@ -76,12 +76,6 @@
                                 </div>
                             </form>
                         </div>
-
-
-                        <div class="padder-lg m-b-md">
-                            <p class="m-t-lg">В первые у нас?</p>
-                        </div>
-
 
                     </div>
                 </div>

@@ -63,7 +63,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-6 text-right">
-                                        <a href="{{ url('/dashboard/password/reset') }}"
+                                        <a href="{{ url('/password/reset') }}"
                                            class="text-primary small">{{trans('dashboard::auth/account.forgot_password')}}</a>
                                     </div>
                                 </div>

@@ -11,7 +11,7 @@
                         <p class="h3 padder-v text-center m-b-md text-uppercase">Малый <span
                                     class="text-black">тендер</span></p>
                         <img src="/img/image-02.png" class="img-responsive center">
-                        <p class="w-md text-center center padder-v">Уже зарегистрированы? <a href="/login/">Авторизуйтесь</a>, чтобы использовать систему</p>
+                        <p class="w-md text-center center padder-v">Уже зарегистрированы? <a class="b-b" href="/login/">Авторизуйтесь</a>, чтобы использовать систему</p>
                     </div>
                 </div>
                 <div class="col-md-6 no-padder bg-white">
@@ -105,7 +105,7 @@
                                 <div class="form-group">
 
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="password-confirm" class="control-label text-left padder-v-5">Повторите
                                             пароль</label>
                                         <input id="password-confirm" type="password" class="form-control"

@@ -91,3 +91,10 @@ wow.init();
 window.moduleLoad = function () {
     $('input[maxlength]').maxlength();
 };
+
+
+require('select2');
+$(() => {
+    $('.select2-enable').select2();
+});
+

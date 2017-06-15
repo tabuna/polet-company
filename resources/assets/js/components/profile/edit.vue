@@ -143,9 +143,11 @@
         <div class="form-group" v-bind:class="{ 'has-error' : errors.address }">
             <label class="col-sm-3 control-label">Теги компании</label>
             <div class="col-sm-9">
-                <input class="form-control form-control-grey no-resize" name="tags" data-role="tagsinput"
-                       v-model="user.address"
-                       placeholder="Ключевые слова компании">
+
+                <select class="browser-default" v-select2company="selected" multiple="multiple">
+                    <option v-for="option in options" :value="option">{{ option }}</option>
+                </select>
+
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>
@@ -169,6 +171,9 @@
     export default {
         data: function () {
             return {
+                selected: null,
+                options: ['foo','bar','baz'],
+
                 user: {
                     name: '',
                     email: '',
@@ -189,7 +194,7 @@
                 },
                 errors: {},
 
-                options: {
+                optionssss: {
                     select : {
                         theme: "classic",
                         templateResult: function formatState(state) {
@@ -228,28 +233,6 @@
                     this.errors.push(e)
                 });
 
-
-            var vm = this;
-            $('.select2-tags')
-                .select2(this.options.select)
-                .val(this.user.tags)
-                .trigger('change')
-                .on('change', function () {
-                    vm.$emit('input', this.user.tags)
-                })
-
-
-        },
-        watch: {
-            user: function (value) {
-                $(this.$el).val(value).trigger('change');
-            },
-            options: function (options) {
-                $(this.$el).select2(this.options.select)
-            }
-        },
-        destroyed: function () {
-            $('.select2-tags').off().select2('destroy')
         },
         methods: {
             onAvatarChange(e) {

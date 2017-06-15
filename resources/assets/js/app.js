@@ -14,6 +14,9 @@ Vue.use(infiniteScroll);
 Vue.use(VueRouter);
 
 
+require('./directive/select2company');
+
+
 if (document.getElementById('app') !== null) {
 
     const router = new VueRouter({

@@ -32,7 +32,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return response()->json(Auth::user());
+        return response()->json(User::where('id',Auth::id())->with('tags')->first());
     }
 
     /**

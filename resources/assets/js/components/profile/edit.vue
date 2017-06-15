@@ -144,8 +144,8 @@
             <label class="col-sm-3 control-label">Теги компании</label>
             <div class="col-sm-9">
 
-                <select class="browser-default" v-select2company="selected" multiple="multiple">
-                    <option v-for="option in options" :value="option">{{ option }}</option>
+                <select class="browser-default" v-selectcompanytag="user.tags" multiple="multiple">
+                    <option v-for="tag in user.tags" :value="tag.name">{{ tag.name }}</option>
                 </select>
 
             </div>
@@ -171,9 +171,6 @@
     export default {
         data: function () {
             return {
-                selected: null,
-                options: ['foo','bar','baz'],
-
                 user: {
                     name: '',
                     email: '',
@@ -194,31 +191,6 @@
                 },
                 errors: {},
 
-                optionssss: {
-                    select : {
-                        theme: "classic",
-                        templateResult: function formatState(state) {
-                            if (!state.id || !state.count) {
-                                return state.text;
-                            }
-                            return $('<span>' + state.text + '</span>' + ' <span class="pull-right badge bg-info">' + state.count + '</span>');
-                        },
-                        width: '100%',
-                        tags: true,
-                        cache: true,
-                        ajax: {
-                            url: function (params) {
-                                return '/dashboard/tools/tags/' + params.term;
-                            },
-                            delay: 250,
-                            processResults: function (data, page) {
-                                return {
-                                    results: data
-                                };
-                            }
-                        }
-                    }
-                }
             }
         },
         mounted() {

@@ -12250,9 +12250,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            selected: null,
-            options: ['foo', 'bar', 'baz'],
-
             user: {
                 name: '',
                 email: '',
@@ -12271,33 +12268,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 submit: false,
                 self: false
             },
-            errors: {},
+            errors: {}
 
-            optionssss: {
-                select: {
-                    theme: "classic",
-                    templateResult: function formatState(state) {
-                        if (!state.id || !state.count) {
-                            return state.text;
-                        }
-                        return $('<span>' + state.text + '</span>' + ' <span class="pull-right badge bg-info">' + state.count + '</span>');
-                    },
-                    width: '100%',
-                    tags: true,
-                    cache: true,
-                    ajax: {
-                        url: function url(params) {
-                            return '/dashboard/tools/tags/' + params.term;
-                        },
-                        delay: 250,
-                        processResults: function processResults(data, page) {
-                            return {
-                                results: data
-                            };
-                        }
-                    }
-                }
-            }
         };
     },
     mounted: function mounted() {
@@ -13534,7 +13506,7 @@ $(function () {
 /* 41 */
 /***/ (function(module, exports) {
 
-Vue.directive('select2company', {
+Vue.directive('selectcompanytag', {
     inserted: function inserted(el, binding, vnode) {
         var key = binding.expression;
 
@@ -13561,6 +13533,11 @@ Vue.directive('select2company', {
                     return {
                         results: data
                     };
+                }
+            },
+            "language": {
+                "noResults": function noResults() {
+                    return "Указанного тега нет, но вы можете быть первым кто его использует!";
                 }
             }
         });
@@ -42263,21 +42240,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-sm-9"
   }, [_c('select', {
     directives: [{
-      name: "select2company",
-      rawName: "v-select2company",
-      value: (_vm.selected),
-      expression: "selected"
+      name: "selectcompanytag",
+      rawName: "v-selectcompanytag",
+      value: (_vm.user.tags),
+      expression: "user.tags"
     }],
     staticClass: "browser-default",
     attrs: {
       "multiple": "multiple"
     }
-  }, _vm._l((_vm.options), function(option) {
+  }, _vm._l((_vm.user.tags), function(tag) {
     return _c('option', {
       domProps: {
-        "value": option
+        "value": tag.name
       }
-    }, [_vm._v(_vm._s(option))])
+    }, [_vm._v(_vm._s(tag.name))])
   }))])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {

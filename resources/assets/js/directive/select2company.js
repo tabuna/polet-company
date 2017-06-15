@@ -1,4 +1,4 @@
-Vue.directive('select2company', {
+Vue.directive('selectcompanytag', {
     inserted: function (el, binding, vnode) {
         var key = binding.expression;
 
@@ -24,7 +24,12 @@ Vue.directive('select2company', {
                         results: data
                     };
                 }
-            }
+            },
+            "language": {
+                "noResults": function(){
+                    return "Указанного тега нет, но вы можете быть первым кто его использует!";
+                }
+            },
         });
         select.on('change', function () {
             Vue.set(vnode.context, key, select.val());

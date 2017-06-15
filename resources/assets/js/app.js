@@ -77,6 +77,8 @@ if (document.getElementById('app') !== null) {
         ]
     });
 
+    //router.replace('/profile');
+
     const app = new Vue({
         router,
         data: {

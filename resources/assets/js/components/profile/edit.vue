@@ -143,11 +143,9 @@
         <div class="form-group" v-bind:class="{ 'has-error' : errors.address }">
             <label class="col-sm-3 control-label">Теги компании</label>
             <div class="col-sm-9">
-
-                <select class="browser-default" v-selectcompanytag="user.tags" multiple="multiple">
+                <select class="form-control" v-model="user.tags" v-selectcompanytag="user.tags" multiple="multiple">
                     <option v-for="tag in user.tags" :value="tag.name">{{ tag.name }}</option>
                 </select>
-
             </div>
         </div>
         <div class="line line-dashed b-b line-lg"></div>

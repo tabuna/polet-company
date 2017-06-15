@@ -11189,6 +11189,8 @@ if (document.getElementById('app') !== null) {
         }]
     });
 
+    //router.replace('/profile');
+
     var app = new Vue({
         router: router,
         data: {
@@ -12077,8 +12079,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -42240,14 +42240,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-sm-9"
   }, [_c('select', {
     directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user.tags),
+      expression: "user.tags"
+    }, {
       name: "selectcompanytag",
       rawName: "v-selectcompanytag",
       value: (_vm.user.tags),
       expression: "user.tags"
     }],
-    staticClass: "browser-default",
+    staticClass: "form-control",
     attrs: {
       "multiple": "multiple"
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.user.tags = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
     }
   }, _vm._l((_vm.user.tags), function(tag) {
     return _c('option', {

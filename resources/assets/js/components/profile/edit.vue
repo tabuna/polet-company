@@ -180,6 +180,7 @@
                     about: '',
                     avatar: '',
                     agent_name: '',
+                    tags: '',
                 },
                 status: {
                     load: false,
@@ -187,6 +188,32 @@
                     self: false,
                 },
                 errors: {},
+
+                options: {
+                    select : {
+                        theme: "classic",
+                        templateResult: function formatState(state) {
+                            if (!state.id || !state.count) {
+                                return state.text;
+                            }
+                            return $('<span>' + state.text + '</span>' + ' <span class="pull-right badge bg-info">' + state.count + '</span>');
+                        },
+                        width: '100%',
+                        tags: true,
+                        cache: true,
+                        ajax: {
+                            url: function (params) {
+                                return '/dashboard/tools/tags/' + params.term;
+                            },
+                            delay: 250,
+                            processResults: function (data, page) {
+                                return {
+                                    results: data
+                                };
+                            }
+                        }
+                    }
+                }
             }
         },
         mounted() {
@@ -200,7 +227,31 @@
                 .catch(e => {
                     this.errors.push(e)
                 });
-        }, methods: {
+
+
+            var vm = this;
+            $('.select2-tags')
+                .select2(this.options.select)
+                .val(this.user.tags)
+                .trigger('change')
+                .on('change', function () {
+                    vm.$emit('input', this.user.tags)
+                })
+
+
+        },
+        watch: {
+            user: function (value) {
+                $(this.$el).val(value).trigger('change');
+            },
+            options: function (options) {
+                $(this.$el).select2(this.options.select)
+            }
+        },
+        destroyed: function () {
+            $('.select2-tags').off().select2('destroy')
+        },
+        methods: {
             onAvatarChange(e) {
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
@@ -233,7 +284,7 @@
                                 type: 'success',
                                 text: 'Данные были обновлены',
                                 timer: 2500,
-                                showConfirmButton : false,
+                                showConfirmButton: false,
                             }).catch(swal.noop)
 
                         })
@@ -246,7 +297,7 @@
                                 type: 'error',
                                 text: 'Проверьте вводимые данные',
                                 timer: 2500,
-                                showConfirmButton : false,
+                                showConfirmButton: false,
                             }).catch(swal.noop)
 
                         });

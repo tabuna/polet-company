@@ -45,8 +45,7 @@ window.meta_user = document.head.querySelector('meta[name="auth"]').content;
 require('../../../node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min');
 require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
 require('../../../node_modules/typed.js/dist/typed.min.js');
-require('../../../node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min');
-require('../../../node_modules/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min');
+
 
 
 
@@ -98,4 +97,3 @@ require('select2');
 $(() => {
     $('.select2-enable').select2();
 });
-

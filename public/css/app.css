@@ -13672,52 +13672,6 @@ button.close {
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp;
 }
-.bootstrap-tagsinput {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  display: inline-block;
-  padding: 4px 6px;
-  margin-bottom: 10px;
-  color: #555;
-  vertical-align: middle;
-  border-radius: 4px;
-  max-width: 100%;
-  line-height: 22px;
-  cursor: text;
-}
-.bootstrap-tagsinput input {
-  border: none;
-  box-shadow: none;
-  outline: none;
-  background-color: transparent;
-  padding: 0;
-  margin: 0;
-  width: auto !important;
-  max-width: inherit;
-}
-.bootstrap-tagsinput input:focus {
-  border: none;
-  box-shadow: none;
-}
-.bootstrap-tagsinput .tag {
-  margin-right: 2px;
-  color: white;
-}
-.bootstrap-tagsinput .tag [data-role="remove"] {
-  margin-left: 8px;
-  cursor: pointer;
-}
-.bootstrap-tagsinput .tag [data-role="remove"]:after {
-  content: "x";
-  padding: 0px 2px;
-}
-.bootstrap-tagsinput .tag [data-role="remove"]:hover {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-.bootstrap-tagsinput .tag [data-role="remove"]:hover:active {
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
 body.swal2-shown {
   overflow-y: hidden;
 }
@@ -15079,153 +15033,96 @@ body.swal2-iosfix {
 .select2-container--classic.select2-container--open .select2-dropdown {
   border-color: #5897fb;
 }
-/* this CSS is not part of the widget, it is here just as an example of the demo page styling.... Don't copy this one, roll your own. One
- * of the key things about the widget is that it allows you to do your own styling!
- */
-#editor,
-#first-editor,
-#second-editor {
-  max-height: 250px;
-  height: 250px;
-  background-color: white;
-  border-collapse: separate;
-  border: 1px solid #cccccc;
-  padding: 4px;
-  box-sizing: content-box;
-  box-shadow: rgba(0, 0, 0, 0.0745098) 0 1px 1px 0 inset;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
-  overflow: scroll;
-  outline: none;
+.editr {
+  border: 1px solid #e4e4e4;
+  width: 100%;
 }
-#editor:focus {
-  border-color: rgba(82, 168, 236, 0.8);
-  outline: 0;
-  outline: thin dotted \9;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+.editr--toolbar {
+  background: #f6f6f6;
+  border-bottom: 1px solid #e4e4e4;
+  position: relative;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  height: 32px;
 }
-.voiceBtn {
-  width: 20px;
-  color: transparent;
-  background-color: transparent;
-  transform: scale(2, 2);
-  -webkit-transform: scale(2, 2);
-  -moz-transform: scale(2, 2);
-  border: transparent;
+.editr--toolbar a {
+  display: inline-block;
+  width: 8vw;
+  max-width: 32px;
+  height: 32px;
+  color: #333;
+  fill: #333;
   cursor: pointer;
-  box-shadow: none;
-  -webkit-box-shadow: none;
+  text-align: center;
+  line-height: 1;
 }
-div[data-role="editor-toolbar"] {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.editr--toolbar a:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
-.dropdown-menu a {
-  cursor: pointer;
+.editr--toolbar a:active {
+  background: rgba(0, 0, 0, 0.2);
 }
-.btn-toolbar {
-  padding: 10px 0px 10px 0px;
+.editr--toolbar a svg {
+  width: 16px;
+  height: 16px;
+  margin: 8px auto;
 }
-[contentEditable=true]:empty:not(:focus):before {
-  content: attr(data-placeholder);
+.editr--toolbar a svg path {
+  fill: inherit;
 }
-.placeholderText {
-  color: #777;
+.editr--toolbar a.vw-btn-separator {
+  width: 1px;
+  margin: 0 10px;
 }
-.imgUpload {
-  width: 0;
-  height: 0;
+.editr--toolbar a.vw-btn-separator:hover {
+  background: initial;
+  cursor: default;
+}
+.editr--toolbar a.vw-btn-separator i {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  height: 100%;
   position: absolute;
+  width: 1px;
 }
-/*
-	Font Sizes 
-	fs represents the font-size attribute; therefore,
-	fs-five would be the equivalent to font-size: 5;	
-*/
-.fs-One {
-  font-size: x-small;
-}
-.fs-Three {
-  font-size: medium;
-}
-.fs-Five {
-  font-size: x-large;
-}
-/* Font Color */
-/* Black */
-a[data-edit="foreColor #000000"]::before {
-  content: "\f0c8  ";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  color: #000000;
-  font-size: 18px;
-  top: 10px;
+.editr--toolbar .dashboard {
+  width: 100%;
+  position: absolute;
+  top: 32px;
   left: 0;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #f6f6f6;
 }
-/* Blue */
-a[data-edit="foreColor #0000FF"]::before,
-a[data-edit="backColor #00FFFF"]::before {
-  content: "\f0c8  ";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  color: #0000FF;
-  font-size: 18px;
-  top: 10px;
-  left: 0;
+.editr--content {
+  min-height: 150px;
+  padding: 0.75rem 0.5rem;
+  line-height: 1.33;
+  font-family: inherit;
+  color: inherit;
 }
-/* Green */
-a[data-edit="foreColor #30AD23"]::before,
-a[data-edit="backColor #00FF00"]::before {
-  content: "\f0c8  ";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  color: #30AD23;
-  font-size: 18px;
-  top: 10px;
-  left: 0;
+.editr--content[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  color: rgba(0, 0, 0, 0.3);
+  display: block;
+  /* For Firefox */
 }
-/* Orange */
-a[data-edit="foreColor #FF7F00"]::before,
-a[data-edit="backColor #FF7F00"]::before {
-  content: "\f0c8  ";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  color: #FF7F00;
-  font-size: 18px;
-  top: 10px;
-  left: 0;
+.editr--content img {
+  max-width: 100%;
 }
-/* Red */
-a[data-edit="foreColor #FF0000"]::before,
-a[data-edit="backColor #FF0000"]::before {
-  content: "\f0c8  ";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  color: #FF0000;
-  font-size: 18px;
-  top: 10px;
-  left: 0;
+.editr--content table {
+  width: 100%;
 }
-/* Yellow */
-a[data-edit="foreColor #FFFF00"]::before,
-a[data-edit="backColor #FFFF00"]::before {
-  content: "\f0c8  ";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  color: #FFFF00;
-  font-size: 18px;
-  top: 10px;
-  left: 0;
+.editr--content table th {
+  text-align: left;
+}
+.editr--content:focus {
+  outline: 0;
+}
+.editr--content ul li,
+.editr--content ol li {
+  list-style-position: inside;
 }
 /* 
 

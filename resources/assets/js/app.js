@@ -5,11 +5,20 @@ require('./modules/affix');
 require('./modules/wizard');
 require('./modules/cache');
 require('./modules/typed');
-require('./custom');
+
 
 window.Vue = require('vue');
 import VueRouter from "vue-router";
 import infiniteScroll from 'vue-infinite-scroll'
+import wysiwyg from "vue-wysiwyg";
+
+Vue.use(wysiwyg, {
+    hideModules: {
+        "hyperlink": true,
+        "image": true,
+        "table": true,
+    },
+});
 
 Vue.use(infiniteScroll);
 Vue.use(VueRouter);
@@ -46,7 +55,7 @@ if (document.getElementById('app') !== null) {
             {
                 path: '/payments',
                 name: 'payments',
-                component: require('./components/Example.vue')
+                component: require('./components/payment/list.vue')
             },
             {
                 path: '/tender',
@@ -77,8 +86,6 @@ if (document.getElementById('app') !== null) {
             },
         ]
     });
-
-    //router.replace('/profile');
 
     const app = new Vue({
         router,

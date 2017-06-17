@@ -21,6 +21,10 @@
                         </router-link>
                     </h3>
 
+                    <p class="small">
+                        Мы разрабатываем сервисы, которые экономят время и деньги более чем миллиону компаний и бизнесменов по всей стране.
+                    </p>
+
                     <div class="tags">
                         <a href="" class="label">Разработка</a>
                         <a href="" class="label">Интернет</a>
@@ -45,9 +49,17 @@
         </div>
 
         <div class="jumbotron text-center bg-white not-found" v-if="favorites.data.length === 0">
-            <div>
-                <h3 class="font-thin">Добавьте компанию в избранное и она будет отображаться тут</h3>
-            </div>
+
+            <p class="h3 m-b-xl inline b b-dark rounded wrapper-lg">
+                <i class="fa-3x w-1x icon-people"></i>
+            </p>
+
+            <h4 class="m-t-none">Список избранных компаний пуст</h4>
+
+            <p class="text-muted m-t-lg">
+                Добавьте компанию в избранное и она будет отображаться тут
+            </p>
+
         </div>
 
 

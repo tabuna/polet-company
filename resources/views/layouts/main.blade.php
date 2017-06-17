@@ -47,11 +47,10 @@
                             <span>Избранное</span>
                         </router-link>
 
-
-                        <a href="#ru/profile" class="list-group-item">
+                        <router-link :to="{ name: 'payments'}" class="list-group-item">
                             <i class="icon-credit-card m-r-xs"></i>
                             <span>Платежи</span>
-                        </a>
+                        </router-link>
 
                         <a href="#ru/profile/password" class="list-group-item">
                             <i class="icon-chart m-r-xs"></i>

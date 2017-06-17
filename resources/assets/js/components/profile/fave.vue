@@ -1,5 +1,8 @@
 <template>
 
+    <div class="bg-white b box-shadow">
+        <div class="wrapper-md">
+
     <div v-show="status.load">
 
         <div class="m-b-lg" v-for="fave in favorites.data">
@@ -50,6 +53,9 @@
 
     </div>
 
+
+        </div>
+    </div>
 </template>
 
 

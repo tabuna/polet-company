@@ -1,6 +1,7 @@
 <template>
 
-
+    <div class="bg-white b box-shadow">
+        <div class="wrapper-md">
     <form class="form-horizontal" v-on:submit.prevent="submitProfile" method="POST">
 
 
@@ -63,6 +64,9 @@
         </div>
 
     </form>
+
+        </div>
+    </div>
 
 </template>
 

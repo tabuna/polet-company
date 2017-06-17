@@ -60,13 +60,17 @@ class ProfileController extends Controller
      */
     public function update(AccountRequest $account)
     {
-        $img = Image::make($account->get('avatar'));
-        $img->resize(300, null, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-        $account->replace([
-           'avatar' => (string) $img->encode('data-url',75),
-        ]);
+        if($account->has('newAvatar')) {
+            $img = Image::make($account->get('newAvatar'));
+            $img->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $account->replace([
+                'avatar' => (string) $img->encode('data-url', 75),
+            ]);
+        }
+
 
         Auth::user()->fill($account->all())->save();
 

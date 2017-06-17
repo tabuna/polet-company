@@ -6,13 +6,7 @@
 
 
             <div class="col-md-8">
-
-                <div class="bg-white b box-shadow">
-                    <div class="wrapper-md">
-
                         @yield('main')
-                    </div>
-                </div>
             </div>
 
 

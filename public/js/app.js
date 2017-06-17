@@ -12246,12 +12246,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             user: {
                 name: '',
+                agent_name: '',
                 email: '',
                 phone: '',
                 address: '',
@@ -12260,8 +12278,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 website: '',
                 about: '',
                 avatar: '',
-                agent_name: '',
-                tags: ''
+                tags: '',
+                newAvatar: ''
             },
             status: {
                 load: false,
@@ -12297,7 +12315,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var vm = this;
 
             reader.onload = function (e) {
-                vm.user.avatar = e.target.result;
+                vm.user.newAvatar = e.target.result;
             };
             reader.readAsDataURL(file);
         },
@@ -12343,6 +12361,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -12542,6 +12566,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -12602,6 +12630,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41303,7 +41361,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-show",
       value: (_vm.status.load),
       expression: "status.load"
-    }]
+    }],
+    staticClass: "bg-white b box-shadow"
+  }, [(!_vm.status.self) ? _c('div', {
+    staticClass: "alert alert-warning fade in no-radius b",
+    attrs: {
+      "role": "alert"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('h4', [_vm._v("Завершенность профиля!")]), _vm._v(" "), _c('p', [_vm._v("\n            Чем больше данных о себе сообщите, тем лучше. Максимально полно заполненный профиль дает больше шансов на то, что вас привлекут к проектам.\n        ")]), _vm._v(" "), _c('p', {
+    staticClass: "m-t-sm"
+  }, [_c('button', {
+    staticClass: "btn btn-sm btn-link btn-rounded",
+    attrs: {
+      "type": "button"
+    }
+  }, [_vm._v("Напомните позже")]), _vm._v(" "), _c('router-link', {
+    staticClass: "btn btn-sm btn-default btn-rounded",
+    attrs: {
+      "to": {
+        name: 'edit'
+      }
+    }
+  }, [_vm._v("Заполнить профиль")])], 1)]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "wrapper-md"
   }, [_c('div', {
     staticClass: "row m-b-md padder-b b-b"
   }, [_c('div', {
@@ -41326,7 +41406,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v("| " + _vm._s(_vm.user.email) + " "), _c('br'), _vm._v(" "), (_vm.user.website) ? _c('a', {
     staticClass: "text-ellipsis",
     attrs: {
-      "href": _vm.user.website
+      "href": _vm.user.website,
+      "taget": "_blank"
     }
   }, [_c('i', {
     staticClass: "icon-globe text-info m-r-xs"
@@ -41347,15 +41428,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'text-white': _vm.user.fave
     }
-  })]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('p', {
+  })]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('p', {
     staticClass: "small text-info text-xs"
-  }, [_vm._v("Рейтинг компании")])]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Рейтинг компании")])]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-12"
+  }, [_vm._v("\n\n                    Дата основания\t15 августа 2008\n                    Локация\tРоссия\n                    Численность\t51–100 человек\n                    Дата регистрации\t12 мая 2010\n\n                ")])]), _vm._v(" "), _c('div', {
     staticClass: "row m-t-md m-b-md padder-v b-b"
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('p', {
     staticClass: "text-justify"
-  }, [_vm._v("\n                " + _vm._s(_vm.user.about) + "\n            ")])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.user.about) + "\n                    ")])])]), _vm._v(" "), _c('div', {
     staticClass: "row m-t-md m-b-md padder-v"
   }, [_c('div', {
     staticClass: "col-md-12"
@@ -41363,7 +41446,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "padder text-muted small"
   }, [_c('i', {
     staticClass: "icon-direction text-info m-r-xs"
-  }), _vm._v(" | " + _vm._s(_vm.user.address))]), _vm._v(" "), _c('div', {
+  }), _vm._v("\n                        | " + _vm._s(_vm.user.address))]), _vm._v(" "), _c('div', {
     staticClass: "google-maps"
   }, [_c('a', {
     on: {
@@ -41413,8 +41496,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.user.address = $event.target.value
       }
     }
-  })])])])])])
+  })])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "alert",
+      "aria-label": "Close"
+    }
+  }, [_c('span', {
+    staticClass: "text-lg",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     staticClass: "btn btn-icon btn-rounded b b-info b-2x",
     attrs: {
@@ -41853,7 +41950,11 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.status.load) ? _c('form', {
+  return (_vm.status.load) ? _c('div', {
+    staticClass: "bg-white b box-shadow"
+  }, [_c('div', {
+    staticClass: "wrapper-md"
+  }, [_c('form', {
     staticClass: "form-horizontal",
     attrs: {
       "method": "POST",
@@ -41874,7 +41975,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "fileinput fileinput-exists thumb-lg pull-left m-r-md",
     attrs: {
-      "data-provides": "fileinput"
+      "data-provides": "fileinput",
+      "data-toggle": "tooltip",
+      "data-placement": "bottom",
+      "title": "Логотип компании. Формат: jpg, gif, png. Максимальный размер файла: 2Mb. Рекомендованный размер 200х200px."
     }
   }, [_c('div', {
     staticClass: "btn-file"
@@ -41889,8 +41993,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "file",
       "size": "2MB",
-      "accept": "image/jpeg,image/png,image/gif",
-      "name": "avatar"
+      "accept": "image/jpeg,image/png,image/gif"
     },
     on: {
       "change": _vm.onAvatarChange
@@ -41908,7 +42011,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
-  }, [_vm._v("Полное имя")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Название компании")]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-9"
   }, [_c('input', {
     directives: [{
@@ -41921,7 +42024,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "text",
       "name": "name",
-      "placeholder": "Ваше полное имя",
+      "placeholder": "Имя организации",
       "maxlength": "80"
     },
     domProps: {
@@ -41935,7 +42038,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.name) ? _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("\n                " + _vm._s(_vm.errors.name) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.name) + "\n                    ")]) : _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                        Укажите, как будет отображаться название компании для пользователей сервиса.\n                    ")])])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
@@ -41944,7 +42049,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
-  }, [_vm._v("Полное имя")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Имя представителя компании")]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-9"
   }, [_c('input', {
     directives: [{
@@ -41971,7 +42076,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.agent_name) ? _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("\n                " + _vm._s(_vm.errors.agent_name) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.agent_name) + "\n                    ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
@@ -42010,7 +42115,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.inn) ? _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("\n                " + _vm._s(_vm.errors.inn) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.inn) + "\n                    ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
@@ -42049,7 +42154,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.orgn) ? _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("\n                " + _vm._s(_vm.errors.orgn) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.orgn) + "\n                    ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
@@ -42085,7 +42190,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.phone) ? _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("\n                " + _vm._s(_vm.errors.phone) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.phone) + "\n                    ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
@@ -42122,7 +42227,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.email) ? _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("\n                " + _vm._s(_vm.errors.email) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.email) + "\n                    ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
@@ -42158,7 +42263,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.website) ? _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("\n                " + _vm._s(_vm.errors.website) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.website) + "\n                    ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
@@ -42193,7 +42298,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.about) ? _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("\n                " + _vm._s(_vm.errors.about) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.about) + "\n                    ")]) : _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                        Чем больше информации о компании — тем легче соискателям составить первое\n                        впечатление и принять решение об отклике на вакансию.\n                    ")])])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
@@ -42227,7 +42334,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.address) ? _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("\n                " + _vm._s(_vm.errors.address) + "\n            ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.address) + "\n                    ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
@@ -42284,7 +42391,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [(_vm.status.submit) ? _c('span', [_vm._v("Отправка "), _c('i', {
     staticClass: "fa fa-spinner fa-spin"
-  })]) : _c('span', [_vm._v("Сохранить")])])])])]) : _vm._e()
+  })]) : _c('span', [_vm._v("Сохранить")])])])])])])]) : _vm._e()
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-sm-3 col-sm-offset-3"
@@ -42850,7 +42957,11 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('form', {
+  return _c('div', {
+    staticClass: "bg-white b box-shadow"
+  }, [_c('div', {
+    staticClass: "wrapper-md"
+  }, [_c('form', {
     staticClass: "form-horizontal",
     attrs: {
       "method": "POST"
@@ -42933,7 +43044,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [(_vm.status.submit) ? _c('span', [_vm._v("Отправка "), _c('i', {
     staticClass: "fa fa-spinner fa-spin"
-  })]) : _c('span', [_vm._v("Сохранить")])])])])])
+  })]) : _c('span', [_vm._v("Сохранить")])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "page-header"
@@ -42953,6 +43064,10 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "bg-white b box-shadow"
+  }, [_c('div', {
+    staticClass: "wrapper-md"
+  }, [_c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -43012,7 +43127,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "m-b-lg"
   }, [_vm._m(1)]) : _vm._e()]), _vm._v(" "), (_vm.favorites.data.length === 0) ? _c('div', {
     staticClass: "jumbotron text-center bg-white not-found"
-  }, [_vm._m(2)]) : _vm._e()], 2)
+  }, [_vm._m(2)]) : _vm._e()], 2)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "tags"

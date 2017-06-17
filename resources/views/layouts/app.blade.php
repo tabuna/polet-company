@@ -74,17 +74,14 @@
             </ul>
             @else
 
-                <form class="navbar-form navbar-form-sm navbar-left shift" data-target=".navbar-collapse" role="search">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-sm bg-light no-border rounded padder"
-                                   placeholder="Поиск ...">
-                            <span class="input-group-btn">
-                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-              </span>
-                        </div>
-                    </div>
-                </form>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#features" data-ride="scroll">Компании</a>
+                    </li>
+                    <li>
+                        <a href="#features" data-ride="scroll">Тендеры</a>
+                    </li>
+                </ul>
             @endif
 
 

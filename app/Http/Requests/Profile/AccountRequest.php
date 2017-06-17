@@ -4,7 +4,6 @@ namespace App\Http\Requests\Profile;
 
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 class AccountRequest extends FormRequest
 {
@@ -38,6 +37,7 @@ class AccountRequest extends FormRequest
             'address'      => 'sometimes|required|max:255',
             'inn'          => 'sometimes|required|max:12',
             'ogrn'         => 'sometimes|required|max:15',
+            'agent_name'   => 'required|max:255',
         ];
     }
 }

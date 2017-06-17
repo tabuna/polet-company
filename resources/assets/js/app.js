@@ -5,6 +5,7 @@ require('./modules/affix');
 require('./modules/wizard');
 require('./modules/cache');
 require('./modules/typed');
+require('./custom');
 
 window.Vue = require('vue');
 import VueRouter from "vue-router";

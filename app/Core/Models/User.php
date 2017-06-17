@@ -35,6 +35,8 @@ class User extends UserOrchid
         'website',
         'avatar',
         'agent_name',
+        'specialization',
+        'size_company'
     ];
 
 

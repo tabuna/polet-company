@@ -38,6 +38,8 @@ class AccountRequest extends FormRequest
             'inn'          => 'sometimes|required|max:12',
             'ogrn'         => 'sometimes|required|max:15',
             'agent_name'   => 'required|max:255',
+            'specialization'      => 'sometimes|max:255',
+            'size_company'      => 'sometimes|max:255',
         ];
     }
 }

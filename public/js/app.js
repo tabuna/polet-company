@@ -11146,6 +11146,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_wysiwyg___default.a, {
         "table": true
     }
 });
+
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_infinite_scroll___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
@@ -11198,8 +11199,6 @@ if (document.getElementById('app') !== null) {
             component: __webpack_require__(73)
         }]
     });
-
-    //router.replace('/profile');
 
     var app = new Vue({
         router: router,
@@ -12767,8 +12766,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -41634,9 +41631,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row m-t-md m-b-md padder-v b-b"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_c('p', {
-    staticClass: "text-justify"
-  }, [_vm._v("\n                        " + _vm._s(_vm.user.about) + "\n                    ")])])]), _vm._v(" "), _c('div', {
+  }, [_c('main', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.user.about)
+    }
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "row m-t-md m-b-md padder-v"
   }, [_c('div', {
     staticClass: "col-md-12"
@@ -42624,7 +42623,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.user.about),
       expression: "user.about"
     }],
-    staticClass: "form-control form-control-grey no-resize",
+    staticClass: "form-control form-control-grey no-resize hidden",
     attrs: {
       "rows": "14",
       "name": "about",

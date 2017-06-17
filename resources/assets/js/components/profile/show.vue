@@ -73,9 +73,7 @@
 
                 <div class="row m-t-md m-b-md padder-v b-b">
                     <div class="col-md-12">
-                        <p class="text-justify">
-                            {{user.about}}
-                        </p>
+                        <main v-html="user.about"></main>
                     </div>
                 </div>
 

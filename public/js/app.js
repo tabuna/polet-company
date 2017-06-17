@@ -12263,6 +12263,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -12279,7 +12323,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 about: '',
                 avatar: '',
                 tags: '',
-                newAvatar: ''
+                newAvatar: '',
+                description: ''
             },
             status: {
                 load: false,
@@ -12735,6 +12780,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
@@ -12929,6 +12983,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
@@ -12956,6 +13012,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -41394,10 +41454,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": _vm.user.avatar
     }
   })]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-5 no-padder"
+    staticClass: "col-md-8"
+  }, [_c('div', {
+    staticClass: "row"
   }, [_c('h3', {
     staticClass: "text-info m-t-xs"
-  }, [_vm._v(_vm._s(_vm.user.name))]), _vm._v(" "), _c('p', [_vm._v("ИНН: " + _vm._s(_vm.user.inn))]), _vm._v(" "), _c('p', [_vm._v("ОГРН: " + _vm._s(_vm.user.ogrn) + " ")]), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.user.name))])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-8 no-padder"
+  }, [_c('p', [_vm._v("ИНН: " + _vm._s(_vm.user.inn))]), _vm._v(" "), _c('p', [_vm._v("ОГРН: " + _vm._s(_vm.user.ogrn) + " ")]), _vm._v(" "), _c('p', {
     staticClass: "text-muted small"
   }, [_c('i', {
     staticClass: "icon-phone text-info m-r-xs"
@@ -41412,7 +41478,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('i', {
     staticClass: "icon-globe text-info m-r-xs"
   }), _vm._v("| " + _vm._s(_vm.user.website))]) : _vm._e(), _vm._v(" "), _c('br')])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-3 no-padder text-center"
+    staticClass: "col-md-4 no-padder text-center"
   }, [(_vm.status.self) ? _c('div', [_c('p', [_c('a', {
     staticClass: "btn btn-icon btn-rounded b b-info b-2x m-r-sm",
     class: {
@@ -41430,7 +41496,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('p', {
     staticClass: "small text-info text-xs"
-  }, [_vm._v("Рейтинг компании")])]) : _vm._e()]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Рейтинг компании")])]) : _vm._e()])])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-12"
   }, [_vm._v("\n\n                    Дата основания\t15 августа 2008\n                    Локация\tРоссия\n                    Численность\t51–100 человек\n                    Дата регистрации\t12 мая 2010\n\n                ")])]), _vm._v(" "), _c('div', {
     staticClass: "row m-t-md m-b-md padder-v b-b"
@@ -41752,6 +41818,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "bg-white b box-shadow"
+  }, [_c('div', {
+    staticClass: "wrapper-md"
+  }, [_c('div', {
     staticClass: "row m-b-md"
   }, [_c('div', {
     staticClass: "col-xs-12"
@@ -41935,7 +42005,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "submit"
     }
-  }, [_vm._v("Отправить")])])])])])
+  }, [_vm._v("Отправить")])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -42268,6 +42338,103 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
+      'has-error': _vm.errors.description
+    }
+  }, [_c('label', {
+    staticClass: "col-sm-3 control-label"
+  }, [_vm._v("Специализация компании")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-9"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user.description),
+      expression: "user.description"
+    }],
+    staticClass: "form-control form-control-grey",
+    attrs: {
+      "type": "text",
+      "name": "description",
+      "placeholder": "",
+      "maxlength": "120"
+    },
+    domProps: {
+      "value": (_vm.user.description)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.user.description = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errors.description) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.description) + "\n                    ")]) : _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                        Расскажите о компании одним предложением.\n                    ")])])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.count
+    }
+  }, [_c('label', {
+    staticClass: "col-sm-3 control-label"
+  }, [_vm._v("Размер компании")]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-9"
+  }, [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.user.count),
+      expression: "user.count"
+    }],
+    staticClass: "form-control form-control",
+    attrs: {
+      "name": "count"
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.user.count = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "myself"
+    }
+  }, [_vm._v("1 человек")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "xsmall"
+    }
+  }, [_vm._v("2 - 10 человек")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "small"
+    }
+  }, [_vm._v("11 - 100 человек")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "medium"
+    }
+  }, [_vm._v("101 - 1000 человек")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "big"
+    }
+  }, [_vm._v("1001 - 10000 человек")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "xbig"
+    }
+  }, [_vm._v("10001 и более человек")])]), _vm._v(" "), (_vm.errors.count) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.count) + "\n                    ")]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "line line-dashed b-b line-lg"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "form-group",
+    class: {
       'has-error': _vm.errors.about
     }
   }, [_c('label', {
@@ -42378,7 +42545,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": tag.name
       }
     }, [_vm._v(_vm._s(tag.name))])
-  }))])]), _vm._v(" "), _c('div', {
+  })), _vm._v(" "), (_vm.errors.address) ? _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                        " + _vm._s(_vm.errors.address) + "\n                    ")]) : _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("\n                        Выберите от 1 до 10 ключевых слов к которым относится компания.\n                    ")])])]), _vm._v(" "), _c('div', {
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group m-t-md"
@@ -42417,7 +42588,11 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {}, [_c('div', {
+  return _c('div', {
+    staticClass: "bg-white b box-shadow"
+  }, [_c('div', {
+    staticClass: "wrapper-md"
+  }, [_c('div', {}, [_c('div', {
     staticClass: "b-b m-b-xl",
     attrs: {
       "id": "filters"
@@ -42942,7 +43117,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "m-r-md"
   }, [_c('i', {
     staticClass: "icon-map"
-  }), _vm._v(" Липецк\n                        ")])])])])])])
+  }), _vm._v(" Липецк\n                        ")])])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

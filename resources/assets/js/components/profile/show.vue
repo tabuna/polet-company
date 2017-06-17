@@ -23,33 +23,42 @@
                     <div class="col-md-4">
                         <img v-bind:src="user.avatar" class="img-responsive">
                     </div>
-                    <div class="col-md-5 no-padder">
-                        <h3 class="text-info m-t-xs">{{user.name}}</h3>
-                        <p>ИНН: {{user.inn}}</p>
-                        <p>ОГРН: {{user.ogrn}} </p>
-                        <p class="text-muted small">
-                            <i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br>
-                            <i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br>
-                            <a v-bind:href="user.website" taget="_blank" class="text-ellipsis" v-if="user.website"><i
-                                    class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a> <br>
-                        </p>
-                    </div>
-                    <div class="col-md-3 no-padder text-center">
+                    <div class="col-md-8">
 
-                        <div v-if="status.self">
-                            <p>
-                                <a v-on:click="fave()" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"
-                                   v-bind:class="{ 'btn-info': user.fave }">
-                                    <i class="icon-star text-info" v-bind:class="{ 'text-white': user.fave }"></i>
-                                </a>
-
-
-                                <a href="#" class="btn btn-icon btn-rounded b b-info b-2x"><i
-                                        class="icon-speech text-info"></i></a>
-                            </p>
-                            <p class="small text-info text-xs">Рейтинг компании</p>
+                        <div class="row">
+                            <h3 class="text-info m-t-xs">{{user.name}}</h3>
                         </div>
 
+
+                        <div class="row">
+                        <div class="col-md-8 no-padder">
+                            <p>ИНН: {{user.inn}}</p>
+                            <p>ОГРН: {{user.ogrn}} </p>
+                            <p class="text-muted small">
+                                <i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br>
+                                <i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br>
+                                <a v-bind:href="user.website" taget="_blank" class="text-ellipsis" v-if="user.website"><i
+                                        class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a> <br>
+                            </p>
+                        </div>
+                        <div class="col-md-4 no-padder text-center">
+
+                            <div v-if="status.self">
+                                <p>
+                                    <a v-on:click="fave()" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"
+                                       v-bind:class="{ 'btn-info': user.fave }">
+                                        <i class="icon-star text-info" v-bind:class="{ 'text-white': user.fave }"></i>
+                                    </a>
+
+
+                                    <a href="#" class="btn btn-icon btn-rounded b b-info b-2x"><i
+                                            class="icon-speech text-info"></i></a>
+                                </p>
+                                <p class="small text-info text-xs">Рейтинг компании</p>
+                            </div>
+
+                        </div>
+                        </div>
                     </div>
 
                     <div class="col-md-12">

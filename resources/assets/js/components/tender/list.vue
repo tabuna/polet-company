@@ -1,5 +1,7 @@
 <template>
 
+    <div class="bg-white b box-shadow">
+        <div class="wrapper-md">
 
     <div class="">
         <div id="filters" class="b-b m-b-xl">
@@ -328,6 +330,8 @@
 
     </div>
 
+        </div>
+    </div>
 
 </template>
 

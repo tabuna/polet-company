@@ -1,6 +1,7 @@
 <template>
 
-
+    <div class="bg-white b box-shadow">
+        <div class="wrapper-md">
     <div class="row m-b-md">
 
         <div class="col-xs-12">
@@ -115,7 +116,8 @@
         </div>
 
     </div>
-
+        </div>
+    </div>
 
 </template>
 

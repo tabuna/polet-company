@@ -10,9 +10,7 @@
                     <div class="col-sm-9">
                         <div class="v-center">
                             <div class="fileinput fileinput-exists thumb-lg pull-left m-r-md" data-provides="fileinput"
-                                 data-toggle="tooltip" data-placement="bottom" title="Логотип компании. Формат: jpg, gif, png. Максимальный размер файла: 2Mb. Рекомендованный размер 200х200px."
-
-                            >
+                                 data-toggle="tooltip" data-placement="bottom" title="Логотип компании. Формат: jpg, gif, png. Максимальный размер файла: 2Mb. Рекомендованный размер 200х200px.">
 
                                 <div class="btn-file">
                                     <div class="user-avatar fileinput-preview  thumb-lg pull-left m-r-md">
@@ -124,6 +122,46 @@
                         </p>
                     </div>
                 </div>
+
+
+
+                <div class="line line-dashed b-b line-lg"></div>
+                <div class="form-group" v-bind:class="{ 'has-error' : errors.description }">
+                    <label class="col-sm-3 control-label">Специализация компании</label>
+                    <div class="col-sm-9">
+
+                    <input type="text" name="description" class="form-control form-control-grey"
+                           v-model="user.description"
+                           placeholder="" maxlength="120">
+                        <p class="help-block" v-if="errors.description">
+                            {{ errors.description }}
+                        </p>
+                        <p class="help-block" v-else="errors.description">
+                            Расскажите о компании одним предложением.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="line line-dashed b-b line-lg"></div>
+                <div class="form-group" v-bind:class="{ 'has-error' : errors.count }">
+                    <label class="col-sm-3 control-label">Размер компании</label>
+                    <div class="col-sm-9">
+                        <select class="form-control form-control" name="count"  v-model="user.count">
+                            <option value="myself">1 человек</option>
+                            <option value="xsmall">2 - 10 человек</option>
+                            <option value="small">11 - 100 человек</option>
+                            <option value="medium">101 - 1000 человек</option>
+                            <option value="big">1001 - 10000 человек</option>
+                            <option value="xbig">10001 и более человек</option>
+                        </select>
+                        <p class="help-block" v-if="errors.count">
+                            {{ errors.count }}
+                        </p>
+                    </div>
+                </div>
+
+
                 <div class="line line-dashed b-b line-lg"></div>
                 <div class="form-group" v-bind:class="{ 'has-error' : errors.about }">
                     <label class="col-sm-3 control-label">О Компании</label>
@@ -160,6 +198,12 @@
                                 multiple="multiple">
                             <option v-for="tag in user.tags" :value="tag.name">{{ tag.name }}</option>
                         </select>
+                        <p class="help-block" v-if="errors.address">
+                            {{ errors.address }}
+                        </p>
+                        <p class="help-block" v-else="errors.name">
+                            Выберите от 1 до 10 ключевых слов к которым относится компания.
+                        </p>
                     </div>
                 </div>
                 <div class="line line-dashed b-b line-lg"></div>
@@ -199,6 +243,7 @@
                     avatar: '',
                     tags: '',
                     newAvatar: '',
+                    description: '',
                 },
                 status: {
                     load: false,

@@ -72,10 +72,6 @@ if (document.getElementById('app') !== null) {
                 component: require('./components/tender/show.vue')
             },
             {
-                path: '/search',
-                component: require('./components/Example.vue')
-            },
-            {
                 path: '/profile',
                 redirect: '/profile/' + meta_user,
             },
@@ -85,14 +81,14 @@ if (document.getElementById('app') !== null) {
                 component: require('./components/profile/show.vue')
             },
             {
-                path: '/message',
+                path: '/messages',
                 name: 'messages',
                 component: require('./components/message/list.vue')
             },
             {
                 path: '/message/:id',
                 name: 'message',
-                component: require('./components/message/list.vue')
+                component: require('./components/message/chat.vue')
             },
         ]
     });

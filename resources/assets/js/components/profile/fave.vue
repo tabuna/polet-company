@@ -51,7 +51,7 @@
         <div class="jumbotron text-center bg-white not-found" v-if="favorites.data.length === 0">
 
             <p class="h3 m-b-xl inline b b-dark rounded wrapper-lg">
-                <i class="fa-3x w-1x icon-people"></i>
+                <i class="fa-3x w-1x icon-star"></i>
             </p>
 
             <h4 class="m-t-none">Список избранных компаний пуст</h4>

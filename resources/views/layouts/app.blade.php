@@ -38,152 +38,163 @@
 </head>
 <body>
 
-<header id="header" class="navbar bg-white padder-v b-b">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="btn btn-link visible-xs pull-right m-r" type="button" data-toggle="collapse"
-                    data-target=".navbar-collapse">
-                <i class="fa fa-bars"></i>
-            </button>
-            <a href="{{ url('/') }}" class="navbar-brand m-r-lg">
-                <img src="/img/logo.png" class="img-responsive m-r-xs">
-                <span class="h4 text-black">
-                    Малый тендер
-                </span></a>
-        </div>
-        <div class="collapse navbar-collapse">
-
-
-            @if (Auth::guest())
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#what" data-ride="scroll">Предоставляю услуги</a>
-                </li>
-                <li>
-                    <a href="#why" data-ride="scroll">Ищу заказы</a>
-                </li>
-                <li>
-                    <a href="#features" data-ride="scroll">Помощь</a>
-                </li>
-                <li>
-                    <a href="#features" data-ride="scroll">Цены</a>
-                </li>
-                <li>
-                    <a href="#">Компании</a>
-                </li>
-            </ul>
-            @else
-
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#features" data-ride="scroll">Компании</a>
-                    </li>
-                    <li>
-                        <a href="#features" data-ride="scroll">Тендеры</a>
-                    </li>
-                </ul>
-            @endif
-
-
-
-
-
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
+<div id="app">
+    <header id="header" class="navbar bg-white padder-v b-b">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="btn btn-link visible-xs pull-right m-r" type="button" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
                 @if (Auth::guest())
-                    <div class="m-t-sm">
-                        <a href="{{ route('login') }}" class="btn btn-link btn-sm">Вход </a> или
-                        <a href="{{route('register')}}" class="btn btn-sm btn-info btn-rounded m-l"><strong>Зарегистрироваться</strong></a>
-                    </div>
-
+                    <a href="{{ url('/') }}" class="navbar-brand m-r-lg">
+                        <img src="/img/logo.png" class="img-responsive m-r-xs">
+                        <span class="h4 text-black">
+                    Малый тендер
+                </span>
+                    </a>
                 @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
-                           title="Мой профиль">
-                            {{ Auth::user()->name }}
-                            <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+
+                    <router-link :to="{ name: 'profile', params: { id: user.id }}" class="navbar-brand m-r-lg">
+                        <img src="/img/logo.png" class="img-responsive m-r-xs">
+                        <span class="h4 text-black">
+                    Малый тендер
+                </span>
+                    </router-link>
+
+                @endif
+            </div>
+            <div class="collapse navbar-collapse">
+
+
+                @if (Auth::guest())
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#what" data-ride="scroll">Предоставляю услуги</a>
+                        </li>
+                        <li>
+                            <a href="#why" data-ride="scroll">Ищу заказы</a>
+                        </li>
+                        <li>
+                            <a href="#features" data-ride="scroll">Помощь</a>
+                        </li>
+                        <li>
+                            <a href="#features" data-ride="scroll">Цены</a>
+                        </li>
+                        <li>
+                            <a href="#">Компании</a>
+                        </li>
+                    </ul>
+                @else
+
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <router-link :to="{ name: 'tender'}">Компании</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'tender'}">Тендеры</router-link>
+                        </li>
+                    </ul>
+                @endif
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <div class="m-t-sm">
+                            <a href="{{ route('login') }}" class="btn btn-link btn-sm">Вход </a> или
+                            <a href="{{route('register')}}" class="btn btn-sm btn-info btn-rounded m-l"><strong>Зарегистрироваться</strong></a>
+                        </div>
+
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false"
+                               title="Мой профиль">
+                                {{ Auth::user()->name }}
+                                <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 <img src="{{Auth::user()->getAvatar()}}" alt="{{ Auth::user()->name }}">
 <i class="on md b-white bottom"></i>
 </span>
-                            <span class="caret"></span>
-                        </a>
+                                <span class="caret"></span>
+                            </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{route('profile',Auth::user()->id)}}">Профиль</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{route('profile.password')}}">Сменить пароль</a>
-                            </li>
-                            <li>
-                                <a href="{{route('profile.edit')}}">Редактировать</a>
-                            </li>
-                            <li>
-                                <a href="#">Помощь</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <router-link :to="{ name: 'profile', params: { id: user.id }}">Профиль</router-link>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <router-link :to="{ name: 'password' }">Сменить пароль</router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'edit' }">Настройки</router-link>
+                                </li>
+                                <li>
+                                    <a href="#">Помощь</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    Выйти
-                                </a>
+                                        Выйти
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
 
-            </ul>
-        </div>
-    </div>
-</header>
-
-
-<div id="content">
-
-    @yield('content')
-
-
-</div>
-
-
-<!-- footer -->
-<footer id="footer">
-    @yield('footer')
-
-    <section class="bg-white b-t">
-        <div class="container">
-            <div class="row m-t-xl m-b-xl">
-                <div class="col-sm-6">
-                    <span class="h4 text-black">[<span class="text-info">Малый </span> тендер]</span>
-                    <div class="m-t text-xs">
-                        <ul class="list-inline">
-                            <li><a href="#">О нас</a></li>
-                            <li><a href="#">Контакты</a></li>
-                            <li><a href="#">Работа</a></li>
-                            <li><a href="#">Договор оферты</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <p class="text-xs">
-                        Не следует, однако забывать, что начало повседневной работы по формированию
-                    </p>
-                    <p class="text-xs text-muted">Copyright © {{date('Y')}} ООО "Русский паллет". Все права
-                        защищены.</p>
-                </div>
+                </ul>
             </div>
         </div>
-    </section>
-</footer>
-<!-- / footer -->
+    </header>
 
+
+    <div id="content">
+
+        @yield('content')
+
+
+    </div>
+
+
+    <!-- footer -->
+    <footer id="footer">
+        @yield('footer')
+
+        <section class="bg-white b-t">
+            <div class="container">
+                <div class="row m-t-xl m-b-xl">
+                    <div class="col-sm-6">
+                        <span class="h4 text-black">[<span class="text-info">Малый </span> тендер]</span>
+                        <div class="m-t text-xs">
+                            <ul class="list-inline">
+                                <li><a href="#">О нас</a></li>
+                                <li><a href="#">Контакты</a></li>
+                                <li><a href="#">Работа</a></li>
+                                <li><a href="#">Договор оферты</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <p class="text-xs">
+                            Не следует, однако забывать, что начало повседневной работы по формированию
+                        </p>
+                        <p class="text-xs text-muted">Copyright © {{date('Y')}} ООО "Русский паллет". Все права
+                            защищены.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- / footer -->
+</div>
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 <script src="/js/app.js"></script>
 </body>

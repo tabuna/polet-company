@@ -332,7 +332,7 @@
         <div class="jumbotron text-center bg-white not-found">
 
             <p class="h3 m-b-xl inline b b-dark rounded wrapper-lg">
-                <i class="fa-3x w-1x icon-layers"></i>
+                <i class="fa-3x w-1x icon-briefcase"></i>
             </p>
 
             <h4 class="m-t-none">Тендер не найден</h4>

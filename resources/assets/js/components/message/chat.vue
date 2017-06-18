@@ -4,11 +4,10 @@
     <div class="bg-white b box-shadow" v-show="status.load">
         <div class="wrapper-md">
 
-            <div class="panel panel-default">
                 <div class="panel-heading">Chat</div>
                 <div class="panel-body">
                     <div class="m-b">
-                        <a href="" class="pull-left thumb-sm avatar"><img src="img/a2.jpg" alt="..."></a>
+                        <a href="" class="pull-left thumb-sm avatar"><img src="http://flatfull.com/themes/angulr/angular/img/a2.jpg" alt="..."></a>
                         <div class="m-l-xxl">
                             <div class="pos-rlt wrapper b b-light r r-2x">
                                 <span class="arrow left pull-up"></span>
@@ -18,7 +17,7 @@
                         </div>
                     </div>
                     <div class="m-b">
-                        <a href="" class="pull-right thumb-sm avatar"><img src="img/a3.jpg" class="img-circle"
+                        <a href="" class="pull-right thumb-sm avatar"><img src="http://flatfull.com/themes/angulr/angular/img/a3.jpg" class="img-circle"
                                                                            alt="..."></a>
                         <div class="m-r-xxl">
                             <div class="pos-rlt wrapper bg-primary r r-2x">
@@ -43,8 +42,89 @@
                         </form>
                     </div>
                 </footer>
-            </div>
 
         </div>
     </div>
 </template>
+
+
+
+<script>
+    export default {
+        props: ['id'],
+        data: function () {
+            return {
+                threads: {
+                    current_page: 0,
+                    data: [],
+                    from: 0,
+                    last_page: [],
+                    next_page_url: null,
+                    path: null,
+                    per_page: null,
+                    prev_page_url: null,
+                    to: 0,
+                    total: 0,
+                },
+                status: {
+                    load: false,
+                    submit: false,
+                    self: false,
+                },
+            }
+        },
+        mounted() {
+            this.load()
+        },
+        methods: {
+            load: function () {
+                let id = meta_user;
+
+                axios.post(`/messages`)
+                    .then(response => {
+                        this.threads = response.data;
+                        this.status.load = true;
+                    })
+                    .catch(e => {
+                        this.errors.push(e)
+                    });
+
+                if (id !== window.meta_user) {
+                    this.status.self = true;
+                } else {
+                    this.status.self = false;
+                }
+            },
+            getAuthor: function (users) {
+                let author = '';
+                users.forEach(function (item) {
+                    if (meta_user !== item.pivot.user_id) {
+                        author = item;
+                    }
+                });
+                return author;
+            },
+            loadNextPage: function () {
+
+                if (this.threads.next_page_url !== null) {
+                    this.status.submit = true;
+
+                    axios.post(this.threads.next_page_url)
+                        .then(response => {
+
+                            let oldData = this.threads.data;
+                            oldData = oldData.concat(response.data.data);
+
+                            this.threads = response.data;
+                            this.threads.data = oldData;
+
+                            this.status.submit = false;
+                        })
+                        .catch(e => {
+                            this.errors.push(e)
+                        });
+                }
+            },
+        }
+    }
+</script>

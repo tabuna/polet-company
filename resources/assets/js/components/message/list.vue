@@ -7,8 +7,10 @@
                 <div class="m-b-sm text-md">Отображение всех разговоров</div>
                 <div class="list-group list-group-lg list-group-sp">
 
-                    <router-link :to="{ name: 'message', params: { id: thread.id }}"
-                                 class="list-group-item clearfix" v-for="thread in threads.data"
+                    <div v-for="thread in threads.data">
+                    <router-link
+                            :to="{ name: 'message', params: { id: thread.id }}"
+                                 class="list-group-item clearfix"
                                  v-bind:title="getAuthor(thread.users).name">
                       <span class="pull-left thumb-sm avatar m-r">
                         <img v-bind:src="getAuthor(thread.users).avatar" v-bind:alt="getAuthor(thread.users).name">
@@ -21,6 +23,7 @@
                     </small>
               </span>
                     </router-link>
+                    </div>
 
                 </div>
                 <div v-infinite-scroll="loadNextPage" infinite-scroll-disabled="status.submit"

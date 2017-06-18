@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" id="app">
+    <div class="container">
         <div class="row m-t-md m-b-xxl">
 
 
             <div class="col-md-8">
-                        @yield('main')
+                @yield('main')
             </div>
-
 
             <div class="col-md-4">
                 <div class="panel panel-default b">

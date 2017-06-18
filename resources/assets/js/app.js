@@ -84,6 +84,16 @@ if (document.getElementById('app') !== null) {
                 name: 'profile',
                 component: require('./components/profile/show.vue')
             },
+            {
+                path: '/message',
+                name: 'messages',
+                component: require('./components/message/list.vue')
+            },
+            {
+                path: '/message/:id',
+                name: 'message',
+                component: require('./components/message/list.vue')
+            },
         ]
     });
 

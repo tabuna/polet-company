@@ -171,7 +171,7 @@ return [
         Orchid\Socket\Providers\SocketServiceProvider::class,
         Conner\Likeable\LikeableServiceProvider::class,
         willvincent\Rateable\RateableServiceProvider::class,
-        //Cmgmyr\Messenger\MessengerServiceProvider::class,
+        Cmgmyr\Messenger\MessengerServiceProvider::class,
 
         /*
          * Application Service Providers...

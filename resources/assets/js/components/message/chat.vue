@@ -1,0 +1,50 @@
+<template>
+
+
+    <div class="bg-white b box-shadow" v-show="status.load">
+        <div class="wrapper-md">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Chat</div>
+                <div class="panel-body">
+                    <div class="m-b">
+                        <a href="" class="pull-left thumb-sm avatar"><img src="img/a2.jpg" alt="..."></a>
+                        <div class="m-l-xxl">
+                            <div class="pos-rlt wrapper b b-light r r-2x">
+                                <span class="arrow left pull-up"></span>
+                                <p class="m-b-none">Hi John, What's up...</p>
+                            </div>
+                            <small class="text-muted"><i class="fa fa-ok text-success"></i> 2 minutes ago</small>
+                        </div>
+                    </div>
+                    <div class="m-b">
+                        <a href="" class="pull-right thumb-sm avatar"><img src="img/a3.jpg" class="img-circle"
+                                                                           alt="..."></a>
+                        <div class="m-r-xxl">
+                            <div class="pos-rlt wrapper bg-primary r r-2x">
+                                <span class="arrow right pull-up arrow-primary"></span>
+                                <p class="m-b-none">Lorem ipsum dolor sit amet, conse <br>adipiscing eli...<br>:)</p>
+                            </div>
+                            <small class="text-muted">1 minutes ago</small>
+                        </div>
+                    </div>
+                </div>
+                <footer class="panel-footer">
+                    <!-- chat form -->
+                    <div>
+                        <a class="pull-left thumb-xs avatar"><img src="img/a3.jpg" class="img-circle" alt="..."></a>
+                        <form class="m-b-none m-l-xl ng-pristine ng-valid">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Say something">
+                                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">SEND</button>
+                </span>
+                            </div>
+                        </form>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+    </div>
+</template>

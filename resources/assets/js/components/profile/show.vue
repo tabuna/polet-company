@@ -2,7 +2,7 @@
 
     <div class="bg-white b box-shadow" v-show="status.load">
 
-        <div class="alert alert-warning fade in no-radius b" role="alert"  v-if="!status.self">
+        <div class="alert alert-warning fade in no-radius b" role="alert"  v-if="!status.self && user.occupancy > 3">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                     aria-hidden="true" class="text-lg">×</span></button>
             <h4>Завершенность профиля!</h4>
@@ -11,7 +11,7 @@
                 Чем больше данных о себе сообщите, тем лучше. Максимально полно заполненный профиль дает больше шансов на то, что вас привлекут к проектам.
             </p>
             <p class="m-t-sm">
-                <button type="button" class="btn btn-sm btn-link btn-rounded">Напомните позже</button>
+                <button type="button" class="btn btn-sm btn-link btn-rounded" data-dismiss="alert" aria-label="Close">Напомните позже</button>
                 <router-link :to="{ name: 'edit' }" class="btn btn-sm btn-default btn-rounded">Заполнить профиль</router-link>
             </p>
         </div>

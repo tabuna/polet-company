@@ -36,11 +36,11 @@
                             <span>Тендеры</span>
                         </router-link>
 
-                        <a href="#" class="list-group-item">
+                        <router-link :to="{ name: 'messages'}" class="list-group-item">
                             <i class="icon-bubbles m-r-xs"></i>
                             <span>Сообщения</span>
                             <span class="badge pull-right bg-info">4</span>
-                        </a>
+                        </router-link>
 
                         <router-link :to="{ name: 'fave'}" class="list-group-item">
                             <i class="icon-star m-r-xs"></i>

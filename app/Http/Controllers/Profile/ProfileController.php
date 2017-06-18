@@ -48,6 +48,15 @@ class ProfileController extends Controller
 
         $user->fave = $user->liked();
 
+
+        $user->occupancy = 0;
+        foreach ($user->attributesToArray() as $item) {
+            if(is_null($item) || empty($item)){
+                $user->occupancy++;
+            }
+        }
+
+
         return response()->json($user);
     }
 

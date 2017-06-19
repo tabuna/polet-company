@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Profile;
+namespace App\Http\Controllers\Tender;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;

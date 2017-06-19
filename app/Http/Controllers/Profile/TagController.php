@@ -21,6 +21,7 @@ class TagController extends Controller
             $tags = User::allTags()->orderBy('count', 'desc')->where('name', 'like', '%' . $tag . '%')->limit(10)->get();
         }
 
+        /*
         $tags->transform(function ($item, $key) {
             return  [
                 'id' => $item['name'],
@@ -28,7 +29,7 @@ class TagController extends Controller
                 'count' => $item['count']
             ];
         });
-
+*/
         return response()->json($tags);
     }
 

@@ -107,9 +107,18 @@ class ProfileController extends Controller
         $user->password = bcrypt($account->password);
         $user->save();
 
-        Alert::success('Ваш пароль успешно изменён');
+        //Alert::success('Ваш пароль успешно изменён');
         //return back();
         return response(200);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function companies(){
+       $companies = User::orderBy('created_at','DESC')->paginate(15);
+
+       return response()->json($companies);
     }
 
 }

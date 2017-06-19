@@ -18,14 +18,14 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label">Поиск по содержанию</label>
+                        <label class="control-label">Поиск по названию</label>
                         <input type="text" name="search" value="" placeholder="Поиск записей.." class="form-control"
                                maxlength="200" autocomplete="off">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label">Статус</label>
+                        <label class="control-label">Город</label>
                         <select name="status" class="form-control">
                             <option></option>
                             <option value="publish">Опубликовано</option>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label">Статус</label>
+                        <label class="control-label">Теги</label>
                         <select name="status" class="form-control">
                             <option></option>
                             <option value="publish">Опубликовано</option>
@@ -46,37 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label">Поиск по содержанию</label>
-                        <input type="text" name="search" value="" placeholder="Поиск записей.." class="form-control"
-                               maxlength="200" autocomplete="off">
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label">Статус</label>
-                        <select name="status" class="form-control">
-                            <option></option>
-                            <option value="publish">Опубликовано</option>
-                            <option value="draft">Черновик</option>
-                            <option value="titz">Тиц</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label">Статус</label>
-                        <select name="status" class="form-control">
-                            <option></option>
-                            <option value="publish">Опубликовано</option>
-                            <option value="draft">Черновик</option>
-                            <option value="titz">Тиц</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
 

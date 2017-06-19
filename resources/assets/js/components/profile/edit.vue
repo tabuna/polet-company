@@ -196,18 +196,44 @@
                 </div>
                 <div class="line line-dashed b-b line-lg"></div>
                 <div class="form-group" v-bind:class="{ 'has-error' : errors.address }">
-                    <label class="col-sm-3 control-label">Теги компании</label>
+                    <label class="col-sm-3 control-label">Теги компании (Vue)</label>
                     <div class="col-sm-9">
 
-                        <select class="form-control" v-model="user.tags"
-                                multiple="multiple">
-                            <option v-for="tag in user.tags" :value="tag.name">{{ tag.name }}</option>
-                        </select>
+                        <div>
+                            <label class="typo__label">Async multiselect</label>
+                            <multiselect v-model="selectedCountries" id="ajax" label="name"
+                                         track-by="slug"
+                                         placeholder="Введите ключевые слова"
+                                         :options="countries"
+                                         :multiple="true"
+                                         :searchable="true"
+                                         :loading="isLoading"
+                                         :internal-search="false"
+                                         :clear-on-select="false"
+                                         :close-on-select="false"
+                                         :options-limit="10"
+                                         :limit="10"
+                                         :limit-text="limitText"
+                                         @search-change="asyncFind"
+                                         :taggable="true"
+                                         @tag="addTag"
+                                         :SelectLabel="selectLabelTag"
+                                         :SelectedLabel="selectedLabelTag"
+                                         :DeselectLabel ="deselectLabelTag"
 
-                        <select class="form-control" v-model="user.tags" v-selectcompanytag="user.tags"
-                                multiple="multiple">
-                            <option v-for="tag in user.tags" :value="tag.name">{{ tag.name }}</option>
-                        </select>
+                            >
+                                <template slot="option" scope="props">
+                                    <div class="option__desc">
+                                        <span class="option__title">{{ props.option.name }}</span>
+                                        <span class="badge bg-info pull-right">{{ props.option.count }}</span>
+                                    </div>
+                                </template>
+
+
+                                <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
+                            <pre class="language-json"><code>{{ selectedCountries  }}</code></pre>
+                        </div>
+
                         <p class="help-block" v-if="errors.address">
                             {{ errors.address }}
                         </p>
@@ -219,7 +245,9 @@
                 <div class="line line-dashed b-b line-lg"></div>
                 <div class="form-group m-t-md">
                     <div class="col-sm-3 col-sm-offset-3">
-                        <a href="#profile.password" class="btn btn-link">Изменить пароль?</a>
+                        <router-link :to="{ name: 'password' }" class="btn btn-link">
+                            Изменить пароль?
+                        </router-link>
                     </div>
                     <div class="col-sm-6 text-right">
                         <button type="submit" class="btn btn-info btn-rounded">
@@ -237,9 +265,14 @@
 
 
 <script>
+    import Multiselect from 'vue-multiselect';
     export default {
+        components: { Multiselect },
         data: function () {
             return {
+                selectedCountries: [],
+                countries: [],
+                isLoading: false,
                 user: {
                     name: '',
                     agent_name: '',
@@ -265,12 +298,12 @@
             }
         },
         mounted() {
-            moduleLoad();
-
             axios.post(`/profile/edit`)
                 .then(response => {
                     this.user = response.data;
+                    this.selectedCountries = this.user.tags;
                     this.status.load = true;
+                    moduleLoad();
                 })
                 .catch(e => {
                     this.errors.push(e)
@@ -328,6 +361,55 @@
 
                         });
                 }
+            },
+            limitText (count) {
+                return `и ${count} ещё тегов`
+            },
+            selectLabelTag (){
+               return "Нажмите Enter для выбора";
+            },
+            selectedLabelTag(){
+                return "Выбранный"
+            },
+            deselectLabelTag(){
+                return "Нажмите Enter, чтобы удалить"
+            },
+            asyncFind (query) {
+                this.isLoading = true
+
+                axios.get(`/profile/tags/` + query)
+                    .then(response => {
+                        //this.user = response.data;
+                        this.status.submit = false;
+                        this.countries = response.data;
+                        this.isLoading = false;
+
+                    })
+                    .catch(error => {
+                        this.errors = error.response.data;
+                        this.status.submit = false;
+
+                        swal({
+                            title: 'Ошибка!',
+                            type: 'error',
+                            text: 'Проверьте вводимые данные',
+                            timer: 2500,
+                            showConfirmButton: false,
+                        }).catch(swal.noop)
+
+                    });
+
+            },
+            addTag (newTag) {
+                const tag = {
+                    id: 1,
+                    slug: newTag,
+                    name: newTag,
+                    count: 0,
+                };
+                this.selectedCountries.push(tag);
+                this.countries.push(tag);
+
             }
         }
     }

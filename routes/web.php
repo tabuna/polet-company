@@ -98,6 +98,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tend
 });
 
 
+$router->post('/companies', 'Profile\ProfileController@companies')->name('companies');
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Vue App

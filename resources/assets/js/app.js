@@ -8,9 +8,11 @@ require('./modules/typed');
 
 
 window.Vue = require('vue');
+
 import VueRouter from "vue-router";
 import infiniteScroll from 'vue-infinite-scroll'
 import wysiwyg from "vue-wysiwyg";
+
 
 Vue.use(wysiwyg, {
     hideModules: {
@@ -90,6 +92,11 @@ if (document.getElementById('app') !== null) {
                 name: 'message',
                 component: require('./components/message/chat.vue')
             },
+            {
+                path: '/companies',
+                name: 'companies',
+                component: require('./components/profile/list.vue')
+            },
         ]
     });
 
@@ -101,4 +108,5 @@ if (document.getElementById('app') !== null) {
             }
         }
     }).$mount('#app');
+
 }

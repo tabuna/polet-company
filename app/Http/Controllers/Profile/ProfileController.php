@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\AccountPasswordRequest;
 use App\Http\Requests\Profile\AccountRequest;
 use Illuminate\Support\Facades\Auth;
-use Orchid\Alert\Facades\Alert;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
@@ -48,7 +48,6 @@ class ProfileController extends Controller
 
         $user->fave = $user->liked();
 
-
         $user->occupancy = 0;
         foreach ($user->attributesToArray() as $item) {
             if(is_null($item) || empty($item)){
@@ -69,27 +68,35 @@ class ProfileController extends Controller
      */
     public function update(AccountRequest $account)
     {
-        if($account->has('newAvatar')) {
-            $img = Image::make($account->get('newAvatar'));
+        $user = Auth::user();
+
+        if ($account->hasFile('newAvatar')) {
+            $img = Image::make($account->file('newAvatar'));
             $img->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
+            $time = time();
+            $date = date('Y/m/d');
+            $name = str_random(40);
+            Storage::disk('public')->makeDirectory($date);
+            $name = sha1($time . $name);
+            $fullPath = storage_path('app/public' . DIRECTORY_SEPARATOR . $date . DIRECTORY_SEPARATOR . $name . '.jpg');
+            $img->save($fullPath, 60);
 
             $account->replace([
-                'avatar' => (string) $img->encode('data-url', 75),
+                'avatar' => '/storage/' . $date . '/' . $name . '.jpg',
             ]);
         }
 
-
-        Auth::user()->fill($account->all())->save();
-
-        /*
-        if ($account->hasFile('avatar')) {
-            $img = Image::make($account->file('avatar'));
-            $img->fit(200);
-            $user->avatar = (string) $img->encode('data-url');
+        if($account->has('tags')){
+            $tags = [];
+            foreach ($account->get('tags') as $item){
+                array_push($tags,$item['slug']);
+            }
+            $user->setTags($tags);
         }
-        */
+
+        $user->fill($account->all())->save();
 
         return response(200);
     }
@@ -107,8 +114,6 @@ class ProfileController extends Controller
         $user->password = bcrypt($account->password);
         $user->save();
 
-        //Alert::success('Ваш пароль успешно изменён');
-        //return back();
         return response(200);
     }
 
@@ -116,7 +121,7 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function companies(){
-       $companies = User::orderBy('created_at','DESC')->paginate(15);
+       $companies = User::with('tags')->orderBy('created_at','DESC')->paginate(15);
 
        return response()->json($companies);
     }

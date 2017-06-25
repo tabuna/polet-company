@@ -27,19 +27,20 @@ class AccountRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'         => 'required|max:255',
+            'name'           => 'required|max:255',
             //'email'        => 'email|required|unique:users,email,' . Auth::user()->id,
             //'avatar'       => 'mimes:jpeg,bmp,png|sometimes',
-            'website'      => 'sometimes|max:255',
-            'about'        => 'sometimes|max:65000',
-            'notification' => 'sometimes|boolean',
-            'phone'        => 'sometimes|max:255',
-            'address'      => 'sometimes|required|max:255',
-            'inn'          => 'sometimes|required|max:12',
-            'ogrn'         => 'sometimes|required|max:15',
-            'agent_name'   => 'required|max:255',
-            'specialization'      => 'sometimes|max:255',
-            'size_company'      => 'sometimes|max:255',
+            'website'        => 'sometimes|max:255',
+            'about'          => 'sometimes|max:65000',
+            'notification'   => 'sometimes|boolean',
+            'phone'          => 'sometimes|max:255',
+            'address'        => 'sometimes|required|max:255',
+            'inn'            => 'sometimes|required|max:12',
+            'ogrn'           => 'sometimes|required|max:15',
+            'agent_name'     => 'required|max:255',
+            'specialization' => 'sometimes|max:255',
+            'size_company'   => 'sometimes|max:255',
+            'tags'           => 'sometimes',
         ];
     }
 }

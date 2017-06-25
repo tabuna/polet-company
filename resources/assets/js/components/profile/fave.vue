@@ -26,12 +26,7 @@
                     </p>
 
                     <div class="tags">
-                        <a href="" class="label">Разработка</a>
-                        <a href="" class="label">Интернет</a>
-                        <a href="" class="label">Веб-сайт</a>
-                        <a href="" class="label">Сайт</a>
-                        <a href="" class="label">Веб-студия</a>
-                        <a href="" class="label">Интеграция</a>
+                        <a href="" class="label" v-for="tag in fave.tags">{{tag.name}}</a>
                     </div>
 
                 </div>

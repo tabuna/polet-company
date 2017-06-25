@@ -12684,8 +12684,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
     data: function data() {
         return {
-            selectedCountries: [],
-            countries: [],
+            selectedTags: [],
+            allTags: [],
             isLoading: false,
             user: {
                 name: '',
@@ -12714,12 +12714,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        moduleLoad();
-
         axios.post('/profile/edit').then(function (response) {
             _this.user = response.data;
-            _this.selectedCountries = _this.user.tags;
+            _this.selectedTags = _this.user.tags;
             _this.status.load = true;
+            moduleLoad();
         }).catch(function (e) {
             _this.errors.push(e);
         });
@@ -12748,6 +12747,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.status.submit === false) {
                 this.status.submit = true;
                 this.errors = {};
+                this.user.tags = this.selectedTags;
 
                 axios.put('/profile/edit', this.user).then(function (response) {
                     //this.user = response.data;
@@ -12762,7 +12762,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }).catch(swal.noop);
                 }).catch(function (error) {
                     _this2.errors = error.response.data;
-                    _this2.status.submit = false;
 
                     swal({
                         title: 'Ошибка!',
@@ -12771,6 +12770,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         timer: 2500,
                         showConfirmButton: false
                     }).catch(swal.noop);
+                    _this2.status.submit = false;
                 });
             }
         },
@@ -12794,7 +12794,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/profile/tags/' + query).then(function (response) {
                 //this.user = response.data;
                 _this3.status.submit = false;
-                _this3.countries = response.data;
+                _this3.allTags = response.data;
                 _this3.isLoading = false;
             }).catch(function (error) {
                 _this3.errors = error.response.data;
@@ -12816,8 +12816,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: newTag,
                 count: 0
             };
-            this.selectedCountries.push(tag);
-            this.countries.push(tag);
+            this.selectedTags.push(tag);
+            this.allTags.push(tag);
         }
     }
 });
@@ -12828,11 +12828,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -12976,11 +12971,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -42394,7 +42384,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "status.load"
     }],
     staticClass: "bg-white b box-shadow"
-  }, [(!_vm.status.self && _vm.user.occupancy > 3) ? _c('div', {
+  }, [(!_vm.status.self && _vm.user.occupancy > 2) ? _c('div', {
     staticClass: "alert alert-warning fade in no-radius b",
     attrs: {
       "role": "alert"
@@ -43529,17 +43519,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('label', {
     staticClass: "col-sm-3 control-label"
-  }, [_vm._v("Теги компании (Vue)")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Теги компании")]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-9"
-  }, [_c('div', [_c('label', {
-    staticClass: "typo__label"
-  }, [_vm._v("Async multiselect")]), _vm._v(" "), _c('multiselect', {
+  }, [_c('div', [_c('multiselect', {
     attrs: {
       "id": "ajax",
       "label": "name",
       "track-by": "slug",
       "placeholder": "Введите ключевые слова",
-      "options": _vm.countries,
+      "options": _vm.allTags,
       "multiple": true,
       "searchable": true,
       "loading": _vm.isLoading,
@@ -43571,17 +43559,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }]),
     model: {
-      value: (_vm.selectedCountries),
+      value: (_vm.selectedTags),
       callback: function($$v) {
-        _vm.selectedCountries = $$v
+        _vm.selectedTags = $$v
       },
-      expression: "selectedCountries"
+      expression: "selectedTags"
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("К сожалению, элементов не найдено.")])]), _vm._v(" "), _c('pre', {
-    staticClass: "language-json"
-  }, [_c('code', [_vm._v(_vm._s(_vm.selectedCountries))])])], 1), _vm._v(" "), (_vm.errors.address) ? _c('p', {
+  }, [_vm._v("К сожалению, элементов не найдено.")])])], 1), _vm._v(" "), (_vm.errors.address) ? _c('p', {
     staticClass: "help-block"
   }, [_vm._v("\n                        " + _vm._s(_vm.errors.address) + "\n                    ")]) : _c('p', {
     staticClass: "help-block"
@@ -43589,7 +43575,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "line line-dashed b-b line-lg"
   }), _vm._v(" "), _c('div', {
     staticClass: "form-group m-t-md"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
+  }, [_c('div', {
+    staticClass: "col-sm-3 col-sm-offset-3"
+  }, [_c('router-link', {
+    staticClass: "btn btn-link",
+    attrs: {
+      "to": {
+        name: 'password'
+      }
+    }
+  }, [_vm._v("\n                        Изменить пароль?\n                    ")])], 1), _vm._v(" "), _c('div', {
     staticClass: "col-sm-6 text-right"
   }, [_c('button', {
     staticClass: "btn btn-info btn-rounded",
@@ -43599,16 +43594,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [(_vm.status.submit) ? _c('span', [_vm._v("Отправка "), _c('i', {
     staticClass: "fa fa-spinner fa-spin"
   })]) : _c('span', [_vm._v("Сохранить")])])])])])])]) : _vm._e()
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-sm-3 col-sm-offset-3"
-  }, [_c('a', {
-    staticClass: "btn btn-link",
-    attrs: {
-      "href": "#profile.password"
-    }
-  }, [_vm._v("Изменить пароль?")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -44164,7 +44150,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v("\n                                " + _vm._s(user.name) + "\n                            ")])], 1), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v("\n                            " + _vm._s(user.specialization) + "\n                        ")]), _vm._v(" "), _vm._m(1, true)])])])
+    }, [_vm._v("\n                            " + _vm._s(user.specialization) + "\n                        ")]), _vm._v(" "), _c('div', {
+      staticClass: "tags"
+    }, _vm._l((user.tags), function(tag) {
+      return _c('a', {
+        staticClass: "label",
+        attrs: {
+          "href": ""
+        }
+      }, [_vm._v(_vm._s(tag.name))])
+    }))])])])
   }), _vm._v(" "), _c('div', {
     directives: [{
       name: "infinite-scroll",
@@ -44178,9 +44173,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [(_vm.status.submit) ? _c('div', {
     staticClass: "m-b-lg"
-  }, [_vm._m(2)]) : _vm._e()]), _vm._v(" "), (_vm.users.data.length === 0) ? _c('div', {
+  }, [_vm._m(1)]) : _vm._e()]), _vm._v(" "), (_vm.users.data.length === 0) ? _c('div', {
     staticClass: "jumbotron text-center bg-white not-found"
-  }, [_vm._m(3), _vm._v(" "), _c('h4', {
+  }, [_vm._m(2), _vm._v(" "), _c('h4', {
     staticClass: "m-t-none"
   }, [_vm._v("Тендер не найден")]), _vm._v(" "), _c('p', {
     staticClass: "text-muted m-t-lg"
@@ -44268,40 +44263,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": "titz"
     }
   }, [_vm._v("Тиц")])])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "tags"
-  }, [_c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Разработка")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Интернет")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Веб-сайт")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Сайт")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Веб-студия")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Интеграция")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row m-b"
@@ -44486,7 +44447,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v("\n                        " + _vm._s(fave.name) + "\n                    ")])], 1), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v("\n                    " + _vm._s(fave.specialization) + "\n                ")]), _vm._v(" "), _vm._m(0, true)])])])
+    }, [_vm._v("\n                    " + _vm._s(fave.specialization) + "\n                ")]), _vm._v(" "), _c('div', {
+      staticClass: "tags"
+    }, _vm._l((fave.tags), function(tag) {
+      return _c('a', {
+        staticClass: "label",
+        attrs: {
+          "href": ""
+        }
+      }, [_vm._v(_vm._s(tag.name))])
+    }))])])])
   }), _vm._v(" "), _c('div', {
     directives: [{
       name: "infinite-scroll",
@@ -44500,48 +44470,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [(_vm.status.submit) ? _c('div', {
     staticClass: "m-b-lg"
-  }, [_vm._m(1)]) : _vm._e()]), _vm._v(" "), (_vm.favorites.data.length === 0) ? _c('div', {
+  }, [_vm._m(0)]) : _vm._e()]), _vm._v(" "), (_vm.favorites.data.length === 0) ? _c('div', {
     staticClass: "jumbotron text-center bg-white not-found"
-  }, [_vm._m(2), _vm._v(" "), _c('h4', {
+  }, [_vm._m(1), _vm._v(" "), _c('h4', {
     staticClass: "m-t-none"
   }, [_vm._v("Список избранных компаний пуст")]), _vm._v(" "), _c('p', {
     staticClass: "text-muted m-t-lg"
   }, [_vm._v("\n            Добавьте компанию в избранное и она будет отображаться тут\n        ")])]) : _vm._e()], 2)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "tags"
-  }, [_c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Разработка")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Интернет")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Веб-сайт")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Сайт")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Веб-студия")]), _vm._v(" "), _c('a', {
-    staticClass: "label",
-    attrs: {
-      "href": ""
-    }
-  }, [_vm._v("Интеграция")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row m-b"
   }, [_c('div', {

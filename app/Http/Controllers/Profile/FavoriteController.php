@@ -14,7 +14,7 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        return response(User::whereLikedBy(Auth::user()->id)->paginate());
+        return response(User::whereLikedBy(Auth::user()->id)->with('tags')->paginate());
     }
 
     /**

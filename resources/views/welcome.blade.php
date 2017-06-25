@@ -6,7 +6,7 @@
     <div class="bg-black-opacity">
 
 
-        <section class="container-fluid">
+        <section class="container-fluid hidden-xs">
             <div class="row">
                 <div style="background:url(/img/header.jpg) center center; background-size:cover">
                     <div class="wrapper-xl bg-black-opacity bg-dark min-h-h pos-rlt  text-ellipsis">
@@ -63,7 +63,7 @@
 
 
                 <div class="row m-b-xl m-t-xl v-center">
-                    <div class="col-md-6 ">
+                    <div class="col-md-6 col-xs-12 ">
                         <p class="h1 font-thin text-black">
                             <span class="text-info">01</span>
                             <br>
@@ -89,17 +89,17 @@
 
 
                     </div>
-                    <div class="col-md-6  text-center">
+                    <div class="col-md-6 hidden-xs text-center">
                         <img src="/img/image-01.png" class="img-responsive center">
                     </div>
                 </div>
 
 
                 <div class="row m-b-xl m-t-xxl v-center">
-                    <div class="col-md-6  text-center">
+                    <div class="col-md-6 hidden-xs text-center">
                         <img src="/img/image-02.png" class="img-responsive center">
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-6 col-xs-12 ">
                         <p class="h1 font-thin text-black">
                             <span class="text-info">02</span>
                             <br>
@@ -141,7 +141,7 @@
 
 
                 <div class="row m-b-xxl m-t-xxl v-center">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-xs-12">
                         <p class="h1 font-thin text-black">
                             <span class="text-info">03</span>
                             <br>
@@ -167,7 +167,7 @@
 
 
                     </div>
-                    <div class="col-md-6  text-center">
+                    <div class="col-md-6 hidden-xs text-center">
                         <img src="/img/image-04.png" class="img-responsive center">
                     </div>
                 </div>
@@ -181,7 +181,7 @@
 @endsection
 
 @section('footer')
-    <div id="registation" class="bg-black"
+    <div id="registation" class="bg-black hidden-xs"
          style="background: url(/img/footer.jpg); background-size: cover">
         <div class="bg-black-opacity">
             <div class="container">

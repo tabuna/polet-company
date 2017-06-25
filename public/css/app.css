@@ -21304,67 +21304,86 @@ a.list-group-item.hover {
 .multiselect__tag .multiselect__tag-icon:after {
   color: #f1f3f5;
 }
-main {
+main,
+main div {
   -webkit-animation: blur 620ms;
           animation: blur 620ms;
   line-height: 1.8em;
 }
-main img {
+main img,
+main div img {
   display: block;
   max-width: 100%;
   height: auto;
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
 }
-main ul {
+main ul,
+main div ul {
   padding: 0 5rem;
 }
-main ol {
+main ol,
+main div ol {
   padding: 0 1.5rem;
 }
-main p {
+main p,
+main div p {
   font-size: 16px;
   line-height: 28px;
   margin-bottom: 23px;
 }
-main blockquote {
-  border-color: #c92a2a;
+main blockquote,
+main div blockquote {
+  border-color: #1c7cd6;
   background-color: #f1f3f5;
   color: #58666e;
   padding-top: 15px;
   padding-bottom: 15px;
 }
 main blockquote.lt,
-main blockquote .lt {
+main div blockquote.lt,
+main blockquote .lt,
+main div blockquote .lt {
   background-color: #f7f8f9;
 }
 main blockquote.lter,
-main blockquote .lter {
+main div blockquote.lter,
+main blockquote .lter,
+main div blockquote .lter {
   background-color: #fafbfb;
 }
 main blockquote.dk,
-main blockquote .dk {
+main div blockquote.dk,
+main blockquote .dk,
+main div blockquote .dk {
   background-color: #e8ebef;
 }
 main blockquote.dker,
-main blockquote .dker {
+main div blockquote.dker,
+main blockquote .dker,
+main div blockquote .dker {
   background-color: #e1e6ec;
 }
 main blockquote.bg,
-main blockquote .bg {
+main div blockquote.bg,
+main blockquote .bg,
+main div blockquote .bg {
   background-color: #f1f3f5;
 }
-main iframe {
+main iframe,
+main div iframe {
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
   margin-bottom: 15px;
 }
-main::-moz-selection {
-  background: #c92a2a;
+main::-moz-selection,
+main div::-moz-selection {
+  background: #1c7cd6;
   color: #fff;
 }
-main::selection {
-  background: #c92a2a;
+main::selection,
+main div::selection {
+  background: #1c7cd6;
   color: #fff;
 }
 #content {

@@ -196,15 +196,14 @@
                 </div>
                 <div class="line line-dashed b-b line-lg"></div>
                 <div class="form-group" v-bind:class="{ 'has-error' : errors.address }">
-                    <label class="col-sm-3 control-label">Теги компании (Vue)</label>
+                    <label class="col-sm-3 control-label">Теги компании</label>
                     <div class="col-sm-9">
 
                         <div>
-                            <label class="typo__label">Async multiselect</label>
-                            <multiselect v-model="selectedCountries" id="ajax" label="name"
+                            <multiselect v-model="selectedTags" id="ajax" label="name"
                                          track-by="slug"
                                          placeholder="Введите ключевые слова"
-                                         :options="countries"
+                                         :options="allTags"
                                          :multiple="true"
                                          :searchable="true"
                                          :loading="isLoading"
@@ -231,7 +230,6 @@
 
 
                                 <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
-                            <pre class="language-json"><code>{{ selectedCountries  }}</code></pre>
                         </div>
 
                         <p class="help-block" v-if="errors.address">
@@ -270,8 +268,8 @@
         components: { Multiselect },
         data: function () {
             return {
-                selectedCountries: [],
-                countries: [],
+                selectedTags: [],
+                allTags: [],
                 isLoading: false,
                 user: {
                     name: '',
@@ -301,7 +299,7 @@
             axios.post(`/profile/edit`)
                 .then(response => {
                     this.user = response.data;
-                    this.selectedCountries = this.user.tags;
+                    this.selectedTags = this.user.tags;
                     this.status.load = true;
                     moduleLoad();
                 })
@@ -332,6 +330,7 @@
                 if (this.status.submit === false) {
                     this.status.submit = true;
                     this.errors = {};
+                    this.user.tags = this.selectedTags;
 
                     axios.put(`/profile/edit`, this.user)
                         .then(response => {
@@ -349,7 +348,7 @@
                         })
                         .catch(error => {
                             this.errors = error.response.data;
-                            this.status.submit = false;
+
 
                             swal({
                                 title: 'Ошибка!',
@@ -357,7 +356,8 @@
                                 text: 'Проверьте вводимые данные',
                                 timer: 2500,
                                 showConfirmButton: false,
-                            }).catch(swal.noop)
+                            }).catch(swal.noop);
+                            this.status.submit = false;
 
                         });
                 }
@@ -381,7 +381,7 @@
                     .then(response => {
                         //this.user = response.data;
                         this.status.submit = false;
-                        this.countries = response.data;
+                        this.allTags = response.data;
                         this.isLoading = false;
 
                     })
@@ -407,8 +407,8 @@
                     name: newTag,
                     count: 0,
                 };
-                this.selectedCountries.push(tag);
-                this.countries.push(tag);
+                this.selectedTags.push(tag);
+                this.allTags.push(tag);
 
             }
         }

@@ -76,13 +76,7 @@
                             <a href="#why" data-ride="scroll">Ищу заказы</a>
                         </li>
                         <li>
-                            <a href="#features" data-ride="scroll">Помощь</a>
-                        </li>
-                        <li>
                             <a href="#features" data-ride="scroll">Цены</a>
-                        </li>
-                        <li>
-                            <a href="#">Компании</a>
                         </li>
                     </ul>
                 @else
@@ -98,7 +92,7 @@
                 @endif
 
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right text-center-xs">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <div class="m-t-sm">
@@ -171,7 +165,7 @@
         <section class="bg-white b-t">
             <div class="container">
                 <div class="row m-t-xl m-b-xl">
-                    <div class="col-sm-6">
+                    <div class="col-md-6 hidden-xs">
                         <span class="h4 text-black">[<span class="text-info">Малый </span> тендер]</span>
                         <div class="m-t text-xs">
                             <ul class="list-inline">
@@ -182,7 +176,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-6 text-right">
+                    <div class="col-md-6 col-md-12 text-right">
                         <p class="text-xs">
                             Не следует, однако забывать, что начало повседневной работы по формированию
                         </p>

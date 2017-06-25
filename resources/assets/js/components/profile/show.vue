@@ -2,7 +2,7 @@
 
     <div class="bg-white b box-shadow" v-show="status.load">
 
-        <div class="alert alert-warning fade in no-radius b" role="alert"  v-if="!status.self && user.occupancy > 3">
+        <div class="alert alert-warning fade in no-radius b" role="alert"  v-if="!status.self && user.occupancy > 2">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                     aria-hidden="true" class="text-lg">×</span></button>
             <h4>Завершенность профиля!</h4>

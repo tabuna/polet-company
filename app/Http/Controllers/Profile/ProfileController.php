@@ -70,8 +70,8 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        if ($account->hasFile('newAvatar')) {
-            $img = Image::make($account->file('newAvatar'));
+        if ($account->has('newAvatar')) {
+            $img = Image::make($account->get('newAvatar'));
             $img->resize(300, null, function ($constraint) {
                 $constraint->aspectRatio();
             });

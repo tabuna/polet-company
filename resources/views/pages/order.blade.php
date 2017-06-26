@@ -33,238 +33,195 @@
     </section>
 
 
-    <div class="bg-black-opacity">
+
+    <div class="bg-white">
 
 
-        <div class="bg-white">
 
-            <section class="container bg-white">
-                <div class="page-header text-center">
-                    <div class="m-t-xxl m-b-xl text-center wrapper"><h4 class="m-b-n ">Запустите свой бизнес по
-                            новому</h4>
-                        <h1 class="font-thin m-t-n l-h-1x padder-v text-black">
-                            Наши преимущества станут вашими
-                        </h1>
-                        <p data-wow-offset="200" data-wow-delay="600" class="text-muted wow fadeInDown"
-                           style="visibility: visible; animation-name: fadeInDown;">Наша давняя мечта была обойти
-                            обычную приборную панель администратора
-                            <br> структуру, и двигаться вперед с простой рамкой
-                        </p></div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-3 ">
-                        <div class="h3 text-info b-b b-info padder-v">
-                            1
-                        </div>
-                        <div class=" text-muted m-t-md l-h-1x font-thin">
-                            Регистрация юридического лица в границах муниципального образования, где расположена ОЭЗ
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-3 ">
-                        <div class="h3 text-info b-b b-info padder-v">
-                            2
-                        </div>
-                        <div class=" text-muted m-t-md l-h-1x font-thin">
-                            Подача комплекта заявочной документации в Министерство экономического развития РФ:
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-3 ">
-                        <div class="h3 text-info b-b b-info padder-v">
-                            3
-                        </div>
-                        <div class=" text-muted m-t-md l-h-1x font-thin">
-                            Рассмотрение проекта Наблюдательным советом ОЭЗ под председательством главы региона
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-3 ">
-                        <div class="h3 text-info b-b b-info padder-v">
-                            4
-                        </div>
-                        <div class=" text-muted m-t-md l-h-1x font-thin">
-                            Рассмотрение проекта Экспертным советом ОЭЗ при Министерстве экономического развития РФ
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-
-            <section class="container bg-white m-t-xxl">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2>ОЭЗ «Липецк»</h2>
-                        <div>
-                            <p>
-                                ОЭЗ ППТ «Липецк» - масштабный проект, являющийся частью общегосударственной инициативы
-                                по созданию новых точек роста экономики и стимулированию приоритетных отраслей.ОЭЗ ППТ
-                                «Липецк» представляет собой масштабную продуманную систему поддержки инвестиций.
-                                Уникальные условия ведения бизнеса на территории ОЭЗ «Липецк» позволяют инвесторам
-                                достичь 30 процентного снижения издержек.
-                            </p>
-                            <div class="padder-v">
-                                <a href="/news" class="text-center h5  font-thin"><span class="text-info">Подробнее о регионе</span>
-                                    <span class="btn btn-info btn-rounded btn-sm btn-icon btn-default m-l-sm">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </span>
-                                </a></div>
-                        </div>
-                        <div>
-                            <h3>На территории ОЭЗ расположены:</h3>
-                            <ul class="text-info">
-                                <li class="small">автомобильные дороги общей площадью 145,3 тыс. м2 и протяженностью
-                                    10,45 км;
-                                </li>
-                                <li class="small">стоянки для большегрузного (на 157 автомобилей) и легкового
-                                    автотранспорта;
-                                </li>
-                                <li class="small">7,063 км железнодорожных путей, которые соединены с ж/д станцией
-                                    «Казинка».
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h2>Логистическая инфраструктура</h2>
-                        <p>
-                            Общая площадь территории особой экономической зоны — 1024 га.
-                        </p>
-                        <div class="row transport_block">
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="">
-                                    <h4 class="padder-v v-center">
-                                        <i class="fa fa-plane m-r-md  fa-2x text-info" aria-hidden="true"></i>
-                                        Воздушное сообщение</h4>
-                                    <p class="text-muted">
-                                        В 35 км от ОЭЗ расположен аэропорт «Липецк», способный принимать самолеты любого
-                                        класса.
-                                    </p>
-                                </div>
-                                <div class="">
-
-
-                                    <h4 class="padder-v v-center">
-                                        <i class="fa fa-car m-r-md  fa-2x text-info" aria-hidden="true"></i>
-                                        Автомобильное сообщение</h4>
-                                    <p class="text-muted">
-                                        В районе создания ОЭЗ функционируют два железнодорожных вокзала: ст.Липецк
-                                        (20км.) и ст. Грязи-Воронежские (18км).
-                                    </p>
-
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="">
-
-                                    <h4 class="padder-v v-center">
-                                        <i class="fa fa-train m-r-md  fa-2x text-info" aria-hidden="true"></i>
-                                        Железнодорожное сообщение</h4>
-                                    <p class="text-muted">
-                                        В районе создания ОЭЗ функционируют два железнодорожных вокзала: ст.Липецк
-                                        (20км.) и ст. Грязи-Воронежские (18км).
-                                    </p>
-
-                                    <div>
-                                        <ul class="text-info m-l-md">
-                                            <div>
-                                                Ближайшие Ж/Д станции:
-                                            </div>
-                                            <li class="small">ж/д станция «Казинка» (0,2 км);</li>
-                                            <li class="small">ж/д станция «Грязи-Орловские» (8 км).</li>
-                                            <li class="small">ж/д пути ОЭЗ «Липецк» соединены с ж/д станцией
-                                                «Казинка».
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-        </div>
-
-
-        <div class="bg-white">
+        <section class="bg-white b-b box-shadow-lg">
             <div class="container">
+                <div class="row  m-t-xxl m-b-xxl v-center">
 
-
-                <div class="row m-t-lg m-b-lg">
-
-                    <div class="col-md-10 m-b-xl">
-                        <p class="h1 font-thin">We <span class="text-info">Provides</span></p>
-
-                        <div class="col-md-8 pull-in m-t-md">
-                            <small>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                            </small>
+                    <div class="col-md-7 col-sm-12 col-xs-12 display-table sm-height-auto">
+                        <div class="row">
+                            <!-- section title -->
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h2 class="text-black font-thin">Мы поможем вам найти клиента для вашего
+                                    бизнеса.</h2>
+                                <p class="text-muted font-weight-300 m-b-lg">
+                                    Для каждого бренда мы разрабатываем свою стратегию присутствия на профильных площадках и в социальных сетях. Определяем наиболее подходящие платформы и форматы.
+                                </p>
+                            </div>
+                            <!-- end section title -->
                         </div>
+                        <!-- feature box -->
+                        <div class="row two-column no-margin m-t-md">
+                            <div class="col-md-6 col-sm-6 col-xs-12 padder-v">
+                                <div class="col-md-3 col-xs-12 text-center  m-b-md">
+                                    <p class="h3 inline b b-dark r-3x wrapper-sm"><i class=" w-1x icon-compass"></i></p>
+                                </div>
+                                <div class="col-md-8 col-xs-12 ">
+                                    <p class="h4 text-black font-thin">Составление контентного ядра</p>
+                                    <div class="m-t-sm"><p class="small">Подбор поисковых запросов и оптимизация целевый страниц сайта.</p></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 padder-v">
+                                <div class="col-md-3 col-xs-12 text-center m-b-md">
+                                    <p class="h3 inline b b-dark r-3x wrapper-sm"><i class=" w-1x icon-compass"></i></p>
+                                </div>
+                                <div class="col-md-8 col-xs-12">
+                                    <p class="h4 text-black font-thin">Социальные площадки</p>
+                                    <div class="m-t-sm"><p class="small">Работа компании с различными форматами общения в сети
+                                        </p></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 padder-v">
+                                <div class="col-md-3 col-xs-12 text-center m-b-md">
+                                    <p class="h3 inline b b-dark r-3x wrapper-sm"><i class=" w-1x icon-compass"></i></p>
+                                </div>
+                                <div class="col-md-8 col-xs-12 ">
+                                    <p class="h4 text-black font-thin">Уникальный контент</p>
+                                    <div class="m-t-sm"><p class="small">Рерайт имеющихся материалов для доверия поисковых систем.</p></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 padder-v">
+                                <div class="col-md-3 col-xs-12 text-center m-b-md">
+
+                                    <p class="h3 inline b b-dark r-3x wrapper-sm"><i class=" w-1x icon-compass"></i></p>
+
+                                </div>
+                                <div class="col-md-8 col-xs-12 ">
+                                    <p class="h4 text-black font-thin">Электронный маркетинг</p>
+                                    <div class="m-t-sm"><p class="small">
+                                            Увеличение лояльности клиентов компании и повторные продажи.</p></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end feature box -->
+
+
+                    </div>
+                    <div class="col-md-5 col-sm-5 hidden-xs">
+                        <img class="img-responsive" src="/img/image-01.png" alt="">
                     </div>
 
-
-                    <article class="col-md-3">
-                        <figure>
-                            <a href="/blog/347"><img
-                                        src="https://www.cssigniter.com/themeforest/specialty/images/hero2-950x450.jpg"
-                                        alt="" class="img-responsive">
-                                <h4 class="font-thin">Участие в электронном аукционе: пошаговая инструкция</h4></a>
-
-                            <div class="b-b b-info w-sm line-lg"></div>
-                            <figcaption>
-                                <time class="small">2017-07-14</time>
-                            </figcaption>
-                        </figure>
-                    </article>
-                    <article class="col-md-3">
-                        <figure>
-                            <a href="/blog/347"><img
-                                        src="https://www.cssigniter.com/themeforest/specialty/images/hero2-950x450.jpg"
-                                        alt="" class="img-responsive">
-                                <h4 class="font-thin">Участие в электронном аукционе: пошаговая инструкция</h4></a>
-
-                            <div class="b-b b-info w-sm line-lg"></div>
-                            <figcaption>
-                                <time class="small">2017-07-14</time>
-                            </figcaption>
-                        </figure>
-                    </article>
-                    <article class="col-md-3">
-                        <figure>
-                            <a href="/blog/347"><img
-                                        src="https://www.cssigniter.com/themeforest/specialty/images/hero2-950x450.jpg"
-                                        alt="" class="img-responsive">
-                                <h4 class="font-thin">Участие в электронном аукционе: пошаговая инструкция</h4></a>
-
-                            <div class="b-b b-info w-sm line-lg"></div>
-                            <figcaption>
-                                <time class="small">2017-07-14</time>
-                            </figcaption>
-                        </figure>
-                    </article>
-                    <article class="col-md-3">
-                        <figure>
-                            <a href="/blog/347"><img
-                                        src="https://www.cssigniter.com/themeforest/specialty/images/hero2-950x450.jpg"
-                                        alt="" class="img-responsive">
-                                <h4 class="font-thin">Участие в электронном аукционе: пошаговая инструкция</h4></a>
-
-                            <div class="b-b b-info w-sm line-lg"></div>
-                            <figcaption>
-                                <time class="small">2017-07-14</time>
-                            </figcaption>
-                        </figure>
-                    </article>
+                </div>
+            </div>
+        </section>
 
 
+        <section class="container bg-white">
+            <div class="row m-t-xxl m-b-xl">
+                <div class="col-xs-12 col-sm-3 ">
+                    <div class="h3 text-info b-b b-info padder-v">
+                        1
+                    </div>
+                    <div class=" text-muted m-t-md l-h-1x font-thin">
+                        Значимость этих проблем настолько очевидна, что постоянное
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 ">
+                    <div class="h3 text-info b-b b-info padder-v">
+                        2
+                    </div>
+                    <div class=" text-muted m-t-md l-h-1x font-thin">
+                        Значимость этих проблем настолько очевидна, что постоянное
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 ">
+                    <div class="h3 text-info b-b b-info padder-v">
+                        3
+                    </div>
+                    <div class=" text-muted m-t-md l-h-1x font-thin">
+                        Значимость этих проблем настолько очевидна, что постоянное
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3 ">
+                    <div class="h3 text-info b-b b-info padder-v">
+                        4
+                    </div>
+                    <div class=" text-muted m-t-md l-h-1x font-thin">
+                        Значимость этих проблем настолько очевидна, что постоянное
+                    </div>
                 </div>
 
             </div>
-        </div>
+        </section>
+
+
+
+        <section class="container bg-white">
+            <div class="row m-t-xl m-b-xxl">
+                <div class="col-md-6">
+                    <h1 class="font-thin m-t-n l-h-1x padder-v text-black">Мы предлогаем</h1>
+                    <div>
+                        <p>
+                            Значимость этих проблем настолько очевидна, что постоянное информационно-пропагандистское
+                            обеспечение нашей деятельности требуют определения и уточнения позиций, занимаемых
+                            участниками в отношении поставленных задач. Товарищи! рамки и место обучения кадров влечет
+                            за собой процесс внедрения и модернизации направлений прогрессивного развития. Товарищи!
+                            дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и
+                            модернизации позиций, занимаемых участниками в отношении поставленных задач. Значимость этих
+                            проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности
+                            требуют от нас анализа систем массового участия. Товарищи! дальнейшее развитие различных
+                            форм деятельности позволяет выполнять важные задания по разработке позиций, занимаемых
+                            участниками в отношении поставленных задач. Не следует, однако забывать, что дальнейшее
+                            развитие различных форм деятельности способствует подготовки и реализации позиций,
+                            занимаемых участниками в отношении поставленных задач.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <p class="h2 font-thin m-t-n l-h-1x padder-v text-black">Поиск новых клиентов и источников</p>
+                    <p>
+                        Значимость этих проблем настолько очевидна
+                    </p>
+                    <div class="row transport_block">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="">
+                                <h5 class="padder-v v-center">
+                                    <i class="fa fa-plane m-r-md  fa-2x text-info" aria-hidden="true"></i>
+                                    Значимость этих проблем настолько очевидна</h5>
+                                <p class="text-muted">
+                                    Значимость этих проблем настолько очевидна, что постоянное информационно-пропагандистское обеспечение нашей деятельности требуют определения и уточнения позиций
+                                </p>
+                            </div>
+                            <div class="">
+
+
+                                <h5 class="padder-v v-center">
+                                    <i class="fa fa-car m-r-md  fa-2x text-info" aria-hidden="true"></i>
+                                    Значимость этих проблем настолько очевидна</h5>
+                                <p class="text-muted">
+                                    Значимость этих проблем настолько очевидна, что постоянное информационно-пропагандистское обеспечение нашей деятельности требуют определения и уточнения позиций
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="">
+
+                                <h5 class="padder-v v-center">
+                                    <i class="fa fa-train m-r-md  fa-2x text-info" aria-hidden="true"></i>
+                                    Значимость этих проблем настолько очевидна</h5>
+                                <p class="text-muted">
+                                    Значимость этих проблем настолько очевидна, что постоянное информационно-пропагандистское обеспечение нашей деятельности требуют определения и уточнения позиций
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
     </div>
+
+
+
 @endsection
 
 @section('footer')
@@ -279,10 +236,10 @@
                                 <h2 class="text-white col-sm-12 font-thin ">Изготовленный с деталями для
                                     большого старта! Это большое начало для всех.
                                 </h2>
-                                <button type="button" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp"
+                                <a href="/register" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp"
                                         data-wow-offset="200" data-wow-delay="600">
                                     Попробывать бесплатно
-                                </button>
+                                </a>
                                 <p class="text-muted m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="900">
                                     Бесплатный доступ исключительные на площадке,<br>
                                     для ознакомления, не предоставляет общие услуги

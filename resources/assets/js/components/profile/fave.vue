@@ -3,62 +3,67 @@
     <div class="bg-white b box-shadow">
         <div class="wrapper-md">
 
-    <div v-show="status.load">
+            <div v-show="status.load">
 
-        <div class="m-b-lg" v-for="fave in favorites.data">
-            <div class="row m-b">
-                <div class="col-md-2">
-                    <div class="thumb-lg">
-                        <router-link :to="{ name: 'profile', params: { id: fave.id }}">
-                            <img v-bind:src="fave.avatar" v-bind:alt="fave.name" class="img-responsive">
-                        </router-link>
+                <div class="m-b-lg" v-for="fave in favorites.data">
+                    <div class="row m-b">
+                        <div class="col-md-2">
+                            <div class="thumb-lg">
+                                <router-link :to="{ name: 'profile', params: { id: fave.id }}">
+                                    <img v-bind:src="fave.avatar" v-bind:alt="fave.name" class="img-responsive">
+                                </router-link>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <h3 class="m-t-xs">
+                                <router-link :to="{ name: 'profile', params: { id: fave.id }}">
+                                    {{fave.name}}
+                                </router-link>
+                            </h3>
+
+                            <p class="small">
+                                {{fave.specialization}}
+                            </p>
+
+                            <div class="tags">
+                        <span v-for="tag in fave.tags">
+                            <router-link :to="'/companies?tags='+ tag.slug" class="label">
+                                {{tag.name}}
+                            </router-link>
+                        </span>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-10">
-                    <h3 class="m-t-xs">
-                        <router-link :to="{ name: 'profile', params: { id: fave.id }}">
-                            {{fave.name}}
-                        </router-link>
-                    </h3>
 
-                    <p class="small">
-                        {{fave.specialization}}
+                <div v-infinite-scroll="loadNextPage" infinite-scroll-disabled="status.submit"
+                     infinite-scroll-distance="10">
+                    <div class="m-b-lg" v-if="status.submit">
+                        <div class="row m-b">
+                            <div class="col-xs-12 text-center">
+                                <i class='fa fa-2x fa-spinner fa-spin'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jumbotron text-center bg-white not-found" v-if="favorites.data.length === 0">
+
+                    <p class="h3 m-b-xl inline b b-dark rounded wrapper-lg">
+                        <i class="fa-3x w-1x icon-star"></i>
                     </p>
 
-                    <div class="tags">
-                        <a href="" class="label" v-for="tag in fave.tags">{{tag.name}}</a>
-                    </div>
+                    <h4 class="m-t-none">Список избранных компаний пуст</h4>
+
+                    <p class="text-muted m-t-lg">
+                        Добавьте компанию в избранное и она будет отображаться тут
+                    </p>
 
                 </div>
+
+
             </div>
-        </div>
-
-        <div v-infinite-scroll="loadNextPage" infinite-scroll-disabled="status.submit" infinite-scroll-distance="10">
-            <div class="m-b-lg" v-if="status.submit">
-                <div class="row m-b">
-                    <div class="col-xs-12 text-center">
-                        <i class='fa fa-2x fa-spinner fa-spin'></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="jumbotron text-center bg-white not-found" v-if="favorites.data.length === 0">
-
-            <p class="h3 m-b-xl inline b b-dark rounded wrapper-lg">
-                <i class="fa-3x w-1x icon-star"></i>
-            </p>
-
-            <h4 class="m-t-none">Список избранных компаний пуст</h4>
-
-            <p class="text-muted m-t-lg">
-                Добавьте компанию в избранное и она будет отображаться тут
-            </p>
-
-        </div>
-
-
-    </div>
 
 
         </div>

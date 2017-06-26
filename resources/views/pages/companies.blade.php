@@ -130,7 +130,7 @@
 
                     <article class="col-md-3">
                         <figure>
-                            <a href="/blog/347"><img
+                            <a href="#"><img
                                         src="https://www.cssigniter.com/themeforest/specialty/images/hero2-950x450.jpg"
                                         alt="" class="img-responsive">
                                 <h4 class="font-thin">Участие в электронном аукционе: пошаговая инструкция</h4></a>
@@ -143,7 +143,7 @@
                     </article>
                     <article class="col-md-3">
                         <figure>
-                            <a href="/blog/347"><img
+                            <a href="#"><img
                                         src="https://www.cssigniter.com/themeforest/specialty/images/hero2-950x450.jpg"
                                         alt="" class="img-responsive">
                                 <h4 class="font-thin">Участие в электронном аукционе: пошаговая инструкция</h4></a>
@@ -156,7 +156,7 @@
                     </article>
                     <article class="col-md-3">
                         <figure>
-                            <a href="/blog/347"><img
+                            <a href="#"><img
                                         src="https://www.cssigniter.com/themeforest/specialty/images/hero2-950x450.jpg"
                                         alt="" class="img-responsive">
                                 <h4 class="font-thin">Участие в электронном аукционе: пошаговая инструкция</h4></a>
@@ -169,7 +169,7 @@
                     </article>
                     <article class="col-md-3">
                         <figure>
-                            <a href="/blog/347"><img
+                            <a href="#"><img
                                         src="https://www.cssigniter.com/themeforest/specialty/images/hero2-950x450.jpg"
                                         alt="" class="img-responsive">
                                 <h4 class="font-thin">Участие в электронном аукционе: пошаговая инструкция</h4></a>
@@ -204,9 +204,10 @@
                                 <h2 class="text-white col-sm-12 font-thin ">Изготовленный с деталями для
                                     большого старта! Это большое начало для всех.
                                 </h2>
-                                <button type="button" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="600">
+                                <a href="/register" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp"
+                                   data-wow-offset="200" data-wow-delay="600">
                                     Попробывать бесплатно
-                                </button>
+                                </a>
                                 <p class="text-muted m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="900">
                                     Бесплатный доступ исключительные на площадке,<br>
                                     для ознакомления, не предоставляет общие услуги

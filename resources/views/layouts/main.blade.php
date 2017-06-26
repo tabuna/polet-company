@@ -4,11 +4,11 @@
     <div class="container">
         <div class="row m-t-md m-b-xxl">
 
-            <div class="col-md-8">
+            <div class="col-md-8 col-xs-12">
                 @yield('main')
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 hidden-xs">
                 <div class="panel panel-default b">
                     <div class="panel-heading">
                         <div class="clearfix">

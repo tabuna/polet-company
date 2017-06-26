@@ -157,6 +157,7 @@
     import Multiselect from 'vue-multiselect';
     export default {
         components: { Multiselect },
+        props: ['tags'],
         data: function () {
             return {
                 selectedTags: [],
@@ -195,7 +196,22 @@
             }
         },
         mounted() {
-            this.load()
+            this.load();
+
+            /*
+            this.$route.params.tags
+
+            const tag = {
+                id: 1,
+                slug: this.$route.params.tags,
+                name: newTag,
+                count: 0,
+            };
+            this.selectedTags.push(tag);
+            this.allTags.push(tag);
+            */
+
+
         },
         methods: {
             load: function () {

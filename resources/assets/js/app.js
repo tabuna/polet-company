@@ -95,7 +95,10 @@ if (document.getElementById('app') !== null) {
             {
                 path: '/companies',
                 name: 'companies',
-                component: require('./components/profile/list.vue')
+                component: require('./components/profile/list.vue'),
+                props: (route) => ({
+                    query: route.query.tags
+                })
             },
         ]
     });

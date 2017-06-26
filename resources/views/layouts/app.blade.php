@@ -12,8 +12,7 @@
     <link rel="dns-prefetch" href="https://maps.googleapis.com">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet">
-    <link rel="stylesheet" href="/css/app.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ mix('/css/app.css')}}" type="text/css"/>
 
     <meta property="og:title" content="@yield('title',setting('site_title','')) - Лучшая база поставщиков услуг">
     <meta property="og:description" content="@yield('description',setting('site_description',''))">
@@ -189,7 +188,7 @@
     </footer>
     <!-- / footer -->
 </div>
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-<script src="/js/app.js"></script>
+
+<script src="{{ mix('/js/app.js')}}"></script>
 </body>
 </html>

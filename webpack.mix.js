@@ -12,7 +12,7 @@ let mix = require('laravel-mix');
  */
 
 
-mix.less('resources/assets/less/app.less', 'public/css/app.css');
+mix.less('resources/assets/less/app.less', 'public/css/app.css').version();
 
 
 
@@ -22,3 +22,6 @@ mix.copy('./node_modules/font-awesome/fonts/', 'public/fonts');
 
 
 mix.js(['resources/assets/js/app.js',], '.public/js/app.js');
+
+
+mix.js('resources/assets/js/app.js', 'public/js').version();

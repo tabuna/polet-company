@@ -148,12 +148,9 @@
                     <label class="col-sm-3 control-label">Размер компании</label>
                     <div class="col-sm-9">
                         <select class="form-control form-control" name="count"  v-model="user.size_company">
-                            <option value="myself">1 человек</option>
-                            <option value="xsmall">2 - 10 человек</option>
-                            <option value="small">11 - 100 человек</option>
-                            <option value="medium">101 - 1000 человек</option>
-                            <option value="big">1001 - 10000 человек</option>
-                            <option value="xbig">10001 и более человек</option>
+                            <option v-for="option in optionsSize" v-bind:value="option.value">
+                                {{ option.text }}
+                            </option>
                         </select>
                         <p class="help-block" v-if="errors.size_company">
                             {{ errors.size_company }}
@@ -261,13 +258,20 @@
 
 </template>
 
-
 <script>
     import Multiselect from 'vue-multiselect';
     export default {
         components: { Multiselect },
         data: function () {
             return {
+                optionsSize: [
+                    { value: 'myself', text: '1 человек' },
+                    { value: 'xsmall', text: '2 - 10 человек' },
+                    { value: 'small', text: '11 - 100 человек' },
+                    { value: 'medium', text: '101 - 1000 человек' },
+                    { value: 'big', text: '1001 - 10000 человек' },
+                    { value: 'xbig', text: '10001 и более человек' }
+                ],
                 selectedTags: [],
                 allTags: [],
                 isLoading: false,

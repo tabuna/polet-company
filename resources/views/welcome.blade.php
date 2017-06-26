@@ -8,7 +8,7 @@
 
         <section class="container-fluid hidden-xs">
             <div class="row">
-                <div style="background:url(/img/header.jpg) center center; background-size:cover">
+                <div style="background:url(/img/header4.jpg) bottom center; background-size:cover">
                     <div class="wrapper-xl bg-black-opacity bg-dark min-h-h pos-rlt  text-ellipsis">
                         <div class="row  m-t-xxl m-b-xxl">
                             <div class="container m-t-md top-desc-block">

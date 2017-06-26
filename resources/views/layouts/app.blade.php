@@ -28,12 +28,15 @@
 
     <link rel="shortcut icon" type="image/png" href="/img/logo.png">
 
+    <!--
     <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#58666e">
     <meta name="theme-color" content="#f1f3f5">
+    -->
+
     @stack('stylesheet')
 </head>
 <body>
@@ -70,13 +73,10 @@
                 @if (Auth::guest())
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#what" data-ride="scroll">Предоставляю услуги</a>
+                            <a href="/companies">Предоставляю услуги</a>
                         </li>
                         <li>
-                            <a href="#why" data-ride="scroll">Ищу заказы</a>
-                        </li>
-                        <li>
-                            <a href="#features" data-ride="scroll">Цены</a>
+                            <a href="/order">Ищу заказы</a>
                         </li>
                     </ul>
                 @else

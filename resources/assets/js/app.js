@@ -52,7 +52,7 @@ if (document.getElementById('app') !== null) {
             {
                 path: '/stats',
                 name: 'stats',
-                component: require('./components/Example.vue')
+                component: require('./components/profile/stats.vue')
             },
             {
                 path: '/payments',

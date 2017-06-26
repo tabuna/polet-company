@@ -8,7 +8,7 @@
                     <div class="row m-b-xs">
                         <div class="col-md-12">
 
-                            <strong>Найдено 666 компаний</strong>
+                            <strong>Найдено {{users.total}} компаний</strong>
 
                             <button type="submit" id="button-filter" class="btn btn-default pull-right"><i
                                     class="fa fa-filter"></i>
@@ -16,17 +16,54 @@
                         </div>
                     </div>
                     <div class="row">
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="control-label">Теги</label>
+                                <multiselect v-model="query.tags" id="ajax" label="name"
+                                             track-by="slug"
+                                             placeholder="Введите ключевые слова"
+                                             :options="allTags"
+                                             :multiple="true"
+                                             :searchable="true"
+                                             :loading="isLoading"
+                                             :internal-search="false"
+                                             :clear-on-select="false"
+                                             :close-on-select="false"
+                                             :options-limit="5"
+                                             :limit="5"
+                                             :limit-text="limitText"
+                                             @search-change="asyncFind"
+                                             :taggable="true"
+                                             @tag="addTag"
+                                             :SelectLabel="selectLabelTag"
+                                             :SelectedLabel="selectedLabelTag"
+                                             :DeselectLabel ="deselectLabelTag"
+
+                                >
+                                    <template slot="option" scope="props">
+                                        <div class="option__desc">
+                                            <span class="option__title">{{ props.option.name }}</span>
+                                            <span class="badge bg-info pull-right">{{ props.option.count }}</span>
+                                        </div>
+                                    </template>
+
+
+                                    <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
+                            </div>
+                        </div>
+
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="control-label">Поиск по названию</label>
-                                <input type="text" name="search" value="" placeholder="Поиск записей.." class="form-control"
+                                <input type="text" name="search" v-model="query.name" placeholder="Поиск записей.." class="form-control"
                                        maxlength="200" autocomplete="off">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="control-label">Город</label>
-                                <select name="status" class="form-control">
+                                <select name="status" v-name="query.city" class="form-control">
                                     <option></option>
                                     <option value="publish">Опубликовано</option>
                                     <option value="draft">Черновик</option>
@@ -36,12 +73,11 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label">Теги</label>
-                                <select name="status" class="form-control">
-                                    <option></option>
-                                    <option value="publish">Опубликовано</option>
-                                    <option value="draft">Черновик</option>
-                                    <option value="titz">Тиц</option>
+                                <label class="control-label">Размер компании</label>
+                                <select name="status" v-model="query.size" class="form-control">
+                                    <option v-for="option in optionsSize" v-bind:value="option.value">
+                                        {{ option.text }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -118,9 +154,27 @@
 
 
 <script>
+    import Multiselect from 'vue-multiselect';
     export default {
+        components: { Multiselect },
         data: function () {
             return {
+                selectedTags: [],
+                allTags: [],
+                optionsSize: [
+                    { value: 'myself', text: '1 человек' },
+                    { value: 'xsmall', text: '2 - 10 человек' },
+                    { value: 'small', text: '11 - 100 человек' },
+                    { value: 'medium', text: '101 - 1000 человек' },
+                    { value: 'big', text: '1001 - 10000 человек' },
+                    { value: 'xbig', text: '10001 и более человек' }
+                ],
+                query: {
+                    tags: [],
+                    size: [],
+                    name: '',
+                    city: '',
+                },
                 users: {
                     current_page: 0,
                     data: [],
@@ -183,6 +237,44 @@
                         });
                 }
             },
+            limitText (count) {
+                return `и ${count} ещё тегов`
+            },
+            selectLabelTag (){
+                return "Нажмите Enter для выбора";
+            },
+            selectedLabelTag(){
+                return "Выбранный"
+            },
+            deselectLabelTag(){
+                return "Нажмите Enter, чтобы удалить"
+            },
+            asyncFind (query) {
+                this.isLoading = true
+
+                axios.get(`/profile/tags/` + query)
+                    .then(response => {
+                        //this.user = response.data;
+                        this.status.submit = false;
+                        this.allTags = response.data;
+                        this.isLoading = false;
+
+                    })
+                    .catch(error => {
+                        this.errors = error.response.data;
+                        this.status.submit = false;
+
+                        swal({
+                            title: 'Ошибка!',
+                            type: 'error',
+                            text: 'Проверьте вводимые данные',
+                            timer: 2500,
+                            showConfirmButton: false,
+                        }).catch(swal.noop)
+
+                    });
+
+            }
         }
     }
 </script>

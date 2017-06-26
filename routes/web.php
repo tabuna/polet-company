@@ -45,6 +45,9 @@ Route::group(['namespace' => 'Payments', 'prefix' => 'payments'], function ($rou
 */
 Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($router) {
     $router->get('/', 'WelcomeController@index')->name('index');
+    $router->get('/companies', 'WelcomeController@companies')->name('companies');
+    $router->get('/order', 'WelcomeController@order')->name('order');
+
     $router->get('/p/{item}', 'PageController@show')->name('page');
 
     $router->get('/contacts', 'ContactsController@index')->name('contacts');
@@ -110,7 +113,7 @@ $router->post('/companies', 'Profile\ProfileController@companies')->name('compan
 */
 Route::group(['middleware' => 'auth'], function ($router) {
     $router->get('/{vue_capture?}', 'HomeController@index')
-        ->where('vue_capture', '[\/\w\.-]*')
-        ->where('vue_capture', '^(?!dashboard).*$')
-        ->where('vue_capture', '^(?!api).*$');
+        //->where('vue_capture', '[\/\w\.-]*')
+        ->where('vue_capture', '^(?!dashboard).*$');
+        //->where('vue_capture', '^(?!api).*$');
 });

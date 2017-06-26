@@ -21,4 +21,20 @@ class WelcomeController extends Controller
     {
         return view('welcome');
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function companies()
+    {
+        return view('pages.companies');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function order()
+    {
+        return view('pages.order');
+    }
 }

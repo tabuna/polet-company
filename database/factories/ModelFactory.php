@@ -23,12 +23,15 @@ $factory->define(App\Core\Models\User::class, function (Faker\Generator $faker) 
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
         'permissions' => [],
-        'about' => $faker->text(800),
+        'about' => $faker->text(1200),
         'phone' => $faker->phoneNumber,
-        'address' => $faker->address,
+        'address' => $faker->city,
         'inn' => $faker->numberBetween(100000000,999999999),
         'ogrn'=> $faker->numberBetween(100000000,999999999),
         'website'=> $faker->url,
         'avatar' => $faker->imageUrl(),
+        'agent_name' => $faker->name,
+        'balance' => rand(0,10000),
+        'specialization' => $faker->text(200),
     ];
 });

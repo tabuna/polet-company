@@ -49,6 +49,11 @@
                     <h4 class="font-thin"><i class="icon-printer m-r-xs"></i> Документы и приложения</h4>
                 </div>
 
+                <dropzone id="myVueDropzone" url="https://httpbin.org/post" v-on:vdropzone-success="showSuccess">
+                    <!-- Optional parameters if any! -->
+                    <input type="hidden" name="token" value="xxx">
+                </dropzone>
+
 
                 <div class="page-header">
                     <h4 class="font-thin"><i class="icon-people  m-r-xs"></i> Контактная информация</h4>
@@ -123,8 +128,12 @@
 
 
 <script>
+    import Dropzone from 'vue2-dropzone'
     export default {
         props: ['id'],
+        components: {
+            Dropzone
+        },
         data: function () {
             return {
                 user: {
@@ -143,5 +152,10 @@
         beforeMount() {
 
         },
+        methods: {
+            'showSuccess': function (file) {
+                console.log('A file was successfully uploaded')
+            }
+        }
     }
 </script>

@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/profile/edit';
 
     /**
      * Create a new controller instance.
@@ -48,14 +48,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'phone'        => 'sometimes|max:255',
-            'address'      => 'sometimes|required|max:255',
-            'inn'          => 'sometimes|required|max:12',
-            'ogrn'         => 'sometimes|required|max:15',
-            'website'      => 'sometimes|max:255',
+            'name'             => 'required|string|max:255',
+            'email'            => 'required|string|email|max:255|unique:users',
+            'password'         => 'required|string|min:6|confirmed',
+            'phone'            => 'sometimes|max:255',
+            'address'          => 'sometimes|required|max:255',
+            'inn'              => 'sometimes|required|max:12',
+            'ogrn'             => 'sometimes|required|max:15',
+            'website'          => 'sometimes|max:255',
             'type_of_activity' => 'sometimes|max:255',
         ]);
     }
@@ -70,17 +70,17 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => bcrypt($data['password']),
-            'permissions'=>array(),
-            'phone'        => $data['phone'],
-            'address'      => $data['address'],
-            'inn'          => $data['inn'],
-            'ogrn'         => $data['ogrn'],
-            'website'      => $data['website'],
-            'agent_name' => $data['agent_name'],
-
+            'name'        => $data['name'],
+            'email'       => $data['email'],
+            'password'    => bcrypt($data['password']),
+            'permissions' => [],
+            'phone'       => $data['phone'],
+            'address'     => $data['address'],
+            'inn'         => $data['inn'],
+            'ogrn'        => $data['ogrn'],
+            'website'     => $data['website'],
+            'agent_name'  => $data['agent_name'],
+            'avatar'      => '/img/avatar.png',
         ]);
     }
 }

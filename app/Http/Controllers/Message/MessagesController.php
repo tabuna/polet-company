@@ -54,13 +54,12 @@ class MessagesController extends Controller
     public function show($id)
     {
         $thread = Thread::with([
-            'messages' => function ($query) {
-                $query->paginate();
-            },
             'users'    => function ($query) {
                 $query->select('avatar', 'name', 'agent_name');
             },
         ])->findOrFail($id);
+
+        $thread->messages = $thread->messages()->orderBy('created_at','asc')->paginate();
 
         $thread->markAsRead(Auth::user()->id);
 

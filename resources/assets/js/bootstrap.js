@@ -100,6 +100,7 @@ $(() => {
     $('.select2-enable').select2();
 });
 
-
+/*
 import moment from 'moment';
 moment.locale($('html').attr('lang'));
+*/

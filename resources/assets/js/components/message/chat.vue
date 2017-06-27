@@ -5,10 +5,21 @@
         <div class="wrapper-md">
 
             <div class="panel-heading">Чат</div>
-            <div class="panel-body">
+            <div class="panel-body" style="max-height: 1000px; overflow-y: scroll">
 
-                <div v-for="message in threads.messages">
-                    <div class="m-b" v-if="message.user_id == meta_user">
+                <div v-infinite-scroll="loadNextPage" infinite-scroll-disabled="status.submit" infinite-scroll-distance="10">
+                    <div class="m-b-lg" v-if="status.submit">
+                        <div class="row m-b">
+                            <div class="col-xs-12 text-center">
+                                <i class='fa fa-2x fa-spinner fa-spin'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div v-for="message in threads.messages.data">
+                    <div class="m-b" v-if="message.user_id == currentUser">
                         <router-link :to="{ name: 'profile', params: { id: 2 }}" class="pull-left thumb-sm avatar"><img
                                 src="http://flatfull.com/themes/angulr/angular/img/a2.jpg" alt="Тут должна быть название компании">
                         </router-link>
@@ -62,18 +73,22 @@
         props: ['id'],
         data: function () {
             return {
+                page : 1,
+                currentUser: 0,
                 newMessage: '',
                 threads: {
-                    current_page: 0,
-                    data: [],
-                    from: 0,
-                    last_page: [],
-                    next_page_url: null,
-                    path: null,
-                    per_page: null,
-                    prev_page_url: null,
-                    to: 0,
-                    total: 0,
+                    messages: {
+                        current_page: 0,
+                        data: [],
+                        from: 0,
+                        last_page: [],
+                        next_page_url: null,
+                        path: null,
+                        per_page: null,
+                        prev_page_url: null,
+                        to: 0,
+                        total: 0,
+                    }
                 },
                 status: {
                     load: false,
@@ -87,7 +102,8 @@
         },
         methods: {
             load: function () {
-                let id = meta_user;
+                let id = window.meta_user;
+                this.currentUser= window.meta_user;
 
                 axios.post(`/messages/` + this.$route.params.id)
                     .then(response => {
@@ -115,17 +131,17 @@
             },
             loadNextPage: function () {
 
-                if (this.threads.next_page_url !== null) {
+                if (this.threads.messages.next_page_url !== null) {
                     this.status.submit = true;
 
-                    axios.post(this.threads.next_page_url)
+                    axios.post(this.threads.messages.next_page_url)
                         .then(response => {
 
-                            let oldData = this.threads.data;
-                            oldData = oldData.concat(response.data.data);
+                            let oldData = this.threads.messages.data;
+                            oldData = oldData.concat(response.data.messages.data);
 
-                            this.threads = response.data;
-                            this.threads.data = oldData;
+                            this.threads.messages = response.data.messages;
+                            this.threads.messages.data = oldData;
 
                             this.status.submit = false;
                         })

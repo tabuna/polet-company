@@ -37,7 +37,7 @@
                         <router-link :to="{ name: 'messages'}" class="list-group-item">
                             <i class="icon-bubbles m-r-xs"></i>
                             <span>Сообщения</span>
-                            <span class="badge pull-right bg-info">4</span>
+                            {{--<span class="badge pull-right bg-info">4</span>--}}
                         </router-link>
 
                         <router-link :to="{ name: 'fave'}" class="list-group-item">

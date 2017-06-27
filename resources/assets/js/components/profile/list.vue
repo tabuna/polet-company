@@ -35,9 +35,9 @@
                                              :limit-text="limitText"
                                              @search-change="asyncFind"
                                              :taggable="false"
-                                             :selectLabel="'Нажмите Enter для выбора'"
-                                             :selectedLabel="'Выбранный'"
-                                             :deselectLabel ="'Нажмите Enter, чтобы удалить'"
+                                             :selectLabel="''"
+                                             :selectedLabel="''"
+                                             :deselectLabel ="''"
 
                                 >
                                     <template slot="option" scope="props">
@@ -66,9 +66,9 @@
                                              :loading="isLoadingCity"
                                              @search-change="asyncFindCity"
                                              :taggable="false"
-                                             :selectLabel="'Нажмите Enter для выбора'"
-                                             :selectedLabel="'Выбранный'"
-                                             :deselectLabel ="'Нажмите Enter, чтобы удалить'"
+                                             :selectLabel="''"
+                                             :selectedLabel="''"
+                                             :deselectLabel ="''"
 
                                 >
                                     <template slot="option" scope="props">

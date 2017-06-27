@@ -209,9 +209,9 @@
                                          :close-on-select="true"
                                          @search-change="asyncFindCity"
                                          :taggable="false"
-                                         :selectLabel="'Нажмите Enter для выбора'"
-                                         :selectedLabel="'Выбранный'"
-                                         :deselectLabel ="'Нажмите Enter, чтобы удалить'"
+                                         :selectLabel="''"
+                                         :selectedLabel="''"
+                                         :deselectLabel ="''"
 
                             >
                                 <template slot="option" scope="props">

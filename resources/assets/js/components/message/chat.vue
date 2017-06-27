@@ -5,16 +5,13 @@
         <div class="wrapper-md">
 
             <div class="panel-heading">Чат</div>
-            <div class="panel-body" style="max-height: 1000px; overflow-y: scroll">
+            <div class="panel-body b" style="max-height: 1000px; overflow-y: scroll">
 
-                <div v-infinite-scroll="loadNextPage" infinite-scroll-disabled="status.submit" infinite-scroll-distance="10">
-                    <div class="m-b-lg" v-if="status.submit">
-                        <div class="row m-b">
-                            <div class="col-xs-12 text-center">
-                                <i class='fa fa-2x fa-spinner fa-spin'></i>
-                            </div>
-                        </div>
-                    </div>
+
+                <div v-if="threads.messages.next_page_url">
+                    <p class="text-center">
+                        <button class="btn btn-link" v-on:click="loadNextPage">Показать более ранние записи</button>
+                    </p>
                 </div>
 
 
@@ -47,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <footer class="panel-footer">
+            <footer class="panel-footer b">
                 <!-- chat form -->
                 <div>
                     <a class="pull-left thumb-xs avatar"><img src="img/a3.jpg" class="img-circle" alt="..."></a>
@@ -109,6 +106,7 @@
                     .then(response => {
                         this.threads = response.data;
                         this.status.load = true;
+                        this.threads.messages.data.reverse();
                     })
                     .catch(e => {
                         this.errors.push(e)
@@ -138,7 +136,9 @@
                         .then(response => {
 
                             let oldData = this.threads.messages.data;
-                            oldData = oldData.concat(response.data.messages.data);
+
+                            response.data.messages.data.reverse();
+                            oldData = response.data.messages.data.concat(oldData);
 
                             this.threads.messages = response.data.messages;
                             this.threads.messages.data = oldData;

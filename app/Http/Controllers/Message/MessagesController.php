@@ -59,7 +59,7 @@ class MessagesController extends Controller
             },
         ])->findOrFail($id);
 
-        $thread->messages = $thread->messages()->orderBy('created_at','asc')->paginate();
+        $thread->messages = $thread->messages()->orderBy('created_at','desc')->paginate();
 
         $thread->markAsRead(Auth::user()->id);
 

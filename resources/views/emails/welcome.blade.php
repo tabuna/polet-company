@@ -128,8 +128,8 @@
 
         .button-td:hover,
         .button-a:hover {
-            background: #f05050 !important;
-            border-color: #f05050 !important;
+            background-color: #196fbf !important;
+            border-color: #1767b2 !important;
         }
 
     </style>
@@ -157,9 +157,7 @@
                width="100%" style="max-width: 600px;">
             <tr>
                 <td style="padding: 20px 0; text-align: center">
-                    <img src="https://liptur.ru/img/tour/logo.png" aria-hidden="true" height="50" alt="alt_text"
-                         border="0"
-                         style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                    <span style="color: #000; font-size: 24px">[<span style="color: #1c7cd6;">Малый </span> тендер]</span>
                 </td>
             </tr>
         </table>
@@ -173,7 +171,7 @@
             <!-- Hero Image, Flush : BEGIN -->
             <tr>
                 <td bgcolor="#ffffff">
-                    <img src="https://liptur.ru/img/tour/email/main.jpg" aria-hidden="true" width="600" height=""
+                    <img src="http://smalltender.ga/img/header5.jpg" aria-hidden="true" width="600" height=""
                          alt="alt_text" border="0" align="center"
                          style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;"
                          class="g-img">
@@ -193,7 +191,7 @@
                                     <br> <strong>"{{config('app.name')}}"</strong></p>
 
                                 Здравствуйте {{ $user->name }} ! <br><br>
-                                Поздравляем Вас с успешной регистрацией на сайте Liptur.ru<br><br><br>
+                                Поздравляем Вас с успешной регистрацией на сайте {{config('app.url')}}<br><br><br>
 
                                 Для комфортного пользования порталом, заполните свой профиль укажите в профиле свои
                                 контактные данные <br><br>

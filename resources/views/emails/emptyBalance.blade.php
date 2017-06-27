@@ -130,7 +130,6 @@
         .button-a:hover {
             background-color: #196fbf !important;
             border-color: #1767b2 !important;
-
         }
 
     </style>
@@ -158,11 +157,6 @@
                width="100%" style="max-width: 600px;">
             <tr>
                 <td style="padding: 20px 0; text-align: center">
-                    {{--
-                    <img src="https://liptur.ru/img/tour/logo.png" aria-hidden="true" height="50" alt="alt_text"
-                         border="0"
-                         style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
-                    --}}
                     <span style="color: #000; font-size: 24px">[<span style="color: #1c7cd6;">Малый </span> тендер]</span>
                 </td>
             </tr>
@@ -193,43 +187,14 @@
                         <tr>
                             <td style="padding: 40px; text-align: justify; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
 
-                                Вы получили это письмо, потому что кто-то (возможно, вы) запросил на сайте
-                                <strong>"{{config('app.name')}}"</strong> восстановление пароля для пользователя,
-                                зарегистрированного с вашим адресом электронной почты
+
+
+                                Здравствуйте {{ $user->name }} ! <br><br>
+                                Ваш баланс на портале <strong>"{{config('app.name')}}"</strong>  равен нулю.<br><br><br>
+
+                                <small>Если у Вас возникнут вопросы, обратитесь в службу поддержки.</small>
 
                                 <br>
-                                <br>
-                                <br>
-                                <!-- Button : Begin -->
-                                <table role="presentation" aria-hidden="true" cellspacing="0" cellpadding="0" border="0"
-                                       align="center" style="margin: auto;">
-                                    <tr>
-                                        <td style="border-radius: 50px; background: #222222; text-align: center;"
-                                            class="button-td">
-                                            <a href="{{config('app.url')}}/password/reset/{{$token}}"
-                                               style="background-color: #1c7cd6;
-                                               border: 1px solid #1c7cd6;
-                                               font-family: sans-serif;
-                                               font-size: 14px; line-height: 1.1;
-                                               text-align: center;
-                                               text-decoration: none;
-                                               display: block;
-                                               border-radius: 50px;
-                                                padding: 10px 15px;
-                                                "
-                                               class="button-a">
-                                                <span style="color:#ffffff;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;Востановить доступ&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- Button : END -->
-
-                                <br><br>
-                                <small>Если вы не запрашивали изменение пароля или вспомнили свой пароль, просто
-                                    проигнорируйте это письмо и продолжайте пользоваться своим текущим паролем.
-                                </small>
-
                             </td>
                         </tr>
                     </table>
@@ -247,7 +212,7 @@
             <tr>
                 <td style="padding: 40px 10px;width: 100%;font-size: 12px; font-family: sans-serif; line-height:18px; text-align: center; color: #888888;"
                     class="x-gmail-data-detectors">
-
+                    
                     <span style="color: #888888">ОКУ «Центр кластерного развития туризма Липецкой области»<br>
 
                     398059 г. Липецк,

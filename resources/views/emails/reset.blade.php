@@ -157,9 +157,12 @@
                width="100%" style="max-width: 600px;">
             <tr>
                 <td style="padding: 20px 0; text-align: center">
+                    {{--
                     <img src="https://liptur.ru/img/tour/logo.png" aria-hidden="true" height="50" alt="alt_text"
                          border="0"
                          style="height: auto; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                    --}}
+                    <span style="color: #000; font-size: 18px">[<span style="color: #1c7cd6;">Малый </span> тендер]</span>
                 </td>
             </tr>
         </table>
@@ -173,7 +176,7 @@
             <!-- Hero Image, Flush : BEGIN -->
             <tr>
                 <td bgcolor="#ffffff">
-                    <img src="https://liptur.ru/img/tour/email/main.jpg" aria-hidden="true" width="600" height=""
+                    <img src="http://smalltender.ga/img/header5.jpg" aria-hidden="true" width="600" height=""
                          alt="alt_text" border="0" align="center"
                          style="width: 100%; max-width: 600px; height: auto; background: #dddddd; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;"
                          class="g-img">
@@ -202,7 +205,7 @@
                                     <tr>
                                         <td style="border-radius: 50px; background: #222222; text-align: center;"
                                             class="button-td">
-                                            <a href="https://liptur.ru/password/reset/{{$token}}"
+                                            <a href="{{config('app.url')}}/password/reset/{{$token}}"
                                                style="background: #f05050; border: 10px solid #f05050; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 50px;"
                                                class="button-a">
                                                 <span style="color:#ffffff;" class="button-link">&nbsp;&nbsp;&nbsp;&nbsp;Востановить доступ&nbsp;&nbsp;&nbsp;&nbsp;</span>

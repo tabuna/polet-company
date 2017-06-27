@@ -35,9 +35,9 @@
                                              :limit-text="limitText"
                                              @search-change="asyncFind"
                                              :taggable="false"
-                                             :SelectLabel="selectLabelTag"
-                                             :SelectedLabel="selectedLabelTag"
-                                             :DeselectLabel ="deselectLabelTag"
+                                             :selectLabel="'Нажмите Enter для выбора'"
+                                             :selectedLabel="'Выбранный'"
+                                             :deselectLabel ="'Нажмите Enter, чтобы удалить'"
 
                                 >
                                     <template slot="option" scope="props">
@@ -66,9 +66,9 @@
                                              :loading="isLoadingCity"
                                              @search-change="asyncFindCity"
                                              :taggable="false"
-                                             :SelectLabel="selectLabelTag"
-                                             :SelectedLabel="selectedLabelTag"
-                                             :DeselectLabel ="deselectLabelTag"
+                                             :selectLabel="'Нажмите Enter для выбора'"
+                                             :selectedLabel="'Выбранный'"
+                                             :deselectLabel ="'Нажмите Enter, чтобы удалить'"
 
                                 >
                                     <template slot="option" scope="props">
@@ -266,15 +266,6 @@
             },
             limitText (count) {
                 return `и ${count} ещё тегов`
-            },
-            selectLabelTag (){
-                return "Нажмите Enter для выбора";
-            },
-            selectedLabelTag(){
-                return "Выбранный"
-            },
-            deselectLabelTag(){
-                return "Нажмите Enter, чтобы удалить"
             },
             asyncFind (query) {
                 this.isLoading = true

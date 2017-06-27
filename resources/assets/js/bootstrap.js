@@ -53,6 +53,7 @@ window.WOW = require('../../../node_modules/wow.js/dist/wow.min');
 window.swal = require('sweetalert2');
 
 
+
 window.wow = new WOW(
     {
         boxClass:     'wow',      // animated element css class (default is wow)
@@ -69,6 +70,7 @@ window.wow = new WOW(
     }
 );
 wow.init();
+
 
 
 
@@ -97,3 +99,7 @@ require('select2');
 $(() => {
     $('.select2-enable').select2();
 });
+
+
+import moment from 'moment';
+moment.locale($('html').attr('lang'));

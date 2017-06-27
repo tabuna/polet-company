@@ -9,6 +9,7 @@ use Cmgmyr\Messenger\Models\Message;
 use Cmgmyr\Messenger\Models\Participant;
 use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -54,16 +55,17 @@ class MessagesController extends Controller
     {
         $thread = Thread::with([
             'messages' => function ($query) {
-               $query->paginate();
+                $query->paginate();
             },
-            'users' => function ($query) {
+            'users'    => function ($query) {
                 $query->select('avatar', 'name', 'agent_name');
             },
         ])->findOrFail($id);
+
         $thread->markAsRead(Auth::user()->id);
 
         if (!is_null(User::select('id')->where('id', $thread->participantsUserIds())->firstOrFail())) {
-            return $thread;
+            return response()->json($thread);
         }
 
     }
@@ -128,7 +130,7 @@ class MessagesController extends Controller
      *
      * @return mixed
      */
-    public function update($id)
+    public function update($id, Request $request)
     {
         try {
             $thread = Thread::findOrFail($id);
@@ -145,7 +147,7 @@ class MessagesController extends Controller
             [
                 'thread_id' => $thread->id,
                 'user_id'   => Auth::id(),
-                'body'      => Input::get('message'),
+                'body'      => $request->get('message'),
             ]
         );
 
@@ -159,11 +161,7 @@ class MessagesController extends Controller
         $participant->last_read = new Carbon;
         $participant->save();
 
-        // Recipients
-        if (Input::has('recipients')) {
-            $thread->addParticipant(Input::get('recipients'));
-        }
 
-        return redirect('messages/' . $id);
+        return $this->show($id);
     }
 }

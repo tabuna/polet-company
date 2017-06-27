@@ -18,9 +18,9 @@ Auth::routes();
 
 Route::group(['prefix' => 'messages','namespace' => 'Message'], function ($router) {
     $router->post('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
-    $router->get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+    $router->post('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
     $router->post('/thread', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
-    $router->get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+    $router->post('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
     $router->put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 });
 

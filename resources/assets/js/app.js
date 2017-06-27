@@ -24,7 +24,7 @@ Vue.use(wysiwyg, {
 
 Vue.use(infiniteScroll);
 Vue.use(VueRouter);
-
+Vue.use(require('vue-moment'));
 
 require('./directive/select2company');
 

@@ -248,7 +248,7 @@
                 if (this.users.next_page_url !== null) {
                     this.status.submit = true;
 
-                    axios.post(this.users.next_page_url,str_slug('Веб-сайт'))
+                    axios.post(this.users.next_page_url,this.query)
                         .then(response => {
 
                             let oldData = this.users.data;

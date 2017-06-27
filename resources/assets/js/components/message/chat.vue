@@ -17,8 +17,8 @@
 
                 <div v-for="message in threads.messages.data">
                     <div class="m-b" v-if="message.user_id == currentUser">
-                        <router-link :to="{ name: 'profile', params: { id: 2 }}" class="pull-left thumb-sm avatar"><img
-                                src="http://flatfull.com/themes/angulr/angular/img/a2.jpg" alt="Тут должна быть название компании">
+                        <router-link :to="{ name: 'profile', params: { id: message.user_id }}" class="pull-left thumb-sm avatar"><img
+                                :src="getAuthor(message.user_id).avatar" :alt="getAuthor(message.user_id).name">
                         </router-link>
                         <div class="m-l-xxl">
                             <div class="pos-rlt wrapper b b-light r r-2x">
@@ -31,8 +31,8 @@
                         </div>
                     </div>
                     <div class="m-b" v-else>
-                        <router-link :to="{ name: 'profile', params: { id: 2 }}" class="pull-right thumb-sm avatar"><img
-                                src="http://flatfull.com/themes/angulr/angular/img/a3.jpg" alt="Тут должна быть название компании">
+                        <router-link :to="{ name: 'profile', params: { id: message.user_id }}" class="pull-right thumb-sm avatar"><img
+                                :src="getAuthor(message.user_id).avatar" :alt="getAuthor(message.user_id).name">
                         </router-link>
                         <div class="m-r-xxl">
                             <div class="pos-rlt wrapper b b-light r r-2x">
@@ -85,7 +85,8 @@
                         prev_page_url: null,
                         to: 0,
                         total: 0,
-                    }
+                    },
+                    users: []
                 },
                 status: {
                     load: false,
@@ -118,10 +119,10 @@
                     this.status.self = false;
                 }
             },
-            getAuthor: function (users) {
+            getAuthor: function (user_id) {
                 let author = '';
-                users.forEach(function (item) {
-                    if (meta_user !== item.pivot.user_id) {
+                this.threads.users.forEach(function (item) {
+                    if (user_id === item.pivot.user_id) {
                         author = item;
                     }
                 });

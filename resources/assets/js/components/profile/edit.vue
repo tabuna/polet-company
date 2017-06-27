@@ -191,8 +191,49 @@
                         </p>
                     </div>
                 </div>
+
                 <div class="line line-dashed b-b line-lg"></div>
-                <div class="form-group" v-bind:class="{ 'has-error' : errors.address }">
+                <div class="form-group" v-bind:class="{ 'has-error' : errors.city_id }">
+                    <label class="col-sm-3 control-label">Основной город</label>
+                    <div class="col-sm-9">
+
+                        <div>
+
+                            <multiselect v-model="selectedCity"  label="name"
+                                         track-by="id"
+                                         placeholder="Введите основной город"
+                                         :options="allCity"
+                                         :multiple="false"
+                                         :searchable="true"
+                                         :loading="isLoadingCity"
+                                         :close-on-select="true"
+                                         @search-change="asyncFindCity"
+                                         :taggable="false"
+                                         :SelectLabel="selectLabelTag"
+                                         :SelectedLabel="selectedLabelTag"
+                                         :DeselectLabel ="deselectLabelTag"
+
+                            >
+                                <template slot="option" scope="props">
+                                    <div class="option__desc">
+                                        <span class="option__title">{{ props.option.name }}</span>
+                                    </div>
+                                </template>
+
+
+                                <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
+                        </div>
+
+                        <p class="help-block" v-if="errors.city_id">
+                            {{ errors.city_id }}
+                        </p>
+                        <p class="help-block" v-else="errors.name">
+                            Основной город будет показан в профиле и по умолчанию влиять на поисковую выдачу.
+                        </p>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg"></div>
+                <div class="form-group" v-bind:class="{ 'has-error' : errors.tags }">
                     <label class="col-sm-3 control-label">Теги компании</label>
                     <div class="col-sm-9">
 
@@ -229,8 +270,8 @@
                                 <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
                         </div>
 
-                        <p class="help-block" v-if="errors.address">
-                            {{ errors.address }}
+                        <p class="help-block" v-if="errors.tags">
+                            {{ errors.tags }}
                         </p>
                         <p class="help-block" v-else="errors.name">
                             Выберите от 1 до 10 ключевых слов к которым относится компания.
@@ -274,7 +315,10 @@
                 ],
                 selectedTags: [],
                 allTags: [],
+                selectedCity: [],
+                allCity: [],
                 isLoading: false,
+                isLoadingCity: false,
                 user: {
                     name: '',
                     agent_name: '',
@@ -304,6 +348,7 @@
                 .then(response => {
                     this.user = response.data;
                     this.selectedTags = this.user.tags;
+                    this.selectedCity = this.user.city;
                     this.status.load = true;
                     moduleLoad();
                 })
@@ -335,6 +380,7 @@
                     this.status.submit = true;
                     this.errors = {};
                     this.user.tags = this.selectedTags;
+                    this.user.city_id = this.selectedCity.id;
 
                     axios.put(`/profile/edit`, this.user)
                         .then(response => {
@@ -387,6 +433,32 @@
                         this.status.submit = false;
                         this.allTags = response.data;
                         this.isLoading = false;
+
+                    })
+                    .catch(error => {
+                        this.errors = error.response.data;
+                        this.status.submit = false;
+
+                        swal({
+                            title: 'Ошибка!',
+                            type: 'error',
+                            text: 'Проверьте вводимые данные',
+                            timer: 2500,
+                            showConfirmButton: false,
+                        }).catch(swal.noop)
+
+                    });
+
+            },
+            asyncFindCity (query) {
+                this.isLoadingCity = true
+
+                axios.post(`/other/city/` + query)
+                    .then(response => {
+                        //this.user = response.data;
+                        this.status.submit = false;
+                        this.allCity = response.data;
+                        this.isLoadingCity = false;
 
                     })
                     .catch(error => {

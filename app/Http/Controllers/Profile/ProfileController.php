@@ -6,6 +6,7 @@ use App\Core\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\AccountPasswordRequest;
 use App\Http\Requests\Profile\AccountRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -32,7 +33,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return response()->json(User::where('id',Auth::id())->with('tags')->first());
+        return response()->json(User::where('id',Auth::id())->with(['tags','city'])->first());
     }
 
     /**
@@ -45,6 +46,7 @@ class ProfileController extends Controller
         if (!$user->exists) {
             $user = Auth::user();
         }
+
 
         $user->fave = $user->liked();
 
@@ -118,10 +120,23 @@ class ProfileController extends Controller
     }
 
     /**
+     * @param Request $request
+     *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function companies(){
-       $companies = User::with('tags')->orderBy('created_at','DESC')->paginate(15);
+    public function companies(Request $request){
+
+        $companies = User::with('tags')->orderBy('created_at','DESC');
+
+        if($request->get('tags')) {
+            $companies->whereTag($request->get('tags'));
+        }
+
+        if($request->get('city')) {
+            $companies->where('city_id',$request->get('city'));
+        }
+
+       $companies = $companies->paginate(15);
 
        return response()->json($companies);
     }

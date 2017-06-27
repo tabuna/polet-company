@@ -103,6 +103,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tend
 
 $router->post('/companies', 'Profile\ProfileController@companies')->name('companies');
 
+/*
+|--------------------------------------------------------------------------
+| Other
+|--------------------------------------------------------------------------
+|
+*/
+Route::group(['middleware' => 'auth', 'prefix' => 'other', 'namespace' => 'Other'], function ($router) {
+    $router->post('/city/{city?}', 'CityController@show')->name('city');
+});
+
 
 
 /*

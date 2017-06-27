@@ -37,7 +37,8 @@ class User extends UserOrchid
         'avatar',
         'agent_name',
         'specialization',
-        'size_company'
+        'size_company',
+        'city_id'
     ];
 
 
@@ -63,6 +64,14 @@ class User extends UserOrchid
         }
 
         return $this->avatar;
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function city(){
+        return $this->belongsTo(City::class);
     }
 
 

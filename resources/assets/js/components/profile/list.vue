@@ -17,10 +17,10 @@
                     </div>
                     <div class="row">
 
-                        <div class="col-sm-12">
+                        <div class="col-sm-8">
                             <div class="form-group">
                                 <label class="control-label">Теги</label>
-                                <multiselect v-model="query.tags" id="ajax" label="name"
+                                <multiselect v-model="selectedTags" id="ajax" label="name"
                                              track-by="slug"
                                              placeholder="Введите ключевые слова"
                                              :options="allTags"
@@ -34,8 +34,7 @@
                                              :limit="5"
                                              :limit-text="limitText"
                                              @search-change="asyncFind"
-                                             :taggable="true"
-                                             @tag="addTag"
+                                             :taggable="false"
                                              :SelectLabel="selectLabelTag"
                                              :SelectedLabel="selectedLabelTag"
                                              :DeselectLabel ="deselectLabelTag"
@@ -55,32 +54,34 @@
 
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label class="control-label">Поиск по названию</label>
-                                <input type="text" name="search" v-model="query.name" placeholder="Поиск записей.." class="form-control"
-                                       maxlength="200" autocomplete="off">
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
                                 <label class="control-label">Город</label>
-                                <select name="status" v-name="query.city" class="form-control">
-                                    <option></option>
-                                    <option value="publish">Опубликовано</option>
-                                    <option value="draft">Черновик</option>
-                                    <option value="titz">Тиц</option>
-                                </select>
+                                <multiselect v-model="selectedCity"  label="name"
+                                             track-by="id"
+                                             placeholder="Введите город"
+                                             :options="allCity"
+                                             :multiple="false"
+                                             :searchable="true"
+                                             :options-limit="5"
+                                             :limit="5"
+                                             :loading="isLoadingCity"
+                                             @search-change="asyncFindCity"
+                                             :taggable="false"
+                                             :SelectLabel="selectLabelTag"
+                                             :SelectedLabel="selectedLabelTag"
+                                             :DeselectLabel ="deselectLabelTag"
+
+                                >
+                                    <template slot="option" scope="props">
+                                        <div class="option__desc">
+                                            <span class="option__title">{{ props.option.name }}</span>
+                                        </div>
+                                    </template>
+
+
+                                    <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label class="control-label">Размер компании</label>
-                                <select name="status" v-model="query.size" class="form-control">
-                                    <option v-for="option in optionsSize" v-bind:value="option.value">
-                                        {{ option.text }}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
+
                     </div>
 
                 </div>
@@ -130,10 +131,10 @@
                 <div class="jumbotron text-center bg-white not-found" v-if="users.data.length === 0">
 
                     <p class="h3 m-b-xl inline b b-dark rounded wrapper-lg">
-                        <i class="fa-3x w-1x icon-briefcase"></i>
+                        <i class="fa-3x w-1x icon-people"></i>
                     </p>
 
-                    <h4 class="m-t-none">Тендер не найден</h4>
+                    <h4 class="m-t-none">Компания не найдена</h4>
 
                     <p class="text-muted m-t-lg">
 
@@ -160,21 +161,15 @@
         props: ['tags'],
         data: function () {
             return {
+                selectedCity: [],
+                allCity: [],
                 selectedTags: [],
                 allTags: [],
-                optionsSize: [
-                    { value: 'myself', text: '1 человек' },
-                    { value: 'xsmall', text: '2 - 10 человек' },
-                    { value: 'small', text: '11 - 100 человек' },
-                    { value: 'medium', text: '101 - 1000 человек' },
-                    { value: 'big', text: '1001 - 10000 человек' },
-                    { value: 'xbig', text: '10001 и более человек' }
-                ],
+                isLoading: false,
+                isLoadingCity: false,
                 query: {
-                    tags: [],
-                    size: [],
-                    name: '',
-                    city: '',
+                    tags: null,
+                    city: null,
                 },
                 users: {
                     current_page: 0,
@@ -213,11 +208,27 @@
 
 
         },
+        watch: {
+            'selectedCity'(newId, oldId) {
+                this.query.city = newId;
+                this.load()
+            },
+            'selectedTags'(newId, oldId){
+
+                let textAllTags = [];
+                newId.forEach(function(item, i, arr) {
+                   textAllTags.push(item.slug)
+                });
+
+                this.query.tags = textAllTags.join(',');
+                this.load()
+            }
+        },
         methods: {
             load: function () {
                 let id = meta_user;
 
-                axios.post(`/companies`)
+                axios.post(`/companies`,this.query)
                     .then(response => {
                         this.users = response.data;
                         this.status.load = true;
@@ -237,7 +248,7 @@
                 if (this.users.next_page_url !== null) {
                     this.status.submit = true;
 
-                    axios.post(this.users.next_page_url)
+                    axios.post(this.users.next_page_url,str_slug('Веб-сайт'))
                         .then(response => {
 
                             let oldData = this.users.data;
@@ -274,6 +285,32 @@
                         this.status.submit = false;
                         this.allTags = response.data;
                         this.isLoading = false;
+
+                    })
+                    .catch(error => {
+                        this.errors = error.response.data;
+                        this.status.submit = false;
+
+                        swal({
+                            title: 'Ошибка!',
+                            type: 'error',
+                            text: 'Проверьте вводимые данные',
+                            timer: 2500,
+                            showConfirmButton: false,
+                        }).catch(swal.noop)
+
+                    });
+
+            },
+            asyncFindCity (query) {
+                this.isLoadingCity = true
+
+                axios.post(`/other/city/` + query)
+                    .then(response => {
+                        //this.user = response.data;
+                        this.status.submit = false;
+                        this.allCity = response.data;
+                        this.isLoadingCity = false;
 
                     })
                     .catch(error => {

@@ -16,35 +16,71 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <div class="form-group">
-                        <label class="control-label">Поиск по названию</label>
-                        <input type="text" name="search" value="" placeholder="Поиск записей.." class="form-control"
-                               maxlength="200" autocomplete="off">
+                        <label class="control-label">Теги</label>
+                        <multiselect v-model="selectedTags" id="ajax" label="name"
+                                     track-by="slug"
+                                     placeholder="Введите ключевые слова"
+                                     :options="allTags"
+                                     :multiple="true"
+                                     :searchable="true"
+                                     :loading="isLoading"
+                                     :internal-search="false"
+                                     :clear-on-select="false"
+                                     :close-on-select="false"
+                                     :options-limit="5"
+                                     :limit="5"
+                                     :limit-text="limitText"
+                                     @search-change="asyncFind"
+                                     :taggable="false"
+                                     :SelectLabel="selectLabelTag"
+                                     :SelectedLabel="selectedLabelTag"
+                                     :DeselectLabel ="deselectLabelTag"
+
+                        >
+                            <template slot="option" scope="props">
+                                <div class="option__desc">
+                                    <span class="option__title">{{ props.option.name }}</span>
+                                    <span class="badge bg-info pull-right">{{ props.option.count }}</span>
+                                </div>
+                            </template>
+
+
+                            <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
                     </div>
                 </div>
+
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label">Город</label>
-                        <select name="status" class="form-control">
-                            <option></option>
-                            <option value="publish">Опубликовано</option>
-                            <option value="draft">Черновик</option>
-                            <option value="titz">Тиц</option>
-                        </select>
+                        <multiselect v-model="selectedCity"  label="name"
+                                     track-by="id"
+                                     placeholder="Введите город"
+                                     :options="allCity"
+                                     :multiple="false"
+                                     :searchable="true"
+                                     :options-limit="5"
+                                     :limit="5"
+                                     :loading="isLoadingCity"
+                                     @search-change="asyncFindCity"
+                                     :taggable="false"
+                                     :SelectLabel="selectLabelTag"
+                                     :SelectedLabel="selectedLabelTag"
+                                     :DeselectLabel ="deselectLabelTag"
+
+                        >
+                            <template slot="option" scope="props">
+                                <div class="option__desc">
+                                    <span class="option__title">{{ props.option.name }}</span>
+                                </div>
+                            </template>
+
+
+                            <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label">Теги</label>
-                        <select name="status" class="form-control">
-                            <option></option>
-                            <option value="publish">Опубликовано</option>
-                            <option value="draft">Черновик</option>
-                            <option value="titz">Тиц</option>
-                        </select>
-                    </div>
-                </div>
+
             </div>
 
         </div>
@@ -326,7 +362,9 @@
 
 
 <script>
+    import Multiselect from 'vue-multiselect';
     export default {
+        components: { Multiselect },
         data: function () {
             return {
                 user: {

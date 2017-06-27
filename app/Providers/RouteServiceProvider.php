@@ -40,7 +40,13 @@ class RouteServiceProvider extends ServiceProvider
                 ->firstOrFail();
         });
 
-        Route::model('user', User::class);
+
+        Route::bind('user', function ($value) {
+            return User::with(['tags','city'])->findOrFail($value);
+        });
+
+
+        //Route::model('user', User::class);
     }
 
     /**

@@ -37,3 +37,16 @@ a.list-group-item:hover, a.list-group-item:focus, a.list-group-item.hover{
 
 }
 
+.multiselect__option--highlight, .multiselect__option--highlight::after{
+  background: @brand-info;
+}
+
+.multiselect__option--highlight::after{
+
+}
+
+.multiselect__option--selected.multiselect__option--highlight,
+.multiselect__option--selected.multiselect__option--highlight::after{
+  background: @brand-info;
+  content: '';
+}

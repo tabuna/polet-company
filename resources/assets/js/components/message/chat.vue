@@ -5,7 +5,7 @@
         <div class="wrapper-md">
 
             <div class="panel-heading">Чат</div>
-            <div class="panel-body b" style="max-height: 1000px; overflow-y: scroll">
+            <div class="panel-body b scrollBlock" style="max-height: 1000px; overflow-y: scroll">
 
 
                 <div v-if="threads.messages.next_page_url">
@@ -96,7 +96,7 @@
             }
         },
         mounted() {
-            this.load()
+            this.load();
         },
         methods: {
             load: function () {
@@ -108,6 +108,11 @@
                         this.threads = response.data;
                         this.status.load = true;
                         this.threads.messages.data.reverse();
+
+                        setTimeout(function () {
+                            $('.scrollBlock').scrollTop(999);
+                        }, 1000);
+
                     })
                     .catch(e => {
                         this.errors.push(e)

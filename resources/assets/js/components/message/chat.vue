@@ -15,7 +15,7 @@
                 </div>
 
 
-                <div v-for="message in threads.messages.data">
+                <div v-for="message in threads.messages.data" class="">
                     <div class="m-b" v-if="message.user_id == currentUser">
                         <router-link :to="{ name: 'profile', params: { id: message.user_id }}" class="pull-left thumb-sm avatar"><img
                                 :src="getAuthor(message.user_id).avatar" :alt="getAuthor(message.user_id).name">
@@ -47,7 +47,9 @@
             <footer class="panel-footer b">
                 <!-- chat form -->
                 <div>
-                    <a class="pull-left thumb-xs avatar"><img src="img/a3.jpg" class="img-circle" alt="..."></a>
+                    <router-link :to="{ name: 'profile', params: { id: currentUser }}" class="pull-left thumb-xs avatar">
+                        <img :src="getAuthor(currentUser).avatar" class="img-circle" :alt="getAuthor(currentUser).name">
+                    </router-link>
                     <form class="m-b-none m-l-xl ng-pristine ng-valid" v-on:submit.prevent="sendMessage">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Написать сообщение"
@@ -100,6 +102,7 @@
         },
         methods: {
             load: function () {
+                //$('.scrollBlock').scrollTop(999);
                 let id = window.meta_user;
                 this.currentUser= window.meta_user;
 
@@ -123,11 +126,12 @@
                 } else {
                     this.status.self = false;
                 }
+                $('.scrollBlock').scrollTop(999);
             },
             getAuthor: function (user_id) {
                 let author = '';
                 this.threads.users.forEach(function (item) {
-                    if (user_id === item.pivot.user_id) {
+                    if ( +user_id === item.pivot.user_id) {
                         author = item;
                     }
                 });
@@ -165,6 +169,7 @@
                         'message': message
                     })
                         .then(response => {
+                            response.data.messages.data.reverse();
                             this.threads = response.data;
                         })
                         .catch(e => {

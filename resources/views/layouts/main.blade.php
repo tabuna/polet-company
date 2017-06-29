@@ -8,7 +8,7 @@
                 @yield('main')
             </div>
 
-            <div class="col-md-4 hidden-xs">
+            <div id="rightPanel" class="col-md-4 hidden-xs">
                 <div class="panel panel-default b">
                     <div class="panel-heading">
                         <div class="clearfix">

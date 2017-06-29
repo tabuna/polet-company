@@ -88,6 +88,7 @@
         },
         methods: {
             load: function () {
+                $('#adb').show();
                 let id = meta_user;
 
                 axios.post(`/messages`)

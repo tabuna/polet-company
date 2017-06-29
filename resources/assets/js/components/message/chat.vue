@@ -102,6 +102,8 @@
         },
         methods: {
             load: function () {
+                $('#adb').hide();
+                $('.scrollBlock').height($('#rightPanel').height());
                 //$('.scrollBlock').scrollTop(999);
                 let id = window.meta_user;
                 this.currentUser= window.meta_user;

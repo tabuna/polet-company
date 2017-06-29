@@ -54,5 +54,13 @@
                     this.errors.push(e)
                 });
         },
+        mounted() {
+            this.load();
+        },
+        methods:{
+            load: function () {
+                $('#adb').show();
+            },
+        }
     }
 </script>

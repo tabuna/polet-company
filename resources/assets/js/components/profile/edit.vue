@@ -344,6 +344,7 @@
             }
         },
         mounted() {
+            $('#adb').show();
             axios.post(`/profile/edit`)
                 .then(response => {
                     this.user = response.data;

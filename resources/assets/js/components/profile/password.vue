@@ -89,8 +89,14 @@
 
                 errors: {},
             }
-        }, methods: {
-
+        },
+        mounted() {
+            this.load();
+        },
+        methods: {
+            load: function () {
+                $('#adb').show();
+            },
             submitProfile: function () {
 
                 if (this.status.submit === false) {

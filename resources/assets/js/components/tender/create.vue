@@ -152,10 +152,17 @@
         beforeMount() {
 
         },
+        mounted() {
+            this.load();
+        },
+
         methods: {
             'showSuccess': function (file) {
                 console.log('A file was successfully uploaded')
-            }
+            },
+            load: function () {
+                $('#adb').show();
+            },
         }
     }
 </script>

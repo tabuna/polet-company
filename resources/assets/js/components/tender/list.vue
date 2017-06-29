@@ -383,5 +383,13 @@
         beforeMount() {
 
         },
+        mounted() {
+            this.load();
+        },
+        methods:{
+            load: function () {
+                $('#adb').show();
+            },
+        }
     }
 </script>

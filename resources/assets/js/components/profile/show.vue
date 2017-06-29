@@ -164,6 +164,7 @@
         },
         methods: {
             load: function (id) {
+                $('#adb').show();
 
                 axios.post(`/profile/` + id)
                     .then(response => {

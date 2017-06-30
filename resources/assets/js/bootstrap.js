@@ -10,6 +10,9 @@ window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
 
+    require('../../../node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min');
+    require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
+
     require('bootstrap');
 } catch (e) {}
 
@@ -42,8 +45,7 @@ window.meta_user = document.head.querySelector('meta[name="auth"]').content;
 
 
 
-require('../../../node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min');
-require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
+
 require('../../../node_modules/typed.js/dist/typed.min.js');
 
 require('../../../node_modules/chart.js/dist/Chart.min');

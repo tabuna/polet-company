@@ -123,9 +123,6 @@
                                 <li>
                                     <router-link :to="{ name: 'edit' }">Настройки</router-link>
                                 </li>
-                                <li>
-                                    <a href="#">Помощь</a>
-                                </li>
                                 <li class="divider"></li>
                                 <li>
                                     <a href="{{ route('logout') }}"

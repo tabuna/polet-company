@@ -17,7 +17,7 @@
                       </span>
                         <span class="clear">
                     <span>{{ getAuthor(thread.users).agent_name }}</span>
-                    <small class="clear text-ellipsis"
+                    <small class="clear text-ellipsis" v-if="thread.messages[0]"
                            v-bind:class="{ 'text-muted': !thread.isUnread, 'text-black': thread.isUnread }">
                         {{thread.messages[0].body}}
                     </small>

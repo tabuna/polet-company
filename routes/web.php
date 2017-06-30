@@ -16,6 +16,27 @@ Auth::routes();
 
 
 
+
+/*
+|--------------------------------------------------------------------------
+| Website display for all users and guest
+|--------------------------------------------------------------------------
+|
+*/
+Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($router) {
+    $router->get('/', 'WelcomeController@index')->name('index');
+    $router->get('/companies', 'WelcomeController@companies')->name('companies');
+    $router->get('/order', 'WelcomeController@order')->name('order');
+
+    $router->get('/p/{item}', 'PageController@show')->name('page');
+
+    $router->get('/contacts', 'ContactsController@index')->name('contacts');
+    $router->post('/contacts', 'ContactsController@send')->name('contacts.submit');
+});
+
+
+
+
 Route::group(['prefix' => 'messages','namespace' => 'Message'], function ($router) {
     $router->post('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
     $router->post('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
@@ -36,23 +57,6 @@ Route::group(['namespace' => 'Payments', 'prefix' => 'payments'], function ($rou
     $router->resource('order', 'AvisoController');
 });
 
-
-/*
-|--------------------------------------------------------------------------
-| Website display for all users and guest
-|--------------------------------------------------------------------------
-|
-*/
-Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($router) {
-    $router->get('/', 'WelcomeController@index')->name('index');
-    $router->get('/companies', 'WelcomeController@companies')->name('companies');
-    $router->get('/order', 'WelcomeController@order')->name('order');
-
-    $router->get('/p/{item}', 'PageController@show')->name('page');
-
-    $router->get('/contacts', 'ContactsController@index')->name('contacts');
-    $router->post('/contacts', 'ContactsController@send')->name('contacts.submit');
-});
 
 
 /*
@@ -80,17 +84,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Pro
 
 
 
-
-
-// Password Reset Routes...
-/*
-$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-$this->post('password/reset', 'Auth\ResetPasswordController@reset');
-
-*/
-
 /*
 |--------------------------------------------------------------------------
 | Tender
@@ -115,6 +108,7 @@ $router->post('/companies', 'Profile\ProfileController@companies')->name('compan
 Route::group(['middleware' => 'auth', 'prefix' => 'other', 'namespace' => 'Other'], function ($router) {
     $router->post('/city/{city?}', 'CityController@show')->name('city');
 });
+
 
 
 

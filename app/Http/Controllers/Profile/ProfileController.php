@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Profile;
 
+use App\Core\Models\Statistics;
 use App\Core\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\AccountPasswordRequest;
 use App\Http\Requests\Profile\AccountRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -33,7 +37,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return response()->json(User::where('id',Auth::id())->with(['tags','city'])->first());
+        return response()->json(User::where('id', Auth::id())->with(['tags', 'city'])->first());
     }
 
     /**
@@ -47,16 +51,31 @@ class ProfileController extends Controller
             $user = Auth::user();
         }
 
+        // Просмотр чужого профиля
+        $currentUser = Auth::user();
+        if ($user->id != $currentUser->id) {
+            Statistics::create([
+                'city'     => $currentUser->city->name ?? 'unknown',
+                'user_id'  => $user->id,
+                'guest_id' => $currentUser->id,
+            ]);
+        }
+
+        //Похожие компании
+        $user->similars = User::select('id','name','avatar','specialization')->withTag($user->tags->implode('slug', ', '))
+            ->where('city_id', $user->city_id)
+            ->where('id', '!=',$user->id)
+            ->limit(5)
+            ->get();
 
         $user->fave = $user->liked();
 
         $user->occupancy = 0;
         foreach ($user->attributesToArray() as $item) {
-            if(is_null($item) || empty($item)){
+            if (is_null($item) || empty($item)) {
                 $user->occupancy++;
             }
         }
-
 
         return response()->json($user);
     }
@@ -90,10 +109,10 @@ class ProfileController extends Controller
             ]);
         }
 
-        if($account->has('tags')){
+        if ($account->has('tags')) {
             $tags = [];
-            foreach ($account->get('tags') as $item){
-                array_push($tags,$item['slug']);
+            foreach ($account->get('tags') as $item) {
+                array_push($tags, $item['slug']);
             }
             $user->setTags($tags);
         }
@@ -124,21 +143,58 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function companies(Request $request){
+    public function companies(Request $request)
+    {
 
-        $companies = User::with('tags')->orderBy('created_at','DESC');
+        $companies = User::with('tags')->orderBy('created_at', 'DESC');
 
-        if($request->get('tags')) {
+        if ($request->get('tags')) {
             $companies->whereTag($request->get('tags'));
         }
 
-        if($request->get('city')) {
-            $companies->where('city_id',$request->get('city'));
+        if ($request->get('city')) {
+            $companies->where('city_id', $request->get('city'));
         }
 
-       $companies = $companies->paginate(15);
+        $companies = $companies->paginate(15);
 
-       return response()->json($companies);
+        return response()->json($companies);
     }
 
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function statistics()
+    {
+        $currentUser = Auth::user();
+
+        $timeStatics = Cache::remember('statics-' . $currentUser->id, Carbon::now()->addHour(),
+            function () use ($currentUser) {
+                $statics['time'] =  Statistics::select(DB::raw("DATE_FORMAT(`created_at`, '%d') as dat,COUNT('id') as count "))
+                    ->where('created_at', '>', Carbon::now()->subDays(30))
+                    ->where('user_id', $currentUser->id)
+                    ->groupBy('dat')
+                    ->orderBy('dat', 'DESC')
+                    ->get();
+
+                $statics['city'] = Statistics::select(DB::raw("DATE_FORMAT(`created_at`, '%d') as dat,COUNT('id') as count,city"))
+                    ->where('created_at', '>', Carbon::now()->subDays(30))
+                    ->where('user_id', $currentUser->id)
+                    ->groupBy('dat','city')
+                    ->orderBy('count', 'DESC')
+                    ->limit(5)
+                    ->get();
+
+                return $statics;
+            });
+
+        $timeStatics['render'] = true;
+        if($timeStatics['city']->count() < 1 && $timeStatics['time']->count() < 1){
+            $timeStatics['render'] = false;
+        }
+
+        return response()->json($timeStatics);
+
+    }
 }

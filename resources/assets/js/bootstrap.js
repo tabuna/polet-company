@@ -46,6 +46,8 @@ require('../../../node_modules/jasny-bootstrap/dist/js/jasny-bootstrap.min');
 require('../../../node_modules/bootstrap-maxlength/bootstrap-maxlength.min');
 require('../../../node_modules/typed.js/dist/typed.min.js');
 
+require('../../../node_modules/chart.js/dist/Chart.min');
+require('../../../node_modules/chart.js/dist/Chart.bundle.min');
 
 
 
@@ -104,3 +106,14 @@ $(() => {
 import moment from 'moment';
 moment.locale($('html').attr('lang'));
 */
+
+
+window.chartColors = {
+    red: 'rgb(255, 99, 132)',
+    orange: 'rgb(255, 159, 64)',
+    yellow: 'rgb(255, 205, 86)',
+    green: 'rgb(75, 192, 192)',
+    blue: 'rgb(54, 162, 235)',
+    purple: 'rgb(153, 102, 255)',
+    grey: 'rgb(201, 203, 207)'
+};

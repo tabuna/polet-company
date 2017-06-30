@@ -104,7 +104,6 @@
             load: function () {
                 $('#adb').hide();
                 $('.scrollBlock').height($('#rightPanel').height());
-                //$('.scrollBlock').scrollTop(999);
                 let id = window.meta_user;
                 this.currentUser= window.meta_user;
 
@@ -123,11 +122,12 @@
                         this.errors.push(e)
                     });
 
+                this.status.self = false;
+
                 if (id !== window.meta_user) {
                     this.status.self = true;
-                } else {
-                    this.status.self = false;
                 }
+
                 $('.scrollBlock').scrollTop(999);
             },
             getAuthor: function (user_id) {
@@ -173,6 +173,7 @@
                         .then(response => {
                             response.data.messages.data.reverse();
                             this.threads = response.data;
+                            this.newMessage= '';
                         })
                         .catch(e => {
                             this.errors.push(e)

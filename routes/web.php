@@ -63,6 +63,7 @@ Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($rou
 */
 Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Profile'], function ($router) {
 
+
     $router->post('/{user?}', 'ProfileController@show')->where('user', '[0-9]+')->name('profile');
     $router->get('/tags/{tag?}', 'TagController@show')->name('profile.tags');
 
@@ -73,6 +74,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Pro
     $router->put('/edit', 'ProfileController@update')->name('profile.update');
     $router->post('/password', 'ProfileController@password')->name('profile.password');
     $router->put('/password', 'ProfileController@changePassword')->name('profile.password.update');
+
+    $router->post('/statistics', 'ProfileController@statistics')->name('profile.statistics');
 });
 
 

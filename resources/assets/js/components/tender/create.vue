@@ -2,7 +2,7 @@
 
     <div class="bg-white b box-shadow">
         <div class="wrapper-md">
-    <div class="row m-b-md">
+    <div class="row m-b-md" v-if="status.load">
 
         <div class="col-xs-12">
             <form class="form-horizontal" enctype="multipart/form-data">
@@ -41,6 +41,7 @@
                             <input id="price" name="price" class="form-control"
                                    placeholder="Цена" required="" type="number" min="0">
                         </div>
+                        <span class="help-block text-xs">Если вы не знаете или не уверены в стоимости работ или товара, оставьте поле пустым, путь партнёры сами предлогают свою цену</span>
                     </div>
                 </div>
 
@@ -53,6 +54,8 @@
                     <!-- Optional parameters if any! -->
                     <input type="hidden" name="token" value="xxx">
                 </dropzone>
+                <span class="help-block text-xs">Загружайте все необходимые документы, до 10 мегабайт</span>
+
 
 
                 <div class="page-header">
@@ -65,7 +68,7 @@
                     <div class="col-md-8">
                         <input id="name" name="name"
                                placeholder="Имя продавца"
-                               class="form-control input-md" required="" type="text">
+                               class="form-control input-md" v-model="user.agent_name" type="text">
                     </div>
                 </div>
 
@@ -74,7 +77,7 @@
 
                     <div class="col-md-8">
                         <input id="email" name="email" class="form-control"
-                               placeholder="Email продавца" value=""
+                               placeholder="Email продавца" v-model="user.email"
                                required="" type="email">
                     </div>
                 </div>
@@ -84,19 +87,8 @@
 
                     <div class="col-md-8">
                         <input id="phone" name="phone"
-                               placeholder="Контактный телефон" value=""
+                               placeholder="Контактный телефон" v-model="user.phone"
                                class="form-control input-md" required="" type="text">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-md-3 control-label">Область</label>
-
-                    <div class="col-md-8">
-                        <select id="selector-country_id" name="country_id"
-                                class="form-control selecter">
-                            <option selected disabled>Выберите область ...</option>
-                        </select>
                     </div>
                 </div>
 
@@ -104,7 +96,7 @@
                     <label class="col-md-3 control-label" for="city_id">Город</label>
 
                     <div class="col-md-8">
-                        <select id="city_id" disabled name="city_id"
+                        <select id="city_id" name="city_id"
                                 class="form-control">
                             <option selected disabled>Выберите Город ...</option>
                         </select>
@@ -146,11 +138,25 @@
                     website: '',
                     about: '',
                     avatar: '',
-                }
+                },
+                status: {
+                    load: false,
+                    submit: false,
+                    self: false,
+                },
+                errors: {},
             }
         },
         beforeMount() {
-
+            axios.post(`/profile/edit`)
+                .then(response => {
+                    this.user = response.data;
+                    this.status.load = true;
+                    moduleLoad();
+                })
+                .catch(e => {
+                    this.errors.push(e)
+                });
         },
         mounted() {
             this.load();

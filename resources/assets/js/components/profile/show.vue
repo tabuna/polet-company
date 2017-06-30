@@ -117,7 +117,49 @@
                 </div>
             </div>
         </div>
+
+
+
+        <div class="col-xs-12 m-t-md bg-white b box-shadow hidden-xs hidden-sm" v-if="user.similars.length > 0">
+
+
+            <div class="m-t-md">
+                <h4 class="l-h-1x">Конкуренты:</h4>
+            </div>
+
+            <article class="col-md-12 padder-v" v-for="similar in user.similars">
+                <div class="row v-center">
+
+                    <div class="col-md-2">
+                    <div class="thumb-lg">
+                        <a href="#"><img
+                                v-bind:src="similar.avatar"
+                                class="img-responsive"></a>
+                    </div>
+                    </div>
+                    <div class="col-md-10">
+                    <div class="wrapper-md">
+                        <div>
+                            <p class="h4 m-b-xs"><a
+                                    href="#">{{similar.name}}</a>
+                            </p>
+                            <p class="text-xs">
+                                {{similar.specialization}}
+                            </p>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+
     </div>
+
+
+
 
 </template>
 
@@ -146,6 +188,7 @@
                     about: '',
                     avatar: '',
                     fave: false,
+                    similars: [],
                 },
                 status: {
                     load: false,

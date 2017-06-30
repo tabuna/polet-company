@@ -47,3 +47,12 @@ $factory->define(App\Core\Models\User::class, function (Faker\Generator $faker) 
         'city_id'        => rand(1, 2533),
     ];
 });
+
+
+$factory->define(App\Core\Models\Statistics::class, function (Faker\Generator $faker) {
+    return [
+        'city'     => $faker->city,
+        'user_id'  => rand(0, 100),
+        'guest_id' => rand(0, 100),
+    ];
+});

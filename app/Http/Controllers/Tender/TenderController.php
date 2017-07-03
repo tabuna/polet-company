@@ -7,11 +7,10 @@ use App\Http\Requests\CommentRequest;
 use App\Http\Requests\TenderRequest;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Orchid\Core\Models\Attachment;
 use Orchid\Core\Models\Comment;
 use Orchid\Core\Models\Post;
-use Orchid\Facades\Dashboard;
 
 class TenderController extends Controller
 {
@@ -22,7 +21,7 @@ class TenderController extends Controller
      */
     public function index(Request $request)
     {
-        $elements = Post::where('type', 'tender')->with(['tags','author'])->orderBy('created_at', 'DESC');
+        $elements = Post::where('type', 'tender')->with(['tags', 'author'])->orderBy('created_at', 'DESC');
 
         if ($request->get('tags')) {
             $elements->whereTag($request->get('tags'));
@@ -45,7 +44,7 @@ class TenderController extends Controller
      */
     public function store(TenderRequest $request)
     {
-        $post =  Post::create([
+        $post = Post::create([
             'user_id' => Auth::id(),
             'type'    => 'tender',
             'status'  => 'publish',
@@ -77,6 +76,17 @@ class TenderController extends Controller
             $post->setTags($tags);
         }
 
+        if ($request->has('files')) {
+            $files = $request->input('files');
+            foreach ($files as $file) {
+                if (!is_null($file) || !empty($file)) {
+                    $uploadFile = Attachment::find($file['id']);
+                    $uploadFile->post_id = $post->id;
+                    $uploadFile->save();
+                }
+            }
+        }
+
         $post->save;
 
         return $post;
@@ -99,7 +109,8 @@ class TenderController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function comment($id, CommentRequest $request){
+    public function comment($id, CommentRequest $request)
+    {
         Comment::create([
             'post_id'   => $id,
             'user_id'   => Auth::user()->id,

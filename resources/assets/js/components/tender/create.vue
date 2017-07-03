@@ -72,9 +72,9 @@
                                                  @search-change="asyncFind"
                                                  :taggable="true"
                                                  @tag="addTag"
-                                                 :SelectLabel="selectLabelTag"
-                                                 :SelectedLabel="selectedLabelTag"
-                                                 :DeselectLabel ="deselectLabelTag"
+                                                 :selectLabel="'Нажмите Enter для выбора'"
+                                                 :selectedLabel="'Выбранный'"
+                                                 :deselectLabel="'Нажмите Enter, чтобы удалить'"
 
                                     >
                                         <template slot="option" scope="props">
@@ -102,10 +102,12 @@
                             <h4 class="font-thin"><i class="icon-printer m-r-xs"></i> Документы и приложения</h4>
                         </div>
 
-                        <dropzone id="myVueDropzone" url="https://httpbin.org/post"
-                                  v-on:vdropzone-success="showSuccess">
-                            <!-- Optional parameters if any! -->
-                            <input type="hidden" name="token" value="xxx">
+                        <dropzone id="dropFileUpload" ref="dropFileUpload" url="/tender/upload"
+                                  v-on:vdropzone-success="showSuccess"
+                                  v-on:vdropzone-removed-file="removeFile"
+                                    :language="language"
+                                    :useFontAwesome="true"
+                                    :maxFileSizeInMB="10">
                         </dropzone>
                         <span class="help-block text-xs text-right">Загружайте все необходимые документы, до 10 мегабайт</span>
 
@@ -204,6 +206,20 @@
         },
         data: function () {
             return {
+                language:{
+                    dictDefaultMessage: 'Перетащите файлы, чтобы начать загрузку',
+                    dictFallbackMessage: "Ваш браузер не поддерживает загрузку файлов drag'n'drop.",
+                    dictFallbackText: 'Пожалуйста, используйте приведенную ниже форму для загрузки ваших файлов, как в старые времена.',
+                    dictFileTooBig: 'Файл слишком большой ({{filesize}} MiB). Максимальный размер файла: {{maxFilesize}} MiB.',
+                    dictInvalidFileType: 'Вы не можете загружать файлы этого типа.',
+                    dictResponseError: 'Сервер ответил кодом {{statusCode}}.',
+                    dictCancelUpload: 'Отменить загрузку',
+                    dictCancelUploadConfirmation: 'Вы действительно хотите отменить эту загрузку?',
+                    dictRemoveFile: 'Удалить файл',
+                    dictRemoveFileConfirmation: null,
+                    dictMaxFilesExceeded: 'Вы не можете загружать больше файлов.',
+                    dictFileSizeUnits: { tb: "TB", gb: "GB", mb: "MB", kb: "KB", b: "b" },
+                },
                 selectedTags: [],
                 allTags: [],
                 selectedCity: [],
@@ -249,11 +265,28 @@
             this.load();
         },
         methods: {
-            'showSuccess': function (file) {
-                console.log('A file was successfully uploaded')
+            'showSuccess': function (file,response) {
+                response.file = file.name;
+                this.download.push(response);
+            },
+            'removeFile': function (file, error, xhr) {
+
+                let dowload = this.download;
+
+                this.download.forEach(function(item, i, arr) {
+
+                    if(item.file === file.name){
+                        delete dowload[i];
+                    }
+                });
+
+                this.download = dowload;
             },
             load: function () {
                 $('#adb').show();
+            },
+            limitText (count) {
+                return `и ${count} ещё тегов`
             },
             asyncFind (query) {
                 this.isLoading = true
@@ -329,6 +362,7 @@
                     phone: this.user.phone,
                     city: this.selectedCity,
                     tags: this.selectedTags,
+                    files: this.download,
                 })
                     .then(response => {
                         this.status.submit = false;
@@ -336,11 +370,12 @@
                         swal({
                             title: 'Успешно!',
                             type: 'success',
-                            text: 'Данные были обновлены',
+                            text: 'Тендер был успешно добавлен',
                             timer: 2500,
                             showConfirmButton: false,
-                        }).catch(swal.noop)
+                        }).catch(swal.noop);
 
+                        this.$router.push({ name: 'tender.show', params: { id: response.data.id }})
                     })
                     .catch(error => {
                         this.errors = error.response.data;

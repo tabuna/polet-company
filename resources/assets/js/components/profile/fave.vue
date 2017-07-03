@@ -26,7 +26,7 @@
                             </p>
 
                             <div class="tags">
-                                <span title="Используется данный тег" class="label text-black" v-for="tag in fave.tags">
+                                <span title="Используется данный тег" class="label text-dark" v-for="tag in fave.tags">
                                     {{tag.name}}
                                 </span>
                             </div>

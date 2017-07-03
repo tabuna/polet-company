@@ -19,7 +19,7 @@
                             <h3 class="m-t-xs">{{tender.content.ru.title}}</h3>
 
                             <div class="tags">
-                                <span title="Используется данный тег" class="label text-black" v-for="tag in tender.tags">{{tag.name}}</span>
+                                <span title="Используется данный тег" class="label text-dark" v-for="tag in tender.tags">{{tag.name}}</span>
                             </div>
                         </div>
 
@@ -29,6 +29,19 @@
                             </p>
                         </div>
 
+
+                        <div class="col-md-12" v-if="tender.attachment.length !== 0">
+                            <p class="h5 font-thin  m-b-lg">Докуметы для загрузки</p>
+                            <ul>
+                                <li>
+                                <a v-for="attachment in tender.attachment" v-bind:href="generateUrl(attachment)">
+                                   {{attachment.original_name}}
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
                         <div class="col-md-12">
                             <div class="padder-v text-xs">
                                 <span class="m-r-md"><i class="icon-clock"></i> {{tender.publish_at | moment("from", "now")}}</span>
@@ -36,6 +49,10 @@
                                 <span class="m-r-md" v-show="tender.content.ru.price != null"><i class="fa fa-rub"></i> {{tender.content.ru.price}}</span>
                             </div>
                         </div>
+
+
+
+
 
                     </div>
                 </div>
@@ -66,6 +83,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
 
         <div v-if="tender.comments.length === 0">
@@ -148,7 +168,10 @@
                     }
 
                 }
-            }
+            },
+            generateUrl: function(file){
+                return '/storage/'+ file.path + file.name + "." + file.extension;
+            },
         }
     }
 </script>

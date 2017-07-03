@@ -94,9 +94,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tend
 
     $router->post('/', 'TenderController@index')->name('tender.list');
     $router->post('/comment/{id}', 'TenderController@comment')->name('tender.comment');
-    $router->post('/{tender}', 'TenderController@show')->name('tender.show');
+
+    $router->post('/upload', 'FileUploadController@upload')->name('upload');
     $router->post('/create', 'TenderController@store')->name('tender.store');
     $router->get('/tags/{tag?}', 'TagController@show')->name('tender.tags');
+    $router->post('/{tender}', 'TenderController@show')->name('tender.show');
 });
 
 

@@ -74,11 +74,9 @@
                     <p>{{user.specialization}}</p>
 
                     <div class="row tags text-md padder-v text-center b-b b-t">
-                            <span v-for="tag in user.tags">
-                                <router-link :to="'/companies?tags='+ tag.slug" class="label">
-                                    {{tag.name}}
-                                </router-link>
-                            </span>
+                        <span v-for="tag in user.tags" class="label text-dark">
+                            {{tag.name}}
+                        </span>
                     </div>
                 </div>
             </div>

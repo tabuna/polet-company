@@ -56,3 +56,81 @@ $factory->define(App\Core\Models\Statistics::class, function (Faker\Generator $f
         'guest_id' => rand(0, 100),
     ];
 });
+
+
+$factory->define(\Orchid\Core\Models\Post::class, function (Faker\Generator $faker) {
+
+    \Orchid\Core\Models\Post::create([
+        'user_id' => \App\Core\Models\User::orderByRaw("RAND()")->first()->id,
+        'type'    => 'tender',
+        'status'  => 'publish',
+        'content' => [
+            'ru' => [
+                'title'       => $faker->text(100),
+                'description' => $faker->text(400),
+                'price'       => (float) rand(1, 2533878),
+                'name'        => $faker->name,
+                'email'       => $faker->unique()->safeEmail,
+                'phone'       => $faker->phoneNumber,
+                'city'        => rand(1, 2533),
+            ],
+        ],
+        'options' => [
+            'locale' => [
+                'ru' => true,
+                'en' => false,
+            ],
+        ],
+        'slug'    => \Cviebrock\EloquentSluggable\Services\SlugService::createSlug(\Orchid\Core\Models\Post::class, 'slug',
+            $faker->text(100)),
+    ]);
+
+
+    return [
+        'user_id' => \App\Core\Models\User::orderByRaw("RAND()")->first()->id,
+        'type'    => 'tender',
+        'status'  => 'publish',
+        'content' => [
+            'ru' => [
+                'title'       => $faker->text(100),
+                'description' => $faker->text(400),
+                'price'       => (float) rand(1, 2533878),
+                'name'        => $faker->name,
+                'email'       => $faker->unique()->safeEmail,
+                'phone'       => $faker->phoneNumber,
+                'city'        => rand(1, 2533),
+            ],
+        ],
+        'options' => [
+            'locale' => [
+                'ru' => true,
+                'en' => false,
+            ],
+        ],
+        'slug'    => \Cviebrock\EloquentSluggable\Services\SlugService::createSlug(\Orchid\Core\Models\Post::class, 'slug',
+            $faker->text(100)),
+    ];
+});
+
+
+$factory->define(\Orchid\Core\Models\Comment::class, function (Faker\Generator $faker) {
+
+    \Orchid\Core\Models\Comment::create([
+        'post_id'   => \Orchid\Core\Models\Post::orderByRaw("RAND()")->first()->id,
+        'user_id'   => \App\Core\Models\User::orderByRaw("RAND()")->first()->id,
+        'parent_id' => 0,
+        'content'   => $faker->text(300),
+        'approved'  => 1,
+    ]);
+
+
+    return [
+        'post_id'   => \Orchid\Core\Models\Post::orderByRaw("RAND()")->first()->id,
+        'user_id'   => \App\Core\Models\User::orderByRaw("RAND()")->first()->id,
+        'parent_id' => 0,
+        'content'   => $faker->text(300),
+        'approved'  => 1,
+    ];
+});
+
+

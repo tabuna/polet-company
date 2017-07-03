@@ -108,7 +108,7 @@
                             </p>
 
                             <div class="tags">
-                                <a href="" class="label" v-for="tag in user.tags">{{tag.name}}</a>
+                                <span title="Используется данный тег" class="label text-black" v-for="tag in user.tags">{{tag.name}}</span>
                             </div>
 
                         </div>

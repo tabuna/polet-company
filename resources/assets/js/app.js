@@ -24,7 +24,15 @@ Vue.use(wysiwyg, {
 
 Vue.use(infiniteScroll);
 Vue.use(VueRouter);
-Vue.use(require('vue-moment'));
+
+
+const moment = require('moment');
+require('moment/locale/ru');
+
+Vue.use(require('vue-moment'), {
+    moment
+});
+
 
 require('./directive/select2company');
 
@@ -71,6 +79,7 @@ if (document.getElementById('app') !== null) {
             },
             {
                 path: '/tender/:id',
+                name: 'tender.show',
                 component: require('./components/tender/show.vue')
             },
             {

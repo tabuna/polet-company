@@ -30,13 +30,15 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
 
-        Route::bind('item', function ($value) {
+        Route::bind('tender', function ($value) {
             if (is_numeric($value)) {
                 return Post::where('id', $value)
+                    ->with(['author','comments.author','tags'])
                     ->firstOrFail();
             }
 
             return Post::where('slug', $value)
+                ->with(['author','comments.author','tags'])
                 ->firstOrFail();
         });
 

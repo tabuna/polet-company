@@ -39,7 +39,7 @@
                                 <span class="arrow right pull-up"></span>
                                 <p class="m-b-none">{{message.body}}</p>
                             </div>
-                            <small class="text-muted"> {{message.created_at | moment("from", true) }} назад</small>
+                            <small class="text-muted"> {{message.created_at | moment("from",  "now") }} </small>
                         </div>
                     </div>
                 </div>

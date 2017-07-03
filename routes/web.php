@@ -93,7 +93,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Pro
 Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tender'], function ($router) {
 
     $router->post('/', 'TenderController@index')->name('tender.list');
-
+    $router->post('/comment/{id}', 'TenderController@comment')->name('tender.comment');
+    $router->post('/{tender}', 'TenderController@show')->name('tender.show');
+    $router->post('/create', 'TenderController@store')->name('tender.store');
+    $router->get('/tags/{tag?}', 'TagController@show')->name('tender.tags');
 });
 
 

@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Orchid\Core\Models\Attachment;
-use Orchid\Http\Controllers\Controller;
+use Orchid\CMS\Core\Models\Attachment;
+use App\Http\Controllers\Controller;
 
 class FileUploadController extends Controller
 {

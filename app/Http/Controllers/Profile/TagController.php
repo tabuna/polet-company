@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Profile;
 
 use App\Core\Models\User;
 use Orchid\CMS\Core\Models\Post;
-use Orchid\CMS\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class TagController extends Controller
 {

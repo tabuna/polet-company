@@ -1,79 +1,31 @@
 <?php
 
-
 return [
 
     /*
     |--------------------------------------------------------------------------
-    | Install
-    |--------------------------------------------------------------------------
-    |
-    | Setup Activation Flag
-    |
-    */
-    'install' => env('APP_INSTALL', false),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Auth
-    |--------------------------------------------------------------------------
-    |
-    | Available settings
-    |
-    */
-    'auth'    => [
-        'display' => false,
-        'image'   => '/orchid/img/background.jpg',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Pages
+    | Single Behaviors
     |--------------------------------------------------------------------------
     |
     | Static pages
     |
     */
 
-    'pages' => [
+    'single' => [
         //App\Core\Behaviors\Single\DemoPage::class,
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Types
+    | Many Behaviors
     |--------------------------------------------------------------------------
     |
     | An abstract pattern of behavior record
     |
     */
 
-    'types' => [
-        App\Core\Behaviors\Many\Pages::class,
-        \App\Core\Behaviors\Many\Tender::class,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Available fields to form templates
-    |--------------------------------------------------------------------------
-    |
-    | Declared fields for user filling.
-    | Be shy and add to what you need
-    |
-    */
-
-    'fields' => [
-        'textarea' => Orchid\Fields\TextAreaField::class,
-        'input'    => Orchid\Fields\InputField::class,
-        'tags'     => Orchid\Fields\TagsField::class,
-        'robot'    => Orchid\Fields\RobotField::class,
-        'place'    => Orchid\Fields\PlaceField::class,
-        'datetime' => Orchid\Fields\DateTimerField::class,
-        'checkbox' => Orchid\Fields\CheckBoxField::class,
-        'path'     => Orchid\Fields\PathField::class,
-        'code'     => Orchid\Fields\CodeField::class,
-        'wysiwyg'  => \Orchid\Fields\SummernoteField::class,
+    'many' => [
+        //App\Core\Behaviors\Many\DemoPost::class,
     ],
 
     /*
@@ -86,7 +38,9 @@ return [
     */
 
     'menu' => [
-        'footer'  => 'Нижнее меню',
+        'header'  => 'Top Menu',
+        'sidebar' => 'Sidebar Menu',
+        'footer'  => 'Footer Menu',
     ],
 
     /*
@@ -188,18 +142,6 @@ return [
             'ppt',
             'pptx',
         ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Dashboard Widgets
-    |--------------------------------------------------------------------------
-    |
-    | Widgets that will be displayed on the main screen
-    |
-    */
-    'main_widgets' => [
-
     ],
 
 ];

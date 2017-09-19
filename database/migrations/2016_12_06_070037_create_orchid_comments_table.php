@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateOrchidCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,9 @@ class CreateCommentsTable extends Migration
             $table->boolean('approved')->nullable();
             $table->timestamps();
 
-            $table->index(['id', 'post_id', 'user_id', 'parent_id']);
+            $table->index(['approved', 'post_id']);
+            $table->index('post_id');
+            $table->index('parent_id');
         });
     }
 

@@ -1,6 +1,6 @@
 $(function(){
     $(".main-typed-element").typed({
-        strings: ["партнёра", "клиента", "поставщика", "подрядчика"],
+        strings: ["Platform", "CMF", "CMS", "Package"],
         typeSpeed: 0,
         loop: true,
     });

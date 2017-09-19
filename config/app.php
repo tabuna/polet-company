@@ -167,11 +167,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-        Orchid\Providers\FoundationServiceProvider::class,
-        Orchid\Socket\Providers\SocketServiceProvider::class,
         Conner\Likeable\LikeableServiceProvider::class,
-        willvincent\Rateable\RateableServiceProvider::class,
-        Cmgmyr\Messenger\MessengerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,11 +226,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Dashboard' =>  Orchid\Facades\Dashboard::class,
-        'Alert' =>  Orchid\Alert\Facades\Alert::class,
-        'Setting' =>  Orchid\Setting\Facades\Setting::class,
-        'Active' => Watson\Active\Facades\Active::class,
-        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

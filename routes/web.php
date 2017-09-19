@@ -10,11 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+Route::get('news',function (){
+   return view('pages.news');
+});
 
+Route::get('docs',function (){
+    return view('pages.docs');
+});
 
 
 /*
@@ -129,3 +135,11 @@ Route::group(['middleware' => 'auth'], function ($router) {
         ->where('vue_capture', '^(?!dashboard).*$');
         //->where('vue_capture', '^(?!api).*$');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

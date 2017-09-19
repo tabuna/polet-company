@@ -35,8 +35,7 @@
 
                     <div class="row">
                         <div class="col-md-8 no-padder">
-                            <p>ИНН: {{user.inn}}</p>
-                            <p>ОГРН: {{user.ogrn}} </p>
+
                             <p class="text-muted small">
                                 <span v-if="user.phone"><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
                                 <span v-if="user.email"><i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br></span>
@@ -56,12 +55,7 @@
                                        v-bind:class="{ 'btn-info': user.fave }">
                                         <i class="icon-star text-info" v-bind:class="{ 'text-white': user.fave }"></i>
                                     </a>
-
-
-                                    <a data-toggle="modal" href="#startDialog" class="btn btn-icon btn-rounded b b-info b-2x"><i
-                                            class="icon-speech text-info"></i></a>
                                 </p>
-                                <p class="small text-info text-xs hidden">Рейтинг компании</p>
                             </div>
 
                         </div>
@@ -81,39 +75,12 @@
                 </div>
             </div>
 
-            <div class="row m-t-md m-b-md padder-v b-b">
+            <div class="row m-t-md padder-v">
                 <div class="col-md-12">
                     <main v-html="user.about"></main>
                 </div>
             </div>
 
-            <div class="row m-t-md m-b-md padder-v">
-                <div class="col-md-12">
-                    <p class="padder text-muted small"><i class="icon-direction text-info m-r-xs"></i>
-                        | {{user.address}}</p>
-                    <div class="google-maps">
-                        <a v-on:click="getDirections">
-                            <img v-bind:src="
-                        'https://maps.googleapis.com/maps/api/staticmap?center='+
-                        user.address +
-                        '&zoom=14&size=1000x300&maptype=roadmap%20' +
-                         '&markers=size:mid%7Ccolor:red%7C%' +
-                         user.address +
-                         '&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E'"
-                                 class="img-responsive center">
-                        </a>
-                    </div>
-
-                    <div class="get-directions hidden">
-                        <form action="http://maps.google.com/maps" method="get" target="_blank">
-                            <input type="text" name="saddr" placeholder="Введите свой адрес"/>
-                            <input type="hidden" name="daddr" v-model="user.address">
-                        </form>
-                    </div>
-
-
-                </div>
-            </div>
         </div>
 
 
@@ -158,64 +125,6 @@
 
 
 
-        <!-- Modal -->
-        <div class="modal fade slide-up disable-scroll" id="startDialog" tabindex="-1" role="dialog" aria-hidden="false" style="display: none;">
-            <div class="modal-dialog">
-                <div class="modal-content-wrapper">
-                    <div class="modal-content">
-                        <div class="modal-header clearfix text-left">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fs-14"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form role="form" v-on:submit.prevent="newThread">
-                                <div class="form-group-attached">
-                                    <div class="row m-b">
-                                        <div class="col-md-3">
-                                            <div class="thumb-lg">
-                                                <router-link :to="{ name: 'profile', params: { id: user.id }}">
-                                                    <img v-bind:src="user.avatar" v-bind:alt="user.name" class="img-responsive">
-                                                </router-link>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <h3 class="m-t-xs">
-                                                <router-link :to="{ name: 'profile', params: { id: user.id }}">
-                                                    {{user.name}}
-                                                </router-link>
-                                            </h3>
-
-                                            <p class="small">
-                                                {{user.agent_name}}
-                                            </p>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group form-group-default">
-                                                <textarea class="form-control" v-model="message.message" rows="6"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <button type="button" class="btn btn-info btn-rounded" v-on:click="newThread">
-                                        <span v-if="status.submit">Отправка <i class='fa fa-spinner fa-spin'></i></span>
-                                        <span v-else="status.submit">Отправить</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
     </div>
 
 
@@ -249,10 +158,6 @@
                     avatar: '',
                     fave: false,
                     similars: [],
-                },
-                message:{
-                    message : '',
-
                 },
                 status: {
                     load: false,
@@ -302,29 +207,6 @@
                     this.status.submit = false;
                 }
             },
-            getDirections: function () {
-                let saddr = '?saddr=' + 'Сумская ул., 45А, Курск, Курская обл., 305007';
-                let daddar = '&daddr=' + this.user.address;
-                window.open('http://maps.google.com/maps' + saddr + daddar, '_blank');
-            },
-            newThread: function () {
-                this.status.submit = true;
-
-                axios.post(`/messages/thread`,{
-                    subject : 'new',
-                    message: this.message.message,
-                    recipients: [this.user.id]
-                })
-                    .then(response => {
-                        $('#startDialog').modal('hide');
-                        this.$router.push({ name: 'message', params: { id: response.data.id }})
-                    })
-                    .catch(e => {
-                        this.errors.push(e)
-                    });
-
-
-            }
         }
     }
 </script>

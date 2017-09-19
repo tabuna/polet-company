@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Profile;
 
 use App\Core\Models\User;
-use Orchid\Core\Models\Post;
-use Orchid\Http\Controllers\Controller;
+use Orchid\CMS\Core\Models\Post;
+use Orchid\CMS\Http\Controllers\Controller;
 
 class TagController extends Controller
 {

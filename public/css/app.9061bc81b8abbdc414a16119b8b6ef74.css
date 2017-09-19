@@ -15196,7 +15196,6 @@ fieldset[disabled] .multiselect {
   outline: none;
 }
 .multiselect--disabled {
-  pointer-events: none;
   opacity: 0.6;
 }
 .multiselect--active {
@@ -15249,6 +15248,9 @@ fieldset[disabled] .multiselect {
 .multiselect__single {
   padding-left: 6px;
   margin-bottom: 8px;
+}
+.multiselect__tags-wrap {
+  display: inline;
 }
 .multiselect__tags {
   min-height: 40px;
@@ -15348,23 +15350,28 @@ fieldset[disabled] .multiselect {
 .multiselect--active .multiselect__placeholder {
   display: none;
 }
-.multiselect__content {
+.multiselect__content-wrapper {
   position: absolute;
-  list-style: none;
   display: block;
   background: #fff;
   width: 100%;
   max-height: 240px;
   overflow: auto;
-  padding: 0;
-  margin: 0;
   border: 1px solid #e8e8e8;
   border-top: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   z-index: 1;
+  -webkit-overflow-scrolling: touch;
 }
-.multiselect--above .multiselect__content {
+.multiselect__content {
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  min-width: 100%;
+}
+.multiselect--above .multiselect__content-wrapper {
   bottom: 100%;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -15451,6 +15458,10 @@ fieldset[disabled] .multiselect {
 .multiselect-enter,
 .multiselect-leave-active {
   opacity: 0;
+}
+.multiselect__strong {
+  margin-bottom: 10px;
+  display: inline-block;
 }
 @-webkit-keyframes a {
   0% {
@@ -19337,6 +19348,30 @@ a.text-black:hover {
 .basic-block-blue {
   background-color: #0095c4;
 }
+a.bg-orchid:hover {
+  background-color: #9e5092;
+}
+a.text-orchid:hover {
+  color: #9e5092;
+}
+.text-orchid {
+  color: #AC5CA0;
+}
+.text-orchid-lt {
+  color: #b56daa;
+}
+.text-orchid-lter {
+  color: #bd7eb4;
+}
+.text-orchid-dk {
+  color: #9e5092;
+}
+.text-orchid-dker {
+  color: #8d4883;
+}
+.text-orchid {
+  color: #AC5CA0;
+}
 .pos-rlt {
   position: relative;
 }
@@ -20947,7 +20982,7 @@ fieldset[disabled] .form-control-grey {
 }
 .form-group-default .form-control {
   border: none;
-  height: 25px;
+  /*height: 25px; */
   min-height: 25px;
   padding: 0;
   margin-top: -4px;
@@ -21283,6 +21318,9 @@ http://ivaynberg.github.io/select2/
   padding-top: 5px;
   padding-bottom: 5px;
 }
+.overflow-x-h {
+  overflow-x: hidden;
+}
 @media (min-width: 1200px) {
   .container {
     width: 1100px;
@@ -21313,13 +21351,72 @@ a.list-group-item.hover {
   background: #1c7cd6;
   content: '';
 }
+multiselect__spinner::after,
+.multiselect__spinner::before {
+  border-color: #1c7cd6 transparent transparent !important;
+}
+.nav-docs {
+  line-height: 2em;
+}
+.nav-docs h4 {
+  margin-top: 1.33em;
+}
+main {
+  line-height: 2em;
+  overflow: hidden;
+  text-align: justify;
+}
+main img {
+  max-width: 100%;
+  height: auto;
+}
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  color: #1c2b36;
+  font-weight: 300;
+}
+main p {
+  margin: 0 0 1em;
+}
+main pre {
+  margin: 0 0 1.66em;
+}
+main li {
+  padding-bottom: 0.33em;
+}
+main pre {
+  margin-bottom: 1.66em!important;
+}
+main blockquote {
+  font-size: inherit;
+  line-height: 2em;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin: 1.66em 0;
+}
 main,
 main div {
-  -webkit-animation: blur 620ms;
-          animation: blur 620ms;
-  line-height: 1.8em;
+  /*
+  p {
+    font-size: 14px;
+    line-height: 28px;
+    margin-bottom: 23px;
+  }
+  */
+  /*
+  *{
+    font-size: 14px!important;
+    line-height: 28px!important;
+    font-family: @font-family-base!important;
+  }
+
   font-size: 14px!important;
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: @font-family-base!important;
+  */
 }
 main img,
 main div img {
@@ -21336,12 +21433,6 @@ main div ul {
 main ol,
 main div ol {
   padding: 0 1.5rem;
-}
-main p,
-main div p {
-  font-size: 14px;
-  line-height: 28px;
-  margin-bottom: 23px;
 }
 main blockquote,
 main div blockquote {
@@ -21397,16 +21488,11 @@ main div::selection {
   background: #1c7cd6;
   color: #fff;
 }
-main *,
-main div * {
-  font-size: 14px!important;
-  line-height: 28px!important;
-  font-family: 'Open Sans', sans-serif !important;
-}
+/*
 #content {
-  -webkit-animation: fadein 540ms;
-          animation: fadein 540ms;
+  animation: fadein 240ms;
 }
+*/
 @-webkit-keyframes fadein {
   0% {
     opacity: 0;
@@ -21523,6 +21609,38 @@ main div * {
   width: 150px!important;
   height: 150px!important;
 }
+.vue-dropzone .dz-image img {
+  max-width: 100%;
+  border-radius: 15px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .vue-dropzone * {
   font-family: 'Open Sans', sans-serif !important;
+}
+.vue-dropzone .fa {
+  display: inline-block !important;
+  font: normal normal normal 14px/1 FontAwesome !important;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.vue-dropzone .dz-default.dz-message .fa {
+  margin-right: 10px;
+}
+.vue-dropzone .dz-success-mark {
+  text-align: center;
+}
+.vue-dropzone .dz-success-mark .fa.fa-check {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+.vue-dropzone .dz-error-mark {
+  text-align: center;
+}
+.vue-dropzone .dz-error-mark .fa.fa-close {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
 }

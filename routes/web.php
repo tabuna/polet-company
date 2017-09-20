@@ -95,16 +95,7 @@ $this->group(['middleware' => 'auth', 'prefix' => 'other', 'namespace' => 'Other
 
 
 
-/*
-|--------------------------------------------------------------------------
-| Vue App
-|--------------------------------------------------------------------------
-|
-*/
-$this->group([],function ($router) {
-    $router->get('{vue_capture?}', 'HomeController@index')
-        ->where('vue_capture', '^(?!dashboard).*$')->name('home');
-});
+
 
 
 /*
@@ -121,4 +112,17 @@ $this->group(['namespace' => 'Website', 'middleware' => 'guest'], function ($rou
 
     $router->get('/contacts', 'ContactsController@index')->name('contacts');
     $router->post('/contacts', 'ContactsController@send')->name('contacts.submit');
+});
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Vue App
+|--------------------------------------------------------------------------
+|
+*/
+$this->group([],function ($router) {
+    $router->get('{vue_capture?}', 'HomeController@index')
+        ->where('vue_capture', '^(?!dashboard).*$')->name('home');
 });

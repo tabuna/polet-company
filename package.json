@@ -15,7 +15,7 @@
     "jquery": "^3.1.1",
     "open-color": "^1.5.1",
     "simple-line-icons": "^2.4.1",
-    "vue": "^2.1.10",
+    "vue": "^2.4",
     "axios": "^0.15.3",
     "cross-env": "^3.2.3",
     "laravel-mix": "0.*",

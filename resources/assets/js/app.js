@@ -112,8 +112,10 @@ if (document.getElementById('app') !== null) {
             }
         }
     }).$mount('#app');
+};
 
 
+    /*
 var Turbolinks = require("turbolinks")
 Turbolinks.start()
 }
@@ -140,3 +142,4 @@ document.addEventListener("turbolinks:load", function() {
  );
  wow.init();
 })
+*/

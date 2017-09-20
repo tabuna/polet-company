@@ -10,40 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('news',function (){
-   return view('pages.news');
-});
 
-Route::get('docs',function (){
-    return view('pages.docs');
-});
-
-
-/*
-|--------------------------------------------------------------------------
-| Website display for all users and guest
-|--------------------------------------------------------------------------
-|
-*/
-Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($router) {
-    $router->get('/', 'WelcomeController@index')->name('index');
-    $router->get('/companies', 'WelcomeController@companies')->name('companies');
-    $router->get('/order', 'WelcomeController@order')->name('order');
-
-    $router->get('/p/{item}', 'PageController@show')->name('page');
-
-    $router->get('/contacts', 'ContactsController@index')->name('contacts');
-    $router->post('/contacts', 'ContactsController@send')->name('contacts.submit');
-});
-
-
-
-
-Route::group(['prefix' => 'messages','namespace' => 'Message'], function ($router) {
+$this->group(['prefix' => 'messages','namespace' => 'Message'], function ($router) {
     $router->post('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
     $router->post('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
     $router->post('/thread', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
@@ -59,7 +31,7 @@ Route::group(['prefix' => 'messages','namespace' => 'Message'], function ($route
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['namespace' => 'Payments', 'prefix' => 'payments'], function ($router) {
+$this->group(['namespace' => 'Payments', 'prefix' => 'payments'], function ($router) {
     $router->resource('order', 'AvisoController');
 });
 
@@ -71,7 +43,7 @@ Route::group(['namespace' => 'Payments', 'prefix' => 'payments'], function ($rou
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Profile'], function ($router) {
+$this->group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Profile'], function ($router) {
 
 
     $router->post('/{user?}', 'ProfileController@show')->where('user', '[0-9]+')->name('profile');
@@ -96,9 +68,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Pro
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tender'], function ($router) {
-
-    $router->post('/', 'TenderController@index')->name('tender.list');
+$this->group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tender'], function ($router) {
+    $router->post('/', 'TenderController@index')->name('tender.index');
     $router->post('/comment/{id}', 'TenderController@comment')->name('tender.comment');
 
     $router->post('/upload', 'FileUploadController@upload')->name('upload');
@@ -116,9 +87,10 @@ $router->post('/companies', 'Profile\ProfileController@companies')->name('compan
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['middleware' => 'auth', 'prefix' => 'other', 'namespace' => 'Other'], function ($router) {
+$this->group(['middleware' => 'auth', 'prefix' => 'other', 'namespace' => 'Other'], function ($router) {
     $router->post('/city/{city?}', 'CityController@show')->name('city');
 });
+
 
 
 
@@ -129,17 +101,24 @@ Route::group(['middleware' => 'auth', 'prefix' => 'other', 'namespace' => 'Other
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['middleware' => 'auth'], function ($router) {
-    $router->get('/{vue_capture?}', 'HomeController@index')
-        //->where('vue_capture', '[\/\w\.-]*')
-        ->where('vue_capture', '^(?!dashboard).*$');
-        //->where('vue_capture', '^(?!api).*$');
+$this->group([],function ($router) {
+    $router->get('{vue_capture?}', 'HomeController@index')
+        ->where('vue_capture', '^(?!dashboard).*$')->name('home');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*
+|--------------------------------------------------------------------------
+| Website display for all users and guest
+|--------------------------------------------------------------------------
+|
+*/
+$this->group(['namespace' => 'Website', 'middleware' => 'guest'], function ($router) {
+    $router->get('/companies', 'WelcomeController@companies')->name('companies');
+    $router->get('/order', 'WelcomeController@order')->name('order');
 
-Auth::routes();
+    $router->get('/p/{item}', 'PageController@show')->name('page');
 
-Route::get('/home', 'HomeController@index')->name('home');
+    $router->get('/contacts', 'ContactsController@index')->name('contacts');
+    $router->post('/contacts', 'ContactsController@send')->name('contacts.submit');
+});

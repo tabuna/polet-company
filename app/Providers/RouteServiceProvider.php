@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Core\Models\User;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Orchid\Core\Models\Post;
+use Orchid\CMS\Core\Models\Post;
 
 class RouteServiceProvider extends ServiceProvider
 {

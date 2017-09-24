@@ -26,9 +26,11 @@
                             </p>
 
                             <div class="tags">
-                                <span title="Используется данный тег" class="label text-dark" v-for="tag in fave.tags">
-                                    {{tag.name}}
-                                </span>
+                        <span v-for="tag in fave.tags">
+                            <router-link :to="'/companies?tags='+ tag.slug" class="label">
+                                {{tag.name}}
+                            </router-link>
+                        </span>
                             </div>
 
                         </div>

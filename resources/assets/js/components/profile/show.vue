@@ -2,7 +2,7 @@
 
     <div class="bg-white b box-shadow" v-show="status.load">
 
-        <div class="alert alert-warning fade in no-radius b" role="alert" v-if="status.self && user.occupancy > 4">
+        <div class="alert alert-warning fade in no-radius b" role="alert" v-if="!status.self && user.occupancy > 4">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                     aria-hidden="true" class="text-lg">×</span></button>
             <h4>Завершенность профиля!</h4>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-md-4 no-padder text-center">
 
-                            <div v-if="!status.self">
+                            <div v-if="status.self">
                                 <p>
                                     <a v-on:click="fave()" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"
                                        v-bind:class="{ 'btn-info': user.fave }">
@@ -58,10 +58,10 @@
                                     </a>
 
 
-                                    <a data-toggle="modal" href="#startDialog" class="btn btn-icon btn-rounded b b-info b-2x"><i
+                                    <a href="#" class="btn btn-icon btn-rounded b b-info b-2x"><i
                                             class="icon-speech text-info"></i></a>
                                 </p>
-                                <p class="small text-info text-xs hidden">Рейтинг компании</p>
+                                <p class="small text-info text-xs">Рейтинг компании</p>
                             </div>
 
                         </div>
@@ -74,9 +74,11 @@
                     <p>{{user.specialization}}</p>
 
                     <div class="row tags text-md padder-v text-center b-b b-t">
-                        <span v-for="tag in user.tags" class="label text-dark">
-                            {{tag.name}}
-                        </span>
+                            <span v-for="tag in user.tags">
+                                <router-link :to="'/companies?tags='+ tag.slug" class="label">
+                                    {{tag.name}}
+                                </router-link>
+                            </span>
                     </div>
                 </div>
             </div>
@@ -130,19 +132,16 @@
 
                     <div class="col-md-2">
                     <div class="thumb-lg">
-                        <router-link :to="{ name: 'profile', params: { id: similar.id }}">
-                       <img v-bind:src="similar.avatar"
-                                class="img-responsive">
-                        </router-link>
+                        <a href="#"><img
+                                v-bind:src="similar.avatar"
+                                class="img-responsive"></a>
                     </div>
                     </div>
                     <div class="col-md-10">
                     <div class="wrapper-md">
                         <div>
-                            <p class="h4 m-b-xs">
-                                <router-link :to="{ name: 'profile', params: { id: similar.id }}">
-                                    {{similar.name}}
-                                </router-link>
+                            <p class="h4 m-b-xs"><a
+                                    href="#">{{similar.name}}</a>
                             </p>
                             <p class="text-xs">
                                 {{similar.specialization}}
@@ -156,65 +155,6 @@
 
         </div>
 
-
-
-        <!-- Modal -->
-        <div class="modal fade slide-up disable-scroll" id="startDialog" tabindex="-1" role="dialog" aria-hidden="false" style="display: none;">
-            <div class="modal-dialog">
-                <div class="modal-content-wrapper">
-                    <div class="modal-content">
-                        <div class="modal-header clearfix text-left">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fs-14"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form role="form" v-on:submit.prevent="newThread">
-                                <div class="form-group-attached">
-                                    <div class="row m-b">
-                                        <div class="col-md-3">
-                                            <div class="thumb-lg">
-                                                <router-link :to="{ name: 'profile', params: { id: user.id }}">
-                                                    <img v-bind:src="user.avatar" v-bind:alt="user.name" class="img-responsive">
-                                                </router-link>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <h3 class="m-t-xs">
-                                                <router-link :to="{ name: 'profile', params: { id: user.id }}">
-                                                    {{user.name}}
-                                                </router-link>
-                                            </h3>
-
-                                            <p class="small">
-                                                {{user.agent_name}}
-                                            </p>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group form-group-default">
-                                                <textarea class="form-control" v-model="message.message" rows="6"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <button type="button" class="btn btn-info btn-rounded" v-on:click="newThread">
-                                        <span v-if="status.submit">Отправка <i class='fa fa-spinner fa-spin'></i></span>
-                                        <span v-else="status.submit">Отправить</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
 
     </div>
 
@@ -250,10 +190,6 @@
                     fave: false,
                     similars: [],
                 },
-                message:{
-                    message : '',
-
-                },
                 status: {
                     load: false,
                     submit: false,
@@ -263,23 +199,11 @@
         },
         mounted() {
             this.load(this.$route.params.id)
-
-            this.status.self = false;
-            if (this.$route.params.id === window.meta_user) {
-                this.status.self = true;
-            }
-
         },
         watch: {
             '$route.params.id'(newId, oldId) {
-                this.load(newId);
-
-                this.status.self = false;
-                if (newId === window.meta_user) {
-                    this.status.self = true;
-                }
-
-            },
+                this.load(newId)
+            }
         },
         methods: {
             load: function (id) {
@@ -293,6 +217,12 @@
                     .catch(e => {
                         this.errors.push(e)
                     });
+
+                if (id !== window.meta_user) {
+                    this.status.self = true;
+                } else {
+                    this.status.self = false;
+                }
             },
             fave: function () {
                 if (!this.status.submit) {
@@ -307,23 +237,12 @@
                 let daddar = '&daddr=' + this.user.address;
                 window.open('http://maps.google.com/maps' + saddr + daddar, '_blank');
             },
-            newThread: function () {
-                this.status.submit = true;
-
-                axios.post(`/messages/thread`,{
-                    subject : 'new',
-                    message: this.message.message,
-                    recipients: [this.user.id]
-                })
-                    .then(response => {
-                        $('#startDialog').modal('hide');
-                        this.$router.push({ name: 'message', params: { id: response.data.id }})
-                    })
-                    .catch(e => {
-                        this.errors.push(e)
-                    });
+            getSize: function () {
+                this.optionsSize.forEach(function (item, i, arr) {
 
 
+
+                        });
             }
         }
     }

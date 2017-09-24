@@ -11,6 +11,7 @@ use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 class MessagesController extends Controller
@@ -53,12 +54,12 @@ class MessagesController extends Controller
     public function show($id)
     {
         $thread = Thread::with([
-            'users' => function ($query) {
+            'users'    => function ($query) {
                 $query->select('avatar', 'name', 'agent_name');
             },
         ])->findOrFail($id);
 
-        $thread->messages = $thread->messages()->orderBy('created_at', 'desc')->paginate();
+        $thread->messages = $thread->messages()->orderBy('created_at','desc')->paginate();
 
         $thread->markAsRead(Auth::user()->id);
 
@@ -83,38 +84,42 @@ class MessagesController extends Controller
     /**
      * Stores a new message thread.
      *
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @return mixed
      */
-    public function store(Request $request)
+    public function store()
     {
-        $thread = Thread::create([
-            'subject' => $request->get('subject','new'),
-        ]);
+        $input = Input::all();
+
+        $thread = Thread::create(
+            [
+                'subject' => $input['subject'],
+            ]
+        );
 
         // Message
-        Message::create([
-            'thread_id' => $thread->id,
-            'user_id'   => Auth::user()->id,
-            'body'      => $request->get('message'),
-        ]);
+        Message::create(
+            [
+                'thread_id' => $thread->id,
+                'user_id'   => Auth::user()->id,
+                'body'      => $input['message'],
+            ]
+        );
 
         // Sender
-        Participant::create([
-            'thread_id' => $thread->id,
-            'user_id'   => Auth::user()->id,
-            'last_read' => new Carbon,
-        ]);
+        Participant::create(
+            [
+                'thread_id' => $thread->id,
+                'user_id'   => Auth::user()->id,
+                'last_read' => new Carbon,
+            ]
+        );
 
         // Recipients
-        if ($request->has('recipients')) {
-            $thread->addParticipant($request->get('recipients'));
+        if (Input::has('recipients')) {
+            $thread->addParticipant($input['recipients']);
         }
 
-        return response()->json($thread);
-
-
+        return redirect('messages');
     }
 
     /**

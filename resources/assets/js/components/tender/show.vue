@@ -33,10 +33,10 @@
                         <div class="col-md-12" v-if="tender.attachment.length !== 0">
                             <p class="h5 font-thin  m-b-lg">Докуметы для загрузки</p>
                             <ul>
-                                <li>
-                                <a v-for="attachment in tender.attachment" v-bind:href="generateUrl(attachment)">
-                                   {{attachment.original_name}}
-                                </a>
+                                <li v-for="attachment in tender.attachment">
+                                    <a v-bind:href="generateUrl(attachment)">
+                                       {{attachment.original_name}}
+                                    </a>
                                 </li>
                             </ul>
                         </div>

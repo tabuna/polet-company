@@ -30,7 +30,7 @@ class MessagesController extends Controller
             'messages' => function ($query) {
                 $query->latest()->first();
             },
-        ])->paginate();*/
+        ])->latest('updated_at')->paginate();*/
 
         $threads = Thread::forUser(Auth::id())->with([
             'users'    => function ($query) {
@@ -39,7 +39,7 @@ class MessagesController extends Controller
             'messages' => function ($query) {
                 $query->latest()->first();
             },
-        ])->paginate();
+        ])->latest('updated_at')->paginate();
 
 
         $threads->getCollection()->transform(function ($value) {

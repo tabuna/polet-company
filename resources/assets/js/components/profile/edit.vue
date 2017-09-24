@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-sm-9">
                         <div class="v-center">
-                            <div class="fileinput fileinput-exists thumb-lg pull-left m-r-md" data-provтзь es="fileinput"
+                            <div class="fileinput fileinput-exists thumb-lg pull-left m-r-md" data-provides="fileinput"
                                  data-toggle="tooltip" data-placement="bottom" title="Логотип компании. Формат: jpg, gif, png. Максимальный размер файла: 2Mb. Рекомендованный размер 200х200px.">
 
                                 <div class="btn-file">
@@ -168,8 +168,8 @@
                         <wysiwyg v-model="user.about" />
 
                     <textarea  class="form-control form-control-grey no-resize hidden" rows="14" name="about"
-                              v-model="user.about"
-                              placeholder="Небольшой рассказ о себе"></textarea>
+                               v-model="user.about"
+                               placeholder="Небольшой рассказ о себе"></textarea>
                         <p class="help-block" v-if="errors.about">
                             {{ errors.about }}
                         </p>
@@ -254,9 +254,9 @@
                                          @search-change="asyncFind"
                                          :taggable="true"
                                          @tag="addTag"
-                                         :selectLabel="'Нажмите Enter для выбора'"
-                                         :selectedLabel="'Выбранный'"
-                                         :deselectLabel="'Нажмите Enter, чтобы удалить'"
+                                         :SelectLabel="selectLabelTag"
+                                         :SelectedLabel="selectedLabelTag"
+                                         :DeselectLabel ="deselectLabelTag"
 
                             >
                                 <template slot="option" scope="props">

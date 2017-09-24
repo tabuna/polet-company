@@ -5,9 +5,10 @@
         <div class="wrapper-md">
 
             <div class="panel-heading">Чат</div>
-            <div class="panel-body b overflow-x-h scrollBlock" style="max-height: 1000px; overflow-y: scroll">
+            <div class="panel-body b scrollBlock">
 
-
+                <div class="messages" style="position: relative;
+    height: 500px;padding-right: 15px; padding-bottom: 30px;">
                 <div v-if="threads.messages.next_page_url">
                     <p class="text-center">
                         <button class="btn btn-link" v-on:click="loadNextPage">Показать более ранние записи</button>
@@ -42,6 +43,7 @@
                             <small class="text-muted"> {{message.created_at | moment("subtract", mytime+" minutes","from",  "now") }} </small>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
             <footer class="panel-footer b">
@@ -106,6 +108,15 @@
                 $('#adb').hide();
                 this.mytime = new Date().getTimezoneOffset();//Возвращает разницу между местным и UTC-временем, в минутах.
                 $('.scrollBlock').height($('#rightPanel').height()-192);
+
+                const container = document.querySelector('.messages');
+                Ps.initialize(container, {
+                    wheelSpeed: 2,
+                    wheelPropagation: true,
+                    minScrollbarLength: 20
+                });
+
+
                 let id = window.meta_user;
                 this.currentUser= window.meta_user;
 
@@ -116,7 +127,8 @@
                         this.threads.messages.data.reverse();
 
                         setTimeout(function () {
-                            $('.scrollBlock').scrollTop(999);
+                            $('.messages').scrollTop(999);
+                            Ps.update(document.querySelector('.messages'));
                         }, 1000);
 
                     })
@@ -130,7 +142,7 @@
                     this.status.self = true;
                 }
 
-                $('.scrollBlock').scrollTop(999);
+                $('.message').scrollTop(999);
             },
             getAuthor: function (user_id) {
                 let author = '';

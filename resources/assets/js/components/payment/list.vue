@@ -49,7 +49,7 @@
         },
         beforeMount() {
             $('#adb').show();
-            axios.post(`/profile/` + this.$route.params.id)
+            axios.post(`/api/profile/` + this.$route.params.id)
                 .then(response => {
                     this.user = response.data
                 })

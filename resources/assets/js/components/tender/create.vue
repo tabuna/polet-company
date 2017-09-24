@@ -102,7 +102,7 @@
                             <h4 class="font-thin"><i class="icon-printer m-r-xs"></i> Документы и приложения</h4>
                         </div>
 
-                        <dropzone id="dropFileUpload" ref="dropFileUpload" url="/tender/upload"
+                        <dropzone id="dropFileUpload" ref="dropFileUpload" url="/api/tender/upload"
                                   v-on:vdropzone-success="showSuccess"
                                   v-on:vdropzone-removed-file="removeFile"
                                     :language="language"

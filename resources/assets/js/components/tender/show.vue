@@ -138,7 +138,7 @@
                 $('#adb').show();
             },
             loadData:function () {
-                axios.post(`/tender/` + this.$route.params.id)
+                axios.post(`/api/tender/` + this.$route.params.id)
                     .then(response => {
                         this.tender = response.data;
                         this.status.load = true;
@@ -153,7 +153,7 @@
                     let content = this.content.trim();
                     if (content) {
 
-                        axios.post(`/tender/comment/` + this.$route.params.id, {
+                        axios.post(`/api/tender/comment/` + this.$route.params.id, {
                             'content': content
                         })
                             .then(response => {

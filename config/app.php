@@ -227,11 +227,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Dashboard' =>  Orchid\Facades\Dashboard::class,
-        'Alert' =>  Orchid\Alert\Facades\Alert::class,
-        'Setting' =>  Orchid\Setting\Facades\Setting::class,
-        'Active' => Watson\Active\Facades\Active::class,
-        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

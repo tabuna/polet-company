@@ -26,7 +26,7 @@
                     </div>
 
                 </div>
-                <div v-infinite-scroll="loadNextPage" infinite-scroll-disabled="status.submit"
+                <div v-infinite-scroll="loadNextPage()" infinite-scroll-disabled="status.submit"
                      infinite-scroll-distance="10">
                     <div class="m-b-lg" v-if="status.submit">
                         <div class="row m-b">
@@ -116,8 +116,10 @@
                 return author;
             },
             loadNextPage: function () {
+                console.log('sdfsf');
 
                 if (this.threads.next_page_url !== null) {
+
                     this.status.submit = true;
 
                     axios.post(this.threads.next_page_url)

@@ -23,7 +23,16 @@ class MessagesController extends Controller
     public function index()
     {
         // All threads, ignore deleted/archived participants
-        $threads = Thread::getAllLatest()->with([
+        /*$threads = Thread::getAllLatest()->with([
+            'users'    => function ($query) {
+                $query->select('avatar', 'name', 'agent_name');
+            },
+            'messages' => function ($query) {
+                $query->latest()->first();
+            },
+        ])->paginate();*/
+
+        $threads = Thread::forUser(Auth::id())->with([
             'users'    => function ($query) {
                 $query->select('avatar', 'name', 'agent_name');
             },

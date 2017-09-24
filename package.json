@@ -29,7 +29,7 @@
     "moment": "^2.18.1",
     "perfect-scrollbar": "^0.8.1",
     "select2": "^4.0.3",
-    "sweetalert2": "^6.6.5",
+    "sweetalert2": "^6.9.1",
     "turbolinks": "^5.0.3",
     "typed.js": "^1.1.7",
     "vue-infinite-scroll": "^2.0.1",

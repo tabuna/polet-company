@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-sm-9">
                         <div class="v-center">
-                            <div class="fileinput fileinput-exists thumb-lg pull-left m-r-md" data-provides="fileinput"
+                            <div class="fileinput fileinput-exists thumb-lg pull-left m-r-md" data-provтзь es="fileinput"
                                  data-toggle="tooltip" data-placement="bottom" title="Логотип компании. Формат: jpg, gif, png. Максимальный размер файла: 2Mb. Рекомендованный размер 200х200px.">
 
                                 <div class="btn-file">
@@ -254,9 +254,9 @@
                                          @search-change="asyncFind"
                                          :taggable="true"
                                          @tag="addTag"
-                                         :SelectLabel="selectLabelTag"
-                                         :SelectedLabel="selectedLabelTag"
-                                         :DeselectLabel ="deselectLabelTag"
+                                         :selectLabel="'Нажмите Enter для выбора'"
+                                         :selectedLabel="'Выбранный'"
+                                         :deselectLabel="'Нажмите Enter, чтобы удалить'"
 
                             >
                                 <template slot="option" scope="props">

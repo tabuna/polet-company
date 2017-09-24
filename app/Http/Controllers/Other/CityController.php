@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Other;
 
-use Illuminate\Support\Facades\App;
-use App\Core\Models\User;
 use App\Core\Models\City;
 use App\Http\Controllers\Controller;
 
@@ -11,7 +9,7 @@ class CityController extends Controller
 {
 
     /**
-     * @param null $tag
+     * @param null $city
      *
      * @return \Illuminate\Http\JsonResponse
      */

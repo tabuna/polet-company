@@ -4,7 +4,7 @@ namespace DummyNamespace;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
-use Orchid\Core\Models\Post;
+use Orchid\CMS\Core\Models\Post;
 use Orchid\Widget\Service\Widget;
 
 class AdvertisingWidget extends Widget
@@ -29,7 +29,7 @@ class AdvertisingWidget extends Widget
      */
     public function run($key = '')
     {
-        $post = Post::type('advertising')->where('options->lang->' . App::getLocale())
+        $post = Post::type('advertising')->where('options->lang->'.App::getLocale())
             ->where('options->category', $key)
             ->where('options->startDate', '<', $this->date->timestamp)
             ->where('options->endDate', '>', $this->date->timestamp)

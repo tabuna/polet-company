@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller
 {
@@ -19,6 +20,10 @@ class WelcomeController extends Controller
      */
     public function index()
     {
+        if(Auth::check()){
+            return view('home');
+        }
+
         return view('welcome');
     }
 

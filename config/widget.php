@@ -14,6 +14,5 @@ return [
     */
     'widgets' => [
         //'advertising' => \Orchid\Http\Widgets\AdvertisingWidget::class,
-        'footerMenu' => \App\Http\Widgets\Footer\MenuWidget::class,
     ],
 ];

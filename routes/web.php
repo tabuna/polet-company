@@ -1,17 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Vue App
-|--------------------------------------------------------------------------
-|
-*/
 
-Route::group(['middleware' => 'auth'], function ($router) {
-    $router->get('/{vue_capture?}', 'HomeController@index')
-        ->where('vue_capture','^(?!api).*$')
-        ->name('app');
-});
 
 
 /*
@@ -46,4 +35,17 @@ Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($rou
     $router->post('/contacts', 'ContactsController@send')->name('contacts.submit');
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Vue App
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::group(['middleware' => 'auth'], function ($router) {
+    $router->get('/{vue_capture?}', 'HomeController@index')
+        ->where('vue_capture','^(?!api).*$')
+        ->name('app');
+});
 

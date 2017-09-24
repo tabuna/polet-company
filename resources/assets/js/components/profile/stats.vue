@@ -62,7 +62,7 @@
             }
         },
         beforeMount() {
-            axios.post(`/profile/statistics`)
+            axios.post(`/api/profile/statistics`)
                 .then(response => {
 
 

@@ -108,7 +108,7 @@
                             </p>
 
                             <div class="tags">
-                                <a href="" class="label" v-for="tag in user.tags">{{tag.name}}</a>
+                                <span title="Используется данный тег" class="label text-dark" v-for="tag in user.tags">{{tag.name}}</span>
                             </div>
 
                         </div>
@@ -217,7 +217,7 @@
 
                 let textAllTags = [];
                 newId.forEach(function(item, i, arr) {
-                   textAllTags.push(item.slug)
+                    textAllTags.push(item.slug)
                 });
 
                 this.query.tags = textAllTags.join(',');
@@ -229,7 +229,7 @@
                 $('#adb').show();
                 let id = meta_user;
 
-                axios.post(`/companies`,this.query)
+                axios.post(`/api/companies`,this.query)
                     .then(response => {
                         this.users = response.data;
                         this.status.load = true;
@@ -271,7 +271,7 @@
             asyncFind (query) {
                 this.isLoading = true
 
-                axios.get(`/profile/tags/` + query)
+                axios.get(`/api/profile/tags/` + query)
                     .then(response => {
                         //this.user = response.data;
                         this.status.submit = false;
@@ -297,7 +297,7 @@
             asyncFindCity (query) {
                 this.isLoadingCity = true
 
-                axios.post(`/other/city/` + query)
+                axios.post(`/api/other/city/` + query)
                     .then(response => {
                         //this.user = response.data;
                         this.status.submit = false;

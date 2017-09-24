@@ -17,7 +17,7 @@
                       </span>
                         <span class="clear">
                     <span>{{ getAuthor(thread.users).agent_name }}</span>
-                    <small class="clear text-ellipsis"
+                    <small class="clear text-ellipsis" v-if="thread.messages[0]"
                            v-bind:class="{ 'text-muted': !thread.isUnread, 'text-black': thread.isUnread }">
                         {{thread.messages[0].body}}
                     </small>
@@ -91,7 +91,7 @@
                 $('#adb').show();
                 let id = meta_user;
 
-                axios.post(`/messages`)
+                axios.post(`/api/messages`)
                     .then(response => {
                         this.threads = response.data;
                         this.status.load = true;

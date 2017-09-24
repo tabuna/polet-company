@@ -1,121 +1,113 @@
 <template>
 
+    <div  v-if="status.load">
+    <div class="bg-white b box-shadow">
+        <div class="wrapper-md">
 
-    <div class="user-show">
-        <div class="col-md-6">
-            <div class="bg-white b box-shadow">
-                <div class="wrapper-md">
+            <div class="" v-if="status.load">
 
-                    <div class="row m-b-md padder-b b-b">
-                        <div class="col-md-4">
-                            <img v-bind:src="user.avatar" class="img-responsive">
-                        </div>
-                        <div class="col-md-5 no-padder">
-                            <h3 class="text-info m-t-xs">{{user.name}}</h3>
-                            <p>ИНН: {{user.inn}}</p>
-                            <p>ОГРН: {{user.ogrn}} </p>
-                            <p class="text-muted small">
-                                <i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br>
-                                <i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br>
-                                <i class="icon-globe text-info m-r-xs"></i>| {{user.website}} <br>
-                            </p>
-                        </div>
-                        <div class="col-md-3 no-padder text-center">
-                            <p>
-                                <a href="#" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"><i
-                                        class="icon-star text-info"></i></a>
-                                <a href="#" class="btn btn-icon btn-rounded b b-info b-2x"><i
-                                        class="icon-speech text-info"></i></a>
-                            </p>
-                            <p class="small text-info text-xs">Рейтинг компании</p>
-                        </div>
-                    </div>
-
-                    <div class="row m-t-md m-b-md padder-v b-b">
-                        <div class="col-md-12">
-                            <p class="text-justify">
-                                {{user.about}}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row m-t-md m-b-md padder-v">
-                        <div class="col-md-12">
-                            <p><i class="icon-globe"></i> | Россия, Москва, ул. Пушкина, д. 127/43, офис 203, 123499</p>
-                            <div class="google-maps">
-                                <img src="/img/google.png" class="img-responsive">
+                <div class="m-b-lg">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="thumb-lg">
+                                <router-link :to="{ name: 'profile', params: { id: tender.author.id }}">
+                                    <img v-bind:src="tender.author.avatar" v-bind:alt="tender.author.name" class="img-responsive">
+                                </router-link>
                             </div>
-
-                            <div class="get-directions">
-                                <form action="http://maps.google.com/maps" method="get" target="_blank">
-                                    <input type="text" name="saddr" placeholder="Введите свой адрес"/>
-                                    <input type="hidden" name="daddr"
-                                           value="Октябрьская ул., 61, Липецк, Липецкая область"/>
-                                    <input type="submit" value="Как добраться" class="direction-btn"/>
-                                </form>
-                            </div>
-
-
                         </div>
+                        <div class="col-md-10">
+                            <h3 class="m-t-xs">{{tender.content.ru.title}}</h3>
+
+                            <div class="tags">
+                                <span title="Используется данный тег" class="label text-dark" v-for="tag in tender.tags">{{tag.name}}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p class="small wrapper">
+                                {{tender.content.ru.description}}
+                            </p>
+                        </div>
+
+
+                        <div class="col-md-12" v-if="tender.attachment.length !== 0">
+                            <p class="h5 font-thin  m-b-lg">Докуметы для загрузки</p>
+                            <ul>
+                                <li>
+                                <a v-for="attachment in tender.attachment" v-bind:href="generateUrl(attachment)">
+                                   {{attachment.original_name}}
+                                </a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="padder-v text-xs">
+                                <span class="m-r-md"><i class="icon-clock"></i> {{tender.publish_at | moment("from", "now")}}</span>
+                                <span class="m-r-md"><i class="icon-map"></i> {{tender.content.ru.city.name}}</span>
+                                <span class="m-r-md" v-show="tender.content.ru.price != null"><i class="fa fa-rub"></i> {{tender.content.ru.price}}</span>
+                            </div>
+                        </div>
+
+
+
+
+
                     </div>
+                </div>
 
 
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bg-white box-shadow wrapper-md">
+        <p class="h3 font-thin m-t-md m-b"><i class="icon-bubbles m-r"></i> Комментарии</p>
+        <hr>
+
+        <div class="m-b-md" v-for="comment in tender.comments">
+            <p class="pull-left thumb-sm">
+                <img v-bind:src="comment.author.avatar" class="img-circle">
+            </p>
+            <div class="m-l-xxl m-b">
+                <div>
+                    <strong>{{comment.author.name}}</strong><small class="m-l-sm">{{comment.author.agent_name}}</small>
+                    <span class="text-muted text-xs block">
+                               {{comment.created_at | moment("from", "now")}}
+                    </span>
+                </div>
+                <div class="m-t-sm">
+                   {{comment.content}}
                 </div>
             </div>
         </div>
 
 
-        <div class="col-md-3">
-            <div class="panel panel-default b box-shadow">
-                <div class="panel-heading">
-                    <div class="clearfix">
-                        <div class="clear">
-                            <div class="h4 m-t-xs m-b-xs">
-                                Черняев Александр
-                                <i class="fa fa-circle text-success pull-right text-xs m-t-sm"></i>
-                            </div>
-                            <small class="text-muted">Представитель компании</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-group no-radius alt">
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-comment fa-fw text-muted"></i>
-                        Адрес компании
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-envelope fa-fw text-muted"></i>
-                        Спрос
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-eye fa-fw text-muted"></i>
-                        Проедложения
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-comment fa-fw text-muted"></i>
-                        Адрес компании
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-envelope fa-fw text-muted"></i>
-                        Спрос
-                    </a>
-                    <a class="list-group-item" href="">
-                        <i class="fa fa-eye fa-fw text-muted"></i>
-                        Проедложения
-                    </a>
-                </div>
-            </div>
 
 
-            <div class="panel wrapper-md padder-lg b box-shadow-lg text-center">
-                <p class="h3 font-thin m-b-sm">Тендер</p>
-                <p class="font-bold text-sm">Нужно выполнить работу? Объяви об этом всем</p>
-                <p class="small text-muted text-xs">Актуально до 60 дней</p>
-                <a href="" class="btn btn-info btn-rounded">Разместить</a>
-            </div>
 
-
+        <div v-if="tender.comments.length === 0">
+            <div class="alert alert-info text-center" role="alert">Пока нет комментариев</div>
         </div>
+
+        <div id="comments">
+            <div class="h4 m-t-xl m-b">Оставить комментарий</div>
+            <hr>
+            <form class="form" method="post" v-on:submit.prevent="sendMessage">
+                <div class="form-group">
+                    <textarea rows="6" v-model="content" maxlength="500" required class="form-control form-control-grey no-resize" placeholder="Комментарий" v-on:keyup.enter="sendMessage"></textarea>
+                </div>
+                <p class="text-right m-t-lg">
+                    <button type="submit" class="btn btn-info btn-rounded" v-on:click="sendMessage">
+                        <span v-if="status.submit">Отправка <i class='fa fa-spinner fa-spin'></i></span>
+                        <span v-else="status.submit">Сохранить</span>
+                    </button>
+                </p>
+            </form>
+        </div>
+    </div>
     </div>
 
 </template>
@@ -126,34 +118,59 @@
         props: ['id'],
         data: function () {
             return {
-                user: {
-                    name: '',
-                    email: '',
-                    phone: '',
-                    address: '',
-                    inn: '',
-                    ogrn: '',
-                    website: '',
-                    about: '',
-                    avatar: '',
-                }
+                tender: {},
+                status: {
+                    load: false,
+                    submit: false,
+                    self: false,
+                },
+                content: '',
             }
         },
         beforeMount() {
-            axios.post(`/profile/` + this.$route.params.id)
-                .then(response => {
-                    this.user = response.data
-                })
-                .catch(e => {
-                    this.errors.push(e)
-                });
+            this.loadData();
         },
         mounted() {
             this.load();
         },
-        methods:{
+        methods: {
             load: function () {
                 $('#adb').show();
+            },
+            loadData:function () {
+                axios.post(`/tender/` + this.$route.params.id)
+                    .then(response => {
+                        this.tender = response.data;
+                        this.status.load = true;
+                    })
+                    .catch(e => {
+                        this.errors.push(e)
+                    });
+            },
+            sendMessage: function () {
+                if (this.status.submit === false) {
+                    this.status.submit = true;
+                    let content = this.content.trim();
+                    if (content) {
+
+                        axios.post(`/tender/comment/` + this.$route.params.id, {
+                            'content': content
+                        })
+                            .then(response => {
+                                this.loadData();
+                                //this.tender = response.data;
+                                this.content = '';
+                                this.status.submit = false;
+                            })
+                            .catch(e => {
+                                this.errors.push(e)
+                            });
+                    }
+
+                }
+            },
+            generateUrl: function(file){
+                return '/storage/'+ file.path + file.name + "." + file.extension;
             },
         }
     }

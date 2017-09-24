@@ -111,7 +111,7 @@
         </div>
 
 
-        <div class="bg-white">
+        <div class="bg-white hidden">
             <div class="container">
 
 

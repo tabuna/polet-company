@@ -345,7 +345,7 @@
         },
         mounted() {
             $('#adb').show();
-            axios.post(`/profile/edit`)
+            axios.post(`/api/profile/edit`)
                 .then(response => {
                     this.user = response.data;
                     this.selectedTags = this.user.tags;
@@ -383,7 +383,7 @@
                     this.user.tags = this.selectedTags;
                     this.user.city_id = this.selectedCity.id;
 
-                    axios.put(`/profile/edit`, this.user)
+                    axios.put(`/api/profile/edit`, this.user)
                         .then(response => {
                             //this.user = response.data;
                             this.status.submit = false;
@@ -419,7 +419,7 @@
             asyncFind (query) {
                 this.isLoading = true
 
-                axios.get(`/profile/tags/` + query)
+                axios.get(`/api/profile/tags/` + query)
                     .then(response => {
                         //this.user = response.data;
                         this.status.submit = false;
@@ -445,7 +445,7 @@
             asyncFindCity (query) {
                 this.isLoadingCity = true
 
-                axios.post(`/other/city/` + query)
+                axios.post(`/api/other/city/` + query)
                     .then(response => {
                         //this.user = response.data;
                         this.status.submit = false;

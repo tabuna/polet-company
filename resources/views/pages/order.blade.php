@@ -112,46 +112,6 @@
 
 
         <section class="container bg-white">
-            <div class="row m-t-xxl m-b-xl">
-                <div class="col-xs-12 col-sm-3 ">
-                    <div class="h3 text-info b-b b-info padder-v">
-                        1
-                    </div>
-                    <div class=" text-muted m-t-md l-h-1x font-thin">
-                        Значимость этих проблем настолько очевидна, что постоянное
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 ">
-                    <div class="h3 text-info b-b b-info padder-v">
-                        2
-                    </div>
-                    <div class=" text-muted m-t-md l-h-1x font-thin">
-                        Значимость этих проблем настолько очевидна, что постоянное
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 ">
-                    <div class="h3 text-info b-b b-info padder-v">
-                        3
-                    </div>
-                    <div class=" text-muted m-t-md l-h-1x font-thin">
-                        Значимость этих проблем настолько очевидна, что постоянное
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-3 ">
-                    <div class="h3 text-info b-b b-info padder-v">
-                        4
-                    </div>
-                    <div class=" text-muted m-t-md l-h-1x font-thin">
-                        Значимость этих проблем настолько очевидна, что постоянное
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-
-
-        <section class="container bg-white">
             <div class="row m-t-xl m-b-xxl">
                 <div class="col-md-6">
                     <h1 class="font-thin m-t-n l-h-1x padder-v text-black">Мы предлогаем</h1>

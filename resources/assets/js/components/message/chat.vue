@@ -5,7 +5,7 @@
         <div class="wrapper-md">
 
             <div class="panel-heading">Чат</div>
-            <div class="panel-body b scrollBlock" style="max-height: 1000px; overflow-y: scroll">
+            <div class="panel-body b overflow-x-h scrollBlock" style="max-height: 1000px; overflow-y: scroll">
 
 
                 <div v-if="threads.messages.next_page_url">
@@ -26,7 +26,7 @@
                                 <p class="m-b-none">{{message.body}}</p>
                             </div>
                             <small class="text-muted"><i class="fa fa-ok text-success"></i>
-                                {{message.created_at | moment("from", true) }} назад
+                                {{message.created_at | moment("subtract", mytime+" minutes", "from", true) }} назад
                             </small>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                                 <span class="arrow right pull-up"></span>
                                 <p class="m-b-none">{{message.body}}</p>
                             </div>
-                            <small class="text-muted"> {{message.created_at | moment("from", true) }} назад</small>
+                            <small class="text-muted"> {{message.created_at | moment("subtract", mytime+" minutes","from",  "now") }} </small>
                         </div>
                     </div>
                 </div>
@@ -95,6 +95,7 @@
                     submit: false,
                     self: false,
                 },
+                mytime: "",
             }
         },
         mounted() {
@@ -103,11 +104,12 @@
         methods: {
             load: function () {
                 $('#adb').hide();
-                $('.scrollBlock').height($('#rightPanel').height());
+                this.mytime = new Date().getTimezoneOffset();//Возвращает разницу между местным и UTC-временем, в минутах.
+                $('.scrollBlock').height($('#rightPanel').height()-192);
                 let id = window.meta_user;
                 this.currentUser= window.meta_user;
 
-                axios.post(`/messages/` + this.$route.params.id)
+                axios.post(`/api/messages/` + this.$route.params.id)
                     .then(response => {
                         this.threads = response.data;
                         this.status.load = true;
@@ -167,7 +169,7 @@
                 var message = this.newMessage.trim();
                 if (message) {
 
-                    axios.put(`/messages/` + this.$route.params.id, {
+                    axios.put(`/api/messages/` + this.$route.params.id, {
                         'message': message
                     })
                         .then(response => {

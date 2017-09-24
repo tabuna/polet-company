@@ -104,7 +104,7 @@
                     this.errors = {};
                     console.log(this.errors);
                     this.status.success = null;
-                    axios.put(`/profile/password`, this.user)
+                    axios.put(`/api/profile/password`, this.user)
                         .then(response => {
                             //this.user = response.data;
                             this.status.submit = false;

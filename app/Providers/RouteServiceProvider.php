@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Core\Models\User;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Orchid\Core\Models\Post;
+use Orchid\CMS\Core\Models\Post;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -30,13 +30,15 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
 
-        Route::bind('item', function ($value) {
+        Route::bind('tender', function ($value) {
             if (is_numeric($value)) {
                 return Post::where('id', $value)
+                    ->with(['author','comments.author','tags','attachment'])
                     ->firstOrFail();
             }
 
             return Post::where('slug', $value)
+                ->with(['author','comments.author','tags','attachment'])
                 ->firstOrFail();
         });
 

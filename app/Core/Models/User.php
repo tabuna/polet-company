@@ -6,13 +6,12 @@ use Cartalyst\Tags\TaggableTrait;
 use Conner\Likeable\LikeableTrait;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPasswordNotification;
-use Orchid\Core\Models\User as UserOrchid;
-use willvincent\Rateable\Rateable;
+use Orchid\Platform\Core\Models\User as UserOrchid;
 use Cmgmyr\Messenger\Traits\Messagable;
 
 class User extends UserOrchid
 {
-    use Notifiable, TaggableTrait, LikeableTrait, Rateable, Messagable;
+    use Notifiable, TaggableTrait, LikeableTrait, Messagable;
 
     /**
      * @var string

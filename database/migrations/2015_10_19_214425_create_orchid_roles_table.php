@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateRolesTable extends Migration
+class CreateOrchidRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique();
             $table->string('name');
-            $table->jsonb('permissions');
+            $table->text('permissions')->nullable();
             $table->timestamps();
         });
     }

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Profile;
+namespace App\Http\Controllers\Tender;
 
-use App\Core\Models\User;
-use Orchid\CMS\Core\Models\Post;
+use Orchid\Core\Models\Post;
 use App\Http\Controllers\Controller;
 
 class TagController extends Controller
@@ -16,17 +15,15 @@ class TagController extends Controller
      */
     public function show($tag = null)
     {
-
         if (is_null($tag)) {
-            $tags = User::allTags()->orderBy('count', 'desc')->limit(10)->get();
+            $tags = Post::allTags()->orderBy('count', 'desc')->limit(10)->get();
 
             return response()->json($tags);
         }
-        $tags = User::allTags()->orderBy('count', 'desc')->where('name', 'like', '%' . $tag . '%')->limit(10)->get();
+        $tags = Post::allTags()->orderBy('count', 'desc')->where('name', 'like', '%' . $tag . '%')->limit(10)->get();
 
         return response()->json($tags);
     }
-
 
 
 }

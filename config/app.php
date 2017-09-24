@@ -166,11 +166,8 @@ return [
         /*
          * Package Service Providers...
          */
-        Laravel\Tinker\TinkerServiceProvider::class,
-        Orchid\Providers\FoundationServiceProvider::class,
-        Orchid\Socket\Providers\SocketServiceProvider::class,
         Conner\Likeable\LikeableServiceProvider::class,
-        willvincent\Rateable\RateableServiceProvider::class,
+        //willvincent\Rateable\RateableServiceProvider::class,
         Cmgmyr\Messenger\MessengerServiceProvider::class,
 
         /*

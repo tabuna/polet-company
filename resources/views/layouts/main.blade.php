@@ -75,8 +75,8 @@
 
 
                 <div id="adb" class="panel wrapper-xl b padder-lg text-center"
-                     data-mh="main-info-block"
-                     style="width: 100%; display: flex; align-items: center; justify-content: center; height: 444px; background: rgb(198, 198, 198);">
+                     data-spy="affix" data-offset-top="800" data-offset-bottom="400"
+                     style="width:336.66px; top: 0; display: flex; align-items: center; justify-content: center; height: 444px; background: rgb(198, 198, 198);">
                     <p style="
             font-size: 16pt;
             text-transform: uppercase;

@@ -10,9 +10,12 @@
 
                             <strong>Найдено {{tender.total}} предложений</strong>
 
-                            <button type="submit" id="button-filter" class="btn btn-default pull-right"><i
-                                    class="fa fa-filter"></i>
+                            <button type="submit" id="button-filter" class="btn btn-default pull-right m-l-xs"><i
+                                    class="icon-equalizer"></i>
                             </button>
+                            <router-link class="btn btn-default pull-right" :to="{ name: 'tender.create'}">
+                               <i class="icon-pencil" aria-hidden="true"></i>
+                            </router-link>
                         </div>
                     </div>
                     <div class="row">
@@ -88,14 +91,14 @@
 
                 <div class="m-b-lg" v-for="tender in tender.data">
                     <div class="row m-b">
-                        <div class="col-md-2">
-                            <div class="thumb-lg">
+
+                        <div class="v-center">
+                        <div class="col-md-3">
                                 <router-link :to="{ name: 'tender.show', params: { id: tender.id }}">
-                                    <img v-bind:src="tender.author.avatar" v-bind:alt="tender.author.name" class="img-responsive">
+                                    <img v-bind:src="tender.author.avatar" v-bind:alt="tender.author.name" class="img-responsive thumbnail">
                                 </router-link>
-                            </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <h3 class="m-t-xs">
                                 <router-link :to="{ name: 'tender.show', params: { id: tender.id }}">
                                     {{tender.content.ru.title}}
@@ -106,10 +109,10 @@
                                 <span  title="Используется данный тег" class="label text-dark" v-for="tag in tender.tags">{{tag.name}}</span>
                             </div>
                         </div>
-
+                        </div>
 
                         <div class="col-md-12">
-                            <p class="small wrapper">
+                            <p class="small padder-v">
                                 {{tender.content.ru.description}}
                             </p>
                         </div>

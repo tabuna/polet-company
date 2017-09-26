@@ -10,7 +10,7 @@
                         <div class="col-md-2">
                             <div class="thumb-lg">
                                 <router-link :to="{ name: 'profile', params: { id: fave.id }}">
-                                    <img v-bind:src="fave.avatar" v-bind:alt="fave.name" class="img-responsive">
+                                    <img v-bind:src="fave.avatar" v-bind:alt="fave.name" class="img-responsive thumbnail">
                                 </router-link>
                             </div>
                         </div>

@@ -24,31 +24,22 @@
 
             <div class="row m-b-md padder-b">
                 <div class="col-md-4">
-                    <img v-bind:src="user.avatar" class="img-responsive">
-                </div>
-                <div class="col-md-8">
-
-                    <div class="row">
-                        <h3 class="text-info m-t-xs">{{user.name}}</h3>
-                    </div>
+                    <img v-bind:src="user.avatar" class="img-responsive thumbnail">
 
 
-                    <div class="row">
-                        <div class="col-md-8 no-padder">
-                            <p>ИНН: {{user.inn}}</p>
-                            <p>ОГРН: {{user.ogrn}} </p>
-                            <p class="text-muted small">
-                                <span v-if="user.phone"><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
-                                <span v-if="user.email"><i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br></span>
-                                <span v-if="user.city"><i class="icon-location-pin text-info m-r-xs"></i>| {{user.city.name}} <br></span>
-                                <span v-if="user.size_company"><i class="icon-people text-info m-r-xs"></i>| {{optionsSize[user.size_company]}} <br></span>
-                                <a v-bind:href="user.website" taget="_blank" class="text-ellipsis"
-                                   v-if="user.website"><i
-                                        class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a> <br>
+                    <div class="hbox text-center b-b b-light text-sm">
+          <a href="" class="col padder-v text-muted b-r b-light">
+            <i class="icon-star block m-b-xs fa-2x"></i>
+            <span>В избранное</span>
+          </a>
+          <a href="" class="col padder-v text-muted">
+            <i class="icon-speech block m-b-xs fa-2x"></i>
+            <span>Начать диалог</span>
+          </a>
+        </div>
 
-                            </p>
-                        </div>
-                        <div class="col-md-4 no-padder text-center">
+
+                        <div class="col-md-12 no-padder text-center">
 
                             <div v-if="!status.self">
                                 <p>
@@ -61,9 +52,41 @@
                                     <a data-toggle="modal" href="#startDialog" class="btn btn-icon btn-rounded b b-info b-2x"><i
                                             class="icon-speech text-info"></i></a>
                                 </p>
-                                <p class="small text-info text-xs hidden">Рейтинг компании</p>
                             </div>
 
+                        </div>
+
+                </div>
+                <div class="col-md-8">
+
+                    <div class="row">
+                        <h3 class="text-info m-t-xs">{{user.name}}</h3>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 no-padder">
+
+
+                          <div class="lead hidden-xs v-center" data-toggle="tooltip" data-placement="top" title="Порядочность определяется путём опроса пользователей">
+                                           <span id="stars-existing" class="starrr text-warning-dk"
+                                                 data-rating='5' data-post-id='1' style="cursor: pointer;"></span>
+                                        <small class="m-l-sm"> Средняя порядочность 5 звезд(ы)</small>
+                            </div>
+
+
+                            <p>ИНН: {{user.inn}}</p>
+                            <p>ОГРН: {{user.ogrn}} </p>
+                            <p class="text-muted small">
+                                <span v-if="user.phone"><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
+                                <span v-if="user.email"><i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br></span>
+                                <span v-if="user.city"><i class="icon-location-pin text-info m-r-xs"></i>| {{user.city.name}} <br></span>
+                                <span v-if="user.size_company"><i class="icon-people text-info m-r-xs"></i>| {{optionsSize[user.size_company]}} <br></span>
+                                <a v-bind:href="user.website" taget="_blank" class="text-ellipsis"
+                                   v-if="user.website"><i
+                                        class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a> <br>
+
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -86,6 +109,44 @@
                     <main v-html="user.about"></main>
                 </div>
             </div>
+
+
+<!--
+$(function () {
+    return $(".starrr").starrr();
+});
+
+$(document).ready(function () {
+
+    $('#stars').on('starrr:change', function (e, value) {
+        $('#count').html(value);
+        console.log('Изменил значение1');
+    });
+
+    $('#stars-existing').on('starrr:change', function (e, value) {
+        $('#count-existing').html(value);
+
+        $.ajax({
+            method: "POST",
+            url: '/' + $('html').attr('lang') + '/rating/' + $('#stars-existing').data('post-id'),
+            data: {
+                rating: value
+            }
+        })
+            .done(function (response) {
+                swal({
+                    title: response.title,
+                    text: response.message,
+                    timer: 2000,
+                    showConfirmButton: false,
+                    type: response.type,
+                });
+            });
+
+    });
+});
+-->
+
 
             <div class="row m-t-md m-b-md padder-v">
                 <div class="col-md-12">
@@ -122,7 +183,7 @@
 
 
             <div class="m-t-md">
-                <h4 class="l-h-1x">Конкуренты:</h4>
+                <h4 class="l-h-1x">Похожие компании:</h4>
             </div>
 
             <article class="col-md-12 padder-v" v-for="similar in user.similars">
@@ -268,7 +329,7 @@
             if (this.$route.params.id === window.meta_user) {
                 this.status.self = true;
             }
-
+            $(".starrr").starrr();
         },
         watch: {
             '$route.params.id'(newId, oldId) {

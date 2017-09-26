@@ -51,7 +51,7 @@ require('../../../node_modules/typed.js/dist/typed.min.js');
 require('../../../node_modules/chart.js/dist/Chart.min');
 require('../../../node_modules/chart.js/dist/Chart.bundle.min');
 
-
+require('./modules/ratings');
 
 window.WOW = require('../../../node_modules/wow.js/dist/wow.min');
 window.swal = require('sweetalert2');

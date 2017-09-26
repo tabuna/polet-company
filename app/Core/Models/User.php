@@ -8,10 +8,11 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPasswordNotification;
 use Orchid\Platform\Core\Models\User as UserOrchid;
 use Cmgmyr\Messenger\Traits\Messagable;
+use App\Core\Traits\Rateable;
 
 class User extends UserOrchid
 {
-    use Notifiable, TaggableTrait, LikeableTrait, Messagable;
+    use Notifiable, TaggableTrait, LikeableTrait, Messagable, Rateable;
 
     /**
      * @var string

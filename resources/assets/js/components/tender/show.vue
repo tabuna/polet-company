@@ -11,7 +11,7 @@
                         <div class="col-md-2">
                             <div class="thumb-lg">
                                 <router-link :to="{ name: 'profile', params: { id: tender.author.id }}">
-                                    <img v-bind:src="tender.author.avatar" v-bind:alt="tender.author.name" class="img-responsive">
+                                    <img v-bind:src="tender.author.avatar" v-bind:alt="tender.author.name" class="img-responsive thumbnail">
                                 </router-link>
                             </div>
                         </div>

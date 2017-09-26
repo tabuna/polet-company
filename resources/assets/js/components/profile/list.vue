@@ -11,7 +11,7 @@
                             <strong>Найдено {{users.total}} компаний</strong>
 
                             <button type="submit" id="button-filter" class="btn btn-default pull-right"><i
-                                    class="fa fa-filter"></i>
+                                    class="icon-equalizer"></i>
                             </button>
                         </div>
                     </div>
@@ -88,15 +88,13 @@
 
 
                 <div class="m-b-lg" v-for="user in users.data">
-                    <div class="row m-b">
-                        <div class="col-md-2">
-                            <div class="thumb-lg">
+                    <div class="row m-b v-center">
+                        <div class="col-md-3">
                                 <router-link :to="{ name: 'profile', params: { id: user.id }}">
-                                <img v-bind:src="user.avatar" v-bind:alt="user.name" class="img-responsive">
+                                <img v-bind:src="user.avatar" v-bind:alt="user.name" class="img-responsive thumbnail">
                                 </router-link>
-                            </div>
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <h3 class="m-t-xs">
                                 <router-link :to="{ name: 'profile', params: { id: user.id }}">
                                     {{user.name}}
@@ -137,9 +135,7 @@
                     <h4 class="m-t-none">Компания не найдена</h4>
 
                     <p class="text-muted m-t-lg">
-
                         Попробуйте указать альтернативное данные или изменить параметры поиска.
-
                     </p>
 
                 </div>

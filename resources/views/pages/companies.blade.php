@@ -46,7 +46,7 @@
                         <ul class="list-group no-bg no-borders pull-in m-t-lg basic-list-blue">
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                «Малый тендер» — одна из первых компаний России, специализирующихся на организации тендеров для юридических лиц.
+                                «BSale» — одна из первых компаний России, специализирующихся на организации тендеров для юридических лиц.
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>

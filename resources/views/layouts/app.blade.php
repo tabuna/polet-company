@@ -52,7 +52,7 @@
                     <a href="{{ url('/') }}" class="navbar-brand m-r-lg">
                         <img src="/img/logo.png" class="img-responsive m-r-xs">
                         <span class="h4 text-black">
-                    Малый тендер
+                    BSale
                 </span>
                     </a>
                 @else
@@ -60,7 +60,7 @@
                     <router-link :to="{ name: 'profile', params: { id: user.id }}" class="navbar-brand m-r-lg">
                         <img src="/img/logo.png" class="img-responsive m-r-xs">
                         <span class="h4 text-black">
-                    Малый тендер
+                    BSale
                 </span>
                     </router-link>
 
@@ -82,7 +82,10 @@
 
                     <ul class="nav navbar-nav">
                         <li>
-                            <router-link :to="{ name: 'companies'}">Компании</router-link>
+                            <router-link :to="{ name: 'companies'}">Спрос</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'companies'}">Предложения</router-link>
                         </li>
                         <li>
                             <router-link :to="{ name: 'tender'}">Тендеры</router-link>
@@ -104,9 +107,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false"
                                title="Мой профиль">
-                                {{ Auth::user()->name }}
+                               {{ Auth::user()->name }}
                                 <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-<img src="{{Auth::user()->getAvatar()}}" alt="{{ Auth::user()->name }}">
+<img src="{{Auth::user()->getAvatar()}}" clas="b" alt="{{ Auth::user()->name }}">
 <i class="on md b-white bottom"></i>
 </span>
                                 <span class="caret"></span>
@@ -162,7 +165,7 @@
             <div class="container">
                 <div class="row m-t-xl m-b-xl">
                     <div class="col-md-6 hidden-xs">
-                        <span class="h4 text-black">[<span class="text-info">Малый </span> тендер]</span>
+                        <span class="h4 text-black">BSale</span>
                         <div class="m-t text-xs">
                             <ul class="list-inline">
                                 <li><a href="#">О нас</a></li>

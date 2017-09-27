@@ -70,7 +70,7 @@ if (document.getElementById('app') !== null) {
             {
                 path: '/tender',
                 name: 'tender',
-                component: require('./components/tender/list.vue')
+                component: require('./components/tender/list.vue'),
             },
             {
                 path: '/tender/create',
@@ -105,6 +105,14 @@ if (document.getElementById('app') !== null) {
                 path: '/companies',
                 name: 'companies',
                 component: require('./components/profile/list.vue'),
+                props: (route) => ({
+                    query: route.query.tags
+                })
+            },
+            {
+                path: '/recommended',
+                name: 'recommended',
+                component: require('./components/profile/recommended.vue'),
                 props: (route) => ({
                     query: route.query.tags
                 })

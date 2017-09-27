@@ -31,7 +31,8 @@
 
 
                         <div class="col-md-12" v-if="tender.attachment.length !== 0">
-                            <p class="h5 font-thin  m-b-lg">Докуметы для загрузки</p>
+                            <div class="wrapper">
+                            <p class="h5 font-thin  m-b-lg">Докуметы для загрузки:</p>
                             <ul>
                                 <li v-for="attachment in tender.attachment">
                                     <a v-bind:href="generateUrl(attachment)">
@@ -39,7 +40,22 @@
                                     </a>
                                 </li>
                             </ul>
+                            </div>
                         </div>
+
+                        <div class="col-md-12">
+                            <div class="wrapper">
+                            <p class="h5 font-thin  m-b">Контакты:</p>
+                                      <p class="text-muted">
+                                          <span><i class="icon-user text-info m-r-xs"></i>| {{tender.content.ru.name}} <br></span>
+                                          <span><i class="icon-phone text-info m-r-xs"></i>| {{tender.content.ru.phone}} <br></span>
+                                          <span><i class="icon-envelope text-info m-r-xs"></i>| {{tender.content.ru.email}}<br></span>
+                                      </p>
+                            </div>
+                        </div>
+
+
+
 
 
                         <div class="col-md-12">

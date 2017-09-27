@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Pro
 
     $router->post('/fave', 'FavoriteController@index')->name('profile.fave');
     $router->put('/fave/{user}', 'FavoriteController@update')->name('profile.fave.add');
+    $router->post('/rating/{user}', 'RatingController@store')->name('profile.rating');
 
     $router->post('/edit', 'ProfileController@index')->name('profile.edit');
     $router->put('/edit', 'ProfileController@update')->name('profile.update');

@@ -23,6 +23,11 @@ class TenderController extends Controller
     {
         $elements = Post::where('type', 'tender')->with(['tags', 'author'])->orderBy('created_at', 'DESC');
 
+
+        if ($request->get('my')) {
+            $elements->where('user_id',Auth::id());
+        }
+
         if ($request->get('tags')) {
             $elements->whereTag($request->get('tags'));
         }

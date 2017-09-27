@@ -38,9 +38,16 @@ class User extends UserOrchid
         'agent_name',
         'specialization',
         'size_company',
-        'city_id'
+        'city_id',
+        'options'
     ];
 
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'options' => 'array',
+    ];
 
     /**
      * Send the password reset notification.

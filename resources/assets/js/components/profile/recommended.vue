@@ -3,61 +3,24 @@
     <div class="bg-white b box-shadow">
         <div class="wrapper-md">
 
-            <div class=""  v-show="status.load">
+            <div class="" v-show="status.load">
                 <div id="filters" class="b-b m-b-xl">
                     <div class="row m-b-xs">
                         <div class="col-md-12">
 
-                            <strong>Найдено {{tender.total}} предложений</strong>
+                            <strong>Найдено {{users.total}} компаний</strong>
 
-                            <button type="submit" id="button-filter" class="btn btn-default pull-right m-l-xs"><i
+                            <button type="submit" id="button-filter" class="btn btn-default pull-right"><i
                                     class="icon-equalizer"></i>
                             </button>
-                            <router-link class="btn btn-default pull-right" :to="{ name: 'tender.create'}">
-                               <i class="icon-pencil" aria-hidden="true"></i>
-                            </router-link>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <label class="control-label">Теги</label>
-                                <multiselect v-model="selectedTags" id="ajax" label="name"
-                                             track-by="slug"
-                                             placeholder="Введите ключевые слова"
-                                             :options="allTags"
-                                             :multiple="true"
-                                             :searchable="true"
-                                             :loading="isLoading"
-                                             :internal-search="false"
-                                             :clear-on-select="false"
-                                             :close-on-select="false"
-                                             :options-limit="5"
-                                             :limit="5"
-                                             :limit-text="limitText"
-                                             @search-change="asyncFind"
-                                             :taggable="false"
-                                             :selectLabel="'Нажмите Enter для выбора'"
-                                             :selectedLabel="'Выбранный'"
-                                             :deselectLabel="'Нажмите Enter, чтобы удалить'"
 
-                                >
-                                    <template slot="option" scope="props">
-                                        <div class="option__desc">
-                                            <span class="option__title">{{ props.option.name }}</span>
-                                            <span class="badge bg-info pull-right">{{ props.option.count }}</span>
-                                        </div>
-                                    </template>
-
-
-                                    <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label class="control-label">Город</label>
-                                <multiselect v-model="selectedCity" label="name"
+                                <multiselect v-model="selectedCity"  label="name"
                                              track-by="id"
                                              placeholder="Введите город"
                                              :options="allCity"
@@ -69,8 +32,8 @@
                                              @search-change="asyncFindCity"
                                              :taggable="false"
                                              :selectLabel="''"
-                                             :selectedLabel="'Выбранный'"
-                                             :deselectLabel="'Нажмите Enter, чтобы удалить'"
+                                             :selectedLabel="''"
+                                             :deselectLabel ="''"
 
                                 >
                                     <template slot="option" scope="props">
@@ -89,43 +52,29 @@
                 </div>
 
 
-                <div class="m-b-lg" v-for="tender in tender.data">
-                    <div class="row m-b">
-
-                        <div class="v-center">
+                <div class="m-b-lg" v-for="user in users.data">
+                    <div class="row m-b v-center">
                         <div class="col-md-3">
-                                <router-link :to="{ name: 'tender.show', params: { id: tender.id }}">
-                                    <img v-bind:src="tender.author.avatar" v-bind:alt="tender.author.name" class="img-responsive thumbnail">
+                                <router-link :to="{ name: 'profile', params: { id: user.id }}">
+                                <img v-bind:src="user.avatar" v-bind:alt="user.name" class="img-responsive thumbnail">
                                 </router-link>
                         </div>
                         <div class="col-md-9">
                             <h3 class="m-t-xs">
-                                <router-link :to="{ name: 'tender.show', params: { id: tender.id }}">
-                                    {{tender.content.ru.title}}
+                                <router-link :to="{ name: 'profile', params: { id: user.id }}">
+                                    {{user.name}}
                                 </router-link>
                             </h3>
 
-                            <div class="tags">
-                                <span  title="Используется данный тег" class="label text-dark" v-for="tag in tender.tags">{{tag.name}}</span>
-                            </div>
-                        </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <p class="small padder-v">
-                                {{tender.content.ru.description}}
+                            <p class="small">
+                                {{user.specialization}}
                             </p>
-                        </div>
 
-                        <div class="col-md-12">
-                            <div class="padder-v text-xs">
-                                <span class="m-r-md"><i class="icon-clock"></i> {{tender.publish_at | moment("from", "now")}}</span>
-                                <span class="m-r-md"><i class="icon-map"></i> {{tender.content.ru.city.name}}</span>
-
-                                <span class="m-r-md" v-show="tender.content.ru.price != null"><i class="fa fa-rub"></i> {{tender.content.ru.price}}</span>
+                            <div class="tags">
+                                <span title="Используется данный тег" class="label text-dark" v-for="tag in user.tags">{{tag.name}}</span>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
 
@@ -140,18 +89,22 @@
                 </div>
 
 
-                <div class="jumbotron text-center bg-white not-found" v-if="tender.data.length === 0">
+
+
+                <div class="jumbotron text-center bg-white not-found" v-if="users.data.length === 0">
 
                     <p class="h3 m-b-xl inline b b-dark rounded wrapper-lg">
-                        <i class="fa-3x w-1x icon-briefcase"></i>
+                        <i class="fa-3x w-1x icon-people"></i>
                     </p>
 
-                    <h4 class="m-t-none">Тендер не найден</h4>
+                    <h4 class="m-t-none">Компания не найдена</h4>
 
                     <p class="text-muted m-t-lg">
                         Попробуйте указать альтернативное данные или изменить параметры поиска.
                     </p>
+
                 </div>
+
 
 
             </div>
@@ -165,8 +118,8 @@
 <script>
     import Multiselect from 'vue-multiselect';
     export default {
-        components: {Multiselect},
-        props: ['my'],
+        components: { Multiselect },
+        props: ['tags'],
         data: function () {
             return {
                 selectedCity: [],
@@ -176,33 +129,45 @@
                 isLoading: false,
                 isLoadingCity: false,
                 query: {
-                    my: false,
                     tags: null,
                     city: null,
                 },
-                tender: {
-                    current_page:  null,
+                users: {
+                    current_page: 0,
                     data: [],
-                    from:  null,
-                    next_page_url:null,
-                    path:  null,
+                    from: 0,
+                    last_page: [],
+                    next_page_url: null,
+                    path: null,
                     per_page: null,
                     prev_page_url: null,
-                    to: null,
+                    to: 0,
+                    total: 0,
                 },
                 status: {
                     load: false,
                     submit: false,
                     self: false,
-                    paginate: false,
                 },
             }
         },
-        beforeMount() {
-
-        },
         mounted() {
             this.load();
+
+            /*
+            this.$route.params.tags
+
+            const tag = {
+                id: 1,
+                slug: this.$route.params.tags,
+                name: newTag,
+                count: 0,
+            };
+            this.selectedTags.push(tag);
+            this.allTags.push(tag);
+            */
+
+
         },
         watch: {
             'selectedCity'(newId, oldId) {
@@ -212,7 +177,7 @@
             'selectedTags'(newId, oldId){
 
                 let textAllTags = [];
-                newId.forEach(function (item, i, arr) {
+                newId.forEach(function(item, i, arr) {
                     textAllTags.push(item.slug)
                 });
 
@@ -220,29 +185,19 @@
                 this.load()
             }
         },
-        watch: {
-            '$route.query.my'(newId, oldId) {
-                this.load();
-            },
-        },
         methods: {
             load: function () {
                 $('#adb').show();
                 let id = meta_user;
 
-                if(this.$route.query.my) {
-                    this.query.my = true;
-                }
-
-                axios.post(`/api/tender`, this.query)
+                axios.post(`/api/companies`,this.query)
                     .then(response => {
-                        this.tender = response.data;
+                        this.users = response.data;
                         this.status.load = true;
                     })
                     .catch(e => {
                         this.errors.push(e)
                     });
-
 
                 if (id !== window.meta_user) {
                     this.status.self = true;
@@ -252,17 +207,17 @@
             },
             loadNextPage: function () {
 
-                if (this.tender.next_page_url !== null) {
+                if (this.users.next_page_url !== null) {
                     this.status.submit = true;
 
-                    axios.post(this.tender.next_page_url, this.query)
+                    axios.post(this.users.next_page_url,this.query)
                         .then(response => {
 
-                            let oldData = this.tender.data;
+                            let oldData = this.users.data;
                             oldData = oldData.concat(response.data.data);
 
-                            this.tender = response.data;
-                            this.tender.data = oldData;
+                            this.users = response.data;
+                            this.users.data = oldData;
 
                             this.status.submit = false;
                         })
@@ -275,9 +230,9 @@
                 return `и ${count} ещё тегов`
             },
             asyncFind (query) {
-                this.isLoading = true;
+                this.isLoading = true
 
-                axios.get(`/api/tender/tags/` + query)
+                axios.get(`/api/profile/tags/` + query)
                     .then(response => {
                         //this.user = response.data;
                         this.status.submit = false;
@@ -326,6 +281,6 @@
                     });
 
             }
-        },
+        }
     }
 </script>

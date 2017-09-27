@@ -29,7 +29,7 @@
                             <span>Профиль</span>
                         </router-link>
 
-                        <router-link :to="{ name: 'tender'}" class="list-group-item">
+                        <router-link :to="{ name: 'tender', query: { my: 1 }}" class="list-group-item">
                             <i class="icon-briefcase m-r-xs"></i>
                             <span>Тендеры</span>
                         </router-link>

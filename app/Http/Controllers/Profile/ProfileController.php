@@ -146,7 +146,7 @@ class ProfileController extends Controller
     public function companies(Request $request)
     {
 
-        $companies = User::select('id','name','avatar','specialization')->with('tags')->orderBy('created_at', 'DESC');
+        $companies = User::select('id','name','avatar','specialization','options')->with('tags')->orderBy('created_at', 'DESC');
 
         if ($request->get('tags')) {
             $companies->whereTag($request->get('tags'));

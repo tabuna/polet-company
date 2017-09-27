@@ -68,10 +68,11 @@
                         <div class="col-md-12 no-padder">
 
 
-                          <div class="lead hidden-xs v-center" data-toggle="tooltip" data-placement="top" title="Порядочность определяется путём опроса пользователей">
+
+                          <div v-if="!status.self" class="lead hidden-xs v-center" data-toggle="tooltip" data-placement="top" title="Порядочность определяется путём опроса пользователей">
                                            <span id="stars-existing" class="starrr text-warning-dk"
-                                                 data-rating='5' data-post-id='1' style="cursor: pointer;"></span>
-                                        <small class="m-l-sm"> Средняя порядочность 5 звезд(ы)</small>
+                                                 :rating="this.getRating()" :data-post-id="user.id" style="cursor: pointer;"></span>
+                                        <small class="m-l-sm"> Средняя порядочность {{this.getRating()}} звезд(ы)</small>
                             </div>
 
 
@@ -109,44 +110,6 @@
                     <main v-html="user.about"></main>
                 </div>
             </div>
-
-
-<!--
-$(function () {
-    return $(".starrr").starrr();
-});
-
-$(document).ready(function () {
-
-    $('#stars').on('starrr:change', function (e, value) {
-        $('#count').html(value);
-        console.log('Изменил значение1');
-    });
-
-    $('#stars-existing').on('starrr:change', function (e, value) {
-        $('#count-existing').html(value);
-
-        $.ajax({
-            method: "POST",
-            url: '/' + $('html').attr('lang') + '/rating/' + $('#stars-existing').data('post-id'),
-            data: {
-                rating: value
-            }
-        })
-            .done(function (response) {
-                swal({
-                    title: response.title,
-                    text: response.message,
-                    timer: 2000,
-                    showConfirmButton: false,
-                    type: response.type,
-                });
-            });
-
-    });
-});
--->
-
 
             <div class="row m-t-md m-b-md padder-v">
                 <div class="col-md-12">
@@ -329,7 +292,25 @@ $(document).ready(function () {
             if (this.$route.params.id === window.meta_user) {
                 this.status.self = true;
             }
-            $(".starrr").starrr();
+
+
+            $('#stars-existing').on('starrr:change', function (e, value) {
+                $('#count-existing').html(value);
+
+                axios.post('/api/profile/rating/' + $('#stars-existing').data('post-id'),{
+                    rating : value
+                }).then(response => {
+                    swal({
+                        title: response.data.title,
+                        text: response.data.message,
+                        timer: 2000,
+                        showConfirmButton: false,
+                        type: response.data.type,
+                    });
+                });
+            });
+
+
         },
         watch: {
             '$route.params.id'(newId, oldId) {
@@ -350,6 +331,7 @@ $(document).ready(function () {
                     .then(response => {
                         this.user = response.data;
                         this.status.load = true;
+                        this.setRating();
                     })
                     .catch(e => {
                         this.errors.push(e)
@@ -385,6 +367,21 @@ $(document).ready(function () {
                     });
 
 
+            },
+            getRating: function(){
+                if(this.user.hasOwnProperty('options') && this.user.options !== null){
+                    return this.user.options.rating;
+                }
+                return 0;
+            },
+            setRating: function(){
+                let rating = 0;
+                if(this.user.hasOwnProperty('options') && this.user.options !== null){
+                    rating = this.user.options.rating;
+                }
+                $(".starrr").starrr({
+                    rating: rating
+                });
             }
         }
     }

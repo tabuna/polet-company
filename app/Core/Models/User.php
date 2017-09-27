@@ -47,6 +47,7 @@ class User extends UserOrchid
      */
     protected $casts = [
         'options' => 'array',
+        'permissions' => 'array'
     ];
 
     /**

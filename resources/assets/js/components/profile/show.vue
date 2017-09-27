@@ -27,7 +27,7 @@
                     <img v-bind:src="user.avatar" class="img-responsive thumbnail">
 
 
-                    <div class="hbox text-center b-b b-light text-sm">
+                    <div class="hbox text-center b-b b-light text-sm hidden">
           <a href="" class="col padder-v text-muted b-r b-light">
             <i class="icon-star block m-b-xs fa-2x"></i>
             <span>В избранное</span>

@@ -18,7 +18,6 @@ class Reviews extends Model
         'reviewable_id',
         'reviewable_type',
         'author_id',
-        'author_type'
     ];
 
     /**
@@ -32,9 +31,9 @@ class Reviews extends Model
     /**
      * @return MorphTo
      */
-    public function author(): MorphTo
+    public function author()
     {
-        return $this->morphTo('author');
+        return $this->belongsTo(User::class,'author_id');
     }
 
     /**
@@ -49,31 +48,11 @@ class Reviews extends Model
         $review = new static();
         $review->fill(array_merge($data, [
             'author_id'   => $author->id,
-            'author_type' => get_class($author),
+            //'author_type' => get_class($author),
         ]));
 
         return (bool) $reviewable->reviews()->save($review);
     }
 
-    /**
-     * @param $id
-     * @param $data
-     *
-     * @return bool
-     */
-    public function updateReview($id, $data): bool
-    {
-        return (bool) static::find($id)->update($data);
-    }
-
-    /**
-     * @param $id
-     *
-     * @return bool
-     */
-    public function deleteReview($id): bool
-    {
-        return (bool) static::find($id)->delete();
-    }
 
 }

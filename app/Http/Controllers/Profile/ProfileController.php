@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Profile;
 
+use App\Core\Models\Reviews;
 use App\Core\Models\Statistics;
 use App\Core\Models\User;
 use App\Http\Controllers\Controller;
@@ -74,7 +75,9 @@ class ProfileController extends Controller
             'author' => function($query){
                 $query->select(['id','name','avatar','specialization']);
             }
-        ])->limit(3)->orderByDesc('created_at')->get();
+        ])->limit(3)
+          ->orderByDesc('created_at')
+          ->get();
 
 
         // Лайк

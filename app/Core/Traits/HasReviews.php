@@ -24,7 +24,7 @@ trait HasReviews
      */
     public function createReview($data, Model $author): bool
     {
-        return $this->getReviewModel()->createReview($this, $data, $author);
+        return (new Reviews())->createReview($this, $data, $author);
     }
 
     /**
@@ -35,7 +35,7 @@ trait HasReviews
      */
     public function updateReview($id, $data): bool
     {
-        return $this->getReviewModel()->updateReview($id, $data);
+        return (new Reviews())->updateReview($id, $data);
     }
 
     /**
@@ -45,16 +45,7 @@ trait HasReviews
      */
     public function deleteReview($id): bool
     {
-        return $this->getReviewModel()->deleteReview($id);
+        return (new Reviews())->deleteReview($id);
     }
 
-    /**
-     * @return Model
-     */
-    protected function getReviewModel(): Model
-    {
-        $model = Reviews::class;
-
-        return new $model();
-    }
 }

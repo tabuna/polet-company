@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
 class ReviewsController extends Controller
 {
 
@@ -18,7 +17,14 @@ class ReviewsController extends Controller
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     public function show(User $user){
-        return response( $user->reviews()->paginate());
+
+        $reviews = $user->reviews()->with([
+            'author' => function($query){
+                $query->select(['id','name','avatar','specialization']);
+            }
+        ])->orderByDesc('created_at')->paginate();
+
+        return response($reviews);
     }
 
     /**
@@ -29,13 +35,14 @@ class ReviewsController extends Controller
      */
     public function store(Request $request, User $user)
     {
-        $review = $user->createReview([
+        Reviews::create([
             'text' => $request->get('text'),
-        ], Auth::user());
+            'reviewable_id' => $user->id,
+            'reviewable_type' => User::class,
+            'author_id' => Auth::id(),
+        ]);
 
-        return response()->json($review);
+        return response(200);
     }
-
-
 
 }

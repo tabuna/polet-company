@@ -127,8 +127,10 @@
                         this.threads.messages.data.reverse();
 
                         setTimeout(function () {
-                            $('.messages').scrollTop(999);
-                            Ps.update(document.querySelector('.messages'));
+                            //container.scrollIntoView({block: "end"});
+                            //$('.messages').scrollTop($('.messages').height());
+                            container.scrollTop =Math.ceil(container.scrollHeight - container.clientHeight);
+                            Ps.update(container);
                         }, 1000);
 
                     })
@@ -142,7 +144,9 @@
                     this.status.self = true;
                 }
 
-                $('.message').scrollTop(999);
+                //container.scrollIntoView({block: "end"});
+                //$('.messages').scrollTop($('.messages').height());
+                container.scrollTop =Math.ceil(container.scrollHeight - container.clientHeight);
             },
             getAuthor: function (user_id) {
                 let author = '';
@@ -170,6 +174,8 @@
                             this.threads.messages.data = oldData;
 
                             this.status.submit = false;
+                            const container = document.querySelector('.messages');
+                            Ps.update(container);
                         })
                         .catch(e => {
                             this.errors.push(e)
@@ -192,6 +198,11 @@
                         .catch(e => {
                             this.errors.push(e)
                         });
+                    const container = document.querySelector('.messages');
+                    Ps.update(container);
+                    //container.scrollIntoView({block: "end"});
+                   // $('.messages').scrollTop($('.messages').height());
+                    container.scrollTop =Math.ceil(container.scrollHeight - container.clientHeight);
                 }
 
             }

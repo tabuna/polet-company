@@ -82,5 +82,16 @@ class User extends UserOrchid
         return $this->belongsTo(City::class);
     }
 
+    //Отзывы оставленные для пользователя
+    public function reviews(){
+        return $this->hasMany(Reviews::class,'to_user_id');
+    }
+
+
+    //Отзывы оставленные для пользователем
+    public function reviews_from(){
+        return $this->hasMany(Reviews::class,'from_user_id');
+    }
+
 
 }

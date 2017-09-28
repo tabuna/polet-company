@@ -81,6 +81,7 @@
                     submit: false,
                     self: false,
                 },
+                mytime: "",
             }
         },
         mounted() {
@@ -89,6 +90,7 @@
         methods: {
             load: function () {
                 $('#adb').show();
+                this.mytime = new Date().getTimezoneOffset();//Возвращает разницу между местным и UTC-временем, в минутах.
                 let id = meta_user;
 
                 axios.post(`/api/messages`)
@@ -116,7 +118,6 @@
                 return author;
             },
             loadNextPage: function () {
-                console.log('sdfsf');
 
                 if (this.threads.next_page_url !== null) {
 

@@ -31,6 +31,17 @@ Route::group(['prefix' => 'messages','namespace' => 'Message'], function ($route
 
 
 
+
+Route::group(['prefix' => 'reviews','namespace' => 'Reviews'], function ($router) {
+    $router->post('/', ['as' => 'reviews', 'uses' => 'ReviewsController@index']);
+    $router->post('create', ['as' => 'reviews.create', 'uses' => 'ReviewsController@create']);
+    $router->post('/store', ['as' => 'reviews.store', 'uses' => 'ReviewsController@store']);
+    $router->post('{id}', ['as' => 'reviews.show', 'uses' => 'ReviewsController@show']);
+    $router->put('{id}', ['as' => 'reviews.update', 'uses' => 'ReviewsController@update']);
+});
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Yandex Kassa Payments

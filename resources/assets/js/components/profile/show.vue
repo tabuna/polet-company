@@ -139,9 +139,9 @@
                 </div>
             </div>
 
-            <div class="row m-t-md m-b-md padder-v b-t" v-if="user.reviews.length > 0 ">
+            <div class="row m-t-md m-b-md padder-v b-t b-b" v-if="user.reviews.length > 0 ">
                 <div class="col-md-12">
-                    Отзывы:
+                    <h4 class="l-h-1x">Отзывы:</h4>
                     <div class="row m-b v-center" v-for="review in user.reviews">
                         <div class="col-md-3">
                               <router-link :to="{ name: 'profile', params: { id: review.author.id }}">
@@ -166,7 +166,9 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 m-t-md bg-white b box-shadow hidden-xs hidden-sm" v-if="user.similars.length > 0">
+            <div class="row m-t-md m-b-md padder-v">
+
+                <div class="col-xs-12 bg-white  hidden-xs hidden-sm" v-if="user.similars.length > 0">
 
 
             <div class="m-t-md">
@@ -203,6 +205,7 @@
             </article>
 
         </div>
+            </div>
 
         </div>
 

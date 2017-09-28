@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->text('text');
             $table->morphs('reviewable');
-            $table->morphs('author');
+            $table->integer('author_id');
             $table->timestamps();
         });
     }

@@ -111,7 +111,6 @@
                 </div>
             </div>
 
-
             <div class="row m-t-md m-b-md padder-v">
                 <div class="col-md-12">
                     <p class="padder text-muted small"><i class="icon-direction text-info m-r-xs"></i>
@@ -140,8 +139,7 @@
                 </div>
             </div>
 
-
-            <div class="row m-t-md m-b-md padder-v b-t" v-if="user.reviews">
+            <div class="row m-t-md m-b-md padder-v b-t" v-if="user.reviews.length > 0 ">
                 <div class="col-md-12">
                     Отзывы:
                     <div class="row m-b v-center" v-for="review in user.reviews">
@@ -168,11 +166,7 @@
                 </div>
             </div>
 
-
-
-
-
-        <div class="col-xs-12 m-t-md bg-white b box-shadow hidden-xs hidden-sm" v-if="user.similars.length > 0">
+            <div class="col-xs-12 m-t-md bg-white b box-shadow hidden-xs hidden-sm" v-if="user.similars.length > 0">
 
 
             <div class="m-t-md">
@@ -209,7 +203,6 @@
             </article>
 
         </div>
-
 
         </div>
 

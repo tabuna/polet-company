@@ -31,7 +31,7 @@
 
                         <router-link :to="{ name: 'tender', query: { my: 1 }}" class="list-group-item">
                             <i class="icon-briefcase m-r-xs"></i>
-                            <span>Тендеры</span>
+                            <span>Мои тендеры</span>
                         </router-link>
 
                         <router-link :to="{ name: 'messages'}" class="list-group-item">

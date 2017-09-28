@@ -21,6 +21,13 @@
                                 </router-link>
                             </h3>
 
+                            <div class="text-warning-dk">
+                                <template v-for="n in [1,2,3,4,5]">
+                                        <i v-if="n > getRating(fave)" class="fa fa-star-o"></i>
+                                        <i v-else class="fa fa-star"></i>
+                                </template>
+                            </div>
+
                             <p class="small">
                                 {{fave.specialization}}
                             </p>
@@ -135,6 +142,12 @@
                             this.errors.push(e)
                         });
                 }
+            },
+            getRating: function(user){
+                if(user.hasOwnProperty('options') && user.options !== null){
+                    return user.options.rating;
+                }
+                return 0;
             },
         }
     }

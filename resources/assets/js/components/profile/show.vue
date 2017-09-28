@@ -141,6 +141,35 @@
             </div>
 
 
+            <div class="row m-t-md m-b-md padder-v b-t" v-if="user.reviews">
+                <div class="col-md-12">
+                    Отзывы:
+                    <div class="row m-b v-center" v-for="review in user.reviews">
+                        <div class="col-md-3">
+                              <router-link :to="{ name: 'profile', params: { id: review.author.id }}">
+                                <img :src="review.author.avatar" :alt="review.author.name" class="img-responsive thumbnail">
+                              </router-link>
+                        </div>
+                        <div class="col-md-9">
+                            <h4 class="m-t-xs">
+                               <router-link :to="{ name: 'profile', params: { id: review.author.id }}">
+                                   {{review.author.name}}
+                               </router-link>
+                            </h4>
+                            <p class="small">
+                                {{review.text}}
+                            </p>
+                            <p class="text-xs text-right text-muted">
+                                {{ review.updated_at  | moment("from",  "now")}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
 
 
         <div class="col-xs-12 m-t-md bg-white b box-shadow hidden-xs hidden-sm" v-if="user.similars.length > 0">
@@ -157,7 +186,7 @@
                     <div class="thumb-lg">
                         <router-link :to="{ name: 'profile', params: { id: similar.id }}">
                        <img v-bind:src="similar.avatar"
-                                class="img-responsive">
+                            class="img-responsive">
                         </router-link>
                     </div>
                     </div>
@@ -181,87 +210,7 @@
 
         </div>
 
-        <div class="reviews b-t">
-            <div class="m-t-md m-b-md padder-v " v-if="!status.self">
 
-                <form role="form" v-on:submit.prevent="newReview">
-                    <div class="form-group-attached">
-
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="form-group form-group-default">
-                                    <textarea class="form-control" v-model="review.review_text" rows="6"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 text-right">
-                            <button type="button" class="btn btn-info btn-rounded" v-on:click="newReview">
-                                <span v-if="status.submit">Отправка <i class='fa fa-spinner fa-spin'></i></span>
-                                <span v-else="status.submit">Отправить</span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div  v-show="status.load">
-                <div class="wrapper-md">
-                    <div  v-if="reviews.data.length !== 0">
-                        <div class="m-b-sm text-md">Отзывы</div>
-
-                        <div class="list-group list-group-lg list-group-sp">
-
-                            <div v-for="review in reviews.data">
-                                <div class="m-b">
-                                    <router-link :to="{ name: 'profile', params: { id: review.from_user_id }}" class="pull-left thumb-sm avatar">
-                                    </router-link>
-                                    <div class="m-l-xxl">
-                                        <div class="pos-rlt wrapper b b-light r r-2x">
-                                            <span class="arrow left pull-up"></span>
-                                            <p class="m-b-none">{{review.text}}</p>
-                                        </div>
-                                        <small class="text-muted"><i class="fa fa-ok text-success"></i>
-                                            {{review.created_at | moment("subtract", mytime+" minutes", "from", true) }} назад
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div v-infinite-scroll="loadNextPage()" infinite-scroll-disabled="status.submit"
-                                 infinite-scroll-distance="10">
-                                <div class="m-b-lg" v-if="status.submit">
-                                    <div class="row m-b">
-                                        <div class="col-xs-12 text-center">
-                                            <i class='fa fa-2x fa-spinner fa-spin'></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="jumbotron text-center bg-white not-found" v-if="reviews.data.length === 0">
-
-                        <p class="h3 m-b-xl inline b b-dark rounded wrapper-lg">
-                            <i class="fa-3x w-1x icon-bubbles"></i>
-                        </p>
-
-                        <h4 class="m-t-none">Список Отзывов пуст</h4>
-
-                        <p class="text-muted m-t-lg">
-                            Начните диалог с какой либо компанией и он будет отображатся тут
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-        </div>
         </div>
 
         <!-- Modal -->
@@ -356,22 +305,6 @@
                     fave: false,
                     similars: [],
                 },
-                reviews:{
-                    current_page: 0,
-                    data: [],
-                    from: 0,
-                    last_page: [],
-                    next_page_url: null,
-                    path: null,
-                    per_page: null,
-                    prev_page_url: null,
-                    to: 0,
-                    total: 0,
-                },
-                mytime: "",
-                review:{
-                    review_text:'',
-                },
                 message:{
                     message : '',
 
@@ -437,22 +370,8 @@
                         this.errors.push(e)
                     });
 
+                window.scrollTo(0,0);
 
-
-                axios.post(`/api/reviews/`+ id,{
-                    subject : 'new',
-                    //review_text: this.review.review_text,
-                    to_user_id: this.user.id
-                })
-                    .then(response => {
-                        this.reviews = response.data;
-
-                        this.status.submit = false;
-                    })
-                    .catch(e => {
-                        // this.errors.push(e)
-
-                    });
             },
             fave: function () {
                 if (!this.status.submit) {
@@ -484,52 +403,6 @@
                     });
 
 
-            },
-            newReview: function () {
-                this.status.submit = true;
-
-                axios.post(`/api/reviews/store`,{
-                    subject : 'new',
-                    review_text: this.review.review_text,
-                    to_user_id: this.user.id
-                })
-                    .then(response => {
-                        this.reviews = response.data;
-                        //$('#startDialog').modal('hide');
-                        //this.$router.push({ name: 'review', params: { id: response.data.id }})
-                        this.status.submit = false;
-                    })
-                    .catch(e => {
-                       // this.errors.push(e)
-
-                    });
-
-
-            },
-            loadNextPage: function () {
-
-               if (this.reviews.next_page_url !== null) {
-                    this.status.submit = true;
-
-                    axios.post(this.reviews.next_page_url)
-                        .then(response => {
-
-                            let oldData = this.reviews.data;
-
-
-                            oldData = oldData.concat(response.data.data);;
-
-                            this.reviews = response.data;
-                            this.reviews.data = oldData;
-
-                            this.status.submit = false;
-                            //const container = document.querySelector('.messages');
-                           // Ps.update(container);
-                        })
-                        .catch(e => {
-                            this.errors.push(e)
-                        });
-                }
             },
             getAuthor: function (user_id) {
                 let author = '';

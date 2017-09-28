@@ -194,21 +194,6 @@
         },
         mounted() {
             this.load();
-
-            /*
-            this.$route.params.tags
-
-            const tag = {
-                id: 1,
-                slug: this.$route.params.tags,
-                name: newTag,
-                count: 0,
-            };
-            this.selectedTags.push(tag);
-            this.allTags.push(tag);
-            */
-
-
         },
         watch: {
             'selectedCity'(newId, oldId) {

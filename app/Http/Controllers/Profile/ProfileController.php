@@ -68,8 +68,19 @@ class ProfileController extends Controller
             ->limit(5)
             ->get();
 
+
+        // Отзывы
+        $user->reviews = $user->reviews()->with([
+            'author' => function($query){
+                $query->select(['id','name','avatar','specialization']);
+            }
+        ])->limit(3)->orderByDesc('created_at')->get();
+
+
+        // Лайк
         $user->fave = $user->liked();
 
+        //Заполненость профиля
         $user->occupancy = 0;
         foreach ($user->attributesToArray() as $item) {
             if (is_null($item) || empty($item)) {

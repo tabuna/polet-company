@@ -81,7 +81,9 @@ class RegisterController extends Controller
             'website'     => $data['website'],
             'agent_name'  => $data['agent_name'],
             'avatar'      => '/img/avatar.png',
-            'options'     => [],
+            'options'     => [
+                'rating' => 0,
+            ],
         ]);
     }
 }

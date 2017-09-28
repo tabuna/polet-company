@@ -17,6 +17,13 @@ class DatabaseSeeder extends Seeder
         while (true){
 
             try {
+
+                $user = \App\Core\Models\User::inRandomOrder()->first();
+                $user->createReview([
+                    'text' => $faker->realText(400),
+                ], \App\Core\Models\User::inRandomOrder()->first());
+
+                /*
                 $post = \Orchid\CMS\Core\Models\Post::create([
                     'user_id' => \App\Core\Models\User::inRandomOrder()->first()->id,
                     'type' => 'tender',

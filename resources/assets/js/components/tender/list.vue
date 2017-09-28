@@ -221,7 +221,7 @@
             }
         },
         watch: {
-            '$route.query.my'(newId, oldId) {
+            '$route.query'(newId, oldId) {
                 this.load();
             },
         },

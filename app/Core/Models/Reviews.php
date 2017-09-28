@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: selena
- * Date: 26.09.17
- * Time: 21:50
- */
 
 namespace App\Core\Models;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Reviews extends Model
 {
@@ -19,18 +14,66 @@ class Reviews extends Model
      * @var array
      */
     protected $fillable = [
-        'from_user_id',
-        'to_user_id',
-        'text'
+        'text',
+        'reviewable_id',
+        'reviewable_type',
+        'author_id',
+        'author_type'
     ];
-    public function to_user()
+
+    /**
+     * @return MorphTo
+     */
+    public function reviewable(): MorphTo
     {
-        return $this->belongsTo(User::class, 'to_user_id');
-    }
-    public function from_users()
-    {
-        return $this->belongsTo(User::class, 'from_user_id');
+        return $this->morphTo();
     }
 
+    /**
+     * @return MorphTo
+     */
+    public function author(): MorphTo
+    {
+        return $this->morphTo('author');
+    }
+
+    /**
+     * @param Model $reviewable
+     * @param       $data
+     * @param Model $author
+     *
+     * @return bool
+     */
+    public function createReview(Model $reviewable, $data, Model $author): bool
+    {
+        $review = new static();
+        $review->fill(array_merge($data, [
+            'author_id'   => $author->id,
+            'author_type' => get_class($author),
+        ]));
+
+        return (bool) $reviewable->reviews()->save($review);
+    }
+
+    /**
+     * @param $id
+     * @param $data
+     *
+     * @return bool
+     */
+    public function updateReview($id, $data): bool
+    {
+        return (bool) static::find($id)->update($data);
+    }
+
+    /**
+     * @param $id
+     *
+     * @return bool
+     */
+    public function deleteReview($id): bool
+    {
+        return (bool) static::find($id)->delete();
+    }
 
 }

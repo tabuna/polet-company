@@ -9,11 +9,10 @@ use App\Notifications\ResetPasswordNotification;
 use Orchid\Platform\Core\Models\User as UserOrchid;
 use Cmgmyr\Messenger\Traits\Messagable;
 use App\Core\Traits\Rateable;
-use App\Core\Traits\HasReviews;
 
 class User extends UserOrchid
 {
-    use Notifiable, TaggableTrait, LikeableTrait, Messagable, Rateable, HasReviews;
+    use Notifiable, TaggableTrait, LikeableTrait, Messagable, Rateable;
 
     /**
      * @var string
@@ -80,5 +79,13 @@ class User extends UserOrchid
      */
     public function city(){
         return $this->belongsTo(City::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class, 'reviewable_id');
     }
 }

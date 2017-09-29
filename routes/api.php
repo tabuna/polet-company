@@ -30,7 +30,7 @@ Route::group(['prefix' => 'messages','namespace' => 'Message'], function ($route
 });
 
 
-
+/*
 
 Route::group(['prefix' => 'reviews','namespace' => 'Reviews'], function ($router) {
     $router->post('/', ['as' => 'reviews', 'uses' => 'ReviewsController@index']);
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'reviews','namespace' => 'Reviews'], function ($router
     $router->put('{id}', ['as' => 'reviews.update', 'uses' => 'ReviewsController@update']);
 });
 
-
+*/
 
 /*
 |--------------------------------------------------------------------------
@@ -74,7 +74,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Pro
     $router->put('/edit', 'ProfileController@update')->name('profile.update');
     $router->post('/password', 'ProfileController@password')->name('profile.password');
     $router->put('/password', 'ProfileController@changePassword')->name('profile.password.update');
-
+    $router->post('/reviews/{user}', ['as' => 'profile.reviews.show', 'uses' => 'ReviewsController@show']);
+    $router->post('/reviews/store/{user}', ['as' => 'profile.reviews.store', 'uses' => 'ReviewsController@store']);
     $router->post('/statistics', 'ProfileController@statistics')->name('profile.statistics');
 });
 

@@ -38,7 +38,7 @@ class ReviewsController extends Controller
         Reviews::create([
             'text' => $request->get('text'),
             'reviewable_id' => $user->id,
-            'reviewable_type' => User::class,
+            //'reviewable_type' => User::class, В миграци -  нету, в бд - нету(
             'author_id' => Auth::id(),
         ]);
 

@@ -63,7 +63,7 @@ class ProfileController extends Controller
         }
 
         //Похожие компании
-        $user->similars = User::select('id','name','avatar','specialization')->withTag($user->tags->implode('slug', ', '))
+        $user->similars = User::select('id','name','avatar','specialization','options')->withTag($user->tags->implode('slug', ', '))
             ->where('city_id', $user->city_id)
             ->where('id', '!=',$user->id)
             ->limit(5)

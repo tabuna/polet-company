@@ -15,7 +15,7 @@ class Reviews extends Model
     protected $fillable = [
         'text',
         'reviewable_id',
-        'reviewable_type',
+        //'reviewable_type', В миграци -  нету, в бд - нету(
         'author_id',
     ];
 

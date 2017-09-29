@@ -28,33 +28,34 @@
 
 
                     <div class="hbox text-center b-b b-light text-sm hidden">
-          <a href="" class="col padder-v text-muted b-r b-light">
-            <i class="icon-star block m-b-xs fa-2x"></i>
-            <span>В избранное</span>
-          </a>
-          <a href="" class="col padder-v text-muted">
-            <i class="icon-speech block m-b-xs fa-2x"></i>
-            <span>Начать диалог</span>
-          </a>
-        </div>
+                        <a href="" class="col padder-v text-muted b-r b-light">
+                            <i class="icon-star block m-b-xs fa-2x"></i>
+                            <span>В избранное</span>
+                        </a>
+                        <a href="" class="col padder-v text-muted">
+                            <i class="icon-speech block m-b-xs fa-2x"></i>
+                            <span>Начать диалог</span>
+                        </a>
+                    </div>
 
 
-                        <div class="col-md-12 no-padder text-center">
+                    <div class="col-md-12 no-padder text-center">
 
-                            <div v-if="!status.self">
-                                <p>
-                                    <a v-on:click="fave()" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"
-                                       v-bind:class="{ 'btn-info': user.fave }">
-                                        <i class="icon-star text-info" v-bind:class="{ 'text-white': user.fave }"></i>
-                                    </a>
+                        <div v-if="!status.self">
+                            <p>
+                                <a v-on:click="fave()" class="btn btn-icon btn-rounded b b-info b-2x m-r-sm"
+                                   v-bind:class="{ 'btn-info': user.fave }">
+                                    <i class="icon-star text-info" v-bind:class="{ 'text-white': user.fave }"></i>
+                                </a>
 
 
-                                    <a data-toggle="modal" href="#startDialog" class="btn btn-icon btn-rounded b b-info b-2x"><i
-                                            class="icon-speech text-info"></i></a>
-                                </p>
-                            </div>
-
+                                <a data-toggle="modal" href="#startDialog"
+                                   class="btn btn-icon btn-rounded b b-info b-2x"><i
+                                        class="icon-speech text-info"></i></a>
+                            </p>
                         </div>
+
+                    </div>
 
                 </div>
                 <div class="col-md-8">
@@ -68,11 +69,12 @@
                         <div class="col-md-12 no-padder">
 
 
-
-                          <div v-if="!status.self" class="lead hidden-xs v-center" data-toggle="tooltip" data-placement="top" title="Порядочность определяется путём опроса пользователей">
+                            <div v-if="!status.self" class="lead hidden-xs v-center" data-toggle="tooltip"
+                                 data-placement="top" title="Порядочность определяется путём опроса пользователей">
                                            <span id="stars-existing" class="starrr text-warning-dk"
-                                                 :rating="this.getRating()" :data-post-id="user.id" style="cursor: pointer;"></span>
-                                        <small class="m-l-sm"> Средняя порядочность {{this.getRating()}} звезд(ы)</small>
+                                                 :rating="this.getRating()" :data-post-id="user.id"
+                                                 style="cursor: pointer;"></span>
+                                <small class="m-l-sm"> Средняя порядочность {{this.getRating()}} звезд(ы)</small>
                             </div>
 
 
@@ -80,9 +82,12 @@
                             <p>ОГРН: {{user.ogrn}} </p>
                             <p class="text-muted small">
                                 <span v-if="user.phone"><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
-                                <span v-if="user.email"><i class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br></span>
-                                <span v-if="user.city"><i class="icon-location-pin text-info m-r-xs"></i>| {{user.city.name}} <br></span>
-                                <span v-if="user.size_company"><i class="icon-people text-info m-r-xs"></i>| {{optionsSize[user.size_company]}} <br></span>
+                                <span v-if="user.email"><i
+                                        class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br></span>
+                                <span v-if="user.city"><i
+                                        class="icon-location-pin text-info m-r-xs"></i>| {{user.city.name}} <br></span>
+                                <span v-if="user.size_company"><i
+                                        class="icon-people text-info m-r-xs"></i>| {{optionsSize[user.size_company]}} <br></span>
                                 <a v-bind:href="user.website" taget="_blank" class="text-ellipsis"
                                    v-if="user.website"><i
                                         class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a> <br>
@@ -139,31 +144,41 @@
                 </div>
             </div>
 
-            <div class="row m-t-md m-b-md padder-v b-t b-b" v-if="user.reviews.length > 0 ">
+            <div class="row m-t-md m-b-md padder-v b-t " v-if="user.reviews.length > 0 ">
                 <div class="col-md-12">
                     <h4 class="l-h-1x">Отзывы:</h4>
-                    <div class="row m-b v-center" v-for="review in user.reviews">
+                    <div class="row  v-center" v-for="review in user.reviews">
                         <div class="col-md-3">
-                              <router-link :to="{ name: 'profile', params: { id: review.author.id }}">
-                                <img :src="review.author.avatar" :alt="review.author.name" class="img-responsive thumbnail">
-                              </router-link>
+                            <router-link :to="{ name: 'profile', params: { id: review.author.id }}">
+                                <img :src="review.author.avatar" :alt="review.author.name"
+                                     class="img-responsive thumbnail">
+                            </router-link>
                         </div>
                         <div class="col-md-9">
                             <h4 class="m-t-xs">
-                               <router-link :to="{ name: 'profile', params: { id: review.author.id }}">
-                                   {{review.author.name}}
-                               </router-link>
+                                <router-link :to="{ name: 'profile', params: { id: review.author.id }}">
+                                    {{review.author.name}}
+                                </router-link>
                             </h4>
                             <p class="small">
                                 {{review.text}}
                             </p>
                             <p class="text-xs text-right text-muted">
-                                {{ review.updated_at  | moment("from",  "now")}}
+                                {{ review.updated_at | moment("subtract", mytime + " minutes", "from", true)}}
                             </p>
                         </div>
                     </div>
 
                 </div>
+            </div>
+            <div class="text-center b-b padder-v m-b">
+                <router-link :to="{ name: 'profile.reviews', params: { id: user.id }}">
+                    <button class="btn btn-info btn-rounded">
+                        Оставить отзыв<span v-if="user.reviews.length > 0 "> / Посмотреть все отзывы</span>
+                    </button>
+
+
+                </router-link>
             </div>
 
             <div class="row m-t-md m-b-md padder-v">
@@ -171,51 +186,59 @@
                 <div class="col-xs-12 bg-white  hidden-xs hidden-sm" v-if="user.similars.length > 0">
 
 
-            <div class="m-t-md">
-                <h4 class="l-h-1x">Похожие компании:</h4>
-            </div>
-
-            <article class="col-md-12 padder-v" v-for="similar in user.similars">
-                <div class="row v-center">
-
-                    <div class="col-md-2">
-                    <div class="thumb-lg">
-                        <router-link :to="{ name: 'profile', params: { id: similar.id }}">
-                       <img v-bind:src="similar.avatar"
-                            class="img-responsive">
-                        </router-link>
+                    <div class="m-t-md">
+                        <h4 class="l-h-1x">Похожие компании:</h4>
                     </div>
-                    </div>
-                    <div class="col-md-10">
-                    <div class="wrapper-md">
-                        <div>
-                            <p class="h4 m-b-xs">
+
+                    <article class="col-md-12 padder-v" v-for="similar in user.similars">
+
+                        <div class="row m-b v-center">
+                            <div class="col-md-3">
                                 <router-link :to="{ name: 'profile', params: { id: similar.id }}">
-                                    {{similar.name}}
+                                    <img v-bind:src="similar.avatar" v-bind:alt="similar.name"
+                                         class="img-responsive thumbnail">
                                 </router-link>
-                            </p>
-                            <p class="text-xs">
-                                {{similar.specialization}}
-                            </p>
+                            </div>
+                            <div class="col-md-9">
+                                <h4 class="m-t-xs">
+                                    <router-link :to="{ name: 'profile', params: { id: similar.id }}">
+                                        {{similar.name}}
+                                    </router-link>
+                                </h4>
+                                <div class="text-warning-dk">
+                                    <template v-for="n in [1,2,3,4,5]">
+                                        <i v-if="n > getRatingSimilar(similar)" class="fa fa-star-o"></i>
+                                        <i v-else class="fa fa-star"></i>
+                                    </template>
+                                </div>
+
+                                <p class="small">
+                                    {{similar.specialization}}
+                                </p>
+
+                                <div class="tags">
+                                    <span title="Используется данный тег" class="label text-dark"
+                                          v-for="tag in similar.tags">{{tag.name}}</span>
+                                </div>
+
+                            </div>
                         </div>
+                    </article>
 
-                    </div>
-                    </div>
                 </div>
-            </article>
-
-        </div>
             </div>
 
         </div>
 
         <!-- Modal -->
-        <div class="modal fade slide-up disable-scroll" id="startDialog" tabindex="-1" role="dialog" aria-hidden="false" style="display: none;">
+        <div class="modal fade slide-up disable-scroll" id="startDialog" tabindex="-1" role="dialog" aria-hidden="false"
+             style="display: none;">
             <div class="modal-dialog">
                 <div class="modal-content-wrapper">
                     <div class="modal-content">
                         <div class="modal-header clearfix text-left">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fs-14"></i>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
+                                    class="fa fa-times fs-14"></i>
                             </button>
                         </div>
                         <div class="modal-body">
@@ -225,7 +248,8 @@
                                         <div class="col-md-3">
                                             <div class="thumb-lg">
                                                 <router-link :to="{ name: 'profile', params: { id: user.id }}">
-                                                    <img v-bind:src="user.avatar" v-bind:alt="user.name" class="img-responsive">
+                                                    <img v-bind:src="user.avatar" v-bind:alt="user.name"
+                                                         class="img-responsive">
                                                 </router-link>
                                             </div>
                                         </div>
@@ -246,7 +270,8 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group form-group-default">
-                                                <textarea class="form-control" v-model="message.message" rows="6"></textarea>
+                                                <textarea class="form-control" v-model="message.message"
+                                                          rows="6"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -268,8 +293,6 @@
         </div>
 
     </div>
-
-
 
 
 </template>
@@ -300,9 +323,10 @@
                     avatar: '',
                     fave: false,
                     similars: [],
+                    reviews: [],
                 },
-                message:{
-                    message : '',
+                message: {
+                    message: '',
 
                 },
                 status: {
@@ -324,8 +348,8 @@
             $('#stars-existing').on('starrr:change', function (e, value) {
                 $('#count-existing').html(value);
 
-                axios.post('/api/profile/rating/' + $('#stars-existing').data('post-id'),{
-                    rating : value
+                axios.post('/api/profile/rating/' + $('#stars-existing').data('post-id'), {
+                    rating: value
                 }).then(response => {
                     swal({
                         title: response.data.title,
@@ -366,7 +390,7 @@
                         this.errors.push(e)
                     });
 
-                window.scrollTo(0,0);
+                window.scrollTo(0, 0);
 
             },
             fave: function () {
@@ -385,14 +409,14 @@
             newThread: function () {
                 this.status.submit = true;
 
-                axios.post(`/api/messages/thread`,{
-                    subject : 'new',
+                axios.post(`/api/messages/thread`, {
+                    subject: 'new',
                     message: this.message.message,
                     recipients: [this.user.id]
                 })
                     .then(response => {
                         $('#startDialog').modal('hide');
-                        this.$router.push({ name: 'message', params: { id: response.data.id }})
+                        this.$router.push({name: 'message', params: {id: response.data.id}})
                     })
                     .catch(e => {
                         this.errors.push(e)
@@ -403,27 +427,33 @@
             getAuthor: function (user_id) {
                 let author = '';
                 this.reviews.from_users.forEach(function (item) {
-                    if ( +user_id === item.pivot.user_id) {
+                    if (+user_id === item.pivot.user_id) {
                         author = item;
                     }
                 });
                 return author;
             },
-            getRating: function(){
-                if(this.user.hasOwnProperty('options') && this.user.options !== null){
+            getRating: function () {
+                if (this.user.hasOwnProperty('options') && this.user.options !== null) {
                     return this.user.options.rating;
                 }
                 return 0;
             },
-            setRating: function(){
+            setRating: function () {
                 let rating = 0;
-                if(this.user.hasOwnProperty('options') && this.user.options !== null){
+                if (this.user.hasOwnProperty('options') && this.user.options !== null) {
                     rating = this.user.options.rating;
                 }
                 $(".starrr").starrr({
                     rating: rating
                 });
-            }
+            },
+            getRatingSimilar: function (semilar) {
+                if (semilar.hasOwnProperty('options') && semilar.options !== null) {
+                    return semilar.options.rating;
+                }
+                return 0;
+            },
         }
     }
 </script>

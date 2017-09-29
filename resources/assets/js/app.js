@@ -63,6 +63,11 @@ if (document.getElementById('app') !== null) {
                 component: require('./components/profile/stats.vue')
             },
             {
+                path: '/reviews/:id',
+                name: 'profile.reviews',
+                component: require('./components/profile/reviews.vue')
+            },
+            {
                 path: '/payments',
                 name: 'payments',
                 component: require('./components/payment/list.vue')
@@ -101,6 +106,7 @@ if (document.getElementById('app') !== null) {
                 name: 'message',
                 component: require('./components/message/chat.vue')
             },
+
             {
                 path: '/companies',
                 name: 'companies',

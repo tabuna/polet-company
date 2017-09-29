@@ -164,7 +164,7 @@
                                 {{review.text}}
                             </p>
                             <p class="text-xs text-right text-muted">
-                                {{ review.updated_at | moment("subtract", mytime + " minutes", "from", true)}}
+                                {{ review.updated_at | moment("subtract", mytime + " minutes", "from", true)}} назад
                             </p>
                         </div>
                     </div>
@@ -334,6 +334,7 @@
                     submit: false,
                     self: false,
                 },
+                mytime:'',
             }
         },
         mounted() {

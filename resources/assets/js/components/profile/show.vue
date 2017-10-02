@@ -303,6 +303,7 @@
         props: ['id'],
         data: function () {
             return {
+                currentUser: 0,
                 optionsSize: {
                     myself: '1 человек',
                     xsmall: '2 - 10 человек',
@@ -324,6 +325,18 @@
                     fave: false,
                     similars: [],
                     reviews: [],
+                },
+                currentUserData: {
+                    name: '',
+                    email: '',
+                    phone: '',
+                    address: '',
+                    inn: '',
+                    ogrn: '',
+                    website: '',
+                    about: '',
+                    avatar: '',
+                    id: '',
                 },
                 message: {
                     message: '',
@@ -380,6 +393,7 @@
                 $('#adb').show();
 
                 this.mytime = new Date().getTimezoneOffset();//Возвращает разницу между местным и UTC-временем, в минутах.
+                this.currentUser= window.meta_user;
 
                 axios.post(`/api/profile/` + id)
                     .then(response => {
@@ -389,6 +403,13 @@
                     })
                     .catch(e => {
                         this.errors.push(e)
+                    });
+                axios.post(`/api/profile/` + this.currentUser)
+                    .then(response => {
+                        this.currentUserData = response.data;
+                    })
+                    .catch(e => {
+                        //this.errors.push(e)
                     });
 
                 window.scrollTo(0, 0);
@@ -403,7 +424,10 @@
                 }
             },
             getDirections: function () {
-                let saddr = '?saddr=' + 'Сумская ул., 45А, Курск, Курская обл., 305007';
+
+
+
+                let saddr = '?saddr=' + this.currentUserData.address;
                 let daddar = '&daddr=' + this.user.address;
                 window.open('http://maps.google.com/maps' + saddr + daddar, '_blank');
             },

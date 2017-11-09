@@ -88,4 +88,13 @@ class User extends UserOrchid
     {
         return $this->hasMany(Reviews::class, 'reviewable_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function history()
+    {
+        return $this->hasMany(Search::class);
+    }
+
 }

@@ -5,9 +5,9 @@ $( document ).ready(function() {
             top: function () {
 
                 if (document.getElementById('content')) {
-                    var top = $('content').outerHeight(true)
+                    let top = $('content').outerHeight(true)
                 }else{
-                    var top = 0;
+                    let top = 0;
                 }
 
                 console.log($('#header').outerHeight(true) + top + 15);

@@ -122,3 +122,4 @@ window.chartColors = {
 
 
 window.Ps = require('perfect-scrollbar');
+require('croppie');

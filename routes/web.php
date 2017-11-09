@@ -14,14 +14,14 @@
 
 Auth::routes();
 
-
+$this->get('test','Profile\ProfileController@recommended');
 /*
 |--------------------------------------------------------------------------
 | Website display for all users and guest
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($router) {
+$this->group(['namespace' => 'Website', 'middleware' => 'guest'], function ($router) {
     $router->get('/', 'WelcomeController@index')->name('index');
     $router->get('/companies', 'WelcomeController@companies')->name('companies');
     $router->get('/order', 'WelcomeController@order')->name('order');
@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Website', 'middleware' => 'guest'], function ($rou
 |
 */
 
-Route::group(['middleware' => 'auth'], function ($router) {
+$this->group(['middleware' => 'auth'], function ($router) {
     $router->get('/{vue_capture?}', 'HomeController@index')
         ->where('vue_capture','^(?!api).*$')
         ->name('app');

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var navListItems = $('div.setup-panel div a'),
+    let navListItems = $('div.setup-panel div a'),
         allWells = $('.setup-content'),
         allNextBtn = $('.nextBtn');
     allPrevBtn = $('.prevBtn');
@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     navListItems.click(function (e) {
         e.preventDefault();
-        var $target = $($(this).attr('href')),
+        let $target = $($(this).attr('href')),
             $item = $(this);
 
         if (!$item.hasClass('disabled')) {
@@ -22,14 +22,14 @@ $(document).ready(function () {
     });
 
     allNextBtn.click(function () {
-        var curStep = $(this).closest(".setup-content"),
+        let curStep = $(this).closest(".setup-content"),
             curStepBtn = curStep.attr("id"),
             nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
             curInputs = curStep.find("input"),
             isValid = true;
 
         $(".form-group").removeClass("has-error");
-        for (var i = 0; i < curInputs.length; i++) {
+        for (let i = 0; i < curInputs.length; i++) {
             if (!curInputs[i].validity.valid) {
                 isValid = false;
                 $(curInputs[i]).closest(".form-group").addClass("has-error");
@@ -42,7 +42,7 @@ $(document).ready(function () {
 
 
     allPrevBtn.click(function () {
-        var curStep = $(this).closest(".setup-content"),
+        let curStep = $(this).closest(".setup-content"),
             curStepBtn = curStep.attr("id"),
             prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
         prevStepWizard.removeAttr('disabled').trigger('click');

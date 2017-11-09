@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Profile;
 
-use App\Core\Models\Reviews;
+use App\Core\Models\Search;
 use App\Core\Models\Statistics;
 use App\Core\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\AccountPasswordRequest;
 use App\Http\Requests\Profile\AccountRequest;
 use Carbon\Carbon;
+use Cartalyst\Tags\IlluminateTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -166,6 +167,21 @@ class ProfileController extends Controller
             $companies->whereTag($request->get('tags'));
         }
 
+        $historyTags = $this->prepareTags($request->get('tags'));
+        foreach ($historyTags as $item){
+            $search = Search::firstOrCreate([
+                'tags' => $item,
+                'user_id' => Auth::id(),
+                'city_id' => $request->get('city',null),
+            ],[
+                'tags' => $item,
+                'user_id' => Auth::id(),
+                'city_id' => $request->get('city',null),
+            ]);
+            $search->touch();
+            $search->save();
+        }
+
         if ($request->get('city')) {
             $companies->where('city_id', $request->get('city'));
         }
@@ -210,5 +226,54 @@ class ProfileController extends Controller
 
         return response()->json($timeStatics);
 
+    }
+
+
+    /**
+     * Рекомендации
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function recommended(Request $request){
+
+        $user = Auth::user();
+        $tags = $user->tags()->pluck('slug');
+
+        $search = Search::whereIn('tags',$tags)
+            ->select('user_id')
+            ->where('user_id','!=',$user->id)
+            ->with('user.tags')
+            ->orderBy('updated_at', 'DESC')
+            ->whereBetween('updated_at', [Carbon::now()->subDays(60), Carbon::now()]);
+
+        if ($request->get('city')) {
+            $search = $search->where('city_id', $request->get('city'));
+        }
+
+        return response()->json($search->paginate());
+    }
+
+    /**
+     * @param $tags
+     *
+     * @return array
+     */
+    private function prepareTags($tags)
+    {
+        if (is_null($tags)) {
+            return [];
+        }
+
+        if (is_string($tags)) {
+            $delimiter = preg_quote(',', '#');
+
+            $tags = array_map('trim',
+                preg_split("#[{$delimiter}]#", $tags, null, PREG_SPLIT_NO_EMPTY)
+            );
+        }
+
+        return array_unique(array_filter($tags));
     }
 }

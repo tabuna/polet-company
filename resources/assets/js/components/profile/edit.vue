@@ -357,7 +357,6 @@
                 .catch(e => {
                     this.errors.push(e)
                 });
-
         },
         methods: {
             onAvatarChange(e) {
@@ -386,7 +385,6 @@
 
                     axios.put(`/api/profile/edit`, this.user)
                         .then(response => {
-                            //this.user = response.data;
                             this.status.submit = false;
 
                             swal({
@@ -418,7 +416,7 @@
                 return `и ${count} ещё тегов`
             },
             asyncFind (query) {
-                this.isLoading = true
+                this.isLoading = true;
 
                 axios.get(`/api/profile/tags/` + query)
                     .then(response => {
@@ -444,7 +442,7 @@
 
             },
             asyncFindCity (query) {
-                this.isLoadingCity = true
+                this.isLoadingCity = true;
 
                 axios.post(`/api/other/city/` + query)
                     .then(response => {

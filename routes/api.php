@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::group(['prefix' => 'messages','namespace' => 'Message'], function ($router) {
+$this->group(['prefix' => 'messages','namespace' => 'Message'], function ($router) {
     $router->post('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
     $router->post('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
     $router->post('/thread', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
@@ -30,17 +30,6 @@ Route::group(['prefix' => 'messages','namespace' => 'Message'], function ($route
 });
 
 
-/*
-
-Route::group(['prefix' => 'reviews','namespace' => 'Reviews'], function ($router) {
-    $router->post('/', ['as' => 'reviews', 'uses' => 'ReviewsController@index']);
-    $router->post('create', ['as' => 'reviews.create', 'uses' => 'ReviewsController@create']);
-    $router->post('/store', ['as' => 'reviews.store', 'uses' => 'ReviewsController@store']);
-    $router->post('{id}', ['as' => 'reviews.show', 'uses' => 'ReviewsController@show']);
-    $router->put('{id}', ['as' => 'reviews.update', 'uses' => 'ReviewsController@update']);
-});
-
-*/
 
 /*
 |--------------------------------------------------------------------------
@@ -48,11 +37,9 @@ Route::group(['prefix' => 'reviews','namespace' => 'Reviews'], function ($router
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['namespace' => 'Payments', 'prefix' => 'payments'], function ($router) {
+$this->group(['namespace' => 'Payments', 'prefix' => 'payments'], function ($router) {
     $router->resource('order', 'AvisoController');
 });
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +47,7 @@ Route::group(['namespace' => 'Payments', 'prefix' => 'payments'], function ($rou
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Profile'], function ($router) {
+$this->group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Profile'], function ($router) {
 
 
     $router->post('/{user?}', 'ProfileController@show')->where('user', '[0-9]+')->name('profile');
@@ -87,7 +74,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile', 'namespace' => 'Pro
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tender'], function ($router) {
+$this->group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tender'], function ($router) {
 
     $router->post('/', 'TenderController@index')->name('tender.list');
     $router->post('/comment/{id}', 'TenderController@comment')->name('tender.comment');
@@ -99,7 +86,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tend
 });
 
 
-$router->post('/companies', 'Profile\ProfileController@companies')->name('companies');
+$this->post('/companies', 'Profile\ProfileController@companies')->name('companies');
+$this->post('/recommended','Profile\ProfileController@recommended')->name('recommended');
 
 /*
 |--------------------------------------------------------------------------
@@ -107,7 +95,7 @@ $router->post('/companies', 'Profile\ProfileController@companies')->name('compan
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['middleware' => 'auth', 'prefix' => 'other', 'namespace' => 'Other'], function ($router) {
+$this->group(['middleware' => 'auth', 'prefix' => 'other', 'namespace' => 'Other'], function ($router) {
     $router->post('/city/{city?}', 'CityController@show')->name('city');
 });
 

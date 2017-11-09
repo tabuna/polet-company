@@ -172,9 +172,12 @@
                 </div>
             </div>
             <div class="text-center b-b padder-v m-b">
-                <router-link :to="{ name: 'profile.reviews', params: { id: user.id }}">
-                    <button class="btn btn-info btn-rounded">
-                        Оставить отзыв<span v-if="user.reviews.length > 0 "> / Посмотреть все отзывы</span>
+                <router-link v-if="(user.reviews.length > 0) || (user.id != currentUser) " :to="{ name: 'profile.reviews', params: { id: user.id }}">
+                    <button class="btn btn-info btn-rounded" v-if="user.reviews.length > 0 ">
+                        Посмотреть все
+                    </button>
+                    <button class="btn btn-info btn-rounded" v-if="user.reviews.length <= 0 ">
+                       Добавить отзыв
                     </button>
 
 

@@ -254,9 +254,10 @@
                                          @search-change="asyncFind"
                                          :taggable="true"
                                          @tag="addTag"
-                                         :SelectLabel="selectLabelTag"
-                                         :SelectedLabel="selectedLabelTag"
-                                         :DeselectLabel ="deselectLabelTag"
+                                         :selectLabel="''"
+                                         :selectedLabel="''"
+                                         :deselectLabel ="''"
+                                         :tagPlaceholder="'Нажмите enter, чтобы создать тег'"
 
                             >
                                 <template slot="option" scope="props">

@@ -69,6 +69,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $webSite=$data['website'];
+        if($webSite!='' && !filter_var($data['website'], FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED)){
+            $data['website'] ='http://'.$data['website'];
+        }
         return User::create([
             'name'        => $data['name'],
             'email'       => $data['email'],
@@ -78,7 +82,7 @@ class RegisterController extends Controller
             'address'     => $data['address'],
             'inn'         => $data['inn'],
             'ogrn'        => $data['ogrn'],
-            'website'     => $data['website'],
+            'website'     => $webSite,
             'agent_name'  => $data['agent_name'],
             'avatar'      => '/img/avatar.png',
             'options'     => [

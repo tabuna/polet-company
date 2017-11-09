@@ -197,8 +197,8 @@
 
                                     <div class="col-md-12">
                                         <label for="website" class="control-label text-left padder-v-5">Сайт</label>
-                                        <input id="website" type="url" class="form-control" name="website"
-                                               value="{{ old('website') }}" required maxlength="255">
+                                        <input id="website" type="text" class="form-control" name="website"
+                                               value="{{ old('website') }}"  maxlength="255">
 
                                         @if ($errors->has('website'))
                                             <span class="help-block">

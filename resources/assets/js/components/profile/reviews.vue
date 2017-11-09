@@ -10,7 +10,24 @@
 
                         <h4 class="l-h-1x">Оставьте свой отзыв</h4>
                         <div>
+                            <form class="m-b-none  ng-pristine ng-valid" v-on:submit.prevent="sendMessage">
+                                <div class="form-group">
+                                     <textarea  class="form-control form-control-grey no-resize " rows="5"
+                                                placeholder="Написать сообщение"
+                                                v-model="review.review_text" >
+                                    </textarea>
+                                </div>
+                                <div class="form-group text-right">
 
+                                        <button class="btn btn-info btn-rounded" type="button" v-on:click="newReview">Отправить</button>
+
+                                </div>
+
+
+                            </form>
+
+
+                            <!--
                             <router-link :to="{ name: 'profile', params: { id: currentUser }}"
                                          class="pull-left thumb-xs avatar">
                                 <img :src="currentUserData.avatar" class="img-circle" :alt="currentUserData.name">
@@ -24,6 +41,7 @@
                                     </span>
                                 </div>
                             </form>
+                            -->
                         </div>
                     </div>
 

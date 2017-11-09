@@ -275,7 +275,6 @@
 
             },
             getRating: function(users){
-                return 0;
                 let user = users.user;
                 if(user.hasOwnProperty('options') && user.options !== null){
                     return user.options.rating;

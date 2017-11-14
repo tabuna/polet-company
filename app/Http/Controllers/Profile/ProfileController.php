@@ -169,14 +169,20 @@ class ProfileController extends Controller
 
         $historyTags = $this->prepareTags($request->get('tags'));
         foreach ($historyTags as $item){
+            $city_id = null;
+            if ($request->get('city')){
+                $city = $request->get('city');
+                $city_id = $city['id'];
+            }
+
             $search = Search::firstOrCreate([
                 'tags' => $item,
                 'user_id' => Auth::id(),
-                'city_id' => $request->get('city',null),
+                'city_id' => $city_id,
             ],[
                 'tags' => $item,
                 'user_id' => Auth::id(),
-                'city_id' => $request->get('city',null),
+                'city_id' => $city_id,
             ]);
             $search->touch();
             $search->save();

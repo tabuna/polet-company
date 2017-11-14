@@ -63,6 +63,7 @@
                                 <span class="m-r-md"><i class="icon-clock"></i> {{tender.publish_at | moment("from", "now")}}</span>
                                 <span class="m-r-md"><i class="icon-map"></i> {{tender.content.ru.city.name}}</span>
                                 <span class="m-r-md" v-show="tender.content.ru.price != null"><i class="fa fa-rub"></i> {{tender.content.ru.price}}</span>
+                                <a><span class="m-r-md " v-if="tender.user_id == currentUser" v-on:click="deleteTender()"><i class="fa fa-times"></i> Удалить</span></a>
                             </div>
                         </div>
 
@@ -134,6 +135,7 @@
         props: ['id'],
         data: function () {
             return {
+                currentUser: 0,
                 tender: {},
                 status: {
                     load: false,
@@ -152,6 +154,7 @@
         methods: {
             load: function () {
                 $('#adb').show();
+                this.currentUser= window.meta_user;
             },
             loadData:function () {
                 axios.post(`/api/tender/` + this.$route.params.id)
@@ -188,6 +191,55 @@
             generateUrl: function(file){
                 return '/storage/'+ file.path + file.name + "." + file.extension;
             },
+            deleteTender: function () {
+                let my_this =this;
+
+                swal({
+                    title: 'Подтвердите действие?',
+                    text: "Вы действительно хотите удалить этот тендер",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Да!',
+                    cancelButtonText: 'Нет!',
+                    confirmButtonClass: 'btn btn-success btn-rounded btn-swal',
+                    cancelButtonClass: 'btn btn-danger btn-rounded btn-swal',
+                    buttonsStyling: false
+                }).then(function () {
+                    //console.log(tender_id);
+
+                    axios.post(`/api/tender/destroy/` + my_this.$route.params.id)
+                        .then(response => {
+                            swal({
+                                title: response.data.title,
+                                text: response.data.message,
+                                type: response.data.type,
+                                showConfirmButton: false,
+                                timer: 2000,
+                            }).then(function () {
+                                my_this.$router.push({name: 'tender'})
+                            }, function (dismiss) {
+                                // dismiss can be 'ca
+                                my_this.$router.push({name: 'tender'})
+
+                            })
+                        })
+                        .catch(e => {
+                            swal({
+                                title: "Ошибка",
+                                timer: 2000,
+                                text: "Что-то пошлдо не так",
+                                type: 'error',
+                                showConfirmButton: false,
+                            })
+                    });
+
+
+                });
+
+
+            }
         }
     }
 </script>

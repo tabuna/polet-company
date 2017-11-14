@@ -127,4 +127,19 @@ class TenderController extends Controller
         return response(200);
     }
 
+    public function destroy(Post $tender)
+    {
+        if(Auth::user()->id == $tender->user_id){
+            $tender->delete();
+            return [
+                'title'   => 'Успешно',
+                'message' => 'Вы успешно удалили тендер',
+                'type'    => 'success',
+            ];
+
+        }
+        return response(403);
+
+    }
+
 }

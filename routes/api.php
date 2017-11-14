@@ -83,6 +83,7 @@ $this->group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tend
     $router->post('/create', 'TenderController@store')->name('tender.store');
     $router->get('/tags/{tag?}', 'TagController@show')->name('tender.tags');
     $router->post('/{tender}', 'TenderController@show')->name('tender.show');
+    $router->post('/destroy/{tender}', 'TenderController@destroy')->name('tender.destroy');
 });
 
 

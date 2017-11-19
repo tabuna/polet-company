@@ -248,8 +248,8 @@
                                          :internal-search="false"
                                          :clear-on-select="false"
                                          :close-on-select="false"
-                                         :options-limit="10"
-                                         :limit="10"
+                                         :options-limit="5"
+                                         :limit="5"
                                          :limit-text="limitText"
                                          @search-change="asyncFind"
                                          :taggable="true"
@@ -275,7 +275,55 @@
                             {{ errors.tags }}
                         </p>
                         <p class="help-block" v-else="errors.name">
-                            Выберите от 1 до 10 ключевых слов к которым относится компания.
+                            Выберите от 1 до 5 ключевых слов к которым относится компания.
+                        </p>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg"></div>
+                <div class="form-group" v-bind:class="{ 'has-error' : errors.search_tags }">
+                    <label class="col-sm-3 control-label">Теги для поиска</label>
+                    <div class="col-sm-9">
+
+                        <div>
+                            <multiselect v-model="selectedSearchTags"
+                                         :options="allTags"
+                                         :multiple="true"
+                                         :searchable="true"
+                                         :loading="isLoading"
+                                         :internal-search="false"
+                                         :clear-on-select="false"
+                                         :close-on-select="false"
+                                         :options-limit="5"
+                                         :limit="5"
+                                         :limit-text="limitText"
+                                         @search-change="asyncFind"
+                                         :taggable="true"
+                                         @tag="addSearchTag"
+                                         :selectLabel="''"
+                                         :selectedLabel="''"
+                                         :deselectLabel ="''"
+                                         :tagPlaceholder="'Нажмите enter, чтобы создать тег'"
+                                         track-by="name"
+                                         placeholder="Введите ключевые слова"
+                                         label="name"
+                            >
+                                <template slot="option" scope="props">
+                                    <div class="option__desc">
+                                        <span class="option__title">{{ props.option.name }}</span>
+                                        <span class="badge bg-info pull-right">{{ props.option.count }}</span>
+                                    </div>
+                                </template>
+
+
+                                <span slot="noResult">К сожалению, элементов не найдено.</span>
+                            </multiselect>
+                        </div>
+
+                        <p class="help-block" v-if="errors.tags">
+                            {{ errors.tags }}
+                        </p>
+                        <p class="help-block" v-else="errors.name">
+                            Выберите от 1 до 5 ключевых слов к которым относится компания.
                         </p>
                     </div>
                 </div>
@@ -315,6 +363,7 @@
                     { value: 'xbig', text: '10001 и более человек' }
                 ],
                 selectedTags: [],
+                selectedSearchTags: [],
                 allTags: [],
                 selectedCity: [],
                 allCity: [],
@@ -334,6 +383,7 @@
                     tags: '',
                     newAvatar: '',
                     specialization: '',
+                    search_tags : '',
                 },
                 status: {
                     load: false,
@@ -351,6 +401,7 @@
                     this.user = response.data;
                     this.selectedTags = this.user.tags;
                     this.selectedCity = this.user.city;
+                    this.selectedSearchTags = this.user.search_tags;
                     this.status.load = true;
                     moduleLoad();
                 })
@@ -381,6 +432,7 @@
                     this.status.submit = true;
                     this.errors = {};
                     this.user.tags = this.selectedTags;
+                    this.user.search_tags = this.selectedSearchTags;
                     this.user.city_id = this.selectedCity.id;
 
                     axios.put(`/api/profile/edit`, this.user)
@@ -476,7 +528,16 @@
                 };
                 this.selectedTags.push(tag);
                 this.allTags.push(tag);
-
+            },
+            addSearchTag (newTag) {
+                const tag = {
+                    id: 1,
+                    slug: newTag,
+                    name: newTag,
+                    count: 0,
+                };
+                this.selectedSearchTags.push(tag);
+                this.allTags.push(tag);
             }
         }
     }

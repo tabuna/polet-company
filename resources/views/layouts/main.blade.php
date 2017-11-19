@@ -45,10 +45,12 @@
                             <span>Избранное</span>
                         </router-link>
 
+                        <!--
                         <router-link :to="{ name: 'payments'}" class="list-group-item">
                             <i class="icon-credit-card m-r-xs"></i>
                             <span>Платежи</span>
                         </router-link>
+                        -->
 
                         <router-link :to="{ name: 'stats'}" class="list-group-item">
                             <i class="icon-chart m-r-xs"></i>

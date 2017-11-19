@@ -4,33 +4,8 @@
         <div class="wrapper-md">
     <form class="form-horizontal" v-on:submit.prevent="submitProfile" method="POST">
 
-
-        <!--
-        @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Упс!</strong> Похоже некоторые проблемы с вашими данными.
-            <ul class="wrapper-lg">
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
-
-        @if(Session::has('success'))
-        <div class="alert alert-success">
-            {{Session::get('success')}}
-        </div>
-        @endif
-
-        <div class="alert alert-success" v-if="status.success">
-            {{status.success}}
-        </div>
-        -->
-
         <div class="page-header">
-            <h4>Пароль можно изменить в целях безопасности или сбросить, если вы его забыли. </h4>
+            <h5>Пароль можно изменить в целях безопасности или сбросить, если вы его забыли. </h5>
         </div>
 
         <div class="form-group " v-bind:class="{ 'has-error' : errors.password }">
@@ -113,7 +88,7 @@
                                 type: 'success',
                                 text: 'Данные были обновлены',
                                 timer: 2500,
-                                showConfirmButton : false,
+                                showConfirmButton: false,
                             }).catch(swal.noop)
                         })
                         .catch(error => {
@@ -124,7 +99,7 @@
                                 type: 'error',
                                 text: 'Проверьте вводимые данные',
                                 timer: 2500,
-                                showConfirmButton : false,
+                                showConfirmButton: false,
                             }).catch(swal.noop)
                         });
 

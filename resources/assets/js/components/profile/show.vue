@@ -81,15 +81,15 @@
                             <p>ИНН: {{user.inn}}</p>
                             <p>ОГРН: {{user.ogrn}} </p>
                             <p class="text-muted small">
-                                <span v-if="user.phone.length > 0"><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
-                                <span v-if="user.email.length > 0"><i
+                                <span><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
+                                <span><i
                                         class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br></span>
-                                <span v-if="user.city.length > 0"><i
+                                <span><i
                                         class="icon-location-pin text-info m-r-xs"></i>| {{user.city.name}} <br></span>
-                                <span v-if="user.size_company.length > 0"><i
+                                <span><i
                                         class="icon-people text-info m-r-xs"></i>| {{optionsSize[user.size_company]}} <br></span>
-                                <a v-bind:href="user.website" taget="_blank" class="text-ellipsis"
-                                   v-if="user.website.length > 0"><i
+                                <a v-bind:href="user.website" taget="_blank" class="text-ellipsis">
+                                    <i
                                         class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a> <br>
 
                             </p>

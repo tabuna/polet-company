@@ -327,6 +327,8 @@
                         </p>
                     </div>
                 </div>
+
+               <!--
                 <div class="line line-dashed b-b line-lg"></div>
                 <div class="form-group" v-bind:class="{ 'has-error' : errors.tags_demand }">
                     <label class="col-sm-3 control-label">Теги спроса</label>
@@ -374,6 +376,8 @@
                         </p>
                     </div>
                 </div>
+
+                -->
                 <div class="line line-dashed b-b line-lg"></div>
                 <div class="form-group m-t-md">
                     <div class="col-sm-3 col-sm-offset-3">
@@ -486,7 +490,7 @@
                     this.errors = {};
                     this.user.tags = this.selectedTags;
                     this.user.search_tags = this.selectedSearchTags;
-                    this.user.tags_demand = this.selectedtags_demand;
+                   // this.user.tags_demand = this.selectedtags_demand;
                     this.user.city_id = this.selectedCity.id;
 
                     axios.put(`/api/profile/edit`, this.user)

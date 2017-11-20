@@ -93,9 +93,11 @@
                         <li>
                             <router-link :to="{ name: 'companies'}">Компании</router-link>
                         </li>
+                        <!--
                         <li>
                             <router-link :to="{ name: 'demand'}">Спрос и предложение</router-link>
                         </li>
+                        -->
                     </ul>
                 @endif
 

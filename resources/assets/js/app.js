@@ -123,6 +123,14 @@ if (document.getElementById('app') !== null) {
                     query: route.query.tags
                 })
             },
+            {
+                path: '/demand',
+                name: 'demand',
+                component: require('./components/profile/supplyAndDemand.vue'),
+                props: (route) => ({
+                    query: route.query.tags
+                })
+            },
         ]
     });
 

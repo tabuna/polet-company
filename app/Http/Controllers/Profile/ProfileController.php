@@ -39,7 +39,26 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return response()->json(User::where('id', Auth::id())->with(['tags', 'city'])->first());
+
+        $user = User::where('id', Auth::id())->with(['tags', 'city'])->first();
+        if($user->tags_demand){
+            $tags_demand = [];
+            $tags_demand = explode ( ",", $user->tags_demand);
+            $tags_demand_arrs=[];
+            foreach ($tags_demand as $tag) {
+                if ($tag!="") {
+                    $tags_demand_arrs[] = User::allTags()->where('slug', $tag)->first();
+
+                }
+            }
+            $user->tags_demand = null;
+            $user->tags_demand =$tags_demand_arrs;
+
+        }
+
+
+
+        return response()->json($user);
     }
 
     /**
@@ -91,6 +110,20 @@ class ProfileController extends Controller
                 $user->occupancy++;
             }
         }
+        if($user->tags_demand){
+            $tags_demand = [];
+            $tags_demand = explode ( ",", $user->tags_demand);
+            $tags_demand_arrs=[];
+            foreach ($tags_demand as $tag) {
+                if ($tag!="") {
+                    $tags_demand_arrs[] = User::allTags()->where('slug', $tag)->first();
+
+                }
+            }
+            $user->tags_demand = null;
+            $user->tags_demand =$tags_demand_arrs;
+
+        }
 
         return response()->json($user);
     }
@@ -105,6 +138,7 @@ class ProfileController extends Controller
     public function update(AccountRequest $account)
     {
         $user = Auth::user();
+
 
         if ($account->has('newAvatar')) {
             $img = Image::make($account->get('newAvatar'));
@@ -131,6 +165,23 @@ class ProfileController extends Controller
             }
             $user->setTags($tags);
         }
+
+        if($account->has('tags_demand')){
+            $tags_demand = "";
+            foreach ($account->get('tags_demand') as $key=>$item) {
+                if($key>0){
+                    $tags_demand = ','.$tags_demand;
+                }
+                $tags_demand.=$item['slug'];
+
+
+            }
+            $account['tags_demand'] = $tags_demand;
+
+
+
+        }
+
 
         $user->fill($account->all())->save();
 
@@ -247,6 +298,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $tags = $user->tags()->pluck('slug');
 
+
         $search = Search::whereIn('tags',$tags)
             ->select('user_id')
             ->where('user_id','!=',$user->id)
@@ -260,6 +312,57 @@ class ProfileController extends Controller
 
         return response()->json($search->paginate());
     }
+
+
+    /**
+     * Спрос и предложеение
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function supplyAndDemand(Request $request){
+        $user = Auth::user();
+
+
+        $demand = User::select('id','name','avatar','specialization','options')->withTag($user->tags_demand)
+            ->where('id', '!=',$user->id);
+        if ($request->get('city')) {
+            $demand = $demand->where('city_id', $request->get('city'));
+        }
+        $demand = $demand->paginate();
+
+
+
+
+        $tags = $user->tags()->pluck('slug');
+        //var_dump(!empty($tags));
+        //die('sdfdsf');
+
+
+        $supply = [];
+        if(isset($tags[0])){
+            $supply =  User::select('id','name','avatar','specialization','options')->where('tags_demand', 'like', '%' . $tags[0] . '%');
+            for ($i  = 1; $i< count($tags); $i++ ){
+                $supply = $supply->orWhere('tags_demand', 'like', '%' . $tags[$i] . '%');
+            }
+            if ($request->get('city')) {
+                $supply = $supply->where('city_id', $request->get('city'));
+            }
+            $supply = $supply->where('id', '!=',$user->id)->paginate();
+        }
+
+
+
+        // $tags = City::where('name', 'like', '%' . $city . '%')->limit(10)->get();
+        return response()->json(['demand'=> $demand, 'supply' => $supply]);
+
+    }
+
+
+
+
 
     /**
      * @param $tags
@@ -282,4 +385,6 @@ class ProfileController extends Controller
 
         return array_unique(array_filter($tags));
     }
+
+
 }

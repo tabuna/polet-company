@@ -102,11 +102,19 @@
 
                     <p>{{user.specialization}}</p>
 
-                    <div class="row tags text-md padder-v text-center b-b b-t">
+                    <div class=" tags text-md padder-v  b-b b-t" v-if="user.tags">
+                        <span >Теги предложения: </span>
                         <span v-for="tag in user.tags" class="label text-dark">
                             {{tag.name}}
                         </span>
                     </div>
+                    <div class="tags text-md padder-v  b-b b-t" v-if="user.tags_demand">
+                        <span >Теги спроса: </span>
+                        <span v-for="tag in user.tags_demand" class="label text-dark">
+                            {{tag.name}}
+                        </span>
+                    </div>
+
                 </div>
             </div>
 
@@ -328,6 +336,7 @@
                     fave: false,
                     similars: [],
                     reviews: [],
+                    tags_demand: []
                 },
                 currentUserData: {
                     name: '',

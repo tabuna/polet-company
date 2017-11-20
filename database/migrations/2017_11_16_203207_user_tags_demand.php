@@ -4,17 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UserCity extends Migration
+class UserTagsDemand extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('city_id')->nullable();
+            //
+            $table->text('tags_demand')->nullable();
         });
     }
 
@@ -26,7 +22,7 @@ class UserCity extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('city_id');
+            $table->dropColumn('tags_demand');
         });
     }
 }

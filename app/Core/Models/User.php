@@ -39,7 +39,8 @@ class User extends UserOrchid
         'specialization',
         'size_company',
         'city_id',
-        'options'
+        'options',
+        'tags_demand'
     ];
 
     /**

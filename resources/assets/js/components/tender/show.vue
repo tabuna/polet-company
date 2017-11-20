@@ -195,19 +195,16 @@
                 let my_this =this;
 
                 swal({
-                    title: 'Подтвердите действие?',
-                    text: "Вы действительно хотите удалить этот тендер",
+                    title: 'Вы действительно хотите удалить этот тендер',
+                    text: "Тендер и все комментарии будут удалены безвозвратно",
                     type: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Да!',
-                    cancelButtonText: 'Нет!',
-                    confirmButtonClass: 'btn btn-success btn-rounded btn-swal',
-                    cancelButtonClass: 'btn btn-danger btn-rounded btn-swal',
+                    confirmButtonText: 'Удалить',
+                    cancelButtonText: 'Отмена',
+                    confirmButtonClass: 'btn btn-danger btn-rounded',
+                    cancelButtonClass: 'btn btn-link',
                     buttonsStyling: false
                 }).then(function () {
-                    //console.log(tender_id);
 
                     axios.post(`/api/tender/destroy/` + my_this.$route.params.id)
                         .then(response => {
@@ -220,16 +217,14 @@
                             }).then(function () {
                                 my_this.$router.push({name: 'tender'})
                             }, function (dismiss) {
-                                // dismiss can be 'ca
                                 my_this.$router.push({name: 'tender'})
-
                             })
                         })
                         .catch(e => {
                             swal({
                                 title: "Ошибка",
                                 timer: 2000,
-                                text: "Что-то пошлдо не так",
+                                text: "Что-то пошло не так",
                                 type: 'error',
                                 showConfirmButton: false,
                             })

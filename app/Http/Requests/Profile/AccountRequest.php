@@ -42,6 +42,7 @@ class AccountRequest extends FormRequest
             'size_company'   => 'sometimes|max:255',
             'tags'           => 'sometimes',
             'city_id'        => 'integer|required',
+            'search_tags' =>'sometimes',
         ];
     }
 }

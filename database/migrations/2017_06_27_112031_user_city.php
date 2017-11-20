@@ -26,7 +26,7 @@ class UserCity extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('city_id');
+            $table->drop('city_id');
         });
     }
 }

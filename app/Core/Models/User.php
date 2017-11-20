@@ -40,6 +40,7 @@ class User extends UserOrchid
         'size_company',
         'city_id',
         'options',
+        'search_tags',
         'tags_demand'
     ];
 
@@ -48,7 +49,8 @@ class User extends UserOrchid
      */
     protected $casts = [
         'options' => 'array',
-        'permissions' => 'array'
+        'permissions' => 'array',
+        'search_tags' => 'array',
     ];
 
     /**

@@ -5,7 +5,7 @@ require('./modules/affix');
 require('./modules/wizard');
 require('./modules/cache');
 require('./modules/typed');
-
+require('./modules/image');
 
 window.Vue = require('vue');
 
@@ -106,7 +106,11 @@ if (document.getElementById('app') !== null) {
                 name: 'message',
                 component: require('./components/message/chat.vue')
             },
-
+            {
+                path: '/needs',
+                name: 'needs',
+                component: require('./components/profile/needs.vue')
+            },
             {
                 path: '/companies',
                 name: 'companies',

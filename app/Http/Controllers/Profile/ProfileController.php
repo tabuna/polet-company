@@ -243,7 +243,7 @@ class ProfileController extends Controller
             $companies->where('city_id', $request->get('city'));
         }
 
-        $companies = $companies->paginate(15);
+        $companies = $companies->paginate();
 
         return response()->json($companies);
     }
@@ -362,6 +362,29 @@ class ProfileController extends Controller
 
 
 
+
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function need(Request $request){
+        $userTags = Auth::user()->search_tags ?? [];
+        $tags = collect($userTags)->implode('slug', ', ');
+
+        $companies = User::select('id','name','avatar','specialization','options')
+            ->with('tags')
+            ->orderBy('created_at', 'DESC')
+            ->withTag($tags ?? []);
+
+        if ($request->get('city')) {
+            $companies->where('city_id', $request->get('city'));
+        }
+
+        return response()->json($companies->paginate());
+
+    }
 
 
     /**

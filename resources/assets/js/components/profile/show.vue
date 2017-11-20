@@ -81,15 +81,15 @@
                             <p>ИНН: {{user.inn}}</p>
                             <p>ОГРН: {{user.ogrn}} </p>
                             <p class="text-muted small">
-                                <span v-if="user.phone"><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
-                                <span v-if="user.email"><i
+                                <span><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
+                                <span><i
                                         class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br></span>
-                                <span v-if="user.city"><i
+                                <span><i
                                         class="icon-location-pin text-info m-r-xs"></i>| {{user.city.name}} <br></span>
-                                <span v-if="user.size_company"><i
+                                <span><i
                                         class="icon-people text-info m-r-xs"></i>| {{optionsSize[user.size_company]}} <br></span>
-                                <a v-bind:href="user.website" taget="_blank" class="text-ellipsis"
-                                   v-if="user.website"><i
+                                <a v-bind:href="user.website" taget="_blank" class="text-ellipsis">
+                                    <i
                                         class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a> <br>
 
                             </p>
@@ -102,19 +102,11 @@
 
                     <p>{{user.specialization}}</p>
 
-                    <div class=" tags text-md padder-v  b-b b-t" v-if="user.tags">
-                        <span >Теги предложения: </span>
+                    <div class="row tags text-md padder-v text-center b-b b-t" v-if="user.tags !== undefined && user.tags.length > 0">
                         <span v-for="tag in user.tags" class="label text-dark">
                             {{tag.name}}
                         </span>
                     </div>
-                    <div class="tags text-md padder-v  b-b b-t" v-if="user.tags_demand">
-                        <span >Теги спроса: </span>
-                        <span v-for="tag in user.tags_demand" class="label text-dark">
-                            {{tag.name}}
-                        </span>
-                    </div>
-
                 </div>
             </div>
 
@@ -181,21 +173,17 @@
             </div>
             <div class="text-center b-b padder-v m-b">
                 <router-link v-if="(user.reviews.length > 0) || (user.id != currentUser) " :to="{ name: 'profile.reviews', params: { id: user.id }}">
-                    <button class="btn btn-info btn-rounded" v-if="user.reviews.length > 0 ">
+                    <button class="btn btn-link" v-if="user.reviews.length > 0 ">
                         Посмотреть все
                     </button>
-                    <button class="btn btn-info btn-rounded" v-if="user.reviews.length <= 0 ">
+                    <button class="btn btn-link" v-if="user.reviews.length <= 0 ">
                        Добавить отзыв
                     </button>
-
-
                 </router-link>
             </div>
 
-            <div class="row m-t-md m-b-md padder-v">
-
+            <div class="row m-t-md m-b-md padder-v" v-if="!status.self">
                 <div class="col-xs-12 bg-white  hidden-xs hidden-sm" v-if="user.similars.length > 0">
-
 
                     <div class="m-t-md">
                         <h4 class="l-h-1x">Похожие компании:</h4>
@@ -336,19 +324,6 @@
                     fave: false,
                     similars: [],
                     reviews: [],
-                    tags_demand: []
-                },
-                currentUserData: {
-                    name: '',
-                    email: '',
-                    phone: '',
-                    address: '',
-                    inn: '',
-                    ogrn: '',
-                    website: '',
-                    about: '',
-                    avatar: '',
-                    id: '',
                 },
                 message: {
                     message: '',
@@ -416,13 +391,6 @@
                     .catch(e => {
                         this.errors.push(e)
                     });
-                axios.post(`/api/profile/` + this.currentUser)
-                    .then(response => {
-                        this.currentUserData = response.data;
-                    })
-                    .catch(e => {
-                        //this.errors.push(e)
-                    });
 
                 window.scrollTo(0, 0);
 
@@ -436,12 +404,7 @@
                 }
             },
             getDirections: function () {
-
-
-
-                let saddr = '?saddr=' + this.currentUserData.address;
-                let daddar = '&daddr=' + this.user.address;
-                window.open('http://maps.google.com/maps' + saddr + daddar, '_blank');
+                window.open('/redirect/maps/'+this.user.id, '_blank');
             },
             newThread: function () {
                 this.status.submit = true;

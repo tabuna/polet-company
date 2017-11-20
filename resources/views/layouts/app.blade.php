@@ -82,13 +82,16 @@
 
                     <ul class="nav navbar-nav">
                         <li>
-                            <router-link :to="{ name: 'companies'}">Компании</router-link>
+                            <router-link :to="{ name: 'needs'}">Спрос</router-link>
                         </li>
                         <li>
-                            <router-link :to="{ name: 'recommended'}">Рекомендации</router-link>
+                            <router-link :to="{ name: 'recommended'}">Предложения</router-link>
                         </li>
                         <li>
                             <router-link :to="{ name: 'tender'}">Тендеры</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'companies'}">Компании</router-link>
                         </li>
                         <li>
                             <router-link :to="{ name: 'demand'}">Спрос и предложение</router-link>

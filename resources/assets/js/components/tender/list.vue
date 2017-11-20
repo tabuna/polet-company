@@ -218,9 +218,7 @@
 
                 this.query.tags = textAllTags.join(',');
                 this.load()
-            }
-        },
-        watch: {
+            },
             '$route.query'(newId, oldId) {
                 this.load();
             },

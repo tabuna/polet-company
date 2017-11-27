@@ -16,6 +16,8 @@ class CreateSearchCompanyFields extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->text('search_tags')->nullable();
         });
+        DB::statement('ALTER TABLE users ADD FULLTEXT search(search_tags)');
+
     }
 
     /**

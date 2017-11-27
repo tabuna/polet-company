@@ -90,6 +90,8 @@ $this->group(['middleware' => 'auth', 'prefix' => 'tender', 'namespace' => 'Tend
 $this->post('/companies', 'Profile\ProfileController@companies')->name('companies');
 $this->post('/recommended','Profile\ProfileController@recommended')->name('recommended');
 $this->post('/need','Profile\ProfileController@need')->name('needs');
+$this->post('/offers','Profile\ProfileController@offers')->name('offers');
+
 $this->post('/demand','Profile\ProfileController@supplyAndDemand')->name('supplyAndDemand');
 
 /*

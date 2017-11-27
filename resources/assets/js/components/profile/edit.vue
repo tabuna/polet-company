@@ -328,56 +328,6 @@
                     </div>
                 </div>
 
-               <!--
-                <div class="line line-dashed b-b line-lg"></div>
-                <div class="form-group" v-bind:class="{ 'has-error' : errors.tags_demand }">
-                    <label class="col-sm-3 control-label">Теги спроса</label>
-                    <div class="col-sm-9">
-
-                        <div>
-                            <multiselect v-model="selectedtags_demand" id="ajax2" label="name"
-                                         track-by="slug"
-                                         placeholder="Введите ключевые слова"
-                                         :options="allTags"
-                                         :multiple="true"
-                                         :searchable="true"
-                                         :loading="isLoadingDemand"
-                                         :internal-search="false"
-                                         :clear-on-select="false"
-                                         :close-on-select="false"
-                                         :options-limit="10"
-                                         :limit="10"
-                                         :limit-text="limitText"
-                                         @search-change="asyncFindDemand"
-                                         :taggable="true"
-                                         @tag="addTag"
-                                         :selectLabel="''"
-                                         :selectedLabel="''"
-                                         :deselectLabel ="''"
-                                         :tagPlaceholder="'Нажмите enter, чтобы создать тег'"
-
-                            >
-                                <template slot="option" scope="props">
-                                    <div class="option__desc">
-                                        <span class="option__title">{{ props.option.name }}</span>
-                                        <span class="badge bg-info pull-right">{{ props.option.count }}</span>
-                                    </div>
-                                </template>
-
-
-                                <span slot="noResult">К сожалению, элементов не найдено.</span></multiselect>
-                        </div>
-
-                        <p class="help-block" v-if="errors.tags_demand">
-                            {{ errors.tags_demand }}
-                        </p>
-                        <p class="help-block" v-else="errors.name">
-                            Выберите от 1 до 10 ключевых слов.
-                        </p>
-                    </div>
-                </div>
-
-                -->
                 <div class="line line-dashed b-b line-lg"></div>
                 <div class="form-group m-t-md">
                     <div class="col-sm-3 col-sm-offset-3">
@@ -415,13 +365,11 @@
                 ],
                 selectedTags: [],
                 selectedSearchTags: [],
-                selectedtags_demand: [],
                 allTags: [],
                 selectedCity: [],
                 allCity: [],
                 isLoading: false,
                 isLoadingCity: false,
-                isLoadingDemand: false,
 
                 user: {
                     name: '',
@@ -438,8 +386,6 @@
                     newAvatar: '',
                     specialization: '',
                     search_tags : '',
-                    tags_demand: '',
-                    new_tags_demand: ''
                 },
                 status: {
                     load: false,
@@ -458,7 +404,6 @@
                     this.selectedTags = this.user.tags;
                     this.selectedCity = this.user.city;
                     this.selectedSearchTags = this.user.search_tags;
-                    this.selectedtags_demand = this.user.tags_demand;
                     this.status.load = true;
                     moduleLoad();
                 })
@@ -490,7 +435,6 @@
                     this.errors = {};
                     this.user.tags = this.selectedTags;
                     this.user.search_tags = this.selectedSearchTags;
-                   // this.user.tags_demand = this.selectedtags_demand;
                     this.user.city_id = this.selectedCity.id;
 
                     axios.put(`/api/profile/edit`, this.user)
@@ -534,32 +478,6 @@
                         this.status.submit = false;
                         this.allTags = response.data;
                         this.isLoading = false;
-
-                    })
-                    .catch(error => {
-                        this.errors = error.response.data;
-                        this.status.submit = false;
-
-                        swal({
-                            title: 'Ошибка!',
-                            type: 'error',
-                            text: 'Проверьте вводимые данные',
-                            timer: 2500,
-                            showConfirmButton: false,
-                        }).catch(swal.noop)
-
-                    });
-
-            },
-            asyncFindDemand (query) {
-                this.isLoadingDemand = true;
-
-                axios.get(`/api/profile/tags/` + query)
-                    .then(response => {
-                        //this.user = response.data;
-                        this.status.submit = false;
-                        this.allTags = response.data;
-                        this.isLoadingDemand = false;
 
                     })
                     .catch(error => {

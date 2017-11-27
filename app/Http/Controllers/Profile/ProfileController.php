@@ -39,25 +39,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-
         $user = User::where('id', Auth::id())->with(['tags', 'city'])->first();
-        if($user->tags_demand){
-            $tags_demand = [];
-            $tags_demand = explode ( ",", $user->tags_demand);
-            $tags_demand_arrs=[];
-            foreach ($tags_demand as $tag) {
-                if ($tag!="") {
-                    $tags_demand_arrs[] = User::allTags()->where('slug', $tag)->first();
-
-                }
-            }
-            $user->tags_demand = null;
-            $user->tags_demand =$tags_demand_arrs;
-
-        }
-
-
-
         return response()->json($user);
     }
 
@@ -110,20 +92,6 @@ class ProfileController extends Controller
                 $user->occupancy++;
             }
         }
-        if($user->tags_demand){
-            $tags_demand = [];
-            $tags_demand = explode ( ",", $user->tags_demand);
-            $tags_demand_arrs=[];
-            foreach ($tags_demand as $tag) {
-                if ($tag!="") {
-                    $tags_demand_arrs[] = User::allTags()->where('slug', $tag)->first();
-
-                }
-            }
-            $user->tags_demand = null;
-            $user->tags_demand =$tags_demand_arrs;
-
-        }
 
         return response()->json($user);
     }
@@ -165,23 +133,6 @@ class ProfileController extends Controller
             }
             $user->setTags($tags);
         }
-
-        if($account->has('tags_demand')){
-            $tags_demand = "";
-            foreach ($account->get('tags_demand') as $key=>$item) {
-                if($key>0){
-                    $tags_demand = ','.$tags_demand;
-                }
-                $tags_demand.=$item['slug'];
-
-
-            }
-            $account['tags_demand'] = $tags_demand;
-
-
-
-        }
-
 
         $user->fill($account->all())->save();
 
@@ -313,57 +264,6 @@ class ProfileController extends Controller
         return response()->json($search->paginate());
     }
 
-
-    /**
-     * Спрос и предложеение
-     *
-     * @param Request $request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-
-    public function supplyAndDemand(Request $request){
-        $user = Auth::user();
-
-
-        $demand = User::select('id','name','avatar','specialization','options')->withTag($user->tags_demand)
-            ->where('id', '!=',$user->id);
-        if ($request->get('city')) {
-            $demand = $demand->where('city_id', $request->get('city'));
-        }
-        $demand = $demand->paginate();
-
-
-
-
-        $tags = $user->tags()->pluck('slug');
-        //var_dump(!empty($tags));
-        //die('sdfdsf');
-
-
-        $supply = [];
-        if(isset($tags[0])){
-            $supply =  User::select('id','name','avatar','specialization','options')->where('tags_demand', 'like', '%' . $tags[0] . '%');
-            for ($i  = 1; $i< count($tags); $i++ ){
-                $supply = $supply->orWhere('tags_demand', 'like', '%' . $tags[$i] . '%');
-            }
-            if ($request->get('city')) {
-                $supply = $supply->where('city_id', $request->get('city'));
-            }
-            $supply = $supply->where('id', '!=',$user->id)->paginate();
-        }
-
-
-
-        // $tags = City::where('name', 'like', '%' . $city . '%')->limit(10)->get();
-        return response()->json(['demand'=> $demand, 'supply' => $supply]);
-
-    }
-
-
-
-
-
     /**
      * @param Request $request
      *
@@ -383,8 +283,38 @@ class ProfileController extends Controller
         }
 
         return response()->json($companies->paginate());
-
     }
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function offers(Request $request){
+
+        $companies = User::select('id','name','avatar','specialization','options')
+            ->with('tags')
+            ->orderBy('created_at', 'DESC');
+
+
+        $tags = '';
+        foreach (Auth::user()->tags as $tag){
+            $tags .= $tag['slug'] . ' ';
+        }
+
+        $companies->whereRaw(
+            "MATCH(search_tags) AGAINST(? IN BOOLEAN MODE)",
+            array(trim($tags))
+        );
+
+
+        if ($request->get('city')) {
+            $companies->where('city_id', $request->get('city'));
+        }
+
+        return response()->json($companies->paginate());
+    }
+
 
 
     /**

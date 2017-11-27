@@ -120,21 +120,21 @@ if (document.getElementById('app') !== null) {
                 })
             },
             {
+                path: '/offer',
+                name: 'offer',
+                component: require('./components/profile/offer.vue'),
+                props: (route) => ({
+                    query: route.query.tags
+                })
+            },
+            {
                 path: '/recommended',
                 name: 'recommended',
                 component: require('./components/profile/recommended.vue'),
                 props: (route) => ({
                     query: route.query.tags
                 })
-            },
-            {
-                path: '/demand',
-                name: 'demand',
-                component: require('./components/profile/supplyAndDemand.vue'),
-                props: (route) => ({
-                    query: route.query.tags
-                })
-            },
+            }
         ]
     });
 

@@ -4,15 +4,23 @@
         <div class="wrapper-md">
 
             <div class="" v-show="status.load">
-
-                <!--
                 <div id="filters" class="b-b m-b-xl">
+                    <div class="row m-b-xs">
+                        <div class="col-md-12">
+
+                            <strong>Найдено {{offers.total}} компаний</strong>
+
+                            <button type="submit" id="button-filter" class="btn btn-default pull-right"><i
+                                    class="icon-equalizer"></i>
+                            </button>
+                        </div>
+                    </div>
                     <div class="row">
 
-                        <div class="col-xs-12">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label class="control-label">Город</label>
-                                <multiselect v-model="selectedCity" label="name"
+                                <multiselect v-model="selectedCity"  label="name"
                                              track-by="id"
                                              placeholder="Введите город"
                                              :options="allCity"
@@ -25,7 +33,7 @@
                                              :taggable="false"
                                              :selectLabel="''"
                                              :selectedLabel="''"
-                                             :deselectLabel="''"
+                                             :deselectLabel ="''"
 
                                 >
                                     <template slot="option" scope="props">
@@ -43,86 +51,41 @@
 
                 </div>
 
--->
-                <div class="">
-                    <div class="row m-b ">
-                        <div class="col-xs-6"><strong>Спрос: </strong></div>
-                        <div class="col-xs-6"><strong>Предложение: </strong></div>
 
-                    </div>
-                    <div class="m-b-lg" v-for="(users, index) in demand.data">
+                <div class="m-b-lg" v-for="user in offers.data">
+                    <div class="row m-b v-center">
+                        <div class="col-md-3">
+                                <router-link :to="{ name: 'profile', params: { id: user.id }}">
+                                <img v-bind:src="user.avatar" v-bind:alt="user.name" class="img-responsive thumbnail">
+                                </router-link>
+                        </div>
+                        <div class="col-md-9">
+                            <h3 class="m-t-xs">
+                                <router-link :to="{ name: 'profile', params: { id: user.id }}">
+                                    {{user.name}}
+                                </router-link>
+                            </h3>
 
-                        <div class="row">
-                            <div class="m-b v-center col-xs-6">
-                                <div class="col-md-3">
-                                    <router-link :to="{ name: 'profile', params: { id: users.id }}">
-                                        <img v-bind:src="users.avatar" v-bind:alt="users.name"
-                                             class="img-responsive thumbnail">
-                                    </router-link>
-                                </div>
-                                <div class="col-md-9">
-                                    <h4 class="m-t-xs">
-                                        <router-link :to="{ name: 'profile', params: { id: users.id }}">
-                                            {{users.name}}
-                                        </router-link>
-                                    </h4>
-
-                                    <div class="text-warning-dk">
-                                        <template v-for="n in [1,2,3,4,5]">
-                                            <i v-if="n > getRating(users)" class="fa fa-star-o"></i>
-                                            <i v-else class="fa fa-star"></i>
-                                        </template>
-                                    </div>
-
-                                    <p class="small">
-                                        {{users.specialization}}
-                                    </p>
-
-                                    <div class="tags">
-                                        <span title="Используется данный тег" class="label text-dark"
-                                              v-for="tag in users.tags">{{tag.name}}</span>
-                                    </div>
-
-                                </div>
+                            <div class="text-warning-dk">
+                                <template v-for="n in [1,2,3,4,5]">
+                                        <i v-if="n > getRating(user)" class="fa fa-star-o"></i>
+                                        <i v-else class="fa fa-star"></i>
+                                </template>
                             </div>
-                            <div class="m-b v-center col-xs-6" v-if="tmp =  supply.data[index]">
 
+                            <p class="small">
+                                {{user.specialization}}
+                            </p>
 
-                                <div class="col-md-3 " v-if="supply.data[index]">
-
-                                    <router-link :to="{ name: 'profile', params: { id: tmp.id }}">
-                                        <img v-bind:src="tmp.avatar"
-                                             v-bind:alt="tmp.name" class="img-responsive thumbnail">
-                                    </router-link>
-                                </div>
-                                <div class="col-md-9" v-if="tmp">
-                                    <h4 class="m-t-xs">
-                                        <router-link :to="{ name: 'profile', params: { id: tmp.id }}">
-                                            {{tmp.name}}
-                                        </router-link>
-                                    </h4>
-
-                                    <div class="text-warning-dk">
-                                        <template v-for="n in [1,2,3,4,5]">
-                                            <i v-if="n > getRating(tmp)" class="fa fa-star-o"></i>
-                                            <i v-else class="fa fa-star"></i>
-                                        </template>
-                                    </div>
-
-                                    <p class="small">
-                                        {{tmp.specialization}}
-                                    </p>
-
-
-                                </div>
+                            <div class="tags">
+                                <span title="Используется данный тег" class="label text-dark" v-for="tag in user.tags">{{tag.name}}</span>
                             </div>
+
                         </div>
                     </div>
                 </div>
 
-
-                <div v-infinite-scroll="loadNextPage" infinite-scroll-disabled="status.submit"
-                     infinite-scroll-distance="10" v-if="(demand.data.length !== 0) || (supply.data)">
+                <div v-infinite-scroll="loadNextPage" infinite-scroll-disabled="status.submit" infinite-scroll-distance="10">
                     <div class="m-b-lg" v-if="status.submit">
                         <div class="row m-b">
                             <div class="col-xs-12 text-center">
@@ -132,8 +95,7 @@
                     </div>
                 </div>
 
-
-                <div class="jumbotron text-center bg-white not-found" v-if="demand.data.length === 0">
+                <div class="jumbotron text-center bg-white not-found" v-if="offers.data.length === 0">
 
                     <p class="h3 m-b-xl inline b b-dark rounded wrapper-lg">
                         <i class="fa-3x w-1x icon-people"></i>
@@ -148,6 +110,7 @@
                 </div>
 
 
+
             </div>
 
         </div>
@@ -159,11 +122,10 @@
 <script>
     import Multiselect from 'vue-multiselect';
     export default {
-        components: {Multiselect},
+        components: { Multiselect },
         props: ['tags'],
         data: function () {
             return {
-                tmp:{},
                 selectedCity: [],
                 allCity: [],
                 selectedTags: [],
@@ -174,19 +136,7 @@
                     tags: null,
                     city: null,
                 },
-                demand: {
-                    current_page: 0,
-                    data: [],
-                    from: 0,
-                    last_page: [],
-                    next_page_url: null,
-                    path: null,
-                    per_page: null,
-                    prev_page_url: null,
-                    to: 0,
-                    total: 0,
-                },
-                supply: {
+                offers: {
                     current_page: 0,
                     data: [],
                     from: 0,
@@ -214,26 +164,25 @@
                 this.query.city = newId;
                 this.load()
             },
-            /*'selectedTags'(newId, oldId){
+            'selectedTags'(newId, oldId){
 
                 let textAllTags = [];
-                newId.forEach(function (item, i, arr) {
+                newId.forEach(function(item, i, arr) {
                     textAllTags.push(item.slug)
                 });
 
                 this.query.tags = textAllTags.join(',');
                 this.load()
-            }*/
+            }
         },
         methods: {
             load: function () {
                 $('#adb').show();
                 let id = meta_user;
 
-                axios.post(`/api/demand`, this.query)
+                axios.post(`/api/offers`,this.query)
                     .then(response => {
-                        this.demand = response.data.demand;
-                        this.supply = response.data.supply;
+                        this.offers = response.data;
                         this.status.load = true;
                     })
                     .catch(e => {
@@ -248,55 +197,24 @@
             },
             loadNextPage: function () {
 
-                if (this.demand.next_page_url !== null) {
+                if (this.offers.next_page_url !== null) {
                     this.status.submit = true;
 
-                    axios.post(this.demand.next_page_url, this.query)
+                    axios.post(this.offers.next_page_url,this.query)
                         .then(response => {
 
-                            let oldDataDemand = this.demand.data;
-                            oldDataDemand = oldDataDemand.concat(response.data.demand.data);
+                            let oldData = this.offers.data;
+                            oldData = oldData.concat(response.data.data);
 
-                            this.demand = response.data.demand;
-                            this.demand.data = oldDataDemand;
+                            this.offers = response.data;
+                            this.offers.data = oldData;
 
-                            if (this.supply.next_page_url !== null) {
-                                let oldDataSupply = this.supply.data;
-                                oldDataSupply = oldDataSupply.concat(response.data.supply.data);
-
-                                this.supply = response.data.supply;
-                                this.supply.data = oldDataSupply;
-                            }
                             this.status.submit = false;
-
-
                         })
                         .catch(e => {
                             this.errors.push(e)
                         });
-
-                }else{
-                    if (this.supply.next_page_url !== null) {
-                        this.status.submit = true;
-
-                        axios.post(this.supply.next_page_url, this.query)
-                            .then(response => {
-
-                                let oldDataSupply = this.supply.data;
-                                oldDataSupply = oldDataSupply.concat(response.data.supply.data);
-
-                                this.supply = response.data.supply;
-                                this.supply.data = oldDataSupply;
-
-                                this.status.submit = false;
-                            })
-                            .catch(e => {
-                                this.errors.push(e)
-                            });
-                    }
                 }
-
-
             },
             limitText (count) {
                 return `и ${count} ещё тегов`
@@ -353,9 +271,8 @@
                     });
 
             },
-            getRating: function (users) {
-                let user = users;
-                if (user.hasOwnProperty('options') && user.options !== null) {
+            getRating: function(user){
+                if(user.hasOwnProperty('options') && user.options !== null){
                     return user.options.rating;
                 }
                 return 0;

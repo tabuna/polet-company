@@ -8,9 +8,9 @@ use App\Http\Requests\TenderRequest;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Orchid\CMS\Core\Models\Attachment;
-use Orchid\CMS\Core\Models\Comment;
-use Orchid\CMS\Core\Models\Post;
+use Orchid\Platform\Core\Models\Attachment;
+use Orchid\Platform\Core\Models\Comment;
+use Orchid\Platform\Core\Models\Post;
 
 class TenderController extends Controller
 {

@@ -62,7 +62,7 @@
                         <div class="col-md-9">
                             <h3 class="m-t-xs">
                                 <router-link :to="{ name: 'profile', params: { id: user.id }}">
-                                    {{user.name}}
+                                       <span v-bind:class="{ 'text-info' : isLooked(user) }">{{user.name}}</span>
                                 </router-link>
                             </h3>
 
@@ -278,6 +278,9 @@
                 }
                 return 0;
             },
+            isLooked: function (user) {
+                return user.looked_user.length;
+            }
         }
     }
 </script>

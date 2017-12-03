@@ -2,13 +2,14 @@
 
 namespace App\Core\Models;
 
+use App\Core\Traits\Rateable;
+use App\Notifications\ResetPasswordNotification;
 use Cartalyst\Tags\TaggableTrait;
+use Cmgmyr\Messenger\Traits\Messagable;
 use Conner\Likeable\LikeableTrait;
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\ResetPasswordNotification;
+use Illuminate\Support\Facades\Auth;
 use Orchid\Platform\Core\Models\User as UserOrchid;
-use Cmgmyr\Messenger\Traits\Messagable;
-use App\Core\Traits\Rateable;
 
 class User extends UserOrchid
 {
@@ -40,14 +41,22 @@ class User extends UserOrchid
         'size_company',
         'city_id',
         'options',
-        'search_tags'
+        'search_tags',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $with = [
+        'tags',
+        'city',
     ];
 
     /**
      * @var array
      */
     protected $casts = [
-        'options' => 'array',
+        'options'     => 'array',
         'permissions' => 'array',
         'search_tags' => 'array',
     ];
@@ -79,7 +88,8 @@ class User extends UserOrchid
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function city(){
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
 
@@ -99,4 +109,14 @@ class User extends UserOrchid
         return $this->hasMany(Search::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lookedUser()
+    {
+        return $this->hasMany(Statistics::class, 'user_id')
+            ->select('user_id','guest_id')
+            ->orderByDesc('created_at')
+            ->where('guest_id', '=', Auth::id());
+    }
 }

@@ -84,7 +84,7 @@
                                 <span><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
                                 <span><i
                                         class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br></span>
-                                <span><i
+                                <span v-if="user.city !== undefined"><i
                                         class="icon-location-pin text-info m-r-xs"></i>| {{user.city.name}} <br></span>
                                 <span><i
                                         class="icon-people text-info m-r-xs"></i>| {{optionsSize[user.size_company]}} <br></span>

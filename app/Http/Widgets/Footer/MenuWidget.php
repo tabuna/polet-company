@@ -3,7 +3,7 @@
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
-use Orchid\CMS\Core\Models\Menu;
+use Orchid\Platform\Core\Models\Menu;
 use Orchid\Widget\Service\Widget;
 
 class MenuWidget extends Widget

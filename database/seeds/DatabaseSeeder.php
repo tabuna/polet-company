@@ -13,18 +13,22 @@ class DatabaseSeeder extends Seeder
     {
 
         $faker = Faker\Factory::create('ru_RU'); // create a French faker
+        $now = \Carbon\Carbon::now('utc')->toDateTimeString();
 
-        while (true){
+
+        $i = 0;
+        while ($i < 1000){
 
             try {
 
+                /*
                 $user = \App\Core\Models\User::inRandomOrder()->first();
                 $user->createReview([
                     'text' => $faker->realText(400),
                 ], \App\Core\Models\User::inRandomOrder()->first());
+*/
 
-                /*
-                $post = \Orchid\CMS\Core\Models\Post::create([
+                $post = \Orchid\Platform\Core\Models\Post::create([
                     'user_id' => \App\Core\Models\User::inRandomOrder()->first()->id,
                     'type' => 'tender',
                     'status' => 'publish',
@@ -64,7 +68,6 @@ class DatabaseSeeder extends Seeder
 
 
 
-                /*
                 $size = [
                     'myself',
                     'xsmall',
@@ -92,8 +95,9 @@ class DatabaseSeeder extends Seeder
                     'balance'        => rand(0, 10000),
                     'specialization' => $faker->realText(200),
                     'size_company'   => array_rand($size),
-                    'city_id'        => 1202,//rand(1, 2533),
+                    'city_id'        => rand(1, 2533),
                 ]);
+
 
                 $user->setTags([
                     $faker->title,
@@ -102,10 +106,12 @@ class DatabaseSeeder extends Seeder
                     $faker->title,
                 ]);
 
+
+
                 $user->save();
 
 
-               /*
+
                 \Cmgmyr\Messenger\Models\Thread::create([
                     'subject' => $faker->realText()
                 ]);
@@ -121,9 +127,12 @@ class DatabaseSeeder extends Seeder
                     'user_id'   => \App\Core\Models\User::inRandomOrder()->first()->id,
                     'body'      => $faker->realText(),
                 ]);
-               */
+
+                $i++;
             }catch (\Exception $exception){
 
+                echo  $exception->getMessage();
+                $i++;
             }
 
         }

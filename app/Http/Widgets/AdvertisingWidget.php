@@ -4,7 +4,7 @@ namespace DummyNamespace;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
-use Orchid\CMS\Core\Models\Post;
+use Orchid\Platform\Core\Models\Post;
 use Orchid\Widget\Service\Widget;
 
 class AdvertisingWidget extends Widget

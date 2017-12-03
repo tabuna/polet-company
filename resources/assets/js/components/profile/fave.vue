@@ -17,7 +17,7 @@
                         <div class="col-md-10">
                             <h3 class="m-t-xs">
                                 <router-link :to="{ name: 'profile', params: { id: fave.id }}">
-                                    {{fave.name}}
+                                      <span v-bind:class="{ 'text-info' : isLooked(fave) }">{{fave.name}}</span>
                                 </router-link>
                             </h3>
 
@@ -149,6 +149,12 @@
                 }
                 return 0;
             },
+            isLooked: function (user) {
+                if(user.looked_user === undefined){
+                    return false;
+                }
+                return user.looked_user.length;
+            }
         }
     }
 </script>

@@ -39,7 +39,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = User::where('id', Auth::id())->with(['tags', 'city'])->first();
+        $user = User::where('id', Auth::id())->first();
         return response()->json($user);
     }
 
@@ -65,7 +65,8 @@ class ProfileController extends Controller
         }
 
         //Похожие компании
-        $user->similars = User::select('id','name','avatar','specialization','options')->withTag($user->tags->implode('slug', ', '))
+        $user->similars = User::select('id','name','avatar','specialization','options')
+            ->withTag($user->tags->implode('slug', ', '))
             ->where('city_id', $user->city_id)
             ->where('id', '!=',$user->id)
             ->limit(5)
@@ -163,7 +164,7 @@ class ProfileController extends Controller
     public function companies(Request $request)
     {
 
-        $companies = User::select('id','name','avatar','specialization','options')->with('tags')->orderBy('created_at', 'DESC');
+        $companies = User::select('id','name','avatar','specialization','options')->orderBy('created_at', 'DESC');
 
         if ($request->get('tags')) {
             $companies->whereTag($request->get('tags'));
@@ -196,6 +197,8 @@ class ProfileController extends Controller
 
         $companies = $companies->paginate();
 
+        // Смотрел ли пользователь компанию
+        $companies->load('lookedUser');
         return response()->json($companies);
     }
 
@@ -253,7 +256,7 @@ class ProfileController extends Controller
         $search = Search::whereIn('tags',$tags)
             ->select('user_id')
             ->where('user_id','!=',$user->id)
-            ->with('user.tags')
+            ->with('user.tags','user.lookedUser')
             ->orderBy('updated_at', 'DESC')
             ->whereBetween('updated_at', [Carbon::now()->subDays(60), Carbon::now()]);
 
@@ -261,7 +264,8 @@ class ProfileController extends Controller
             $search = $search->where('city_id', $request->get('city'));
         }
 
-        return response()->json($search->paginate());
+        $search = $search->paginate();
+        return response()->json($search);
     }
 
     /**
@@ -274,7 +278,7 @@ class ProfileController extends Controller
         $tags = collect($userTags)->implode('slug', ', ');
 
         $companies = User::select('id','name','avatar','specialization','options')
-            ->with('tags')
+            ->with('lookedUser')
             ->orderBy('created_at', 'DESC')
             ->withTag($tags ?? []);
 
@@ -282,7 +286,9 @@ class ProfileController extends Controller
             $companies->where('city_id', $request->get('city'));
         }
 
-        return response()->json($companies->paginate());
+        $companies = $companies->paginate();
+
+        return response()->json($companies);
     }
 
     /**
@@ -293,9 +299,8 @@ class ProfileController extends Controller
     public function offers(Request $request){
 
         $companies = User::select('id','name','avatar','specialization','options')
-            ->with('tags')
-            ->orderBy('created_at', 'DESC');
-
+            ->orderBy('created_at', 'DESC')
+            ->with('lookedUser');
 
         $tags = '';
         foreach (Auth::user()->tags as $tag){
@@ -312,7 +317,9 @@ class ProfileController extends Controller
             $companies->where('city_id', $request->get('city'));
         }
 
-        return response()->json($companies->paginate());
+        $companies = $companies->paginate();
+
+        return response()->json($companies);
     }
 
 

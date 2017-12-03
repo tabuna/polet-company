@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Tender;
 
-use Orchid\CMS\Core\Models\Post;
+use Orchid\Platform\Core\Models\Post;
 use App\Http\Controllers\Controller;
 
 class TagController extends Controller

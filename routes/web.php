@@ -34,7 +34,7 @@ $this->group(['namespace' => 'Website', 'middleware' => 'guest'], function ($rou
 
 
 $this->group(['namespace' => 'Other'], function ($router) {
-    $router->get('/redirect/maps', 'RedirectController@directions')->name('redirect.directions');
+    $router->get('/redirect/maps/{user}', 'RedirectController@directions')->name('redirect.directions');
 });
 
 /*

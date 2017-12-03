@@ -15,7 +15,7 @@ class RatingController extends Controller
      * @param User    $user
      * @param Request $request
      *
-     * @return float|int
+     * @return array
      */
     public function store(User $user, Request $request)
     {

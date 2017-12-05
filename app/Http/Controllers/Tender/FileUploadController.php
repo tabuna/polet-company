@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Orchid\Platform\Attachments\File;
 use Orchid\Platform\Core\Models\Attachment;
 use App\Http\Controllers\Controller;
 
@@ -37,7 +38,9 @@ class FileUploadController extends Controller
      */
     public function upload(Request $request)
     {
-       $file = $this->saveFile($request->file('file'));
+       //$file = $this->saveFile($request->file('file'));
+
+       $file = (new File($request->file('file')))->load();
 
         return response()->json($file);
     }

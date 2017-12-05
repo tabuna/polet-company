@@ -24,7 +24,17 @@
                         <div class="m-l-xxl">
                             <div class="pos-rlt wrapper b b-light r r-2x">
                                 <span class="arrow left pull-up"></span>
-                                <p class="m-b-none">{{message.body}}</p>
+
+                                <p class="m-b-none">
+                                    <a :href="message.type" v-if="message.type !== 'message'"  target="_blank">
+                                        <i class="icon-cloud-download m-r-xs"></i> {{message.body}}
+                                    </a>
+
+                                    <span v-if="message.type === 'message'">
+                                         {{message.body}}
+                                    </span>
+                                </p>
+
                             </div>
                             <small class="text-muted"><i class="fa fa-ok text-success"></i>
                                 {{message.created_at | moment("subtract", mytime+" minutes", "from", true) }} назад
@@ -38,7 +48,15 @@
                         <div class="m-r-xxl">
                             <div class="pos-rlt wrapper b b-light r r-2x">
                                 <span class="arrow right pull-up"></span>
-                                <p class="m-b-none">{{message.body}}</p>
+                                <p class="m-b-none">
+                                           <a :href="message.type" v-if="message.type !== 'message'" target="_blank">
+                                        <i class="icon-cloud-download m-r-xs"></i> {{message.body}}
+                                    </a>
+
+                                    <span v-if="message.type === 'message'">
+                                         {{message.body}}
+                                    </span>
+                                </p>
                             </div>
                             <small class="text-muted"> {{message.created_at | moment("subtract", mytime+" minutes","from",  "now") }} </small>
                         </div>
@@ -50,13 +68,20 @@
                 <!-- chat form -->
                 <div>
                     <router-link :to="{ name: 'profile', params: { id: currentUser }}" class="pull-left thumb-xs avatar">
-                        <img :src="getAuthor(currentUser).avatar" class="img-circle" :alt="getAuthor(currentUser).name">
+                        <img :src="getAuthor(currentUser).avatar" class="img-circle" :alt="getAuthor(currentUser).name" style="min-height: 25px;">
                     </router-link>
                     <form class="m-b-none m-l-xl ng-pristine ng-valid" v-on:submit.prevent="sendMessage">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Написать сообщение"
                                    v-model="newMessage" v-on:keyup.enter="sendMessage">
                             <span class="input-group-btn">
+
+
+
+                  <button class="btn btn-default" type="button"  onclick="document.getElementById('upload').click()">
+                      <i class="icon-folder-alt" aria-hidden="true"></i>
+                      <input type="file" @change="uploadFile" id="upload" style="display:none">
+                  </button>
                   <button class="btn btn-default" type="button" v-on:click="sendMessage">Отправить</button>
                 </span>
                         </div>
@@ -77,6 +102,7 @@
                 page : 1,
                 currentUser: 0,
                 newMessage: '',
+                fileUploadFormData: new FormData(),
                 threads: {
                     messages: {
                         current_page: 0,
@@ -200,12 +226,35 @@
                         });
                     const container = document.querySelector('.messages');
                     Ps.update(container);
-                    //container.scrollIntoView({block: "end"});
-                   // $('.messages').scrollTop($('.messages').height());
                     container.scrollTop =Math.ceil(container.scrollHeight - container.clientHeight);
                 }
 
-            }
+            },
+            uploadFile: function (e) {
+                e.preventDefault();
+
+                if(e.target.files[0] === undefined){
+                    return;
+                }
+
+                var formData = new FormData();
+                formData.append('file', e.target.files[0]);
+
+                axios.post('/api/messages/upload/' + this.$route.params.id, formData)
+                    .then(response => {
+                        response.data.messages.data.reverse();
+                        this.threads = response.data;
+                        this.newMessage= '';
+                    })
+                    .catch(e => {
+                        this.errors.push(e)
+                    });
+
+                const container = document.querySelector('.messages');
+                Ps.update(container);
+                container.scrollTop =Math.ceil(container.scrollHeight - container.clientHeight);
+
+            } 
         }
     }
 </script>

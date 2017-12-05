@@ -9,6 +9,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Orchid\Platform\Core\Models\Attachment;
+use Orchid\Platform\Core\Models\Attachmentable;
 use Orchid\Platform\Core\Models\Comment;
 use Orchid\Platform\Core\Models\Post;
 
@@ -85,9 +86,12 @@ class TenderController extends Controller
             $files = $request->input('files');
             foreach ($files as $file) {
                 if (!is_null($file) || !empty($file)) {
-                    $uploadFile = Attachment::find($file['id']);
-                    $uploadFile->post_id = $post->id;
-                    $uploadFile->save();
+
+                    $attach = new Attachmentable();
+                    $attach->attachmentable_type = Post::class;
+                    $attach->attachmentable_id = $post->id;
+                    $attach->attachment_id = $file['id'];
+                    $attach->save();
                 }
             }
         }

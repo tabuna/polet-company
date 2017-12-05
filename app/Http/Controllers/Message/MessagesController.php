@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Orchid\Platform\Attachments\File;
 
 class MessagesController extends Controller
 {
@@ -22,15 +23,6 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        // All threads, ignore deleted/archived participants
-        /*$threads = Thread::getAllLatest()->with([
-            'users'    => function ($query) {
-                $query->select('avatar', 'name', 'agent_name');
-            },
-            'messages' => function ($query) {
-                $query->latest()->first();
-            },
-        ])->latest('updated_at')->paginate();*/
 
         $threads = Thread::forUser(Auth::id())->with([
             'users'    => function ($query) {
@@ -122,8 +114,6 @@ class MessagesController extends Controller
         }
 
         return response()->json($thread);
-
-
     }
 
     /**
@@ -167,4 +157,48 @@ class MessagesController extends Controller
 
         return $this->show($id);
     }
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function upload($id, Request $request){
+        $file = (new File($request->file('file')))->load();
+
+        try {
+            $thread = Thread::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            Session::flash('error_message', 'The thread with ID: ' . $id . ' was not found.');
+
+            return redirect('messages');
+        }
+
+        $thread->activateAllParticipants();
+
+        // Message
+        $message = Message::create(
+            [
+                'thread_id' => $thread->id,
+                'user_id'   => Auth::id(),
+                'body'      => $file->original_name,
+            ]
+        );
+        $message->type = $file->url();
+        $message->save();
+
+        // Add replier as a participant
+        $participant = Participant::firstOrCreate(
+            [
+                'thread_id' => $thread->id,
+                'user_id'   => Auth::user()->id,
+            ]
+        );
+        $participant->last_read = new Carbon;
+        $participant->save();
+
+
+        return $this->show($id);
+    }
+
 }

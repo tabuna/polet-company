@@ -27,6 +27,9 @@ $this->group(['prefix' => 'messages','namespace' => 'Message'], function ($route
     $router->post('/thread', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
     $router->post('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
     $router->put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+
+
+    $router->post('/upload/{id}', 'MessagesController@upload')->name('message.upload');
 });
 
 
@@ -103,6 +106,4 @@ $this->post('/demand','Profile\ProfileController@supplyAndDemand')->name('supply
 $this->group(['middleware' => 'auth', 'prefix' => 'other', 'namespace' => 'Other'], function ($router) {
     $router->post('/city/{city?}', 'CityController@show')->name('city');
 });
-
-
 

@@ -37,6 +37,7 @@ $this->group(['namespace' => 'Other'], function ($router) {
     $router->get('/redirect/maps/{user}', 'RedirectController@directions')->name('redirect.directions');
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | Vue App
@@ -49,4 +50,3 @@ $this->group(['middleware' => 'auth'], function ($router) {
         ->where('vue_capture','^(?!api).*$')
         ->name('app');
 });
-

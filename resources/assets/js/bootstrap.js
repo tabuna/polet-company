@@ -24,7 +24,6 @@ try {
 
 window.axios = require('axios');
 
-window.axios.defaults.baseURL = 'https://bsale.orchid.software';
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

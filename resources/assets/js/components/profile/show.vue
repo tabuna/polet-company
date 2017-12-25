@@ -90,7 +90,7 @@
                                         class="icon-people text-info m-r-xs"></i>| {{optionsSize[user.size_company]}} <br></span>
                                 <a v-bind:href="user.website" taget="_blank" class="text-ellipsis">
                                     <i
-                                        class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a> <br>
+                                            class="icon-globe text-info m-r-xs"></i>| {{user.website}}</a> <br>
 
                             </p>
                         </div>
@@ -102,11 +102,24 @@
 
                     <p>{{user.specialization}}</p>
 
-                    <div class="row tags text-md padder-v text-center b-b b-t" v-if="user.tags !== undefined && user.tags.length > 0">
-                        <span v-for="tag in user.tags" class="label text-dark">
-                            {{tag.name}}
-                        </span>
+                    <div v-if="user.tags !== undefined && user.tags.length > 0">
+                        <div class="row tags text-md wrapper b-t">
+                            <span class="text-xs">Спрос:</span>
+                            <span v-for="tag in user.tags" class="label text-dark">
+                                {{tag.name}}
+                            </span>
+                        </div>
                     </div>
+
+                    <div v-if="user.search_tags !== undefined && user.search_tags.length > 0">
+                        <div class="row tags text-md wrapper b-b b-t">
+                            <span class="text-xs">Предложение:</span>
+                            <span v-for="tag in user.search_tags" class="label text-dark">
+                                {{tag.name}}
+                            </span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -172,7 +185,8 @@
                 </div>
             </div>
             <div class="text-center b-b padder-v m-b">
-                <router-link v-if="(user.reviews.length > 0) || (user.id != currentUser) " :to="{ name: 'profile.reviews', params: { id: user.id }}">
+                <router-link v-if="(user.reviews.length > 0) || (user.id != currentUser) "
+                             :to="{ name: 'profile.reviews', params: { id: user.id }}">
                     <button class="btn btn-link" v-if="user.reviews.length > 0 ">
                         Посмотреть все
                     </button>
@@ -324,6 +338,7 @@
                     fave: false,
                     similars: [],
                     reviews: [],
+                    search_tags: [],
                 },
                 message: {
                     message: '',
@@ -334,7 +349,7 @@
                     submit: false,
                     self: false,
                 },
-                mytime:'',
+                mytime: '',
             }
         },
         mounted() {
@@ -380,7 +395,7 @@
                 $('#adb').show();
 
                 this.mytime = new Date().getTimezoneOffset();//Возвращает разницу между местным и UTC-временем, в минутах.
-                this.currentUser= window.meta_user;
+                this.currentUser = window.meta_user;
 
                 axios.post(`/api/profile/` + id)
                     .then(response => {
@@ -404,7 +419,7 @@
                 }
             },
             getDirections: function () {
-                window.open('/redirect/maps/'+this.user.id, '_blank');
+                window.open('/redirect/maps/' + this.user.id, '_blank');
             },
             newThread: function () {
                 this.status.submit = true;

@@ -252,13 +252,15 @@ class ProfileController extends Controller
         $user = Auth::user();
         $tags = $user->tags()->pluck('slug');
 
-
         $search = Search::whereIn('tags',$tags)
             ->select('user_id')
-            ->where('user_id','!=',$user->id)
             ->with('user.tags','user.lookedUser')
-            ->orderBy('updated_at', 'DESC')
-            ->whereBetween('updated_at', [Carbon::now()->subDays(60), Carbon::now()]);
+            ->where('user_id','!=',$user->id)
+            ->whereBetween('updated_at', [
+                Carbon::now()->subDays(60)->toDateTimeString(),
+                Carbon::now()->toDateTimeString()
+            ])
+            ->groupBy('user_id');
 
         if ($request->get('city')) {
             $search = $search->where('city_id', $request->get('city'));

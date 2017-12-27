@@ -77,9 +77,26 @@
                                 {{users.user.specialization}}
                             </p>
 
-                            <div class="tags">
-                                <span title="Используется данный тег" class="label text-dark" v-for="tag in users.user.tags">{{tag.name}}</span>
+
+
+                            <div v-if="users.user.tags !== undefined && users.user.tags !== null && users.user.tags.length > 0">
+                                <div class="row tags text-md wrapper b-t">
+                                    <span class="text-xs">Спрос:</span>
+                                    <span v-for="tag in users.user.tags" class="label text-dark">
+                                        {{tag.name}}
+                                    </span>
+                                </div>
                             </div>
+
+                            <div v-if="users.user.search_tags !== undefined && users.user.search_tags !== null && users.user.search_tags.length > 0">
+                                <div class="row tags text-md wrapper b-b b-t">
+                                    <span class="text-xs">Предложение:</span>
+                                    <span v-for="tag in users.user.search_tags" class="label text-dark">
+                                        {{tag.name}}
+                                    </span>
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>

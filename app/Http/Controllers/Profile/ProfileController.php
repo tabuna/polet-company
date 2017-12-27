@@ -164,7 +164,7 @@ class ProfileController extends Controller
     public function companies(Request $request)
     {
 
-        $companies = User::select('id','name','avatar','specialization','options')->orderBy('created_at', 'DESC');
+        $companies = User::select('id','name','avatar','specialization','options','search_tags')->orderBy('created_at', 'DESC');
 
         if ($request->get('tags')) {
             $companies->whereTag($request->get('tags'));
@@ -279,7 +279,7 @@ class ProfileController extends Controller
         $userTags = Auth::user()->search_tags ?? [];
         $tags = collect($userTags)->implode('slug', ', ');
 
-        $companies = User::select('id','name','avatar','specialization','options')
+        $companies = User::select('id','name','avatar','specialization','options','search_tags')
             ->with('lookedUser')
             ->orderBy('created_at', 'DESC')
             ->withTag($tags ?? []);
@@ -300,7 +300,7 @@ class ProfileController extends Controller
      */
     public function offers(Request $request){
 
-        $companies = User::select('id','name','avatar','specialization','options')
+        $companies = User::select('id','name','avatar','specialization','options','search_tags')
             ->orderBy('created_at', 'DESC')
             ->with('lookedUser');
 

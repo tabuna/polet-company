@@ -84,7 +84,7 @@
                                 <span><i class="icon-phone text-info m-r-xs"></i>| {{user.phone}} <br></span>
                                 <span><i
                                         class="icon-envelope text-info m-r-xs"></i>| {{user.email}} <br></span>
-                                <span v-if="user.city !== undefined"><i
+                                <span v-if="user.city !== undefined && user.city !== null"><i
                                         class="icon-location-pin text-info m-r-xs"></i>| {{user.city.name}} <br></span>
                                 <span><i
                                         class="icon-people text-info m-r-xs"></i>| {{optionsSize[user.size_company]}} <br></span>
@@ -102,7 +102,7 @@
 
                     <p>{{user.specialization}}</p>
 
-                    <div v-if="user.tags !== undefined && user.tags.length > 0">
+                    <div v-if="user.tags !== undefined && user.tags !== null && user.tags.length > 0">
                         <div class="row tags text-md wrapper b-t">
                             <span class="text-xs">Спрос:</span>
                             <span v-for="tag in user.tags" class="label text-dark">
@@ -111,7 +111,7 @@
                         </div>
                     </div>
 
-                    <div v-if="user.search_tags !== undefined && user.search_tags.length > 0">
+                    <div v-if="user.search_tags !== undefined && user.search_tags !== null && user.search_tags.length > 0">
                         <div class="row tags text-md wrapper b-b b-t">
                             <span class="text-xs">Предложение:</span>
                             <span v-for="tag in user.search_tags" class="label text-dark">

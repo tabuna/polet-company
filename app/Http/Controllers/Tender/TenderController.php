@@ -37,7 +37,7 @@ class TenderController extends Controller
             $elements->where('content->ru->city->id', $request->get('city'));
         }
 
-        $elements = $elements->simplePaginate(10);
+        $elements = $elements->paginate(10);
 
         return response()->json($elements);
     }

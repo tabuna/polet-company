@@ -32,10 +32,22 @@
                                 {{fave.specialization}}
                             </p>
 
-                            <div class="tags">
-                                <span title="Используется данный тег" class="label text-dark" v-for="tag in fave.tags">
-                                    {{tag.name}}
-                                </span>
+                            <div v-if="fave.tags !== undefined && fave.tags !== null && fave.tags.length > 0">
+                                <div class="row tags text-md wrapper b-t">
+                                    <span class="text-xs">Спрос:</span>
+                                    <span v-for="tag in fave.tags" class="label text-dark">
+                                        {{tag.name}}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div v-if="fave.search_tags !== undefined && fave.search_tags !== null && fave.search_tags.length > 0">
+                                <div class="row tags text-md wrapper b-b b-t">
+                                    <span class="text-xs">Предложение:</span>
+                                    <span v-for="tag in fave.search_tags" class="label text-dark">
+                                        {{tag.name}}
+                                    </span>
+                                </div>
                             </div>
 
                         </div>

@@ -24,17 +24,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="auth" content="{{ Auth::id() }}">
 
-
     <link rel="shortcut icon" type="image/png" href="/img/logo.png">
-
-    <!--
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#58666e">
-    <meta name="theme-color" content="#f1f3f5">
-    -->
 
     @stack('stylesheet')
 </head>
@@ -52,16 +42,18 @@
                     <a href="{{ url('/') }}" class="navbar-brand m-r-lg">
                         <img src="/img/logo.png" class="img-responsive m-r-xs">
                         <span class="h4 text-black">
-                    BSale
-                </span>
+                            <span>Uniten</span>
+                            <small>Единая система тендеров</small>
+                        </span>
                     </a>
                 @else
 
                     <router-link :to="{ name: 'profile', params: { id: user.id }}" class="navbar-brand m-r-lg">
                         <img src="/img/logo.png" class="img-responsive m-r-xs">
                         <span class="h4 text-black">
-                    BSale
-                </span>
+                            <span>Uniten</span>
+                            <small>Единая система тендеров</small>
+                        </span>
                     </router-link>
 
                 @endif
@@ -171,7 +163,7 @@
             <div class="container">
                 <div class="row m-t-xl m-b-xl">
                     <div class="col-md-6 hidden-xs">
-                        <span class="h4 text-black">BSale</span>
+                        <span class="h4 text-black">uniten</span>
                         <div class="m-t text-xs">
                             <ul class="list-inline">
                                 <li><a href="#">О нас</a></li>

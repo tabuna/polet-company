@@ -15,12 +15,10 @@
                                 <div class="col-xs-12">
                                     <div class="page-hero-content">
                                         <h1 class="text-white">
-                                            <span class="text-info">Бизнес сеть.</span> Найди <span class="main-typed-element"></span> <br>
-                                            о котором всегда хотел.
+                                            <span class="text-info">Бизнес сеть.</span> для организации <br> закупок и тендеров
                                         </h1>
                                         <p class="text-white">
-                                            <span class="text-info">405</span> новых предприятий за последние
-                                            <span class="text-info">7</span> дней. Ищи сейчас.
+                                            Получайте выгодные предложения без посредников от <br> поставщиков и исполнителей.
                                         </p>
                                     </div>
                                 </div>
@@ -40,13 +38,9 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
                         <div class="padder-v m-t-md">
-                            <h4 class="m-b-n ">Запустите свой бизнес по новому</h4>
                             <h1 class="font-thin m-t-n l-h-1x padder-v text-black">
-                                Наши преимущества станут вашими
+                                Единая бизнес система — это просто:
                             </h1>
-                            <p class="text-muted wow fadeInDown" data-wow-offset="200" data-wow-delay="600">Наша давняя мечта была обойти обычную приборную панель администратора
-                                <br> структуру, и двигаться вперед с простой рамкой
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -66,23 +60,22 @@
                         <p class="h1 font-thin text-black">
                             <span class="text-info">01</span>
                             <br>
-                            Интуитивная система<br>
-                            поиска
+                            Удобный поиск
                         </p>
 
 
                         <ul class="list-group no-bg no-borders pull-in m-t-lg basic-list-blue">
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                «Умные» теги
+                                Быстрая сортировка по категориям
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Простая сортировка стоимости товаров и услуг
+                                Рекомендации системы
                             </li>
                             <li class="list-group-item fadeInUp wow"  data-wow-offset="200"  data-wow-delay="1100">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Обнаружение ближайших контрагентов, соответсвующих вашим запросам
+                                «Умные» тэги
                             </li>
                         </ul>
 
@@ -102,8 +95,7 @@
                         <p class="h1 font-thin text-black">
                             <span class="text-info">02</span>
                             <br>
-                            Доступ ко всей<br>
-                            необходимой информации
+                            Актуальная информация
                         </p>
 
 
@@ -118,22 +110,17 @@
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="1100">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Точные цены на товары и услуги
+                                Работа без посредников
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="1300">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Система мгновенных сообщений с расширенным
-                                функционалом
+                                Система мгновенных сообщений
+                            </li>
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="1400">
+                                <i class="icon-check pull-left text-lg m-r text-info"></i>
+                                Максимально важная информация о товарах и услугах, закупках и тендерах индивидуально для каждого участника
                             </li>
                         </ul>
-
-
-                        <p class="text-center m-t-md fadeInUp wow" data-wow-offset="200" data-wow-delay="1500">
-                            <a href="#" class="btn btn-info btn-rounded">
-                                Посмотерть тендеры
-                            </a>
-                        </p>
-
 
                     </div>
                 </div>
@@ -144,23 +131,26 @@
                         <p class="h1 font-thin text-black">
                             <span class="text-info">03</span>
                             <br>
-                            Гибкая и простая<br>
-                            система оплаты
+                            Бесплатное пользование
                         </p>
 
 
                         <ul class="list-group no-bg no-borders pull-in m-t-lg">
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Мониторинг произведённых транзакций
+                                Бесплатная регистрация до 31.12.2018
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Возможность оплаты через сервис «Яндекс. Касса»
+                                При регистрации до 31.12.2018 50% скидка на следующие 6 месяцев
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="1100">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                1000 руб/месяц
+                                Возможность оплаты через онлайн-сервисы
+                            </li>
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="1200">
+                                <i class="icon-check pull-left text-lg m-r text-info"></i>
+                                Мониторинг произведённых транзакций
                             </li>
                         </ul>
 
@@ -172,6 +162,146 @@
                 </div>
 
 
+                <div class="row m-t-xxl m-b-xxl">
+                    <div class="col-md-8 col-md-offset-2 text-center">
+                        <div class="padder-v m-t-md">
+                            <h1 class="font-thin m-t-n l-h-1x padder-v text-black">
+                                Доступный инструмент<br>
+                                с максимальным эффектом
+                            </h1>
+                            <p class="text-muted wow fadeInDown" data-wow-offset="200" data-wow-delay="600">
+                                Оформив подписку, вы получаете гарантированный источник<br>
+                                партнеров для сотрудничества
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row no-gutter  m-t-xxl m-b-xxl">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="panel b-a">
+                            <div class="panel-heading wrapper-xs bg-default no-border">
+                            </div>
+                            <div class="wrapper text-center b-b b-light">
+                                <h4 class="text-u-c m-b-none">Подписка
+                                                              на 1 месяц
+                                </h4>
+                                <h2 class="m-t-none">
+                                    <sup class="pos-rlt" style="top:-22px">&#8381;</sup>
+                                    <span class="text-2x text-lt">1 000</span>
+                                    <span class="text-xs">/ месяц</span>
+                                </h2>
+                            </div>
+                            <ul class="list-group no-borders m-t-sm">
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Быстрая сортировка по категориям
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Рекомендации системы
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Подробная информация о контрагентах
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Мониторинг произведённых транзакций
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-close text-info m-r-xs"></i> <span class="text-l-t">Долгий поиск контрагентов</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-close text-info m-r-xs"></i> <span class="text-l-t">Неактуальная информация</span>
+                                </li>
+                            </ul>
+                            <div class="panel-footer text-center">
+                                <a href="#" class="btn btn-default m">Оформить подписку</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="panel b-a m-t-n-md m-b-xl">
+                            <div class="panel-heading wrapper-xs bg-warning dker no-border">
+
+                            </div>
+                            <div class="wrapper bg-info text-center m-l-n-xxs m-r-n-xxs">
+                                <h4 class="text-u-c m-b-none">Подписка
+                                                              на 6 месяцев
+                                </h4>
+                                <h2 class="m-t-none">
+                                    <sup class="pos-rlt" style="top:-22px">&#8381;</sup>
+                                    <span class="text-2x text-lt">900</span>
+                                    <span class="text-xs">/ месяц</span>
+                                </h2>
+                            </div>
+                            <ul class="list-group no-borders m-t-sm">
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Быстрая сортировка по категориям
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Рекомендации системы
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Подробная информация о контрагентах
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Мониторинг произведённых транзакций
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-close text-info m-r-xs"></i> <span class="text-l-t">Долгий поиск контрагентов</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-close text-info m-r-xs"></i> <span class="text-l-t">Неактуальная информация</span>
+                                </li>
+                            </ul>
+                            <div class="panel-footer text-center b-t m-t bg-light lter">
+                                <a href="" class="btn btn-info m">Оформить подписку</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="panel b-a">
+                            <div class="panel-heading wrapper-xs bg-default no-border">
+
+                            </div>
+                            <div class="wrapper text-center b-b b-light">
+                                <h4 class="text-u-c m-b-none">Подписка
+                                                              на 1 год
+                                </h4>
+                                <h2 class="m-t-none">
+                                    <sup class="pos-rlt" style="top:-22px">&#8381;</sup>
+                                    <span class="text-2x text-lt">800</span>
+                                    <span class="text-xs">/ месяц</span>
+                                </h2>
+                            </div>
+                            <ul class="list-group no-borders m-t-sm">
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Быстрая сортировка по категориям
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Рекомендации системы
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Подробная информация о контрагентах
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-check text-info m-r-xs"></i> Мониторинг произведённых транзакций
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-close text-info m-r-xs"></i> <span class="text-l-t">Долгий поиск контрагентов</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="icon-close text-info m-r-xs"></i> <span class="text-l-t">Неактуальная информация</span>
+                                </li>
+                            </ul>
+                            <div class="panel-footer text-center">
+                                <a href="" class="btn btn-default m">Оформить подписку</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
 
@@ -180,6 +310,35 @@
 @endsection
 
 @section('footer')
+
+
+    <div class="bg-white b-t">
+    <div class="container">
+        <div class="row m-t-xxl m-b-xxl">
+        <div class="col-md-12"><h1 class="font-thin m-t-n l-h-1x padder-v text-black">Наши преимущества!</h1>
+            <div>
+                <p>
+                    Возможность максимально подробно рассказать о своей деятельности другим участникам бизнес системы.
+                </p>
+
+                <p>
+                    При каждом заходе на сайт система подготовит актуальный список возможных контрагентов на закупку или продажу.
+                </p>
+
+                <p>
+                    При регистрации в бизнес-системе, ваши потенциальные партнеры получат уведомление о вашем предложении и вашей деятельности.
+
+                </p>
+
+                <p>
+                    Система полностью автоматизирована. Теперь нет необходимости самостоятельно заниматься поиском поставщиков и клиентов. Система сделает это за Вас, сэкономив Ваше время.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
     <div id="registation" class="bg-black hidden-xs"
          style="background: url(/img/footer.jpg); background-size: cover">
         <div class="bg-black-opacity">

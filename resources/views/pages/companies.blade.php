@@ -16,12 +16,10 @@
                                 <div class="col-xs-12">
                                     <div class="page-hero-content">
                                         <h1 class="text-white">
-                                            <span class="text-info">Бизнес сеть.</span> Найди <span class="main-typed-element"></span> <br>
-                                            о котором всегда хотел.
+                                            <span class="text-info">Бизнес сеть.</span> для реализации <br> товаров и услуг
                                         </h1>
                                         <p class="text-white">
-                                            <span class="text-info">405</span> новых предприятий за последние
-                                            <span class="text-info">7</span> дней. Ищи сейчас.
+                                            Организация выгодных закупок. Быстрый и удобный поиск <br> партнеров для сбыта продукции и предоставления услуг.
                                         </p>
                                     </div>
                                 </div>
@@ -46,7 +44,7 @@
                         <ul class="list-group no-bg no-borders pull-in m-t-lg basic-list-blue">
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                «BSale» — одна из первых компаний России, специализирующихся на организации тендеров для юридических лиц.
+                                «uniten» — одна из первых компаний России, специализирующихся на организации тендеров для юридических лиц.
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>

@@ -40,16 +40,16 @@
                 </button>
                 @if (Auth::guest())
                     <a href="{{ url('/') }}" class="navbar-brand m-r-lg">
-                        <img src="/img/logo.png" class="img-responsive m-r-xs">
+                        <img src="/img/sign3.svg" class="img-responsive m-r" style="height: 30px">
                         <span class="h4 text-black">
                             <span>Uniten</span>
-                            <small>Единая система тендеров</small>
+                            <small>Единая бизнес система</small>
                         </span>
                     </a>
                 @else
 
-                    <router-link :to="{ name: 'profile', params: { id: user.id }}" class="navbar-brand m-r-lg">
-                        <img src="/img/logo.png" class="img-responsive m-r-xs">
+                    <router-link :to="{ name: 'profile', params: { id: user.id }}" class="navbar-brand m-r-lg" style="height: 30px">
+                        <img src="/img/sign3.svg" class="img-responsive m-r-xs">
                         <span class="h4 text-black">
                             <span>Uniten</span>
                             <small>Единая система тендеров</small>

@@ -15,7 +15,7 @@
                                 <div class="col-xs-12">
                                     <div class="page-hero-content">
                                         <h1 class="text-white">
-                                            <span class="text-info">Бизнес сеть.</span> для организации <br> закупок и тендеров
+                                            <span class="text-info">Единая бизнес система.</span> Организация<br>  закупок, продаж и тендеров
                                         </h1>
                                         <p class="text-white">
                                             Получайте выгодные предложения без посредников от <br> поставщиков и исполнителей.
@@ -38,9 +38,12 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
                         <div class="padder-v m-t-md">
-                            <h1 class="font-thin m-t-n l-h-1x padder-v text-black">
+
+                            <p class="text-info h4 font-thin m-b">Автоматизированный поиск поставщика и клиента</p>
+
+                            <h3 class="h1 font-thin m-t-n l-h-1x padder-v text-black">
                                 Единая бизнес система — это просто:
-                            </h1>
+                            </h3>
                         </div>
                     </div>
                 </div>

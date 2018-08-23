@@ -40,7 +40,7 @@
                 </button>
                 @if (Auth::guest())
                     <a href="{{ url('/') }}" class="navbar-brand m-r-lg">
-                        <img src="/img/sign3.svg" class="img-responsive m-r" style="height: 30px">
+                        <img src="/img/sign3.svg" class="img-responsive m-r" height="30px">
                         <span class="h4 text-black">
                             <span>Uniten</span>
                             <small>Единая бизнес система</small>
@@ -49,7 +49,7 @@
                 @else
 
                     <router-link :to="{ name: 'profile', params: { id: user.id }}" class="navbar-brand m-r-lg" style="height: 30px">
-                        <img src="/img/sign3.svg" class="img-responsive m-r-xs">
+                        <img src="/img/sign3.svg" class="img-responsive m-r-xs" height="30px">
                         <span class="h4 text-black">
                             <span>Uniten</span>
                             <small>Единая система тендеров</small>
@@ -163,8 +163,7 @@
             <div class="container">
                 <div class="row m-t-xl m-b-xl">
                     <div class="col-md-6 hidden-xs">
-                        <span class="h4 text-black">uniten</span>
-                        <div class="m-t text-xs">
+                        <div class="text-xs">
                             <ul class="list-inline">
                                 <li><a href="#">О нас</a></li>
                                 <li><a href="#">Контакты</a></li>
@@ -174,9 +173,6 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-md-12 text-right">
-                        <p class="text-xs">
-                            Не следует, однако забывать, что начало повседневной работы по формированию
-                        </p>
                         <p class="text-xs text-muted">Copyright © {{date('Y')}} ООО "Русский паллет". Все права
                             защищены.</p>
                     </div>

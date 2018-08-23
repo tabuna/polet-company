@@ -103,26 +103,30 @@
 
 
                         <ul class="list-group no-bg no-borders pull-in m-t-lg">
-                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="600">
-                                <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Подробная информация о контрагентах
-                            </li>
-                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="900">
-                                <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Проверенные, честные отзывы
-                            </li>
-                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="1100">
-                                <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Работа без посредников
-                            </li>
-                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="1300">
-                                <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Система мгновенных сообщений
-                            </li>
-                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="1400">
+
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
                                 Максимально важная информация о товарах и услугах, закупках и тендерах индивидуально для каждого участника
                             </li>
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="900">
+                                <i class="icon-check pull-left text-lg m-r text-info"></i>
+                                Работа без посредников
+                            </li>
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="1100">
+                                <i class="icon-check pull-left text-lg m-r text-info"></i>
+                                Система мгновенных сообщений
+                            </li>
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="1400">
+                                <i class="icon-check pull-left text-lg m-r text-info"></i>
+                                Подробная информация о контрагентах
+                            </li>
+                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="1600">
+                                <i class="icon-check pull-left text-lg m-r text-info"></i>
+                                Проверенные, честные отзывы
+                            </li>
+
+
+
                         </ul>
 
                     </div>
@@ -145,15 +149,11 @@
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                При регистрации до 31.12.2018 50% скидка на следующие 6 месяцев
+                                Возможность оплаты через онлайн-сервисы
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="1100">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Возможность оплаты через онлайн-сервисы
-                            </li>
-                            <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="1200">
-                                <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Мониторинг произведённых транзакций
+                                Мониторинг транзакций
                             </li>
                         </ul>
 
@@ -350,8 +350,8 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-xs-height col-middle">
                             <div class="text-center">
-                                <h2 class="text-white col-sm-12 font-thin ">Изготовленный с деталями для
-                                    большого старта! Это большое начало для всех.
+                                <h2 class="text-white col-sm-12 font-thin ">Uniten<br>
+                                    Место где пересекаются интересы
                                 </h2>
                                 <a href="/register" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="600">
                                     Попробывать бесплатно

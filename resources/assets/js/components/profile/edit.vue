@@ -234,7 +234,7 @@
                 </div>
                 <div class="line line-dashed b-b line-lg"></div>
                 <div class="form-group" v-bind:class="{ 'has-error' : errors.tags }">
-                    <label class="col-sm-3 control-label">Теги компании</label>
+                    <label class="col-sm-3 control-label">Теги закупок</label>
                     <div class="col-sm-9">
 
                         <div>
@@ -281,7 +281,7 @@
                 </div>
                 <div class="line line-dashed b-b line-lg"></div>
                 <div class="form-group" v-bind:class="{ 'has-error' : errors.search_tags }">
-                    <label class="col-sm-3 control-label">Теги для поиска</label>
+                    <label class="col-sm-3 control-label">Теги продаж</label>
                     <div class="col-sm-9">
 
                         <div>

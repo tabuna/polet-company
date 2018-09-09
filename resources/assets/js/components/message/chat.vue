@@ -239,7 +239,7 @@
                     return;
                 }
 
-                let fileSize = e.files[0].size / 1024 / 1024;
+                let fileSize = e.target.files[0].size / 1024 / 1024;
                 if (fileSize > 2) {
                     swal({
                         title: 'Файл слишком большой!',

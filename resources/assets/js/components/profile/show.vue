@@ -140,8 +140,7 @@
                         user.address +
                         '&zoom=14&size=1000x300&maptype=roadmap%20' +
                          '&markers=size:mid%7Ccolor:red%7C%' +
-                         user.address +
-                         '&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E'"
+                         user.address"
                                  class="img-responsive center">
                         </a>
                     </div>

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Orchid\Platform\Attachments\File;
+use Illuminate\Support\Facades\Storage;
 
 class MessagesController extends Controller
 {
@@ -167,7 +168,7 @@ class MessagesController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function upload($id, Request $request){
-        $file = (new File($request->file('file')))->load();
+        $file = (new File($request->file('file'),Storage::disk('public')))->load();
 
         try {
             $thread = Thread::findOrFail($id);

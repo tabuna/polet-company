@@ -249,9 +249,9 @@
                         showConfirmButton: false,
                     }).catch(swal.noop);
 
-                    e.target.files[0] = "";
-                };
-
+                    e.target.value = '';
+                    return;
+                }
 
                 var formData = new FormData();
                 formData.append('file', e.target.files[0]);

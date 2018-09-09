@@ -123,22 +123,12 @@ class User extends UserOrchid
     /**
      * @param null $value
      */
-    public function setSearchTagsAttribute($value = null)
+    public function setSearchTagsAttribute(array $value = null)
     {
-        dd($value);
-
-        if (!is_array($value)) {
-            $this->attributes['search_tags'] = $value;
-        }
-
-        if (is_string($value)) {
-            $value = json_decode($value, true);
-        }
-
         foreach ($value as $i => $items) {
             foreach ($items as $key => $item) {
                 if ($key == 'slug') {
-                    $value[$i][$key] = str_slug($item);
+                    $value[$i][$key] = str_slug(strtolower($item));
                 }
 
                 if ($key == 'name') {

@@ -125,6 +125,8 @@ class User extends UserOrchid
      */
     public function setSearchTagsAttribute($value = null)
     {
+        dd($value);
+
         if (!is_array($value)) {
             $this->attributes['search_tags'] = $value;
         }

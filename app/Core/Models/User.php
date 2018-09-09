@@ -137,6 +137,6 @@ class User extends UserOrchid
             }
         }
 
-        $this->attributes['search_tags'] = $value;
+        $this->attributes['search_tags'] = json_encode($value);
     }
 }

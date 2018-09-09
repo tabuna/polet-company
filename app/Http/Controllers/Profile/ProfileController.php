@@ -94,6 +94,8 @@ class ProfileController extends Controller
             }
         }
 
+        $user->about = nl2br($user->about ?? '');
+
         return response()->json($user);
     }
 

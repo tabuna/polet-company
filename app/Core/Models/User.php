@@ -120,17 +120,6 @@ class User extends UserOrchid
             ->where('guest_id', '=', Auth::id());
     }
 
-
-    /**
-     * @param $value
-     *
-     * @return string
-     */
-    public function getAboutAttribute($value)
-    {
-        return nl2br($value);
-    }
-
     /**
      * @param null $value
      */

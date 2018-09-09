@@ -2,7 +2,7 @@
 <html lang="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8"/>
-    <title>@yield('title',setting('site_title','')) - Лучшая база поставщиков услуг</title>
+    <title>@yield('title',config('app.name')) - Лучшая база поставщиков услуг</title>
     <meta name="description" content="@yield('description',setting('site_description',''))">
     <meta name="keywords" content="@yield('keywords',setting('site_keywords',''))">
 
@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link rel="stylesheet" href="{{ mix('/css/app.css')}}" type="text/css"/>
 
-    <meta property="og:title" content="@yield('title',setting('site_title','')) - Лучшая база поставщиков услуг">
+    <meta property="og:title" content="@yield('title',config('app.name')) - Лучшая база поставщиков услуг">
     <meta property="og:description" content="@yield('description',setting('site_description',''))">
     <meta property="og:type" content="article">
     <meta property="og:image" content="@yield('image', config('app.url').'/img/tour/logo.png')">

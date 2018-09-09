@@ -76,7 +76,7 @@ class User extends UserOrchid
     /**
      * @return mixed|string
      */
-    public function getAvatar() : string
+    public function getAvatar(): string
     {
         if (empty($this->avatar) || is_null($this->avatar)) {
             return '/img/avatar.png';
@@ -115,8 +115,36 @@ class User extends UserOrchid
     public function lookedUser()
     {
         return $this->hasMany(Statistics::class, 'user_id')
-            ->select('user_id','guest_id')
+            ->select('user_id', 'guest_id')
             ->orderByDesc('created_at')
             ->where('guest_id', '=', Auth::id());
+    }
+
+    /**
+     * @param null $value
+     */
+    public function setSearchTagsAttribute($value = null)
+    {
+        if (!is_array($value)) {
+            $this->attributes['search_tags'] = $value;
+        }
+
+        if (is_string($value)) {
+            $value = json_decode($value, true);
+        }
+
+        foreach ($value as $i => $items) {
+            foreach ($items as $key => $item) {
+                if ($key == 'slug') {
+                    $value[$i][$key] = str_slug($item);
+                }
+
+                if ($key == 'name') {
+                    $value[$i][$key] = (string) $item;
+                }
+            }
+        }
+
+        $this->attributes['search_tags'] = $value;
     }
 }

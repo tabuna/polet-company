@@ -163,11 +163,7 @@
                 <div class="form-group" v-bind:class="{ 'has-error' : errors.about }">
                     <label class="col-sm-3 control-label">О Компании</label>
                     <div class="col-sm-9">
-
-
-                        <wysiwyg v-model="user.about" />
-
-                    <textarea  class="form-control form-control-grey no-resize hidden" rows="14" name="about"
+                    <textarea class="form-control form-control-grey no-resize" rows="14" name="about"
                                v-model="user.about"
                                placeholder="Небольшой рассказ о себе"></textarea>
                         <p class="help-block" v-if="errors.about">

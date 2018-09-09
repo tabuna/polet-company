@@ -4,7 +4,9 @@
     <div class="bg-white b box-shadow" v-show="status.load">
         <div class="wrapper-md">
 
-            <div class="panel-heading">Чат</div>
+            <div class="panel-heading">
+                <strong>Чат</strong>
+            </div>
             <div class="panel-body b scrollBlock">
 
                 <div class="messages" style="position: relative;
@@ -236,6 +238,21 @@
                 if(e.target.files[0] === undefined){
                     return;
                 }
+
+
+                let fileSize = file.files[0].size / 1024 / 1024;
+                if (FileSize > 2) {
+                    swal({
+                        title: 'Файл слишком большой!',
+                        type: 'warning',
+                        text: 'Пожалуйста используйте облачные хранилища для передачи больших файлов',
+                        timer: 2500,
+                        showConfirmButton: false,
+                    }).catch(swal.noop);
+
+                    e.target.files[0] = "";
+                };
+
 
                 var formData = new FormData();
                 formData.append('file', e.target.files[0]);

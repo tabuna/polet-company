@@ -11,6 +11,14 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://maps.googleapis.com">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#057494">
+    <meta name="msapplication-TileColor" content="#eeffff">
+    <meta name="theme-color" content="#ffffff">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link rel="stylesheet" href="{{ mix('/css/app.css')}}" type="text/css"/>
 
@@ -23,14 +31,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="auth" content="{{ Auth::id() }}">
-
-    <link rel="shortcut icon" type="image/png" href="/img/logo.png">
-
     @stack('stylesheet')
 </head>
 <body>
 
-<div id="app">
+<div id="app" class="app">
     <header id="header" class="navbar bg-white padder-v b-b">
         <div class="container">
             <div class="navbar-header">
@@ -154,34 +159,35 @@
 
     </div>
 
+</div>
 
-    <!-- footer -->
-    <footer id="footer">
-        @yield('footer')
 
-        <section class="bg-white b-t">
-            <div class="container">
-                <div class="row m-t-xl m-b-xl">
-                    <div class="col-md-6 hidden-xs">
-                        <div class="text-xs">
-                            <ul class="list-inline">
-                                <li><a href="#">О нас</a></li>
-                                <li><a href="#">Контакты</a></li>
-                                <li><a href="#">Работа</a></li>
-                                <li><a href="#">Договор оферты</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-md-12 text-right">
-                        <p class="text-xs text-muted">Copyright © {{date('Y')}} ООО "Русский паллет". Все права
-                            защищены.</p>
+<!-- footer -->
+<footer id="footer">
+    @yield('footer')
+
+    <section class="bg-white b-t">
+        <div class="container">
+            <div class="row m-t-xl m-b-xl">
+                <div class="col-md-6 hidden-xs">
+                    <div class="text-xs">
+                        <ul class="list-inline">
+                            <li><a href="#">О нас</a></li>
+                            <li><a href="#">Контакты</a></li>
+                            <li><a href="#">Работа</a></li>
+                            <li><a href="#">Договор оферты</a></li>
+                        </ul>
                     </div>
                 </div>
+                <div class="col-md-6 col-md-12 text-right">
+                    <p class="text-xs text-muted">Copyright © {{date('Y')}} ООО "Русский паллет". Все права
+                                                  защищены.</p>
+                </div>
             </div>
-        </section>
-    </footer>
-    <!-- / footer -->
-</div>
+        </div>
+    </section>
+</footer>
+<!-- / footer -->
 
 <script src="{{ mix('/js/app.js')}}"></script>
 </body>

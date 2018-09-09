@@ -31,7 +31,10 @@ class MessagesController extends Controller
             'messages' => function ($query) {
                 $query->latest()->first();
             },
-        ])->latest('updated_at')->paginate();
+        ])
+            ->groupBy('threads.id')
+            ->latest('updated_at')
+            ->paginate();
 
 
         $threads->getCollection()->transform(function ($value) {

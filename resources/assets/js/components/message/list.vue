@@ -4,7 +4,17 @@
     <div class="bg-white b box-shadow" v-show="status.load">
         <div class="wrapper-md">
             <div v-if="threads.data.length !== 0">
-                <div class="m-b-sm text-md">Отображение всех разговоров</div>
+                <div class="row m-b-sm text-md">
+                    <div class="col-md-8">
+                        <strong>Отображение всех разговоров</strong>
+                    </div>
+
+                    <div class="col-md-4 text-right">
+                        <router-link :to="{ name: 'messages'}" class="btn btn-default">
+                            <i class="icon-refresh"></i>
+                        </router-link>
+                    </div>
+                </div>
                 <div class="list-group list-group-lg list-group-sp">
 
                     <div v-for="thread in threads.data">
@@ -17,6 +27,7 @@
                       </span>
                         <span class="clear">
                     <span>{{ getAuthor(thread.users).agent_name }}</span>
+                    <span class="text-muted">{{ getAuthor(thread.users).name }}</span>
                     <small class="clear text-ellipsis" v-if="thread.messages[0]"
                            v-bind:class="{ 'text-muted': !thread.isUnread, 'text-black': thread.isUnread }">
                         {{thread.messages[0].body}}

@@ -111,7 +111,7 @@
                                aria-expanded="false"
                                title="Мой профиль">
                                 <span class="v-center">
-                                <span class="w-xs text-ellipsis">{{ Auth::user()->name }}</span>
+                                <span class="w-xs text-ellipsis text-right">{{ Auth::user()->name }}</span>
                                 <span class="caret"></span>
                                 <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
 <img src="{{Auth::user()->getAvatar()}}" clas="b" alt="{{ Auth::user()->name }}">

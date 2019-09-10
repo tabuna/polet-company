@@ -40,7 +40,7 @@ class FileUploadController extends Controller
     {
        //$file = $this->saveFile($request->file('file'));
 
-       $file = (new File($request->file('file')))->load();
+       $file = (new File($request->file('file'), Storage::disk('public')))->load();
 
         return response()->json($file);
     }

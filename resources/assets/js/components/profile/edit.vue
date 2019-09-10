@@ -399,7 +399,7 @@
                     this.user = response.data;
                     this.selectedTags = this.user.tags;
                     this.selectedCity = this.user.city;
-                    this.selectedSearchTags = this.user.search_tags;
+                    this.selectedSearchTags = this.user.search_tags || [];
                     this.status.load = true;
                     moduleLoad();
                 })

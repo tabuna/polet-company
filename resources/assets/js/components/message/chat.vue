@@ -70,7 +70,7 @@
                 <!-- chat form -->
                 <div>
                     <router-link :to="{ name: 'profile', params: { id: currentUser }}" class="pull-left thumb-xs avatar">
-                        <img :src="getAuthor(currentUser).avatar" class="img-circle" :alt="getAuthor(currentUser).name" style="min-height: 25px;">
+                        <img :src="getAuthor(currentUser).avatar" class="img-circle" :alt="getAuthor(currentUser).name" style="min-height: 34px;">
                     </router-link>
                     <form class="m-b-none m-l-xl ng-pristine ng-valid" v-on:submit.prevent="sendMessage">
                         <div class="input-group">

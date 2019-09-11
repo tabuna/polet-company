@@ -204,7 +204,7 @@
                                 </h2>
                                 <a href="/register" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp"
                                    data-wow-offset="200" data-wow-delay="600">
-                                    Попробывать бесплатно
+                                    Попробовать бесплатно
                                 </a>
                                 <p class="text-muted m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="900">
                                     Бесплатный доступ исключительные на площадке,<br>

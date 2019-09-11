@@ -28,11 +28,11 @@
                                 <span class="arrow left pull-up"></span>
 
                                 <p class="m-b-none">
-                                    <a :href="message.type" v-if="message.type !== 'message'"  target="_blank">
+                                    <a :href="message.type" v-if="message.type"  target="_blank">
                                         <i class="icon-cloud-download m-r-xs"></i> {{message.body}}
                                     </a>
 
-                                    <span v-if="message.type === 'message'">
+                                    <span v-if="!message.type">
                                          {{message.body}}
                                     </span>
                                 </p>
@@ -51,11 +51,10 @@
                             <div class="pos-rlt wrapper b b-light r r-2x">
                                 <span class="arrow right pull-up"></span>
                                 <p class="m-b-none">
-                                           <a :href="message.type" v-if="message.type !== 'message'" target="_blank">
+                                           <a :href="message.type" v-if="message.type" target="_blank">
                                         <i class="icon-cloud-download m-r-xs"></i> {{message.body}}
                                     </a>
-                                    {{message.user_id}}
-                                    <span v-if="message.type === 'message'">
+                                    <span v-if="!message.type">
                                          {{message.body}}
                                     </span>
                                 </p>

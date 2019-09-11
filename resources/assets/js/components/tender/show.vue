@@ -60,7 +60,7 @@
 
                         <div class="col-md-12">
                             <div class="padder-v text-xs">
-                                <span class="m-r-md"><i class="icon-clock"></i> {{tender.publish_at | moment("from", "now")}}</span>
+                                <span class="m-r-md"><i class="icon-clock"></i> {{tender.publish_at | moment("subtract", new Date().getTimezoneOffset()+" minutes", "from", true)}}</span>
                                 <span class="m-r-md"><i class="icon-map"></i> {{tender.content.ru.city.name}}</span>
                                 <span class="m-r-md" v-show="tender.content.ru.price != null"><i class="fa fa-rub"></i> {{tender.content.ru.price}}</span>
                                 <a><span class="m-r-md " v-if="tender.user_id == currentUser" v-on:click="deleteTender()"><i class="fa fa-times"></i> Удалить</span></a>
@@ -92,7 +92,7 @@
                 <div>
                     <strong>{{comment.author.name}}</strong><small class="m-l-sm">{{comment.author.agent_name}}</small>
                     <span class="text-muted text-xs block">
-                               {{comment.created_at | moment("from", "now")}}
+                               {{comment.created_at | moment("subtract", new Date().getTimezoneOffset()+" minutes", "from", true)}}
                     </span>
                 </div>
                 <div class="m-t-sm">

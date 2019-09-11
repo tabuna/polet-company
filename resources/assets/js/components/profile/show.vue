@@ -133,18 +133,18 @@
                 <div class="col-md-12">
                     <p class="padder text-muted small"><i class="icon-direction text-info m-r-xs"></i>
                         | {{user.address}}</p>
-                    <div class="google-maps">
-                        <a v-on:click="getDirections">
-                            <img v-bind:src="
-                        'https://maps.googleapis.com/maps/api/staticmap?center='+
-                        user.address +
-                        '&zoom=14&size=1000x300&maptype=roadmap%20' +
-                         '&markers=size:mid%7Ccolor:red%7C%' +
-                         user.address +
-                         '&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E'"
-                                 class="img-responsive center">
-                        </a>
-                    </div>
+<!--                    <div class="google-maps">-->
+<!--                        <a v-on:click="getDirections">-->
+<!--                            <img v-bind:src="-->
+<!--                        'https://maps.googleapis.com/maps/api/staticmap?center='+-->
+<!--                        user.address +-->
+<!--                        '&zoom=14&size=1000x300&maptype=roadmap%20' +-->
+<!--                         '&markers=size:mid%7Ccolor:red%7C%' +-->
+<!--                         user.address +-->
+<!--                         '&key=AIzaSyDI13AXsXcmPWKBfdNb-0lLKjMkGlpdC-E'"-->
+<!--                                 class="img-responsive center">-->
+<!--                        </a>-->
+<!--                    </div>-->
 
                     <div class="get-directions hidden">
                         <form action="http://maps.google.com/maps" method="get" target="_blank">

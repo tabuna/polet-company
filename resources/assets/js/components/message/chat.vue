@@ -21,7 +21,7 @@
                 <div v-for="message in threads.messages.data" class="">
                     <div class="m-b" v-if="message.user_id == currentUser">
                         <router-link :to="{ name: 'profile', params: { id: message.user_id }}" class="pull-left thumb-sm avatar"><img
-                                :src="getAuthor(message.user_id).avatar" :alt="getAuthor(message.user_id).name">
+                                :src="message.user.avatar" :alt="message.user.name">
                         </router-link>
                         <div class="m-l-xxl">
                             <div class="pos-rlt wrapper b b-light r r-2x">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="m-b" v-else>
                         <router-link :to="{ name: 'profile', params: { id: message.user_id }}" class="pull-right thumb-sm avatar"><img
-                                :src="getAuthor(message.user_id).avatar" :alt="getAuthor(message.user_id).name">
+                                :src="message.user.avatar" :alt="message.user.name">
                         </router-link>
                         <div class="m-r-xxl">
                             <div class="pos-rlt wrapper b b-light r r-2x">
@@ -54,7 +54,7 @@
                                            <a :href="message.type" v-if="message.type !== 'message'" target="_blank">
                                         <i class="icon-cloud-download m-r-xs"></i> {{message.body}}
                                     </a>
-
+                                    {{message.user_id}}
                                     <span v-if="message.type === 'message'">
                                          {{message.body}}
                                     </span>
@@ -70,7 +70,7 @@
                 <!-- chat form -->
                 <div>
                     <router-link :to="{ name: 'profile', params: { id: currentUser }}" class="pull-left thumb-xs avatar">
-                        <img :src="getAuthor(currentUser).avatar" class="img-circle" :alt="getAuthor(currentUser).name" style="min-height: 34px;">
+                        <img :src="my.avatar" class="img-circle" :alt="my.name" style="min-height: 34px;">
                     </router-link>
                     <form class="m-b-none m-l-xl ng-pristine ng-valid" v-on:submit.prevent="sendMessage">
                         <div class="input-group">
@@ -105,6 +105,7 @@
                 currentUser: 0,
                 newMessage: '',
                 fileUploadFormData: new FormData(),
+                my: {},
                 threads: {
                     messages: {
                         current_page: 0,
@@ -151,6 +152,7 @@
                 axios.post(`/api/messages/` + this.$route.params.id)
                     .then(response => {
                         this.threads = response.data;
+                        this.my = response.data.my;
                         this.status.load = true;
                         this.threads.messages.data.reverse();
 
@@ -175,15 +177,6 @@
                 //container.scrollIntoView({block: "end"});
                 //$('.messages').scrollTop($('.messages').height());
                 container.scrollTop =Math.ceil(container.scrollHeight - container.clientHeight);
-            },
-            getAuthor: function (user_id) {
-                let author = '';
-                this.threads.users.forEach(function (item) {
-                    if ( +user_id === item.pivot.user_id) {
-                        author = item;
-                    }
-                });
-                return author;
             },
             loadNextPage: function () {
 

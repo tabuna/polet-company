@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Orchid\Platform\Attachments\File;
 use Illuminate\Support\Facades\Storage;
+use function foo\func;
 
 class MessagesController extends Controller
 {
@@ -37,7 +38,6 @@ class MessagesController extends Controller
             ->latest('updated_at')
             ->paginate();
 
-
         $threads->getCollection()->transform(function ($value) {
             $value->isUnread = $value->isUnread(Auth::id());
 
@@ -57,15 +57,19 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-        $thread = Thread::with([
-            'users' => function ($query) {
-                $query->select('avatar', 'name', 'agent_name');
-            },
-        ])->findOrFail($id);
+        $thread = Thread::findOrFail($id);
 
-        $thread->messages = $thread->messages()->orderBy('created_at', 'desc')->paginate();
+        $thread->messages = $thread->messages()
+            ->with(['user' => function($query) {
+                $query->select('id', 'avatar', 'name', 'agent_name');
+            }])
+            ->orderBy('created_at', 'desc')
+            ->paginate();
+
+        $thread->my = Auth::user()->only(['avatar', 'name']);
 
         $thread->markAsRead(Auth::user()->id);
+
 
         if (!is_null(User::select('id')->where('id', $thread->participantsUserIds())->firstOrFail())) {
             return response()->json($thread);

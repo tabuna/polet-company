@@ -66,8 +66,8 @@
                                                  :internal-search="false"
                                                  :clear-on-select="false"
                                                  :close-on-select="false"
-                                                 :options-limit="10"
-                                                 :limit="10"
+                                                 :options-limit="15"
+                                                 :limit="15"
                                                  :limit-text="limitText"
                                                  @search-change="asyncFind"
                                                  :taggable="true"
@@ -92,7 +92,7 @@
                                     {{ errors.tags }}
                                 </p>
                                 <p class="help-block" v-else="errors.name">
-                                    Выберите от 1 до 10 ключевых слов к которым относится компания.
+                                    Выберите от 1 до 15 ключевых слов к которым относится компания.
                                 </p>
                             </div>
                         </div>

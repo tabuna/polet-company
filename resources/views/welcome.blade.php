@@ -15,7 +15,8 @@
                                 <div class="col-xs-12">
                                     <div class="page-hero-content">
                                         <h1 class="text-white">
-                                            <span class="text-info">Единая бизнес система.</span> Организация<br>  закупок, продаж и тендеров
+                                            <span class="text-info">Единая бизнес система.</span> <br>
+                                            Организация закупок и продаж
                                         </h1>
                                         <p class="text-white">
                                             Получайте выгодные предложения без посредников от <br> поставщиков и исполнителей.
@@ -106,7 +107,7 @@
 
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Максимально важная информация о товарах и услугах, закупках и тендерах индивидуально для каждого участника
+                                Максимально важная информация о товарах, услугах и закупках индивидуально для каждого участника
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
@@ -145,7 +146,7 @@
                         <ul class="list-group no-bg no-borders pull-in m-t-lg">
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Бесплатная регистрация до 31.12.2018
+                                Бесплатная регистрация <strong>на период бета-тестирования</strong>
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200"  data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
@@ -182,7 +183,7 @@
 
 
                 <div class="row no-gutter  m-t-xxl m-b-xxl">
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
                         <div class="panel b-a">
                             <div class="panel-heading wrapper-xs bg-default no-border">
                             </div>
@@ -192,7 +193,7 @@
                                 </h4>
                                 <h2 class="m-t-none">
                                     <sup class="pos-rlt" style="top:-22px">&#8381;</sup>
-                                    <span class="text-2x text-lt">1 000</span>
+                                    <span class="text-2x text-lt">2 000</span>
                                     <span class="text-xs">/ месяц</span>
                                 </h2>
                             </div>
@@ -222,46 +223,6 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <div class="panel b-a m-t-n-md m-b-xl">
-                            <div class="panel-heading wrapper-xs bg-warning dker no-border">
-
-                            </div>
-                            <div class="wrapper bg-info text-center m-l-n-xxs m-r-n-xxs">
-                                <h4 class="text-u-c m-b-none">Подписка
-                                                              на 6 месяцев
-                                </h4>
-                                <h2 class="m-t-none">
-                                    <sup class="pos-rlt" style="top:-22px">&#8381;</sup>
-                                    <span class="text-2x text-lt">900</span>
-                                    <span class="text-xs">/ месяц</span>
-                                </h2>
-                            </div>
-                            <ul class="list-group no-borders m-t-sm">
-                                <li class="list-group-item">
-                                    <i class="icon-check text-info m-r-xs"></i> Быстрая сортировка по категориям
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="icon-check text-info m-r-xs"></i> Рекомендации системы
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="icon-check text-info m-r-xs"></i> Подробная информация о контрагентах
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="icon-check text-info m-r-xs"></i> Мониторинг произведённых транзакций
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="icon-close text-info m-r-xs"></i> <span class="text-l-t">Долгий поиск контрагентов</span>
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="icon-close text-info m-r-xs"></i> <span class="text-l-t">Неактуальная информация</span>
-                                </li>
-                            </ul>
-                            <div class="panel-footer text-center b-t m-t bg-light lter">
-                                <a href="" class="btn btn-info m">Оформить подписку</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="panel b-a">
                             <div class="panel-heading wrapper-xs bg-default no-border">
 
@@ -272,7 +233,7 @@
                                 </h4>
                                 <h2 class="m-t-none">
                                     <sup class="pos-rlt" style="top:-22px">&#8381;</sup>
-                                    <span class="text-2x text-lt">800</span>
+                                    <span class="text-2x text-lt">1 000</span>
                                     <span class="text-xs">/ месяц</span>
                                 </h2>
                             </div>
@@ -356,10 +317,12 @@
                                 <a href="/register" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="600">
                                     Попробовать бесплатно
                                 </a>
+                                {{--
                                 <p class="text-muted m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="900">
                                     Бесплатный доступ исключительные на площадке,<br>
                                     для ознакомления, не предоставляет общие услуги
                                 </p>
+                                --}}
                             </div>
                         </div>
                     </div>

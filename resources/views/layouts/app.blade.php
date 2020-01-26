@@ -57,7 +57,7 @@
                         <img src="/img/sign3.svg" class="img-responsive m-r-xs" height="30px">
                         <span class="h4 text-black">
                             <span>Uniten</span>
-                            <small>Единая система тендеров</small>
+                            <small>Единая бизнес система</small>
                         </span>
                     </router-link>
 
@@ -69,27 +69,29 @@
                 @if (Auth::guest())
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="/companies">Предоставляю услуги</a>
+                            <a href="/companies">Мои предложения</a>
                         </li>
                         <li>
-                            <a href="/order">Ищу заказы</a>
+                            <a href="/order">Мой спрос</a>
                         </li>
                     </ul>
                 @else
 
                     <ul class="nav navbar-nav">
                         <li>
-                            <router-link :to="{ name: 'needs'}">Мой спрос</router-link>
+                            <router-link :to="{ name: 'needs'}">Предложения</router-link>
                         </li>
                         <li>
-                            <router-link :to="{ name: 'offer'}">Мои предложения</router-link>
+                            <router-link :to="{ name: 'offer'}">Спрос</router-link>
                         </li>
                         <li>
                             <router-link :to="{ name: 'recommended'}">Мои рекомендации</router-link>
                         </li>
-                        <li>
-                            <router-link :to="{ name: 'tender'}">Тендеры</router-link>
-                        </li>
+                        {{--
+                            <li>
+                                <router-link :to="{ name: 'tender'}">Тендеры</router-link>
+                            </li>
+                        --}}
                         <li>
                             <router-link :to="{ name: 'companies'}">Компании</router-link>
                         </li>
@@ -174,16 +176,11 @@
                 <div class="col-md-6 hidden-xs">
                     <div class="text-xs">
                         <ul class="list-inline">
-                            <li><a href="#">О нас</a></li>
+                            <a href="/companies">Мои предложения</a>
                             <li><a href="#">Контакты</a></li>
-                            <li><a href="#">Работа</a></li>
-                            <li><a href="#">Договор оферты</a></li>
+                            <li><a href="/terms.docs" target="_blank">Пользовательское соглашение</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-md-6 col-md-12 text-right">
-                    <p class="text-xs text-muted">Copyright © {{date('Y')}} ООО "Русский паллет". Все права
-                                                  защищены.</p>
                 </div>
             </div>
         </div>

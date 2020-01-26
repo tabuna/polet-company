@@ -244,8 +244,8 @@
                                          :internal-search="false"
                                          :clear-on-select="false"
                                          :close-on-select="false"
-                                         :options-limit="5"
-                                         :limit="5"
+                                         :options-limit="15"
+                                         :limit="15"
                                          :limit-text="limitText"
                                          @search-change="asyncFind"
                                          :taggable="true"
@@ -271,7 +271,7 @@
                             {{ errors.tags }}
                         </p>
                         <p class="help-block" v-else="errors.name">
-                            Выберите от 1 до 5 ключевых слов к которым относится компания.
+                            Выберите от 1 до 15 ключевых слов к которым относится компания.
                         </p>
                     </div>
                 </div>
@@ -289,8 +289,8 @@
                                          :internal-search="false"
                                          :clear-on-select="false"
                                          :close-on-select="false"
-                                         :options-limit="5"
-                                         :limit="5"
+                                         :options-limit="15"
+                                         :limit="15"
                                          :limit-text="limitText"
                                          @search-change="asyncFind"
                                          :taggable="true"
@@ -319,7 +319,7 @@
                             {{ errors.tags }}
                         </p>
                         <p class="help-block" v-else="errors.name">
-                            Выберите от 1 до 5 ключевых слов к которым относится компания.
+                            Выберите от 1 до 15 ключевых слов к которым относится компания.
                         </p>
                     </div>
                 </div>

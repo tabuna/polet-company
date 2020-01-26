@@ -29,11 +29,12 @@
                             <span>Профиль</span>
                         </router-link>
 
-                        <router-link :to="{ name: 'tender', query: { my: 1 }}" class="list-group-item">
-                            <i class="icon-briefcase m-r-xs"></i>
-                            <span>Мои тендеры</span>
-                        </router-link>
-
+                        {{--
+                            <router-link :to="{ name: 'tender', query: { my: 1 }}" class="list-group-item">
+                                <i class="icon-briefcase m-r-xs"></i>
+                                <span>Мои тендеры</span>
+                            </router-link>
+                        --}}
                         <router-link :to="{ name: 'messages'}" class="list-group-item">
                             <i class="icon-bubbles m-r-xs"></i>
                             <span>Сообщения</span>
@@ -67,14 +68,15 @@
                 </div>
 
 
-                <div class="panel wrapper-xl b text-center">
-                    <p class="h3 font-thin m-b-sm">Тендер</p>
-                    <p class="font-bold text-sm">Нужно выполнить работу? Объяви об этом всем</p>
-                    <p class="small text-muted text-xs">Актуально до 60 дней</p>
-                    <router-link class="btn btn-info btn-rounded" :to="{ name: 'tender.create'}">Разместить
-                    </router-link>
-                </div>
-
+                {{--
+                    <div class="panel wrapper-xl b text-center">
+                        <p class="h3 font-thin m-b-sm">Тендер</p>
+                        <p class="font-bold text-sm">Нужно выполнить работу? Объяви об этом всем</p>
+                        <p class="small text-muted text-xs">Актуально до 60 дней</p>
+                        <router-link class="btn btn-info btn-rounded" :to="{ name: 'tender.create'}">Разместить
+                        </router-link>
+                    </div>
+                --}}
 
                 <div id="adb" class="panel wrapper-xl b padder-lg text-center"
                      data-spy="affix" data-offset-top="800" data-offset-bottom="400"

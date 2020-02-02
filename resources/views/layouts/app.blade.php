@@ -178,7 +178,7 @@
                         <ul class="list-inline">
                             <a href="/companies">Мои предложения</a>
                             <li><a href="#">Контакты</a></li>
-                            <li><a href="/docs/terms.docs" target="_blank">Пользовательское соглашение</a></li>
+                            <li><a href="/docs/terms.docx" target="_blank">Пользовательское соглашение</a></li>
                         </ul>
                     </div>
                 </div>

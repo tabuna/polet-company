@@ -182,6 +182,9 @@
                         </ul>
                     </div>
                 </div>
+                <div class="col-md-6 col-md-12 text-right">
+                    <p class="text-xs text-muted">Uniten - Все права защищены.</p>
+                </div>
             </div>
         </div>
     </section>

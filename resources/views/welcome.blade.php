@@ -182,7 +182,7 @@
                 </div>
 
 
-                <div class="row no-gutter  m-t-xxl m-b-xxl">
+                <div class="row no-gutter  m-t-xxl m-b-md">
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-md-offset-2">
                         <div class="panel b-a">
                             <div class="panel-heading wrapper-xs bg-default no-border">
@@ -218,7 +218,7 @@
                                 </li>
                             </ul>
                             <div class="panel-footer text-center">
-                                <a href="#" class="btn btn-default m">Оформить подписку</a>
+                                <a href="{{route('register')}}" class="btn btn-default m">Оформить подписку</a>
                             </div>
                         </div>
                     </div>
@@ -258,8 +258,18 @@
                                 </li>
                             </ul>
                             <div class="panel-footer text-center">
-                                <a href="" class="btn btn-default m">Оформить подписку</a>
+                                <a href="{{route('register')}}" class="btn btn-default m">Оформить подписку</a>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row m-b-lg">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <p class="h4">В настоящий момент портал находиться на этапе бета-тестирования.<br>
+                            Участие бесплатно. Всем участникам тестирования будет предоставлено<br>
+                                бесплатное обслуживание в течении 2020 года!</p>
                         </div>
                     </div>
                 </div>
@@ -277,34 +287,37 @@
 
 
     <div class="bg-white b-t">
-    <div class="container">
-        <div class="row m-t-xxl m-b-xxl">
-        <div class="col-md-12"><h1 class="font-thin m-t-n l-h-1x padder-v text-black">Наши преимущества!</h1>
-            <div>
-                <p>
-                    Возможность максимально подробно рассказать о своей деятельности другим участникам бизнес системы.
-                </p>
+        <div class="container">
+            <div class="row m-t-xxl m-b-xxl">
+                <div class="col-md-12"><h1 class="font-thin m-t-n l-h-1x padder-v text-black">Наши преимущества!</h1>
+                    <div>
+                        <p>
+                            Возможность максимально подробно рассказать о своей деятельности другим участникам бизнес
+                            системы.
+                        </p>
 
-                <p>
-                    При каждом заходе на сайт система подготовит актуальный список возможных контрагентов на закупку или продажу.
-                </p>
+                        <p>
+                            При каждом заходе на сайт система подготовит актуальный список возможных контрагентов на
+                            закупку, продажу или выполнение услуги.
+                        </p>
 
-                <p>
-                    При регистрации в бизнес-системе, ваши потенциальные партнеры получат уведомление о вашем предложении и вашей деятельности.
+                        <p>
+                            При регистрации в бизнес-системе, ваши потенциальные партнеры получат уведомление о вашем
+                            предложении, спросе и виде деятельности, равно как и вы получите уведомление о предложении,
+                            спросе и виде деятельности ваших потенциальных партнёров.
+                        </p>
 
-                </p>
-
-                <p>
-                    Система полностью автоматизирована. Теперь нет необходимости самостоятельно заниматься поиском поставщиков и клиентов. Система сделает это за Вас, сэкономив Ваше время.
-                </p>
+                        <p>
+                            Система полностью автоматизирована. Теперь нет необходимости самостоятельно заниматься
+                            поиском поставщиков и клиентов. Система сделает это за Вас, сэкономив Ваше время.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
 
-    <div id="registation" class="bg-black hidden-xs"
-         style="background: url(/img/footer.jpg); background-size: cover">
+    <div id="registation" class="bg-black hidden-xs" style="background: url(/img/footer.jpg); background-size: cover">
         <div class="bg-black-opacity">
             <div class="container">
                 <div class="row  m-t-xxl m-b-xxl">
@@ -314,7 +327,8 @@
                                 <h2 class="text-white col-sm-12 font-thin ">Uniten<br>
                                     Место где пересекаются интересы
                                 </h2>
-                                <a href="/register" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="600">
+                                <a href="/register" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp"
+                                   data-wow-offset="200" data-wow-delay="600">
                                     Попробовать бесплатно
                                 </a>
                                 {{--

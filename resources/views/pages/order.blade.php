@@ -114,25 +114,16 @@
         <section class="container bg-white">
             <div class="row m-t-xl m-b-xxl">
                 <div class="col-md-6">
-                    <h1 class="font-thin m-t-n l-h-1x padder-v text-black">Мы предлогаем</h1>
+                    <h1 class="font-thin m-t-n l-h-1x padder-v text-black">Мы предлагаем</h1>
                     <div>
                         <p>
-                            Значимость этих проблем настолько очевидна, что постоянное информационно-пропагандистское
-                            обеспечение нашей деятельности требуют определения и уточнения позиций, занимаемых
-                            участниками в отношении поставленных задач. Товарищи! рамки и место обучения кадров влечет
-                            за собой процесс внедрения и модернизации направлений прогрессивного развития. Товарищи!
-                            дальнейшее развитие различных форм деятельности влечет за собой процесс внедрения и
-                            модернизации позиций, занимаемых участниками в отношении поставленных задач. Значимость этих
-                            проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности
-                            требуют от нас анализа систем массового участия. Товарищи! дальнейшее развитие различных
-                            форм деятельности позволяет выполнять важные задания по разработке позиций, занимаемых
-                            участниками в отношении поставленных задач. Не следует, однако забывать, что дальнейшее
-                            развитие различных форм деятельности способствует подготовки и реализации позиций,
-                            занимаемых участниками в отношении поставленных задач.
+                           Мощный, современный, удобный, малозатратный, но эффективный
+                            агрегатор по поискуи предложению товаров и услуг для бизнеса.
                         </p>
                     </div>
 
                 </div>
+                {{--
                 <div class="col-md-6">
                     <p class="h2 font-thin m-t-n l-h-1x padder-v text-black">Поиск новых клиентов и источников</p>
                     <p>
@@ -174,6 +165,7 @@
                         </div>
                     </div>
                 </div>
+                --}}
             </div>
         </section>
 
@@ -185,25 +177,26 @@
 @endsection
 
 @section('footer')
-    <div id="registation" class="bg-black hidden-xs"
-         style="background: url(/img/footer.jpg); background-size: cover">
+    <div id="registation" class="bg-black hidden-xs" style="background: url(/img/footer.jpg); background-size: cover">
         <div class="bg-black-opacity">
             <div class="container">
                 <div class="row  m-t-xxl m-b-xxl">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-xs-height col-middle">
                             <div class="text-center">
-                                <h2 class="text-white col-sm-12 font-thin ">Изготовленный с деталями для
-                                    большого старта! Это большое начало для всех.
+                                <h2 class="text-white col-sm-12 font-thin ">Uniten<br>
+                                    Место где пересекаются интересы
                                 </h2>
                                 <a href="/register" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp"
                                    data-wow-offset="200" data-wow-delay="600">
                                     Попробовать бесплатно
                                 </a>
+                                {{--
                                 <p class="text-muted m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="900">
                                     Бесплатный доступ исключительные на площадке,<br>
                                     для ознакомления, не предоставляет общие услуги
                                 </p>
+                                --}}
                             </div>
                         </div>
                     </div>

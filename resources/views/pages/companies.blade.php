@@ -44,15 +44,16 @@
                         <ul class="list-group no-bg no-borders pull-in m-t-lg basic-list-blue">
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="600">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                «uniten» — одна из первых компаний России, специализирующихся на организации тендеров для юридических лиц.
+                                    Uniten — одна из первых компаний России, помогающая предпринимателям найти партнёров для
+                                    продвижения товаров и услуг.
                             </li>
                             <li class="list-group-item fadeInUp wow" data-wow-offset="200" data-wow-delay="900">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Мы открываем новые возможности для реализации товаров, работ и услуг для российских и международных компаний.
+                                Uniten открывает новые возможности для реализации товаров, работ и услуг для российских и международных компаний.
                             </li>
                             <li class="list-group-item fadeInUp wow"  data-wow-offset="200"  data-wow-delay="1100">
                                 <i class="icon-check pull-left text-lg m-r text-info"></i>
-                                Мы помогаем решить конкретные задачи здесь и сейчас, а также сформировать видение на будущее, сэкономить время и ресурсы.
+                               Uniten помогает помогаем решить конкретные задачи здесь и сейчас, а также сформировать видение на будущее, сэкономить время и ресурсы.
                             </li>
                         </ul>
                     </div>
@@ -191,25 +192,26 @@
 @endsection
 
 @section('footer')
-    <div id="registation" class="bg-black hidden-xs"
-         style="background: url(/img/footer.jpg); background-size: cover">
+    <div id="registation" class="bg-black hidden-xs" style="background: url(/img/footer.jpg); background-size: cover">
         <div class="bg-black-opacity">
             <div class="container">
                 <div class="row  m-t-xxl m-b-xxl">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-xs-height col-middle">
                             <div class="text-center">
-                                <h2 class="text-white col-sm-12 font-thin ">Изготовленный с деталями для
-                                    большого старта! Это большое начало для всех.
+                                <h2 class="text-white col-sm-12 font-thin ">Uniten<br>
+                                    Место где пересекаются интересы
                                 </h2>
                                 <a href="/register" class="btn btn-lg btn-info btn-rounded m-t-md wow fadeInUp"
                                    data-wow-offset="200" data-wow-delay="600">
                                     Попробовать бесплатно
                                 </a>
+                                {{--
                                 <p class="text-muted m-t-md wow fadeInUp" data-wow-offset="200" data-wow-delay="900">
                                     Бесплатный доступ исключительные на площадке,<br>
                                     для ознакомления, не предоставляет общие услуги
                                 </p>
+                                --}}
                             </div>
                         </div>
                     </div>

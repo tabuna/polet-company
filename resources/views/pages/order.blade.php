@@ -13,14 +13,8 @@
                             <div class="col-xs-12">
                                 <div class="page-hero-content">
                                     <h1 class="text-white">
-                                        <span class="text-info">Бизнес сеть.</span> Найди <span
-                                                class="main-typed-element"></span> <br>
-                                        о котором всегда хотел.
+                                        <span class="text-info">Бизнес сеть.</span> Найди партнёра
                                     </h1>
-                                    <p class="text-white">
-                                        <span class="text-info">405</span> новых предприятий за последние
-                                        <span class="text-info">7</span> дней. Ищи сейчас.
-                                    </p>
                                 </div>
                             </div>
 
@@ -40,65 +34,20 @@
 
         <section class="bg-white b-b box-shadow-lg">
             <div class="container">
-                <div class="row  m-t-xxl m-b-xxl v-center">
+                <div class="row  m-t-xxl m-b-xxl b-b">
 
                     <div class="col-md-7 col-sm-12 col-xs-12 display-table sm-height-auto">
                         <div class="row">
                             <!-- section title -->
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <h2 class="text-black font-thin">Мы поможем вам найти клиента для вашего
-                                    бизнеса.</h2>
+                                <h2 class="text-black font-thin">Мы предлагаем</h2>
                                 <p class="text-muted font-weight-300 m-b-lg">
-                                    Для каждого бренда мы разрабатываем свою стратегию присутствия на профильных площадках и в социальных сетях. Определяем наиболее подходящие платформы и форматы.
+                                    Мощный, современный, удобный, мало затратный, но эффективный
+                                    агрегатор по поиску предложению товаров и услуг для бизнеса.
                                 </p>
                             </div>
                             <!-- end section title -->
                         </div>
-                        <!-- feature box -->
-                        <div class="row two-column no-margin m-t-md">
-                            <div class="col-md-6 col-sm-6 col-xs-12 padder-v">
-                                <div class="col-md-3 col-xs-12 text-center  m-b-md">
-                                    <p class="h3 inline b b-dark r-3x wrapper-sm"><i class=" w-1x icon-compass"></i></p>
-                                </div>
-                                <div class="col-md-8 col-xs-12 ">
-                                    <p class="h4 text-black font-thin">Составление контентного ядра</p>
-                                    <div class="m-t-sm"><p class="small">Подбор поисковых запросов и оптимизация целевый страниц сайта.</p></div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12 padder-v">
-                                <div class="col-md-3 col-xs-12 text-center m-b-md">
-                                    <p class="h3 inline b b-dark r-3x wrapper-sm"><i class=" w-1x icon-compass"></i></p>
-                                </div>
-                                <div class="col-md-8 col-xs-12">
-                                    <p class="h4 text-black font-thin">Социальные площадки</p>
-                                    <div class="m-t-sm"><p class="small">Работа компании с различными форматами общения в сети
-                                        </p></div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12 padder-v">
-                                <div class="col-md-3 col-xs-12 text-center m-b-md">
-                                    <p class="h3 inline b b-dark r-3x wrapper-sm"><i class=" w-1x icon-compass"></i></p>
-                                </div>
-                                <div class="col-md-8 col-xs-12 ">
-                                    <p class="h4 text-black font-thin">Уникальный контент</p>
-                                    <div class="m-t-sm"><p class="small">Рерайт имеющихся материалов для доверия поисковых систем.</p></div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12 padder-v">
-                                <div class="col-md-3 col-xs-12 text-center m-b-md">
-
-                                    <p class="h3 inline b b-dark r-3x wrapper-sm"><i class=" w-1x icon-compass"></i></p>
-
-                                </div>
-                                <div class="col-md-8 col-xs-12 ">
-                                    <p class="h4 text-black font-thin">Электронный маркетинг</p>
-                                    <div class="m-t-sm"><p class="small">
-                                            Увеличение лояльности клиентов компании и повторные продажи.</p></div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- end feature box -->
 
 
                     </div>
@@ -107,23 +56,67 @@
                     </div>
 
                 </div>
+
+
+                <div class="row m-t-md m-b-xl text-center">
+                    <div class="col-sm-4 fadeInLeft animated" data-ride="animated" data-animation="fadeInLeft"
+                         data-delay="300">
+                        <p class="h3 m-b-xl inline b b-dark r-3x wrapper-lg">
+                            <i class=" w-1x icon-compass"></i>
+                        </p>
+                        <div class="m-b-xl">
+                            <h3 class="m-t-none font-thin l-h-1x text-black">Наша задача</h3>
+                            <p class="text-muted m-t-lg">
+                                Создание и обеспечение единой точки
+                                входа для получения полного комплекса
+                                услуг высшего качества.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 fadeInLeft animated" data-ride="animated" data-animation="fadeInLeft"
+                         data-delay="600">
+                        <p class="h3 m-b-xl inline b b-dark r-3x wrapper-lg">
+                            <i class="w-1x icon-target"></i>
+                        </p>
+                        <div class="m-b-xl">
+                            <h3 class="m-t-none font-thin l-h-1x text-black">Наша цель</h3>
+                            <p class="text-muted m-t-lg">
+                                Достижение высоких результатов наших клиентов и сотрудников.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 fadeInLeft animated" data-ride="animated" data-animation="fadeInLeft"
+                         data-delay="900">
+                        <p class="h3 m-b-xl inline b b-dark r-3x wrapper-lg">
+                            <i class="w-1x icon-star"></i>
+                        </p>
+                        <div class="m-b-xl">
+                            <h3 class="m-t-none font-thin l-h-1x text-black">Наша мечта</h3>
+                            <p class="text-muted m-t-lg">
+                                Объединение и интеграция деловых предприятий и бизнес-проектов
+                                страны в единое, органичное инфо пространство.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
 
+        {{--
         <section class="container bg-white">
             <div class="row m-t-xl m-b-xxl">
                 <div class="col-md-6">
                     <h1 class="font-thin m-t-n l-h-1x padder-v text-black">Мы предлагаем</h1>
                     <div>
                         <p>
-                           Мощный, современный, удобный, малозатратный, но эффективный
-                            агрегатор по поискуи предложению товаров и услуг для бизнеса.
+                            Мощный, современный, удобный, мало затратный, но эффективный
+                            агрегатор по поиску предложению товаров и услуг для бизнеса.
                         </p>
                     </div>
 
                 </div>
-                {{--
+
                 <div class="col-md-6">
                     <p class="h2 font-thin m-t-n l-h-1x padder-v text-black">Поиск новых клиентов и источников</p>
                     <p>
@@ -165,10 +158,9 @@
                         </div>
                     </div>
                 </div>
-                --}}
             </div>
         </section>
-
+        --}}
 
     </div>
 

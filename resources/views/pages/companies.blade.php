@@ -16,7 +16,7 @@
                                 <div class="col-xs-12">
                                     <div class="page-hero-content">
                                         <h1 class="text-white">
-                                            <span class="text-info">Бизнес сеть.</span> для реализации <br> товаров и услуг
+                                            <span class="text-info">Бизнес сеть.</span> Для реализации <br> товаров и услуг
                                         </h1>
                                         <p class="text-white">
                                             Организация выгодных закупок. Быстрый и удобный поиск <br> партнеров для сбыта продукции и предоставления услуг.
@@ -81,7 +81,9 @@
                         <div class="m-b-xl">
                             <h3 class="m-t-none font-thin l-h-1x text-black">Наша задача</h3>
                             <p class="text-muted m-t-lg">
-                                Быть единой точкой входа и обеспечивать полный комплекс услуг высокого качества
+                                Создание и обеспечение единой точки
+                                входа для получения полного комплекса
+                                услуг высшего качества.
                             </p>
                         </div>
                     </div>
@@ -92,7 +94,9 @@
                         </p>
                         <div class="m-b-xl">
                             <h3 class="m-t-none font-thin l-h-1x text-black">Наша цель</h3>
-                            <p class="text-muted m-t-lg">Достижение успешных результатов для клиентов, сотрудников и акционеров</p>
+                            <p class="text-muted m-t-lg">
+                                Достижение высоких результатов наших клиентов и сотрудников.
+                            </p>
                         </div>
                     </div>
                     <div class="col-sm-4 fadeInLeft animated" data-ride="animated" data-animation="fadeInLeft"
@@ -102,7 +106,10 @@
                         </p>
                         <div class="m-b-xl">
                             <h3 class="m-t-none font-thin l-h-1x text-black">Наша мечта</h3>
-                            <p class="text-muted m-t-lg">Достижение успешных результатов для клиентов, сотрудников и акционеров</p>
+                            <p class="text-muted m-t-lg">
+                                Объединение и интеграция деловых предприятий и бизнес-проектов
+                                страны в единое, органичное инфо пространство.
+                            </p>
                         </div>
                     </div>
                 </div>

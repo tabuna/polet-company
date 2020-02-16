@@ -176,8 +176,7 @@
                 <div class="col-md-6 hidden-xs">
                     <div class="text-xs">
                         <ul class="list-inline">
-                            <a href="/companies">Мои предложения</a>
-                            <li><a href="#">Контакты</a></li>
+                            <li><a href="mailto:administration@uniten.pro">Контакты</a></li>
                             <li><a href="/docs/terms.docx" target="_blank">Пользовательское соглашение</a></li>
                         </ul>
                     </div>

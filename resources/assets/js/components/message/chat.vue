@@ -7,7 +7,7 @@
             <div class="panel-heading">
                 <strong>Чат</strong>
             </div>
-            <div class="panel-body b scrollBlock">
+            <div class="panel-body b scrollBlock" style="min-height: 500px">
 
                 <div class="messages" style="position: relative;
     height: 500px;padding-right: 15px; padding-bottom: 30px;">
@@ -133,7 +133,6 @@
         },
         methods: {
             load: function () {
-                $('#adb').hide();
                 this.mytime = new Date().getTimezoneOffset();//Возвращает разницу между местным и UTC-временем, в минутах.
                 $('.scrollBlock').height($('#rightPanel').height()-192);
 
@@ -262,7 +261,7 @@
                 Ps.update(container);
                 container.scrollTop =Math.ceil(container.scrollHeight - container.clientHeight);
 
-            } 
+            }
         }
     }
 </script>

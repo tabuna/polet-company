@@ -19,7 +19,7 @@
                             <h3 class="m-t-xs">{{tender.content.ru.title}}</h3>
 
                             <div class="tags">
-                                <span title="Используется данный тег" class="label text-dark" v-for="tag in tender.tags">{{tag.name}}</span>
+                                <span title="Используется данный тег" class="label text-dark pull-left-xs" v-for="tag in tender.tags">{{tag.name}}</span>
                             </div>
                         </div>
 

@@ -106,7 +106,7 @@
                             </h3>
 
                             <div class="tags">
-                                <span  title="Используется данный тег" class="label text-dark pull-left-xs" v-for="tag in tender.tags">{{tag.name}}</span>
+                                <span  title="Используется данный тег" class="label text-dark pull-left" v-for="tag in tender.tags">{{tag.name}}</span>
                             </div>
                         </div>
                         </div>

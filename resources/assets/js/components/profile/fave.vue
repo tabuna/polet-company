@@ -35,7 +35,7 @@
                             <div v-if="fave.tags !== undefined && fave.tags !== null && fave.tags.length > 0">
                                 <div class="row tags text-md wrapper b-t">
                                     <span class="text-xs block m-b-xs ">Спрос:</span>
-                                    <span v-for="tag in fave.tags" class="label text-dark pull-left-xs">
+                                    <span v-for="tag in fave.tags" class="label text-dark pull-left">
                                         {{tag.name}}
                                     </span>
                                 </div>
@@ -44,7 +44,7 @@
                             <div v-if="fave.search_tags !== undefined && fave.search_tags !== null && fave.search_tags.length > 0">
                                 <div class="row tags text-md wrapper b-b b-t">
                                     <span class="text-xs block m-b-xs ">Предложение:</span>
-                                    <span v-for="tag in fave.search_tags" class="label text-dark pull-left-xs">
+                                    <span v-for="tag in fave.search_tags" class="label text-dark pull-left">
                                         {{tag.name}}
                                     </span>
                                 </div>

@@ -80,7 +80,7 @@
                             <div v-if="user.tags !== undefined && user.tags !== null && user.tags.length > 0">
                                 <div class="row tags text-md wrapper b-t">
                                     <span class="text-xs block m-b-xs ">Спрос:</span>
-                                    <span v-for="tag in user.tags" class="label text-dark pull-left-xs">
+                                    <span v-for="tag in user.tags" class="label text-dark pull-left">
                                         {{tag.name}}
                                     </span>
                                 </div>
@@ -89,7 +89,7 @@
                             <div v-if="user.search_tags !== undefined && user.search_tags !== null && user.search_tags.length > 0">
                                 <div class="row tags text-md wrapper b-b b-t">
                                     <span class="text-xs block m-b-xs ">Предложение:</span>
-                                    <span v-for="tag in user.search_tags" class="label text-dark pull-left-xs">
+                                    <span v-for="tag in user.search_tags" class="label text-dark pull-left">
                                         {{tag.name}}
                                     </span>
                                 </div>
